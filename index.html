@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMOS.LAB STUDIO</title>
+    <style>
+        /* --- STİL DOSYASI --- */
+        body { background-color: #0e0e0e; color: #f0f0f0; font-family: 'Courier New', Courier, monospace; margin: 0; overflow-x: hidden; }
+        
+        header { 
+            padding: 2rem 3rem; width: 100%; box-sizing: border-box;
+            position: sticky; top: 0; background: rgba(14, 14, 14, 0.95); z-index: 100; 
+            display: flex; justify-content: space-between; border-bottom: 1px solid #333; 
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: -2px; }
+        nav a { color: #888; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: #fff; }
+
+        section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
+        h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
+        p { color: #aaa; max-width: 800px; line-height: 1.6; margin-bottom: 1.5rem; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
+
+        /* --- SLIDER --- */
+        .slider-container { position: relative; width: 100%; }
+        .slider-wrapper { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 30px; padding-bottom: 20px; scrollbar-width: none; }
+        .slider-wrapper::-webkit-scrollbar { display: none; }
+        
+        .slide-item { 
+            min-width: 700px; display: flex; flex-direction: column;
+            position: relative; cursor: pointer; border: 1px solid #333; background: #151515;
+            transition: 0.3s; flex-shrink: 0; 
+        }
+        .slide-item:hover { border-color: #fff; transform: translateY(-5px); }
+        
+        /* Görsel ve Video Stili (Slider İçin) */
+        .slide-media { width: 100%; height: 500px; object-fit: cover; display: block; }
+        
+        .caption { 
+            width: 100%; background: #151515; padding: 20px; font-size: 1rem; 
+            color: #ccc; border-top: 1px solid #222; box-sizing: border-box; font-weight: bold; letter-spacing: 1px;
+        }
+        .slide-item:hover .caption { color: #fff; }
+
+        .slider-btn { 
+            position: absolute; top: 250px; transform: translateY(-50%); 
+            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
+            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
+            font-size: 24px; display: flex; align-items: center; justify-content: center;
+        }
+        .slider-btn:hover { background: #fff; color: #000; border-color: #fff; }
+        .prev-btn { left: 20px; } .next-btn { right: 20px; }
+
+        /* --- LIGHTBOX --- */
+        .lightbox { 
+            display: none; position: fixed; z-index: 9999; 
+            top: 0; left: 0; width: 100vw; height: 100vh; 
+            background: rgba(0,0,0,0.98); 
+            justify-content: center; align-items: center; overflow: hidden; 
+        }
+        .lb-container { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; gap: 20px; }
+
+        /* Ana Medya Alanı (Resim veya Video) */
+        .lb-media-wrapper {
+            position: relative;
+            max-height: 85vh; max-width: 65vw;
+            z-index: 10;
+            overflow: hidden; /* Zoom yapınca taşmasın diye */
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            border: 1px solid #333;
+            /* Flex ile ortalayalım ki zoom yapınca garip durmasın */
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .lb-main-media { 
+            max-height: 85vh; max-width: 65vw; 
+            object-fit: contain; 
+            transition: transform 0.4s ease; /* Yumuşak zoom efekti */
+            transform-origin: center center;
+            cursor: zoom-in; /* İmleç zoom işareti olsun */
+        }
+        
+        /* Video için zoom kapalı imleci */
+        video.lb-main-media { cursor: default; }
+
+        /* Yan Görseller (Sadece Resimse Gösterilir, Video ise poster gibi davranır) */
+        .lb-side-img {
+            height: 50vh; max-width: 15vw; object-fit: cover;
+            opacity: 0.2; filter: grayscale(100%); transition: 0.4s ease;
+            cursor: pointer; border: 1px solid #333;
+        }
+        .lb-side-img:hover { opacity: 0.6; filter: grayscale(0%); border-color: #fff; }
+
+        .lb-arrow { color: #fff; font-size: 40px; cursor: pointer; padding: 10px; user-select: none; }
+        .lb-arrow:hover { color: #aaa; transform: scale(1.1); }
+        .close-lb { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; z-index: 30;}
+        .lb-counter { position: absolute; bottom: 30px; color: #555; font-size: 0.8rem; letter-spacing: 2px; z-index: 30;}
+
+        @media (max-width: 768px) { 
+            header { padding: 2rem 1rem; width: 100%; }
+            section { max-width: 90%; } 
+            .lb-side-img { display: none; } 
+            .lb-main-media { max-width: 90vw; max-height: 70vh; } 
+            .slide-item { min-width: 90vw; } .slide-media { height: 400px; }
+            .prev-btn { left: 5px; top: 200px; } .next-btn { right: 5px; top: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" id="logo"></div>
+        <nav id="menu"></nav>
+    </header>
+
+    <section id="about-section">
+        <div class="info-grid">
+            <div>
+                <h2 id="who-title"></h2>
+                <p id="who-text"></p>
+            </div>
+            <div>
+                <h2 id="what-title"></h2>
+                <p id="what-text"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects-section">
+        <h2>SELECTED PROJECTS</h2>
+        <div class="slider-container">
+            <button class="slider-btn prev-btn" onclick="slide('project-slider', 'left')">&#10094;</button>
+            <div class="slider-wrapper" id="project-slider"></div>
+            <button class="slider-btn next-btn" onclick="slide('project-slider', 'right')">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="automation-section">
+        <h2 id="auto-title"></h2>
+        <p id="auto-desc"></p>
+        <div class="slider-container">
+            <button class="slider-btn prev-btn" onclick="slide('auto-slider', 'left')">&#10094;</button>
+            <div class="slider-wrapper" id="auto-slider"></div>
+            <button class="slider-btn next-btn" onclick="slide('auto-slider', 'right')">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 30px;">
+        <h2>CONTACT</h2>
+        <p id="contact-info"></p>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lb" onclick="closeLightbox()">&times;</span>
+        <div class="lb-container">
+            
+            <img id="lb-img-prev" class="lb-side-img" onclick="changeSlide(-1)">
+            
+            <div class="lb-arrow" onclick="changeSlide(-1)">&#10094;</div>
+
+            <div class="lb-media-wrapper">
+                <img id="lb-img-main" class="lb-main-media" style="display:none;" ondblclick="toggleZoom(event)">
+                <video id="lb-video-main" class="lb-main-media" style="display:none;" autoplay loop muted playsinline></video>
+            </div>
+
+            <div class="lb-arrow" onclick="changeSlide(1)">&#10095;</div>
+            
+            <img id="lb-img-next" class="lb-side-img" onclick="changeSlide(1)">
+        </div>
+        <div class="lb-counter" id="lb-counter"></div>
+    </div>
+
+    <script src="content.js"></script>
+    <script>
+        document.getElementById('logo').innerText = siteContent.header.title;
+        
+        const nav = document.getElementById('menu');
+        siteContent.header.menu.forEach(item => {
+            nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
+        });
+
+        document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
+        document.getElementById('who-text').innerText = siteContent.about.whoWeAreText;
+        document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
+        document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
+        document.getElementById('auto-title').innerText = siteContent.automation.title;
+        document.getElementById('auto-desc').innerText = siteContent.automation.description;
+        document.getElementById('contact-info').innerHTML = `${siteContent.contact.email}<br>${siteContent.contact.location}`;
+
+        let allImages = []; 
+
+        // Dosya uzantısına göre video mu resim mi kontrolü
+        function isVideo(url) {
+            return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm');
+        }
+
+        function renderSlider(wrapperId, dataItems) {
+            const wrapper = document.getElementById(wrapperId);
+            dataItems.forEach((item) => {
+                let startIndex = allImages.length; 
+                item.images.forEach(img => allImages.push(img));
+                
+                const firstMedia = item.images[0];
+                let mediaHtml = "";
+
+                if (isVideo(firstMedia)) {
+                    // Slider'da video önizlemesi (autoplay)
+                    mediaHtml = `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>`;
+                } else {
+                    mediaHtml = `<img src="${firstMedia}" class="slide-media">`;
+                }
+
+                wrapper.innerHTML += `
+                    <div class="slide-item" onclick="openLightbox(${startIndex})">
+                        ${mediaHtml}
+                        <div class="caption">
+                            ${item.title}<br>
+                            <span style="font-size:0.7em; color:#666;">[${item.images.length} items]</span>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        renderSlider('project-slider', siteContent.projects);
+        renderSlider('auto-slider', siteContent.automation.items);
+
+        function slide(id, dir) {
+            const el = document.getElementById(id);
+            const scrollAmt = 730; 
+            dir === 'left' ? el.scrollLeft -= scrollAmt : el.scrollLeft += scrollAmt;
+        }
+
+        let currentIndex = 0;
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img-main'); // Resim etiketi
+        const lbVideo = document.getElementById('lb-video-main'); // Video etiketi
+        const lbPrev = document.getElementById('lb-img-prev');
+        const lbNext = document.getElementById('lb-img-next');
+        const lbCounter = document.getElementById('lb-counter');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLb();
+            lb.style.display = 'flex';
+            document.addEventListener('keydown', handleKey);
+        }
+
+        function closeLightbox() {
+            lb.style.display = 'none';
+            // Videoyu durdur (arka planda çalmasın)
+            lbVideo.pause();
+            lbVideo.src = "";
+            resetZoom(); // Çıkarken zoom'u sıfırla
+            document.removeEventListener('keydown', handleKey);
+        }
+
+        function changeSlide(step) {
+            resetZoom(); // Sayfa değiştirince zoom'u sıfırla
+            currentIndex += step;
+            if (currentIndex >= allImages.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = allImages.length - 1;
+            updateLb();
+        }
+
+        function updateLb() {
+            const currentUrl = allImages[currentIndex];
+            
+            // --- ANA MEDYA AYARI ---
+            if (isVideo(currentUrl)) {
+                // Video ise: Resim etiketini gizle, videoyu göster
+                lbImg.style.display = 'none';
+                lbVideo.style.display = 'block';
+                lbVideo.src = currentUrl;
+                lbVideo.play();
+            } else {
+                // Resim ise: Videoyu gizle, resmi göster
+                lbVideo.style.display = 'none';
+                lbVideo.pause();
+                lbImg.style.display = 'block';
+                lbImg.src = currentUrl;
+            }
+
+            // --- YAN (GHOST) GÖRSELLER ---
+            // Yanlar her zaman resim etiketi (img) içinde gösterilir.
+            // Eğer yan öğe videoyusada img etiketi çalışmaz (broken image) olmaması için
+            // basit bir kontrol ekleyebiliriz veya video ise poster koyabiliriz.
+            // Şimdilik video olsa bile src veriyoruz, tarayıcılar videoyu img içinde göstermez, boş kalır.
+            
+            let prevIndex = currentIndex - 1;
+            if (prevIndex < 0) prevIndex = allImages.length - 1;
+            
+            let nextIndex = currentIndex + 1;
+            if (nextIndex >= allImages.length) nextIndex = 0;
+
+            // Yanlarda video önizlemesi zor olduğu için, eğer videoysa boş geçebiliriz 
+            // ya da statik bir ikon koyabiliriz. Şimdilik düz bırakıyorum.
+            lbPrev.src = isVideo(allImages[prevIndex]) ? "" : allImages[prevIndex];
+            lbNext.src = isVideo(allImages[nextIndex]) ? "" : allImages[nextIndex];
+            
+            // Eğer yan taraf video ise opaklığı 0 yapalım ki kırık resim ikonu çıkmasın
+            lbPrev.style.opacity = isVideo(allImages[prevIndex]) ? "0" : "0.2";
+            lbNext.style.opacity = isVideo(allImages[nextIndex]) ? "0" : "0.2";
+
+            lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
+        }
+
+        // --- ZOOM FONKSİYONU ---
+        let isZoomed = false;
+
+        function toggleZoom(event) {
+            // Eğer videoy ise zoom yapma
+            if(isVideo(allImages[currentIndex])) return;
+
+            if (isZoomed) {
+                resetZoom();
+            } else {
+                // Tıklanan koordinatları al
+                const rect = lbImg.getBoundingClientRect();
+                const x = event.clientX - rect.left; // Resim içindeki X
+                const y = event.clientY - rect.top;  // Resim içindeki Y
+
+                // Transform origin'i tıklanan yere ayarla
+                lbImg.style.transformOrigin = `${x}px ${y}px`;
+                lbImg.style.transform = "scale(2.5)"; // 2.5 kat büyüt
+                lbImg.style.cursor = "zoom-out";
+                isZoomed = true;
+            }
+        }
+
+        function resetZoom() {
+            lbImg.style.transform = "scale(1)";
+            lbImg.style.cursor = "zoom-in";
+            lbImg.style.transformOrigin = "center center";
+            isZoomed = false;
+        }
+
+        function handleKey(e) {
+            if(e.key === 'ArrowRight') changeSlide(1);
+            if(e.key === 'ArrowLeft') changeSlide(-1);
+            if(e.key === 'Escape') closeLightbox();
+        }
+        
+        lb.addEventListener('click', (e) => { 
+            if(e.target === lb) closeLightbox(); 
+        });
+    </script>
+</body>
+</html>

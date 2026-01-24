@@ -350,3 +350,145 @@
                  media.style.width = "";
                  media.style.height = "";
             }
+
+            media.style.transform = transform;
+        }
+
+
+        // --- DOKUNMATİK & MOUSE OLAYLARI (Basitleştirilmiş) ---
+        let startX = 0, startY = 0;
+        let lastX = 0, lastY = 0;
+        let isDragging = false;
+
+        // Dokunma Başladı
+        lbStage.addEventListener('touchstart', (e) => {
+             if(isVideo(allImages[currentIndex])) return;
+             if (e.touches.length === 1) {
+                 isDragging = true;
+                 startX = e.touches[0].clientX;
+                 startY = e.touches[0].clientY;
+                 lastX = state.x;
+                 lastY = state.y;
+             }
+        }, {passive: false});
+
+        lbStage.addEventListener('mousedown', (e) => {
+             if(isVideo(allImages[currentIndex])) return;
+             if (state.scale > 1) { // Sadece zoom varsa sürükle
+                 isDragging = true;
+                 startX = e.clientX;
+                 startY = e.clientY;
+                 lastX = state.x;
+                 lastY = state.y;
+                 e.preventDefault();
+             }
+        });
+
+        // Hareket
+        const handleMove = (x, y) => {
+            if (!isDragging) return;
+            
+            if (state.scale > 1) {
+                // Zoom açık: Pan yap
+                const dx = x - startX;
+                const dy = y - startY;
+
+                // Rotate varsa yönleri düzelt
+                if (state.rotate) {
+                    state.x = lastX + dy;
+                    state.y = lastY - dx;
+                } else {
+                    state.x = lastX + dx;
+                    state.y = lastY + dy;
+                }
+                applyTransform();
+            } 
+        };
+
+        lbStage.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                // Sadece zoom varsa scroll'u engelle, yoksa swipe'a izin ver
+                if (state.scale > 1) e.preventDefault(); 
+                handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, {passive: false});
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) handleMove(e.clientX, e.clientY);
+        });
+
+        // Dokunma Bitti
+        const handleEnd = (endX, endY) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            // Eğer Zoom 1 ise -> SWIPE Kontrolü
+            if (state.scale === 1) {
+                const diffX = endX - startX;
+                const diffY = endY - startY;
+                const threshold = 50;
+
+                if (state.rotate) {
+                    // Yan modda dikey kaydırma slayt değiştirir
+                    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
+                        if (diffY < 0) changeSlide(1); else changeSlide(-1);
+                    }
+                } else {
+                    // Normal modda yatay kaydırma
+                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+                        if (diffX < 0) changeSlide(1); else changeSlide(-1);
+                    }
+                }
+            }
+        };
+
+        lbStage.addEventListener('touchend', (e) => {
+            handleEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        });
+        window.addEventListener('mouseup', (e) => {
+            if(isDragging) handleEnd(e.clientX, e.clientY);
+            isDragging = false;
+        });
+
+
+        // --- DOUBLE TAP (ÇİFT DOKUNMA) ---
+        let lastTap = 0;
+        const handleDoubleTap = (e) => {
+            if(isVideo(allImages[currentIndex])) return;
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            
+            if (tapLength < 300 && tapLength > 0) {
+                e.preventDefault();
+                // Zoom Logic
+                if (state.scale > 1) {
+                    state.scale = 1;
+                    state.x = 0; state.y = 0;
+                } else {
+                    state.scale = 2.5; // 2.5x Zoom
+                }
+                applyTransform();
+            }
+            lastTap = currentTime;
+        };
+        
+        // Hem mouse hem touch için
+        lbStage.addEventListener('touchend', handleDoubleTap);
+        lbStage.addEventListener('dblclick', (e) => {
+             // Desktop dblclick
+             if(isVideo(allImages[currentIndex])) return;
+             if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } 
+             else { state.scale = 2.5; }
+             applyTransform();
+        });
+
+
+        function handleKey(e) {
+            if(e.key === 'ArrowRight') changeSlide(1);
+            if(e.key === 'ArrowLeft') changeSlide(-1);
+            if(e.key === 'Escape') closeLightbox();
+        }
+
+    </script>
+</body>
+</html>

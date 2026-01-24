@@ -23,7 +23,7 @@
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- INFINITE SLIDER --- */
+        /* --- SLIDER (Mobile Fit Update) --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         
         .slider-wrapper { 
@@ -32,10 +32,7 @@
             gap: 20px; 
             padding-bottom: 20px; 
             scrollbar-width: none;
-            
-            /* SIKI SNAP AYARLARI */
             scroll-snap-type: x mandatory; 
-            scroll-behavior: auto; /* JS ile kontrol edeceğimiz için smooth'u kapattık, yoksa loop bozulur */
         }
         .slider-wrapper::-webkit-scrollbar { display: none; }
         
@@ -45,10 +42,7 @@
             position: relative; cursor: pointer; 
             border: 1px solid #333; background: #000;
             transition: border-color 0.3s; flex-shrink: 0; 
-            
-            /* SOLA YAPIŞMA */
             scroll-snap-align: start; 
-            /* ORTADA KALMAYI ENGELLEME */
             scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
@@ -72,47 +66,54 @@
         .slider-btn:hover { background: #fff; color: #000; border-color: #fff; }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- LIGHTBOX (Ritmik & Net) --- */
+        /* --- LIGHTBOX (SABİT SAHNE & OKLAR) --- */
         .lightbox { 
             display: none; position: fixed; z-index: 9999; 
             top: 0; left: 0; width: 100vw; height: 100vh; 
             background: rgba(0,0,0,0.98); 
-            justify-content: center; align-items: center; overflow: hidden; 
+            justify-content: center; align-items: center; 
+            /* Taşmayı engelle ama touch eventleri yakala */
+            overflow: hidden; 
         }
-        .lb-container { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; gap: 20px; }
 
-        .lb-media-wrapper {
-            position: relative;
-            width: 100%; height: 100%;
+        /* Sabit Oklar (Ekranın kenarlarına çivilendi) */
+        .lb-arrow { 
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 50px; cursor: pointer; padding: 20px; 
+            user-select: none; z-index: 100; /* En üstte */
+            /* Arka plan ekleyelim ki görsel üstüne gelirse görünsün */
+            text-shadow: 0 0 10px #000;
+        }
+        .lb-prev-arrow { left: 20px; }
+        .lb-next-arrow { right: 20px; }
+        .lb-arrow:hover { color: #aaa; }
+
+        /* Sabit Sahne Kutusu (Görsel bunun içinde oynar, okları itmez) */
+        .lb-stage {
+            width: 80vw; 
+            height: 85vh;
             display: flex; align-items: center; justify-content: center;
+            position: relative;
         }
 
-        /* ORTAK MEDYA STİLİ (Ritim Bozulmaması İçin) */
         .lb-main-media { 
-            max-width: 80vw; max-height: 90vh; 
-            object-fit: contain;
-            transition: opacity 0.2s ease; /* Yumuşak geçiş */
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; /* Kutuya sığdır */
+            transition: opacity 0.2s ease;
         }
         
-        /* Video Player Reset */
         video.lb-main-media { outline: none; border: none; }
 
-        .lb-side-img {
-            height: 50vh; max-width: 15vw; object-fit: cover;
-            opacity: 0.2; filter: grayscale(100%); transition: 0.4s ease;
-            cursor: pointer; border: 1px solid #333;
-        }
-        .lb-side-img:hover { opacity: 0.6; filter: grayscale(0%); border-color: #fff; }
-
-        .lb-arrow { color: #fff; font-size: 40px; cursor: pointer; padding: 10px; user-select: none; z-index: 20; }
-        .close-lb { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; z-index: 30;}
+        /* Kapatma Butonu */
+        .close-lb { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; z-index: 101;}
         .lb-counter { position: absolute; bottom: 30px; color: #555; font-size: 0.8rem; letter-spacing: 2px; z-index: 30;}
 
         /* Rotate Butonu */
         .rotate-btn {
             display: none;
-            position: absolute; top: 20px; right: 100px; 
-            color: #fff; font-size: 30px; cursor: pointer; z-index: 35;
+            position: absolute; top: 20px; right: 90px; 
+            color: #fff; font-size: 30px; cursor: pointer; z-index: 101;
             border: 1px solid #fff; border-radius: 50%; width: 40px; height: 40px;
             align-items: center; justify-content: center;
         }
@@ -123,19 +124,31 @@
             section { max-width: 90%; } 
             .info-grid { grid-template-columns: 1fr; gap: 30px; }
 
-            /* Slider: Yanları görünecek şekilde, Sola Snap */
-            .slide-item { min-width: 85vw; margin-right: 10px; } 
-            .slide-media { height: 350px; }
+            /* 1. Proje Kartları Ekrana Tam Sığsın (Taşmasın) */
+            .slide-item { 
+                min-width: 90vw; /* Ekran genişliğinin %90'ı */
+                width: 90vw;     /* Sabit genişlik */
+                margin-right: 15px; 
+            } 
+            .slide-media { height: 300px; /* Mobilde biraz kısalttık */ }
+            
+            /* Mobilde Slider Butonlarını Gizle (Swipe var) */
+            .slider-btn { display: none; }
 
-            .lb-side-img, .prev-btn, .next-btn, .lb-arrow { display: none; }
-            .lb-main-media { max-width: 100vw; max-height: 80vh; }
+            /* 2. Lightbox Oklarını Geri Getir (Ama biraz küçült) */
+            .lb-arrow { font-size: 30px; padding: 10px; }
+            .lb-prev-arrow { left: 5px; }
+            .lb-next-arrow { right: 5px; }
+
+            /* Sahne mobilde daha geniş olsun */
+            .lb-stage { width: 100vw; height: 80vh; }
+            
             .rotate-btn { display: flex; }
         }
 
-        /* --- AKILLI ROTASYON (MATEMATİKSEL FIT) --- */
+        /* AKILLI ROTASYON */
         .rotated-90 {
             transform: rotate(90deg);
-            /* Ekranın yüksekliği kadar genişlik, genişliği kadar yükseklik */
             width: 80vh !important; 
             height: 100vw !important;
             max-width: 90vh !important;
@@ -193,18 +206,14 @@
         <span class="close-lb" onclick="closeLightbox()">&times;</span>
         <div class="rotate-btn" onclick="rotateImage()">&#8635;</div>
         
-        <div class="lb-container">
-            <img id="lb-img-prev" class="lb-side-img" onclick="changeSlide(-1)">
-            <div class="lb-arrow" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="lb-arrow lb-prev-arrow" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="lb-arrow lb-next-arrow" onclick="changeSlide(1)">&#10095;</div>
 
-            <div class="lb-media-wrapper">
-                <div id="media-placeholder" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
-                    </div>
-            </div>
-
-            <div class="lb-arrow" onclick="changeSlide(1)">&#10095;</div>
-            <img id="lb-img-next" class="lb-side-img" onclick="changeSlide(1)">
+        <div class="lb-stage">
+            <div id="media-placeholder" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                </div>
         </div>
+        
         <div class="lb-counter" id="lb-counter"></div>
     </div>
 
@@ -230,12 +239,8 @@
         function isMobile() { return window.innerWidth <= 768; }
 
         // --- INFINITE SLIDER LOGIC ---
-        // Kartları klonlayıp sonsuz döngü hissi yaratacağız.
-        
         function renderSlider(wrapperId, dataItems) {
             const wrapper = document.getElementById(wrapperId);
-            
-            // Orijinal öğeleri oluştur
             let originalSlides = "";
             dataItems.forEach((item) => {
                 let globalIndex = allImages.length; 
@@ -245,9 +250,8 @@
                     `<video src="${firstMedia}" class="slide-media" muted playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>` : 
                     `<img src="${firstMedia}" class="slide-media">`;
 
-                // DATA-INDEX ile gerçek indexi saklıyoruz
                 originalSlides += `
-                    <div class="slide-item" data-index="${globalIndex}" onclick="openLightbox(${globalIndex})">
+                    <div class="slide-item" onclick="openLightbox(${globalIndex})">
                         ${mediaHtml}
                         <div class="caption">
                             ${item.title}<br>
@@ -255,52 +259,35 @@
                         </div>
                     </div>`;
             });
-
-            // HTML'i yerleştir (Önce orijinaller)
             wrapper.innerHTML = originalSlides;
-
-            // DOM'a yerleştikten sonra klonlama işlemi
             setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
 
         function setupInfiniteLoop(wrapper) {
             const items = Array.from(wrapper.children);
-            if(items.length < 2) return; // Az eleman varsa klonlama
+            if(items.length < 2) return; 
 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
 
-            // Klonlara ID veya özel işaret ekle
-            firstClone.classList.add('clone');
-            lastClone.classList.add('clone');
+            wrapper.appendChild(firstClone); 
+            wrapper.insertBefore(lastClone, items[0]); 
 
-            // Başa ve sona ekle
-            wrapper.appendChild(firstClone); // Sona ilkin kopyasını
-            wrapper.insertBefore(lastClone, items[0]); // Başa sonun kopyasını
-
-            // Scroll'u "gerçek" ilk öğeye hizala (Klon değil)
-            const itemWidth = items[0].offsetWidth + 20; // 20px gap
+            const itemWidth = items[0].offsetWidth + 20; 
             wrapper.scrollLeft = itemWidth;
 
-            // Scroll Dinleyici (Işınlanma Mantığı)
             wrapper.addEventListener('scroll', () => {
                 const scrollLeft = wrapper.scrollLeft;
                 const scrollWidth = wrapper.scrollWidth;
                 const clientWidth = wrapper.clientWidth;
 
-                // En sona geldik mi? (İlk öğenin klonuna)
                 if (scrollLeft >= scrollWidth - clientWidth - 5) {
-                    wrapper.scrollLeft = itemWidth; // Başa ışınla
+                    wrapper.scrollLeft = itemWidth; 
                 }
-                // En başa geldik mi? (Son öğenin klonuna)
                 if (scrollLeft <= 0) {
-                    wrapper.scrollLeft = scrollWidth - (2 * clientWidth) + 10; // Sona ışınla (Basit hesap)
-                    // Daha hassas ışınlanma:
-                    wrapper.scrollLeft = wrapper.scrollWidth - (itemWidth * 2) - 20;
+                    wrapper.scrollLeft = scrollWidth - (2 * clientWidth) + 10; 
                 }
             });
-
-            // Klonlara tıklama olayını düzelt (JS ile eklenenlerde onclick string olarak kalır, çalışır)
         }
 
         function manualScroll(wrapperId, direction) {
@@ -313,100 +300,75 @@
         renderSlider('auto-slider', siteContent.automation.items);
 
 
-        // --- LIGHTBOX (RHYTHM & LOOP) ---
+        // --- LIGHTBOX (FIXED RHYTHM & SWIPE) ---
         let currentIndex = 0;
         const lb = document.getElementById('lightbox');
         const mediaPlaceholder = document.getElementById('media-placeholder');
-        const lbPrev = document.getElementById('lb-img-prev');
-        const lbNext = document.getElementById('lb-img-next');
         const lbCounter = document.getElementById('lb-counter');
 
-        // Lightbox açılınca
         function openLightbox(index) {
             currentIndex = index;
             updateLb();
             lb.style.display = 'flex';
             document.addEventListener('keydown', handleKey);
 
-            // Mobilde direk yatay başlat (Döndür)
-            setTimeout(() => {
-                const activeMedia = document.querySelector('.lb-main-media');
-                if(isMobile() && activeMedia && activeMedia.tagName === 'IMG') {
-                    activeMedia.classList.add('rotated-90');
-                }
-            }, 50);
+            if(isMobile()) {
+                setTimeout(() => {
+                    const activeMedia = document.querySelector('.lb-main-media');
+                    if(activeMedia && activeMedia.tagName === 'IMG') activeMedia.classList.add('rotated-90');
+                }, 50);
+            }
         }
 
         function closeLightbox() {
             lb.style.display = 'none';
-            mediaPlaceholder.innerHTML = ""; // İçeriği temizle
+            mediaPlaceholder.innerHTML = "";
             document.removeEventListener('keydown', handleKey);
         }
 
         function changeSlide(step) {
             currentIndex += step;
-            // Sonsuz Döngü Mantığı (Loop)
             if (currentIndex >= allImages.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = allImages.length - 1;
             updateLb();
             
-            // Mobilde geçişte de yatay kalsın
             if(isMobile()) {
                 setTimeout(() => {
                     const activeMedia = document.querySelector('.lb-main-media');
-                    if(activeMedia && activeMedia.tagName === 'IMG') {
-                        activeMedia.classList.add('rotated-90');
-                    }
+                    if(activeMedia && activeMedia.tagName === 'IMG') activeMedia.classList.add('rotated-90');
                 }, 10);
             }
         }
 
         function updateLb() {
             const currentUrl = allImages[currentIndex];
-            let newContent = "";
-
-            // Ritim bozulmaması için DOM'u tamamen silip yeniden oluşturuyoruz
-            if (isVideo(currentUrl)) {
-                newContent = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`;
-            } else {
-                newContent = `<img src="${currentUrl}" class="lb-main-media" ondblclick="toggleZoom(event)">`;
-            }
+            let newContent = isVideo(currentUrl) ? 
+                `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>` : 
+                `<img src="${currentUrl}" class="lb-main-media" ondblclick="toggleZoom(event)">`;
+            
             mediaPlaceholder.innerHTML = newContent;
-
-            // Yan Görseller (Sonsuz loop için indeksler)
-            let prevIndex = currentIndex - 1; if (prevIndex < 0) prevIndex = allImages.length - 1;
-            let nextIndex = currentIndex + 1; if (nextIndex >= allImages.length) nextIndex = 0;
-
-            lbPrev.src = isVideo(allImages[prevIndex]) ? "" : allImages[prevIndex];
-            lbNext.src = isVideo(allImages[nextIndex]) ? "" : allImages[nextIndex];
-            lbPrev.style.opacity = isVideo(allImages[prevIndex]) ? "0" : "0.2";
-            lbNext.style.opacity = isVideo(allImages[nextIndex]) ? "0" : "0.2";
             lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
         }
 
-        // ROTATE & ZOOM
         function rotateImage() {
             const img = document.querySelector('img.lb-main-media');
             if(!img) return;
             img.classList.toggle('rotated-90');
-            // Rotate olunca zoom sıfırlansın
             img.style.transform = ""; 
         }
 
         function toggleZoom(event) {
             const img = event.target;
-            if(img.classList.contains('rotated-90')) return; // Dönmüşse zoom yapma
+            if(img.classList.contains('rotated-90')) return; 
 
             if (img.style.transform === "scale(2.5)") {
-                img.style.transform = "scale(1)";
-                img.style.cursor = "zoom-in";
+                img.style.transform = "scale(1)"; img.style.cursor = "zoom-in";
             } else {
                 const rect = img.getBoundingClientRect();
                 const x = event.clientX - rect.left;
                 const y = event.clientY - rect.top;
                 img.style.transformOrigin = `${x}px ${y}px`;
-                img.style.transform = "scale(2.5)";
-                img.style.cursor = "zoom-out";
+                img.style.transform = "scale(2.5)"; img.style.cursor = "zoom-out";
             }
         }
 
@@ -415,8 +377,29 @@
             if(e.key === 'ArrowLeft') changeSlide(-1);
             if(e.key === 'Escape') closeLightbox();
         }
+
+        // --- SWIPE (PARMAKLA KAYDIRMA) ÖZELLİĞİ ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lb.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        lb.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            // Sağa/Sola kaydırma hassasiyeti (50px yeterli)
+            if (touchEndX < touchStartX - 50) changeSlide(1); // Sola kaydır -> İleri git
+            if (touchEndX > touchStartX + 50) changeSlide(-1); // Sağa kaydır -> Geri git
+        }
+
+        // Kapatma (Boşluğa tıklama)
         lb.addEventListener('click', (e) => { 
-            if(e.target === lb || e.target.id === 'media-placeholder') closeLightbox(); 
+            if(e.target === lb || e.target.classList.contains('lb-stage')) closeLightbox(); 
         });
     </script>
 </body>

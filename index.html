@@ -12,8 +12,8 @@
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow-x: hidden; 
-            /* Mobilde tarayıcı arayüzü kaymasın, kontrol bizde */
-            touch-action: pan-y; 
+            /* Mobilde tarayıcı arayüzü kaymasın, kontrol tamamen bizde */
+            touch-action: none; 
             -webkit-tap-highlight-color: transparent;
         }
         
@@ -45,7 +45,7 @@
         }
         .slide-item:hover { border-color: #fff; }
         
-        .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; }
+        .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
         .caption { 
             width: 100%; background: #151515; padding: 20px; font-size: 1rem; 
@@ -61,7 +61,7 @@
         }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- LIGHTBOX (ENGINEERED FOR STABILITY) --- */
+        /* --- MODERN LIGHTBOX --- */
         .lightbox { 
             display: none; position: fixed; z-index: 9999; 
             top: 0; left: 0; width: 100vw; height: 100vh; 
@@ -71,23 +71,23 @@
         /* Sahne */
         .lb-stage {
             width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden;
-            /* Zoom/Pan yaparken tarayıcının native hareketlerini engelle */
             touch-action: none; 
         }
 
         .lb-main-media { 
-            /* Başlangıçta CSS ile tam ortala ve sığdır */
             max-width: 100%; max-height: 100%; 
-            width: auto; height: auto;
             object-fit: contain;
             transform-origin: center center;
+            /* Transition JS ile yönetilecek, CSS'te kapalı */
             user-select: none; -webkit-user-drag: none;
-            will-change: transform; /* Performans için */
+            will-change: transform;
         }
         
-        video.lb-main-media { z-index: 10; }
+        /* Video kontrolleri */
+        video.lb-main-media { z-index: 10; pointer-events: none; /* Dokunmayı container yakalasın */ }
 
         /* UI Elemanları */
         .lb-ui-layer {
@@ -99,7 +99,8 @@
             position: absolute; top: 50%; transform: translateY(-50%);
             color: #fff; font-size: 50px; cursor: pointer; padding: 20px; 
             pointer-events: auto; text-shadow: 0 0 10px #000;
-            background: rgba(0,0,0,0.2); border-radius: 5px;
+            background: rgba(0,0,0,0.3); border-radius: 8px;
+            transition: all 0.3s ease;
         }
         .lb-prev-arrow { left: 10px; } .lb-next-arrow { right: 10px; }
         
@@ -116,15 +117,24 @@
             border: 1px solid #fff; border-radius: 50%; width: 40px; height: 40px;
             align-items: center; justify-content: center;
             background: rgba(0,0,0,0.5); z-index: 30;
+            transition: all 0.3s ease;
         }
         
-        /* Aktif mod butonu parlasın */
-        .rotate-btn.active { background: #fff; color: #000; }
+        .rotate-btn.active { background: #fff; color: #000; transform: rotate(90deg); }
 
         .lb-counter { 
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             color: #aaa; font-size: 0.9rem; letter-spacing: 2px; 
             background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px;
+        }
+
+        /* --- ROTATE MODE UI ADAPTASYONU --- */
+        /* Rotate modu açılınca okların yeri değişmeli */
+        .rotate-mode .lb-prev-arrow {
+            top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg);
+        }
+        .rotate-mode .lb-next-arrow {
+            top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg);
         }
 
         /* MOBİL UYUMLULUK */
@@ -189,7 +199,7 @@
         <div class="lb-stage" id="lb-stage">
             </div>
 
-        <div class="lb-ui-layer">
+        <div class="lb-ui-layer" id="lb-ui">
             <span class="close-lb" onclick="closeLightbox()">&times;</span>
             <div class="rotate-btn" id="rotate-btn" onclick="toggleRotationMode()">&#8635;</div>
             <div class="lb-arrow lb-prev-arrow" onclick="changeSlide(-1)">&#10094;</div>
@@ -271,23 +281,28 @@
         renderSlider('project-slider', siteContent.projects);
         renderSlider('auto-slider', siteContent.automation.items);
 
-        // --- GLOBAL STATE ---
+        // --- PRO LIGHTBOX ENGINE ---
         let currentIndex = 0;
-        let rotateMode = false; // KALICI ROTASYON MODU
-
         const lb = document.getElementById('lightbox');
         const lbStage = document.getElementById('lb-stage');
         const lbCounter = document.getElementById('lb-counter');
+        const lbUi = document.getElementById('lb-ui');
         const rotateBtn = document.getElementById('rotate-btn');
 
-        // Transform Değişkenleri (Her görsel için sıfırlanır)
-        let state = { scale: 1, x: 0, y: 0 };
+        // State
+        let state = {
+            scale: 1,
+            x: 0,
+            y: 0,
+            isRotated: false
+        };
 
         function openLightbox(index) {
             currentIndex = index;
             renderLightboxContent();
             lb.style.display = 'block'; 
             document.body.style.overflow = 'hidden'; 
+            resetState();
             document.addEventListener('keydown', handleKey);
         }
 
@@ -296,8 +311,7 @@
             document.body.style.overflow = ''; 
             lbStage.innerHTML = "";
             document.removeEventListener('keydown', handleKey);
-            // Rotate modu kapanınca sıfırlansın mı? 
-            // Kullanıcı isteği "mod gibi düşün" dediği için sıfırlamıyoruz. Kalıcı kalsın.
+            // Rotate modu kullanıcı isteği üzerine kalıcı olsun, kapatmıyoruz
         }
 
         function changeSlide(step) {
@@ -305,12 +319,13 @@
             if (currentIndex >= allImages.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = allImages.length - 1;
             renderLightboxContent();
+            
+            // Slayt geçince zoom sıfırlanır, ama rotate kalır
+            state.scale = 1; state.x = 0; state.y = 0;
+            updateTransform();
         }
 
         function renderLightboxContent() {
-            // State'i sıfırla (Zoom'u resetle)
-            state = { scale: 1, x: 0, y: 0 };
-            
             const currentUrl = allImages[currentIndex];
             let contentHTML = "";
 
@@ -323,39 +338,53 @@
             lbStage.innerHTML = contentHTML;
             lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
 
-            // Eğer Rotate Modu açıksa uygula
-            applyTransform(); 
+            // Görsel yüklendiğinde pozisyonu güncelle (Gecikme önlemek için)
+            const media = lbStage.querySelector('.lb-main-media');
+            if(media) {
+                media.onload = updateTransform;
+                if(isVideo(currentUrl)) updateTransform();
+            }
         }
 
-        // --- ROTASYON YÖNETİMİ ---
+        function resetState() {
+            state.scale = 1; state.x = 0; state.y = 0;
+            // Rotate state korunuyor
+            updateTransform();
+        }
+
         function toggleRotationMode() {
-            rotateMode = !rotateMode;
-            if (rotateMode) rotateBtn.classList.add('active');
-            else rotateBtn.classList.remove('active');
+            state.isRotated = !state.isRotated;
             
-            // Mod değişince zoomu sıfırla
-            state = { scale: 1, x: 0, y: 0 };
-            applyTransform();
+            // UI Güncelleme (Okların yerini değiştir)
+            if (state.isRotated) {
+                rotateBtn.classList.add('active');
+                lbUi.classList.add('rotate-mode');
+            } else {
+                rotateBtn.classList.remove('active');
+                lbUi.classList.remove('rotate-mode');
+            }
+
+            // Dönünce zoomu sıfırla
+            state.scale = 1; state.x = 0; state.y = 0;
+            updateTransform();
         }
 
-        function applyTransform() {
+        function updateTransform() {
             const media = lbStage.querySelector('.lb-main-media');
             if(!media) return;
 
-            let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+            // 1. Temel Transform
+            let transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.scale})`;
             
-            // Eğer Rotate Modu açıksa
-            if (rotateMode) {
-                // Görseli döndür
+            // 2. Rotate Mantığı
+            if (state.isRotated) {
                 transform += ` rotate(90deg)`;
-                // Genişlik ve Yüksekliği viewport'a göre ters çevir (Ekranı doldurması için)
+                // Yan yatınca ekranı doldurması için genişlik/yükseklik takası
                 media.style.width = "100vh";
                 media.style.height = "100vw";
-                // Max sınırları kaldır
                 media.style.maxWidth = "none";
                 media.style.maxHeight = "none";
             } else {
-                // Normal Mod
                 media.style.width = "";
                 media.style.height = "";
                 media.style.maxWidth = "100%";
@@ -365,7 +394,7 @@
             media.style.transform = transform;
         }
 
-        // --- TOUCH EVENTS & PHYSICS (PAN / ZOOM / SWIPE) ---
+        // --- TOUCH PHYSICS ENGINE (Kusursuz Hibrit) ---
         let startX = 0, startY = 0;
         let lastX = 0, lastY = 0;
         let pinchStartDist = 0;
@@ -373,12 +402,13 @@
         let isDragging = false;
         let isPinching = false;
 
+        // Dokunma Başlangıcı
         lbStage.addEventListener('touchstart', (e) => {
-            if(isVideo(allImages[currentIndex])) return;
-            // e.preventDefault(); // Zoom için gerekli olabilir ama native davranışı bozmamak için kapalı
-
             if (e.touches.length === 2) {
-                // PINCH BAŞLANGICI
+                // PINCH START
+                // Video zoom kapalı
+                if(isVideo(allImages[currentIndex])) return;
+                
                 isPinching = true;
                 pinchStartDist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
@@ -386,7 +416,7 @@
                 );
                 pinchStartScale = state.scale;
             } else if (e.touches.length === 1) {
-                // PAN/SWIPE BAŞLANGICI
+                // PAN/SWIPE START
                 isDragging = true;
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
@@ -395,99 +425,107 @@
             }
         }, {passive: false});
 
+        // Dokunma Hareketi
         lbStage.addEventListener('touchmove', (e) => {
-            if(isVideo(allImages[currentIndex])) return;
-            e.preventDefault(); // Sayfa kaymasını engelle
+            if(e.cancelable) e.preventDefault(); // Tarayıcıyı kilitle
 
-            // 1. PINCH (ZOOM)
             if (isPinching && e.touches.length === 2) {
+                // PINCH ZOOM
+                if(isVideo(allImages[currentIndex])) return;
+                
                 const dist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
-                // Zoom hızı ve sınırları
+                // Min 1x, Max 4x
                 state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4));
-                applyTransform();
+                updateTransform();
             } 
-            // 2. PAN (SÜRÜKLEME - Sadece Zoom Varsa)
-            else if (isDragging && e.touches.length === 1 && state.scale > 1) {
-                const dx = e.touches[0].clientX - startX;
-                const dy = e.touches[0].clientY - startY;
+            else if (isDragging && e.touches.length === 1) {
+                // SADECE ZOOM VARSA SÜRÜKLE (PAN)
+                if (state.scale > 1.05) { 
+                    const dx = e.touches[0].clientX - startX;
+                    const dy = e.touches[0].clientY - startY;
 
-                // Rotasyon varsa yönleri düzelt (Axis Mapping)
-                if (rotateMode) {
-                    state.x = lastX + dy; // Ekranın Y hareketi -> Görselin X'i
-                    state.y = lastY - dx; // Ekranın X hareketi -> Görselin Y'si (Ters)
-                } else {
-                    state.x = lastX + dx;
-                    state.y = lastY + dy;
-                }
-                
-                // SINIR KONTROLÜ (CLAMPING) - Görselin uçup gitmesini engelle
-                const media = lbStage.querySelector('.lb-main-media');
-                if (media) {
-                    // Mevcut boyutları hesapla
-                    let renderW = media.offsetWidth * state.scale;
-                    let renderH = media.offsetHeight * state.scale;
-                    
-                    // Rotasyonda width/height yer değiştirir
-                    if(rotateMode) {
-                        let temp = renderW; renderW = renderH; renderH = temp;
+                    // Rotate varsa eksenleri değiştir
+                    if (state.isRotated) {
+                        state.x = lastX + dy; 
+                        state.y = lastY - dx; 
+                    } else {
+                        state.x = lastX + dx;
+                        state.y = lastY + dy;
                     }
                     
-                    const screenW = window.innerWidth;
-                    const screenH = window.innerHeight;
+                    // CLAMP (SINIRLAMA) - Görsel dışarı kaçmasın
+                    const media = lbStage.querySelector('.lb-main-media');
+                    if (media) {
+                        // Render edilen anlık boyutlar
+                        let currentW = media.offsetWidth * state.scale;
+                        let currentH = media.offsetHeight * state.scale;
+                        
+                        // Rotasyonda boyutlar yer değiştirir
+                        if(state.isRotated) {
+                            let temp = currentW; currentW = currentH; currentH = temp;
+                        }
 
-                    // Taşma miktarı (Pozitifse taşma var)
-                    const maxX = Math.max(0, (renderW - screenW) / 2);
-                    const maxY = Math.max(0, (renderH - screenH) / 2);
+                        const screenW = window.innerWidth;
+                        const screenH = window.innerHeight;
 
-                    // Sınırla
-                    state.x = Math.max(-maxX, Math.min(state.x, maxX));
-                    state.y = Math.max(-maxY, Math.min(state.y, maxY));
+                        // İzin verilen maksimum kayma (Ekranın yarısı kadar + taşan kısım)
+                        const maxX = Math.max(0, (currentW - screenW) / 2);
+                        const maxY = Math.max(0, (currentH - screenH) / 2);
+
+                        // Sınırla
+                        state.x = Math.max(-maxX, Math.min(state.x, maxX));
+                        state.y = Math.max(-maxY, Math.min(state.y, maxY));
+                    }
+                    updateTransform();
                 }
-
-                applyTransform();
             }
         }, {passive: false});
 
+        // Dokunma Bitişi
         lbStage.addEventListener('touchend', (e) => {
             isDragging = false;
             isPinching = false;
-            
-            // Zoom < 1 ise düzelt
+
+            // Eğer zoom 1'in altına düştüyse düzelt
             if (state.scale < 1) {
-                state.scale = 1;
-                state.x = 0; state.y = 0;
-                applyTransform();
+                state.scale = 1; state.x = 0; state.y = 0;
+                updateTransform();
             }
 
-            // SWIPE MANTIĞI (Sadece Zoom 1x ise)
-            if (state.scale === 1 && e.changedTouches.length === 1) {
+            // SWIPE KARARI (Sadece Zoom Yoksa)
+            if (state.scale <= 1.05 && e.changedTouches.length === 1) {
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
                 const diffX = endX - startX;
                 const diffY = endY - startY;
-                const threshold = 50; // Hassasiyet
+                const threshold = 30; // Hassasiyet (Video için düşürdüm)
 
-                if (rotateMode) {
-                    // YAN MOD: Dikey kaydırma (Ekranın kısa kenarı) slayt değiştirir
+                if (state.isRotated) {
+                    // ROTATE MODU: Dikey Kaydırma -> Slayt Değiştirir
                     if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
-                        if (diffY < 0) changeSlide(1); else changeSlide(-1);
+                        if (diffY < 0) changeSlide(1); // Yukarı it (Sonraki)
+                        else changeSlide(-1); // Aşağı çek (Önceki)
                     }
                 } else {
-                    // NORMAL MOD: Yatay kaydırma slayt değiştirir
+                    // NORMAL MOD: Yatay Kaydırma -> Slayt Değiştirir
                     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
-                        if (diffX < 0) changeSlide(1); else changeSlide(-1);
+                        if (diffX < 0) changeSlide(1); // Sola it (Sonraki)
+                        else changeSlide(-1); // Sağa çek (Önceki)
                     }
                 }
             }
         });
 
-        // --- DOUBLE TAP (ÇİFT TIKLAMA) ---
+        // --- DOUBLE TAP ---
         let lastTap = 0;
-        const handleDoubleTap = (e) => {
+        lbStage.addEventListener('touchend', (e) => {
             if(isVideo(allImages[currentIndex])) return;
+            // Eğer hareket ettiyse tap sayma
+            if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return;
+
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
             
@@ -498,17 +536,9 @@
                 } else {
                     state.scale = 2.5; 
                 }
-                applyTransform();
+                updateTransform();
             }
             lastTap = currentTime;
-        };
-        lbStage.addEventListener('touchend', handleDoubleTap);
-        // Desktop için
-        lbStage.addEventListener('dblclick', (e) => {
-             if(isVideo(allImages[currentIndex])) return;
-             if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } 
-             else { state.scale = 2.5; }
-             applyTransform();
         });
 
         function handleKey(e) {
@@ -516,6 +546,7 @@
             if(e.key === 'ArrowLeft') changeSlide(-1);
             if(e.key === 'Escape') closeLightbox();
         }
+
     </script>
 </body>
 </html>

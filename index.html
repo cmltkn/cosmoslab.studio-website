@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COSMOS.LAB STUDIO</title>
     <style>
-        /* --- STİL DOSYASI --- */
+        /* --- TEMEL AYARLAR --- */
         body { background-color: #0e0e0e; color: #f0f0f0; font-family: 'Courier New', Courier, monospace; margin: 0; overflow-x: hidden; }
         
         header { 
@@ -21,22 +21,46 @@
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
         p { color: #aaa; max-width: 800px; line-height: 1.6; margin-bottom: 1.5rem; }
         
+        /* GRID DÜZENİ */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
         /* --- SLIDER --- */
         .slider-container { position: relative; width: 100%; }
-        .slider-wrapper { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 30px; padding-bottom: 20px; scrollbar-width: none; }
+        
+        .slider-wrapper { 
+            display: flex; 
+            overflow-x: auto; 
+            scroll-behavior: smooth; 
+            gap: 20px; 
+            padding-bottom: 20px; 
+            scrollbar-width: none;
+            
+            /* SNAP ETKİSİ */
+            scroll-snap-type: x mandatory; 
+            /* Soldan biraz pay bırakmak için (isteğe bağlı) */
+            scroll-padding-left: 0; 
+        }
         .slider-wrapper::-webkit-scrollbar { display: none; }
         
         .slide-item { 
-            min-width: 700px; display: flex; flex-direction: column;
-            position: relative; cursor: pointer; border: 1px solid #333; background: #151515;
+            min-width: 700px; 
+            display: flex; flex-direction: column;
+            position: relative; cursor: pointer; 
+            border: 1px solid #333; background: #000;
             transition: 0.3s; flex-shrink: 0; 
+            
+            /* GÜNCELLEME: Sola Hizalama (Start) */
+            scroll-snap-align: start; 
         }
         .slide-item:hover { border-color: #fff; transform: translateY(-5px); }
         
-        /* Görsel ve Video Stili (Slider İçin) */
-        .slide-media { width: 100%; height: 500px; object-fit: cover; display: block; }
+        .slide-media { 
+            width: 100%; 
+            height: 500px; 
+            object-fit: contain; 
+            display: block; 
+            background-color: #000;
+        }
         
         .caption { 
             width: 100%; background: #151515; padding: 20px; font-size: 1rem; 
@@ -62,30 +86,24 @@
         }
         .lb-container { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; gap: 20px; }
 
-        /* Ana Medya Alanı (Resim veya Video) */
         .lb-media-wrapper {
             position: relative;
-            max-height: 85vh; max-width: 65vw;
+            max-height: 90vh; max-width: 80vw;
             z-index: 10;
-            overflow: hidden; /* Zoom yapınca taşmasın diye */
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            border: 1px solid #333;
-            /* Flex ile ortalayalım ki zoom yapınca garip durmasın */
+            overflow: visible;
             display: flex; align-items: center; justify-content: center;
         }
 
         .lb-main-media { 
-            max-height: 85vh; max-width: 65vw; 
-            object-fit: contain; 
-            transition: transform 0.4s ease; /* Yumuşak zoom efekti */
+            max-height: 90vh; max-width: 100%; 
+            object-fit: contain;
+            transition: transform 0.4s ease;
             transform-origin: center center;
-            cursor: zoom-in; /* İmleç zoom işareti olsun */
+            cursor: zoom-in;
         }
         
-        /* Video için zoom kapalı imleci */
         video.lb-main-media { cursor: default; }
 
-        /* Yan Görseller (Sadece Resimse Gösterilir, Video ise poster gibi davranır) */
         .lb-side-img {
             height: 50vh; max-width: 15vw; object-fit: cover;
             opacity: 0.2; filter: grayscale(100%); transition: 0.4s ease;
@@ -94,18 +112,47 @@
         .lb-side-img:hover { opacity: 0.6; filter: grayscale(0%); border-color: #fff; }
 
         .lb-arrow { color: #fff; font-size: 40px; cursor: pointer; padding: 10px; user-select: none; }
-        .lb-arrow:hover { color: #aaa; transform: scale(1.1); }
         .close-lb { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; z-index: 30;}
         .lb-counter { position: absolute; bottom: 30px; color: #555; font-size: 0.8rem; letter-spacing: 2px; z-index: 30;}
 
+        /* Rotate Butonu */
+        .rotate-btn {
+            display: none;
+            position: absolute; top: 20px; right: 100px; 
+            color: #fff; font-size: 30px; cursor: pointer; z-index: 35;
+            border: 1px solid #fff; border-radius: 50%; width: 40px; height: 40px;
+            align-items: center; justify-content: center;
+        }
+
+        /* MOBİL UYUMLULUK */
         @media (max-width: 768px) { 
             header { padding: 2rem 1rem; width: 100%; }
             section { max-width: 90%; } 
+            .info-grid { grid-template-columns: 1fr; gap: 30px; }
+
+            /* Mobilde kartlar: Sol hizalı olması için genişlik ayarı */
+            .slide-item { 
+                min-width: 85vw; /* %85 genişlik ki sağdaki kartın ucu gözüksün */
+                margin-right: 10px; 
+            } 
+            .slide-media { height: 350px; }
+
             .lb-side-img { display: none; } 
-            .lb-main-media { max-width: 90vw; max-height: 70vh; } 
-            .slide-item { min-width: 90vw; } .slide-media { height: 400px; }
-            .prev-btn { left: 5px; top: 200px; } .next-btn { right: 5px; top: 200px; }
+            .prev-btn, .next-btn { display: none; }
+            .lb-arrow { display: none; }
+            
+            .lb-media-wrapper { max-width: 100vw; max-height: 80vh; }
+            .lb-main-media { max-width: 100%; max-height: 80vh; }
+
+            .rotate-btn { display: flex; }
         }
+
+        /* Rotate Sınıfı */
+        .rotated-90 {
+            transform: rotate(90deg) scale(1.4) !important; 
+            max-width: 80vh !important;
+        }
+
     </style>
 </head>
 <body>
@@ -154,10 +201,11 @@
 
     <div class="lightbox" id="lightbox">
         <span class="close-lb" onclick="closeLightbox()">&times;</span>
+        
+        <div class="rotate-btn" onclick="rotateImage()">&#8635;</div>
+
         <div class="lb-container">
-            
             <img id="lb-img-prev" class="lb-side-img" onclick="changeSlide(-1)">
-            
             <div class="lb-arrow" onclick="changeSlide(-1)">&#10094;</div>
 
             <div class="lb-media-wrapper">
@@ -166,7 +214,6 @@
             </div>
 
             <div class="lb-arrow" onclick="changeSlide(1)">&#10095;</div>
-            
             <img id="lb-img-next" class="lb-side-img" onclick="changeSlide(1)">
         </div>
         <div class="lb-counter" id="lb-counter"></div>
@@ -175,7 +222,6 @@
     <script src="content.js"></script>
     <script>
         document.getElementById('logo').innerText = siteContent.header.title;
-        
         const nav = document.getElementById('menu');
         siteContent.header.menu.forEach(item => {
             nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
@@ -191,26 +237,18 @@
 
         let allImages = []; 
 
-        // Dosya uzantısına göre video mu resim mi kontrolü
-        function isVideo(url) {
-            return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm');
-        }
+        function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
+        function isMobile() { return window.innerWidth <= 768; }
 
         function renderSlider(wrapperId, dataItems) {
             const wrapper = document.getElementById(wrapperId);
             dataItems.forEach((item) => {
                 let startIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
-                
                 const firstMedia = item.images[0];
-                let mediaHtml = "";
-
-                if (isVideo(firstMedia)) {
-                    // Slider'da video önizlemesi (autoplay)
-                    mediaHtml = `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>`;
-                } else {
-                    mediaHtml = `<img src="${firstMedia}" class="slide-media">`;
-                }
+                let mediaHtml = isVideo(firstMedia) ? 
+                    `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>` : 
+                    `<img src="${firstMedia}" class="slide-media">`;
 
                 wrapper.innerHTML += `
                     <div class="slide-item" onclick="openLightbox(${startIndex})">
@@ -228,14 +266,14 @@
 
         function slide(id, dir) {
             const el = document.getElementById(id);
-            const scrollAmt = 730; 
+            const scrollAmt = 720; 
             dir === 'left' ? el.scrollLeft -= scrollAmt : el.scrollLeft += scrollAmt;
         }
 
         let currentIndex = 0;
         const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lb-img-main'); // Resim etiketi
-        const lbVideo = document.getElementById('lb-video-main'); // Video etiketi
+        const lbImg = document.getElementById('lb-img-main');
+        const lbVideo = document.getElementById('lb-video-main');
         const lbPrev = document.getElementById('lb-img-prev');
         const lbNext = document.getElementById('lb-img-next');
         const lbCounter = document.getElementById('lb-counter');
@@ -245,95 +283,100 @@
             updateLb();
             lb.style.display = 'flex';
             document.addEventListener('keydown', handleKey);
+
+            // GÜNCELLEME: MOBİLDE OTOMATİK DÖNDÜR
+            if(isMobile() && !isVideo(allImages[currentIndex])) {
+                lbImg.classList.add('rotated-90');
+            } else {
+                lbImg.classList.remove('rotated-90');
+            }
         }
 
         function closeLightbox() {
             lb.style.display = 'none';
-            // Videoyu durdur (arka planda çalmasın)
-            lbVideo.pause();
-            lbVideo.src = "";
-            resetZoom(); // Çıkarken zoom'u sıfırla
+            lbVideo.pause(); lbVideo.src = "";
+            resetZoom();
+            lbImg.classList.remove('rotated-90'); // Kapatınca rotasyonu temizle
             document.removeEventListener('keydown', handleKey);
         }
 
         function changeSlide(step) {
-            resetZoom(); // Sayfa değiştirince zoom'u sıfırla
+            resetZoom();
+            // Not: Slayt değiştirince rotasyonu sıfırlıyoruz. 
+            // Kullanıcı her resimde yatay görmek isterse buradaki remove satırını silebilirsiniz.
+            lbImg.classList.remove('rotated-90'); 
+            
             currentIndex += step;
             if (currentIndex >= allImages.length) currentIndex = 0;
             if (currentIndex < 0) currentIndex = allImages.length - 1;
             updateLb();
+
+            // Slayt geçişinde de mobildeysek tekrar yatay yapalım mı?
+            // İsteğinize göre: "Tıklayınca direk yatay açılsın" demiştiniz.
+            // Geçişlerde de yatay kalsın isterseniz şu satırı açın:
+            if(isMobile() && !isVideo(allImages[currentIndex])) {
+                 lbImg.classList.add('rotated-90');
+            }
         }
 
         function updateLb() {
             const currentUrl = allImages[currentIndex];
-            
-            // --- ANA MEDYA AYARI ---
             if (isVideo(currentUrl)) {
-                // Video ise: Resim etiketini gizle, videoyu göster
                 lbImg.style.display = 'none';
                 lbVideo.style.display = 'block';
                 lbVideo.src = currentUrl;
                 lbVideo.play();
             } else {
-                // Resim ise: Videoyu gizle, resmi göster
-                lbVideo.style.display = 'none';
-                lbVideo.pause();
-                lbImg.style.display = 'block';
-                lbImg.src = currentUrl;
+                lbVideo.style.display = 'none'; lbVideo.pause();
+                lbImg.style.display = 'block'; lbImg.src = currentUrl;
             }
 
-            // --- YAN (GHOST) GÖRSELLER ---
-            // Yanlar her zaman resim etiketi (img) içinde gösterilir.
-            // Eğer yan öğe videoyusada img etiketi çalışmaz (broken image) olmaması için
-            // basit bir kontrol ekleyebiliriz veya video ise poster koyabiliriz.
-            // Şimdilik video olsa bile src veriyoruz, tarayıcılar videoyu img içinde göstermez, boş kalır.
+            let prevIndex = currentIndex - 1; if (prevIndex < 0) prevIndex = allImages.length - 1;
+            let nextIndex = currentIndex + 1; if (nextIndex >= allImages.length) nextIndex = 0;
             
-            let prevIndex = currentIndex - 1;
-            if (prevIndex < 0) prevIndex = allImages.length - 1;
-            
-            let nextIndex = currentIndex + 1;
-            if (nextIndex >= allImages.length) nextIndex = 0;
-
-            // Yanlarda video önizlemesi zor olduğu için, eğer videoysa boş geçebiliriz 
-            // ya da statik bir ikon koyabiliriz. Şimdilik düz bırakıyorum.
             lbPrev.src = isVideo(allImages[prevIndex]) ? "" : allImages[prevIndex];
             lbNext.src = isVideo(allImages[nextIndex]) ? "" : allImages[nextIndex];
-            
-            // Eğer yan taraf video ise opaklığı 0 yapalım ki kırık resim ikonu çıkmasın
             lbPrev.style.opacity = isVideo(allImages[prevIndex]) ? "0" : "0.2";
             lbNext.style.opacity = isVideo(allImages[nextIndex]) ? "0" : "0.2";
-
             lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
         }
 
-        // --- ZOOM FONKSİYONU ---
+        // ZOOM
         let isZoomed = false;
-
         function toggleZoom(event) {
-            // Eğer videoy ise zoom yapma
             if(isVideo(allImages[currentIndex])) return;
+            if(lbImg.classList.contains('rotated-90')) return; // Dönmüşse zoom yapma
 
             if (isZoomed) {
                 resetZoom();
             } else {
-                // Tıklanan koordinatları al
                 const rect = lbImg.getBoundingClientRect();
-                const x = event.clientX - rect.left; // Resim içindeki X
-                const y = event.clientY - rect.top;  // Resim içindeki Y
-
-                // Transform origin'i tıklanan yere ayarla
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
                 lbImg.style.transformOrigin = `${x}px ${y}px`;
-                lbImg.style.transform = "scale(2.5)"; // 2.5 kat büyüt
+                lbImg.style.transform = "scale(2.5)";
                 lbImg.style.cursor = "zoom-out";
                 isZoomed = true;
             }
         }
-
         function resetZoom() {
-            lbImg.style.transform = "scale(1)";
-            lbImg.style.cursor = "zoom-in";
-            lbImg.style.transformOrigin = "center center";
-            isZoomed = false;
+            if(!lbImg.classList.contains('rotated-90')) {
+                lbImg.style.transform = "scale(1)";
+                lbImg.style.cursor = "zoom-in";
+                lbImg.style.transformOrigin = "center center";
+                isZoomed = false;
+            }
+        }
+
+        // ROTATE (Döndür/Düzelt Butonu)
+        function rotateImage() {
+            if(isVideo(allImages[currentIndex])) return;
+            if(isZoomed) resetZoom();
+            
+            // Mobilde varsayılan olarak rotated-90 class'ı var. 
+            // Butona basınca bunu kaldırıyoruz (Düzeltiyoruz).
+            // Tekrar basınca ekliyoruz.
+            lbImg.classList.toggle('rotated-90');
         }
 
         function handleKey(e) {
@@ -341,10 +384,7 @@
             if(e.key === 'ArrowLeft') changeSlide(-1);
             if(e.key === 'Escape') closeLightbox();
         }
-        
-        lb.addEventListener('click', (e) => { 
-            if(e.target === lb) closeLightbox(); 
-        });
+        lb.addEventListener('click', (e) => { if(e.target === lb) closeLightbox(); });
     </script>
 </body>
 </html>

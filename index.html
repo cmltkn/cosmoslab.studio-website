@@ -12,8 +12,7 @@
             font-family: 'Courier New', Courier, monospace; 
             margin: 0; 
             overflow-x: hidden; 
-            touch-action: auto; 
-            -webkit-tap-highlight-color: transparent;
+            touch-action: pan-y; /* Scroll kilidini açtık */
         }
         
         header { 
@@ -44,7 +43,7 @@
         }
         .slide-item:hover { border-color: #fff; }
         
-        .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
+        .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; }
         
         .caption { 
             width: 100%; background: #151515; padding: 20px; font-size: 1rem; 
@@ -69,23 +68,21 @@
 
         .lb-stage {
             width: 100%; height: 100%;
-            position: absolute; top: 0; left: 0;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden;
-            touch-action: none; 
+            touch-action: none; /* Lightbox içinde zoom kontrolü bizde */
         }
 
         .lb-main-media { 
             max-width: 100%; max-height: 100%; 
             object-fit: contain;
             transform-origin: center center;
+            transition: transform 0.1s linear; /* Pan yaparken takılmasın */
             user-select: none; -webkit-user-drag: none;
-            will-change: transform;
         }
         
         video.lb-main-media { z-index: 10; pointer-events: none; }
 
-        /* UI Elemanları */
         .lb-ui-layer {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 20;
@@ -95,8 +92,7 @@
             position: absolute; top: 50%; transform: translateY(-50%);
             color: #fff; font-size: 50px; cursor: pointer; padding: 20px; 
             pointer-events: auto; text-shadow: 0 0 10px #000;
-            background: rgba(0,0,0,0.3); border-radius: 8px;
-            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.2); border-radius: 5px;
         }
         .lb-prev-arrow { left: 10px; } .lb-next-arrow { right: 10px; }
         
@@ -113,7 +109,6 @@
             border: 1px solid #fff; border-radius: 50%; width: 40px; height: 40px;
             align-items: center; justify-content: center;
             background: rgba(0,0,0,0.5); z-index: 30;
-            transition: all 0.3s ease;
         }
         
         .rotate-btn.active { background: #fff; color: #000; transform: rotate(90deg); }
@@ -124,7 +119,7 @@
             background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px;
         }
 
-        /* ROTATE MOD OKLARI (Yatay modda oklar dikey hizalanır) */
+        /* ROTATE MOD OKLARI */
         .rotate-mode .lb-prev-arrow {
             top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg);
         }
@@ -276,7 +271,7 @@
         renderSlider('project-slider', siteContent.projects);
         renderSlider('auto-slider', siteContent.automation.items);
 
-        // --- PRO LIGHTBOX ENGINE ---
+        // --- STABIL LIGHTBOX ENGINE (ESKİ ÇALIŞAN HALİ) ---
         let currentIndex = 0;
         const lb = document.getElementById('lightbox');
         const lbStage = document.getElementById('lb-stage');
@@ -343,7 +338,6 @@
 
         function toggleRotationMode() {
             state.rotate = !state.rotate;
-            
             if (state.rotate) {
                 rotateBtn.classList.add('active');
                 lbUi.classList.add('rotate-mode');
@@ -351,7 +345,7 @@
                 rotateBtn.classList.remove('active');
                 lbUi.classList.remove('rotate-mode');
             }
-
+            // Dönünce zoomu sıfırla
             state.scale = 1; state.x = 0; state.y = 0;
             applyTransform();
         }
@@ -360,7 +354,6 @@
             const media = lbStage.querySelector('.lb-main-media');
             if(!media) return;
 
-            // X ve Y değerlerini doğrudan kullan. DÜZELTME: Rotate modunda eksenleri karıştırma.
             let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
             
             if (state.rotate) {
@@ -387,8 +380,8 @@
         let isPinching = false;
 
         lbStage.addEventListener('touchstart', (e) => {
+            if(isVideo(allImages[currentIndex])) return; 
             if (e.touches.length === 2) {
-                if(isVideo(allImages[currentIndex])) return;
                 isPinching = true;
                 pinchStartDist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
@@ -405,10 +398,12 @@
         }, {passive: false});
 
         lbStage.addEventListener('touchmove', (e) => {
-            if(e.cancelable) e.preventDefault(); 
+            if(isVideo(allImages[currentIndex])) return; // Videolarda zoom/pan engelle
+            
+            // Eğer Zoom varsa veya Pinch yapılıyorsa native davranışı engelle
+            if(state.scale > 1 || isPinching) e.preventDefault(); 
 
             if (isPinching && e.touches.length === 2) {
-                if(isVideo(allImages[currentIndex])) return;
                 const dist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
@@ -420,8 +415,10 @@
                 const dx = e.touches[0].clientX - startX;
                 const dy = e.touches[0].clientY - startY;
 
-                // DÜZELTME: Eksenleri HİÇBİR DURUMDA Çaprazlama!
-                // Ekran koordinatları (Translate), görsel döndürülmüş olsa bile ekranın kendisine göredir.
+                // --- TEK DEĞİŞİKLİK BURADA: EKSENLERİ DÜZELTTİK ---
+                // Rotate modunda da olsa, CSS translate ekran koordinatlarına göre çalışır.
+                // Yani parmağı sola çekmek her zaman X ekseninde değişimdir.
+                // Önceki hatamız burada eksenleri çaprazlamaktı. Şimdi düzelttik:
                 state.x = lastX + dx;
                 state.y = lastY + dy;
                 
@@ -437,14 +434,13 @@
 
                     const screenW = window.innerWidth;
                     const screenH = window.innerHeight;
-
                     const maxX = Math.max(0, (currentW - screenW) / 2);
                     const maxY = Math.max(0, (currentH - screenH) / 2);
 
                     state.x = Math.max(-maxX, Math.min(state.x, maxX));
                     state.y = Math.max(-maxY, Math.min(state.y, maxY));
                 }
-                updateTransform();
+                applyTransform();
             }
         }, {passive: false});
 
@@ -457,6 +453,7 @@
                 applyTransform();
             }
 
+            // SWIPE MANTIĞI (Zoom yoksa)
             if (state.scale <= 1.05 && e.changedTouches.length === 1) {
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
@@ -465,7 +462,7 @@
                 const threshold = 40; 
 
                 if (state.rotate) {
-                    // ROTATE MOD: Dikey Kaydırma -> Slayt
+                    // YAN MOD: Dikey Kaydırma -> Slayt
                     if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
                         if (diffY < 0) changeSlide(1); else changeSlide(-1);
                     }
@@ -514,7 +511,6 @@
              const dy = e.clientY - startY;
              state.x = lastX + dx;
              state.y = lastY + dy;
-             // Desktop için basit clamp (istenirse eklenebilir ama zorunlu değil)
              applyTransform();
         });
         window.addEventListener('mouseup', () => { isDragging = false; });

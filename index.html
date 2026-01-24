@@ -231,8 +231,10 @@
                 let globalIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
                 const firstMedia = item.images[0];
+                
+                // DEĞİŞİKLİK: Video etiketi artık autoplay ve loop özelliklerine sahip
                 let mediaHtml = isVideo(firstMedia) ? 
-                    `<video src="${firstMedia}" class="slide-media" muted playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>` : 
+                    `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>` : 
                     `<img src="${firstMedia}" class="slide-media">`;
 
                 originalSlides += `
@@ -253,6 +255,11 @@
             if(items.length < 2) return; 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
+            
+            // Klonlanan videolarda da autoplay çalışmasını garanti edelim
+            if(firstClone.querySelector('video')) firstClone.querySelector('video').play().catch(()=>{});
+            if(lastClone.querySelector('video')) lastClone.querySelector('video').play().catch(()=>{});
+
             wrapper.appendChild(firstClone); 
             wrapper.insertBefore(lastClone, items[0]); 
             const itemWidth = items[0].offsetWidth + 20; 
@@ -454,9 +461,6 @@
                 const dx = e.touches[0].clientX - startX;
                 const dy = e.touches[0].clientY - startY;
 
-                // DÜZELTME YAPILDI: 
-                // Rotate olsa bile CSS transform sırasında translate önce geldiği için
-                // eksenleri ters çevirmemize gerek yoktur.
                 state.x = lastX + dx;
                 state.y = lastY + dy;
                 

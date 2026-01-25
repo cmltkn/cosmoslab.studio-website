@@ -30,6 +30,7 @@ STATIC_DATA = {
     },
     "contact": {
         "email": "hello@cosmoslab.studio",
+        "phone": "+905466624968",
         "location": "Ankara, Turkey"
     }
 }

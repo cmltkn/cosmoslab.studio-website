@@ -1,5 +1,6 @@
 import os
 import json
+import re  # Regex kütüphanesini ekledik
 
 # --- AYARLAR ---
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -67,13 +68,14 @@ def scan_category(category_name):
         media_files = get_files_from_folder(full_path)
         
         if media_files:
-            # --- DÜZELTME BURADA YAPILDI ---
-            # 1. Önce baştaki numarayı ayır (01_Project -> Project)
-            clean_title = folder.split("_", 1)[-1] if "_" in folder else folder
+            # --- GELİŞMİŞ TEMİZLİK (REGEX) ---
+            # 1. Adım: Klasör isminin başındaki sayıları ve tireleri (örn: "01_", "02_") sil.
+            clean_title = re.sub(r'^[\d_]+', '', folder)
             
-            # 2. Sonra geri kalan TÜM alt tireleri boşluğa çevir (Mercury_Towers -> Mercury Towers)
+            # 2. Adım: Geriye kalan kelimelerin arasındaki alt tireleri (_) boşluğa çevir.
             clean_title = clean_title.replace("_", " ")
             
+            # 3. Adım: Hepsini büyük harf yap.
             clean_title = clean_title.upper()
             
             items.append({
@@ -83,7 +85,7 @@ def scan_category(category_name):
     return items
 
 def main():
-    print("--- Cosmos Lab Site Güncelleyici v4 (Text Fix) ---")
+    print("--- Cosmos Lab Site Güncelleyici v5 (Final Fix) ---")
     print(f"Çalışma Konumu: {ROOT_DIR}")
     
     print("Projeler taranıyor...")
@@ -109,7 +111,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(js_content)
     
-    print(f"BAŞARILI: content.js güncellendi. Alt tireler kaldırıldı.")
+    print(f"BAŞARILI: content.js güncellendi. Tüm alt tireler temizlendi.")
 
 if __name__ == "__main__":
     main()

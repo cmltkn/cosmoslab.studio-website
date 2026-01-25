@@ -270,7 +270,12 @@
         document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
         document.getElementById('auto-title').innerText = siteContent.automation.title;
         document.getElementById('auto-desc').innerText = siteContent.automation.description;
-        document.getElementById('contact-info').innerHTML = `${siteContent.contact.email}<br>${siteContent.contact.location}`;
+        // İLETİŞİM BİLGİLERİNİ GÜNCELLEYEN KISIM
+        document.getElementById('contact-info').innerHTML = `
+            ${siteContent.contact.email}<br>
+            ${siteContent.contact.phone}<br>
+            ${siteContent.contact.location}
+        `;
 
         let allImages = []; 
 

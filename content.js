@@ -108,7 +108,7 @@ const siteContent = {
     },
     "contact": {
         "email": "hello@cosmoslab.studio",
-        "phone": "+905466624968",
+        "phone": "+90 546 662 49 68",
         "location": "Ankara, Turkey"
     }
 };

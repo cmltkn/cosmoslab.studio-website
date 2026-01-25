@@ -29,45 +29,45 @@ const siteContent = {
     "projects": [
         {
             "images": [
-                "assets/projects/01_Mercury_Towers/01_Mercury_TowersArtboard-1.png",
-                "assets/projects/01_Mercury_Towers/01_Mercury_TowersArtboard-2.png"
+                "assets/projects/01_Mercury_Towers/PROJECT OVERVIEW.png",
+                "assets/projects/01_Mercury_Towers/TECHNICAL DEPTH.png"
             ],
             "title": "MERCURY_TOWERS"
         },
         {
             "images": [
-                "assets/projects/02_Aselasn-Gölbaşı-Yerleşkesi/02_Aselasn-Gölbaşı-YerleşkesiArtboard-1.png",
-                "assets/projects/02_Aselasn-Gölbaşı-Yerleşkesi/02_Aselasn-Gölbaşı-YerleşkesiArtboard-2.png"
+                "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/PROJECT OVERVIEW.png",
+                "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/TECHNICAL DEPTH.png"
             ],
-            "title": "ASELASN-GÖLBAŞI-YERLEŞKESI"
+            "title": "ASELASN_GÖLBAŞI_YERLEŞKESI"
         },
         {
             "images": [
-                "assets/projects/03_Diyarbakır-City-Hospital/03_Diyarbakır-City-HospitalArtboard-1.png",
-                "assets/projects/03_Diyarbakır-City-Hospital/03_Diyarbakır-City-HospitalArtboard-2.png"
+                "assets/projects/03_Diyarbakır_City_Hospital/PROJECT OVERVIEW.png",
+                "assets/projects/03_Diyarbakır_City_Hospital/TECHNICAL DEPTH.png"
             ],
-            "title": "DIYARBAKIR-CITY-HOSPITAL"
+            "title": "DIYARBAKIR_CITY_HOSPITAL"
         },
         {
             "images": [
-                "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/04_Gozo_Indoor_Sports_Aquatic_PavilionArtboard-1.png",
-                "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/04_Gozo_Indoor_Sports_Aquatic_PavilionArtboard-2.png"
+                "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/PROJECT OVERVIEW.png",
+                "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/TECHNICAL DEPTH.png"
             ],
             "title": "GOZO_INDOOR_SPORTS_AQUATIC_PAVILION"
         },
         {
             "images": [
-                "assets/projects/05_Obrucheva-Towers/05_Obrucheva-TowersArtboard-1.png",
-                "assets/projects/05_Obrucheva-Towers/05_Obrucheva-TowersArtboard-2.png"
+                "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
+                "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
             ],
-            "title": "OBRUCHEVA-TOWERS"
+            "title": "OBRUCHEVA_TOWERS"
         },
         {
             "images": [
-                "assets/projects/06_4GW-Cell-&-Module-Facilities/06_4GW-Cell-&-Module-FacilitiesArtboard-1.png",
-                "assets/projects/06_4GW-Cell-&-Module-Facilities/06_4GW-Cell-&-Module-FacilitiesArtboard-2.png"
+                "assets/projects/06_Industrial_Projects/PROJECT OVERVIEW.png",
+                "assets/projects/06_Industrial_Projects/TECHNICAL DEPTH.png"
             ],
-            "title": "4GW-CELL-&-MODULE-FACILITIES"
+            "title": "INDUSTRIAL_PROJECTS"
         }
     ],
     "automation": {

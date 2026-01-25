@@ -1,12 +1,8 @@
 import os
 import json
 
-# --- AYARLAR (TAŞINABİLİRLİK SİHRİ BURADA) ---
-# __file__ : Bu betiğin dosya yolu
-# os.path.dirname(...) : Bu betiğin içinde olduğu klasör
-# Bu sayede klasörü nereye taşırsan taşı, ROOT_DIR orası olur.
+# --- AYARLAR ---
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-
 ASSETS_DIR = os.path.join(ROOT_DIR, "assets")
 OUTPUT_FILE = os.path.join(ROOT_DIR, "content.js")
 
@@ -50,13 +46,8 @@ def get_files_from_folder(folder_path):
     for f in files:
         ext = os.path.splitext(f)[1].lower()
         if ext in valid_extensions:
-            # Dosyanın tam yolu
             abs_file_path = os.path.join(folder_path, f)
-            
-            # ROOT_DIR'a göre göreceli yolunu al (Örn: C:\...\assets\img.jpg -> assets\img.jpg)
             rel_path = os.path.relpath(abs_file_path, ROOT_DIR)
-            
-            # Windows ters slash'lerini (\\) web için düz slash (/) yap
             web_path = rel_path.replace("\\", "/") 
             files_list.append(web_path)
     return files_list
@@ -66,10 +57,9 @@ def scan_category(category_name):
     items = []
 
     if not os.path.exists(base_path):
-        print(f"UYARI: '{category_name}' klasörü bulunamadı. Beklenen yol: {base_path}")
+        print(f"UYARI: '{category_name}' klasörü bulunamadı.")
         return []
 
-    # Sadece klasörleri al
     folders = sorted([d for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))])
 
     for folder in folders:
@@ -77,8 +67,13 @@ def scan_category(category_name):
         media_files = get_files_from_folder(full_path)
         
         if media_files:
-            # Klasör adını temizle (örn: 01_Project -> PROJECT)
+            # --- DÜZELTME BURADA YAPILDI ---
+            # 1. Önce baştaki numarayı ayır (01_Project -> Project)
             clean_title = folder.split("_", 1)[-1] if "_" in folder else folder
+            
+            # 2. Sonra geri kalan TÜM alt tireleri boşluğa çevir (Mercury_Towers -> Mercury Towers)
+            clean_title = clean_title.replace("_", " ")
+            
             clean_title = clean_title.upper()
             
             items.append({
@@ -88,7 +83,7 @@ def scan_category(category_name):
     return items
 
 def main():
-    print("--- Cosmos Lab Site Güncelleyici v3 (Portable) ---")
+    print("--- Cosmos Lab Site Güncelleyici v4 (Text Fix) ---")
     print(f"Çalışma Konumu: {ROOT_DIR}")
     
     print("Projeler taranıyor...")
@@ -114,8 +109,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(js_content)
     
-    print(f"BAŞARILI: content.js güncellendi.")
-    print(f"Bulunan: {len(projects)} proje, {len(automation_items)} otomasyon.")
+    print(f"BAŞARILI: content.js güncellendi. Alt tireler kaldırıldı.")
 
 if __name__ == "__main__":
     main()

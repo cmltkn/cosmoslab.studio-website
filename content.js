@@ -32,42 +32,42 @@ const siteContent = {
                 "assets/projects/01_Mercury_Towers/PROJECT OVERVIEW.png",
                 "assets/projects/01_Mercury_Towers/TECHNICAL DEPTH.png"
             ],
-            "title": "MERCURY_TOWERS"
+            "title": "MERCURY TOWERS"
         },
         {
             "images": [
                 "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/PROJECT OVERVIEW.png",
                 "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/TECHNICAL DEPTH.png"
             ],
-            "title": "ASELASN_GÖLBAŞI_YERLEŞKESI"
+            "title": "ASELASN GÖLBAŞI YERLEŞKESI"
         },
         {
             "images": [
                 "assets/projects/03_Diyarbakır_City_Hospital/PROJECT OVERVIEW.png",
                 "assets/projects/03_Diyarbakır_City_Hospital/TECHNICAL DEPTH.png"
             ],
-            "title": "DIYARBAKIR_CITY_HOSPITAL"
+            "title": "DIYARBAKIR CITY HOSPITAL"
         },
         {
             "images": [
                 "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/PROJECT OVERVIEW.png",
                 "assets/projects/04_Gozo_Indoor_Sports_Aquatic_Pavilion/TECHNICAL DEPTH.png"
             ],
-            "title": "GOZO_INDOOR_SPORTS_AQUATIC_PAVILION"
+            "title": "GOZO INDOOR SPORTS AQUATIC PAVILION"
         },
         {
             "images": [
                 "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
                 "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
             ],
-            "title": "OBRUCHEVA_TOWERS"
+            "title": "OBRUCHEVA TOWERS"
         },
         {
             "images": [
                 "assets/projects/06_Industrial_Projects/PROJECT OVERVIEW.png",
                 "assets/projects/06_Industrial_Projects/TECHNICAL DEPTH.png"
             ],
-            "title": "INDUSTRIAL_PROJECTS"
+            "title": "INDUSTRIAL PROJECTS"
         }
     ],
     "automation": {

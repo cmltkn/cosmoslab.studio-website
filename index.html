@@ -46,7 +46,7 @@
         
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
-        /* --- KART TASARIMI (GÜNCELLENDİ) --- */
+        /* --- KART TASARIMI (DÜZELTİLDİ: TAŞMA YOK) --- */
         .caption { 
             width: 100%; 
             background: #121212; 
@@ -68,7 +68,12 @@
             font-weight: 600; 
             letter-spacing: 1px;
             line-height: 1.4;
-            text-transform: uppercase; 
+            text-transform: uppercase;
+            
+            /* TAŞMAYI ENGELLEYEN KODLAR: */
+            white-space: normal;      /* Alt satıra geçmesine izin ver */
+            word-wrap: break-word;    /* Uzun kelimeleri böl */
+            overflow-wrap: break-word; /* Modern tarayıcılar için */
         }
 
         /* [5 items] kısmı */
@@ -283,7 +288,6 @@
                     `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>` : 
                     `<img src="${firstMedia}" class="slide-media">`;
 
-                // --- GÜNCELLENEN KISIM: HTML YAPISI ---
                 originalSlides += `
                     <div class="slide-item" onclick="openLightbox(${globalIndex})">
                         ${mediaHtml}
@@ -292,7 +296,6 @@
                             <span>[${item.images.length} items]</span>
                         </div>
                     </div>`;
-                // ----------------------------------------
             });
             wrapper.innerHTML = originalSlides;
             setTimeout(() => setupInfiniteLoop(wrapper), 100);

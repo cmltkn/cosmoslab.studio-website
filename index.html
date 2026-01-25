@@ -134,7 +134,27 @@
 
         /* MOBİL UYUMLULUK */
         @media (max-width: 768px) { 
-            header { padding: 2rem 1rem; width: 100%; }
+            header { 
+                padding: 1.5rem 1rem; 
+                width: 100%; 
+                /* Yan yana yerine alt alta dizilmelerini sağlar: */
+                flex-direction: column; 
+                align-items: center;
+                gap: 15px; /* Logo ve menü arasına boşluk */
+            }
+            
+            nav {
+                display: flex;
+                flex-wrap: wrap; /* Linkler sığmazsa aşağı kaysın */
+                justify-content: center; /* Linkleri ortala */
+                gap: 10px; /* Linkler arası boşluk */
+            }
+
+            nav a {
+                margin-left: 0; /* Desktop'taki sol boşluğu sıfırla */
+                font-size: 0.8rem; /* Mobilde fontu biraz küçült ki sığsın */
+            }
+
             section { max-width: 90%; } 
             .info-grid { grid-template-columns: 1fr; gap: 30px; }
             .slide-item { min-width: 90vw; width: 90vw; margin-right: 15px; } 

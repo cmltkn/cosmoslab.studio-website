@@ -36,10 +36,10 @@ const siteContent = {
         },
         {
             "images": [
-                "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/PROJECT OVERVIEW.png",
-                "assets/projects/02_Aselasn_Gölbaşı_Yerleşkesi/TECHNICAL DEPTH.png"
+                "assets/projects/02_Aselasan_Gölbaşı_Yerleşkesi/PROJECT OVERVIEW.png",
+                "assets/projects/02_Aselasan_Gölbaşı_Yerleşkesi/TECHNICAL DEPTH.png"
             ],
-            "title": "ASELASN GÖLBAŞI YERLEŞKESI"
+            "title": "ASELASAN GÖLBAŞI YERLEŞKESI"
         },
         {
             "images": [

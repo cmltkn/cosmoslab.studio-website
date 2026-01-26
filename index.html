@@ -17,36 +17,42 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- TOZ BULUTU LOADER --- */
+        /* --- LOADER KONTEYNERİ --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
             z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 1.2s ease-in-out; 
+            transition: opacity 1.5s ease-in-out; 
         }
         
         canvas#particle-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* Alt slogan */
+        /* --- SLOGAN AYARLARI (BÜYÜK & OKUNAKLI) --- */
         #loader-slogan {
             position: absolute;
-            top: calc(50% + 80px); 
+            /* Ana yazının altına ideal boşluk */
+            top: calc(50% + 70px); 
             transform: translateY(-50%);
-            font-size: 1.1rem; 
-            letter-spacing: 8px; 
-            color: #aaa; 
-            opacity: 0; 
-            transition: opacity 0.8s ease-out;
+            
+            /* Font ve Stil */
+            font-size: 1.0rem; /* Daha büyük */
+            letter-spacing: 6px; /* Sinematik boşluk */
+            color: #888; /* Göz almayan gri-beyaz */
+            font-weight: bold;
             text-transform: uppercase;
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
             width: 100%;
-            font-weight: bold;
+            
+            /* Animasyon */
+            opacity: 0; 
+            transition: opacity 1.5s ease-out;
         }
         
+        /* Loader Bitiş Durumları */
         .loaded #loader-container { opacity: 0; pointer-events: none; }
         .slogan-visible #loader-slogan { opacity: 1; }
 
@@ -134,7 +140,9 @@
             .slider-btn { display: none; }
             .rotate-btn { display: flex; }
             .lb-arrow { font-size: 30px; padding: 15px; }
-            #loader-slogan { top: calc(50% + 55px); font-size: 0.85rem; letter-spacing: 4px; }
+            
+            /* Mobilde slogan ayarı */
+            #loader-slogan { top: calc(50% + 50px); font-size: 0.8rem; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -219,7 +227,7 @@
             ${siteContent.contact.location}
         `;
 
-        // --- PARTICLE TEXT LOADER (High Density & Sharp Text) ---
+        // --- PARTICLE TEXT LOADER (MAT İNŞAAT - AMPUL ETKİSİ YOK) ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray = [];
@@ -233,9 +241,8 @@
         }
         setCanvasSize();
 
-        // Font Ayarları
+        // FONT AYARLARI (Extra Bold - 900)
         const fontSize = Math.min(window.innerWidth / 12, 80); 
-        // Extra Bold Font
         const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
         ctx.font = fontSettings;
         
@@ -244,7 +251,7 @@
                 this.targetX = targetX;
                 this.targetY = targetY;
                 
-                // Blob Başlangıç
+                // BLOB BAŞLANGIÇ
                 const angle = Math.random() * Math.PI * 2; 
                 const radius = Math.random() * (canvas.width * 0.8); 
                 const centerX = canvas.width / 2;
@@ -253,16 +260,17 @@
                 this.x = centerX + Math.cos(angle) * radius;
                 this.y = centerY + Math.sin(angle) * radius;
                 
-                // Parçacık Görünümü
-                this.size = Math.random() * 1.5 + 0.5; 
-                this.baseOpacity = Math.random() * 0.6 + 0.4; 
+                // Parçacık Boyutu: Biraz daha dolgun ki boşluk kalmasın
+                this.size = Math.random() * 1.6 + 0.6; 
+                
+                // Opaklık: Her parçacığın kendi opaklığı var, animasyonla 1'e gider
+                this.baseOpacity = Math.random() * 0.5 + 0.5; 
             }
             
             draw() {
+                // HEDEF: %100 Yüklemede HEPSİ TAM BEYAZ OLSUN (Ama parlama değil, mat beyaz)
                 let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
-                // Sona doğru tam netleşsin
-                if(loadProgress > 0.95) currentOpacity = 1.0;
-
+                
                 ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
                 ctx.beginPath();
                 ctx.rect(this.x, this.y, this.size, this.size);
@@ -271,13 +279,15 @@
             }
             
             update() {
+                // Ease Out: Yumuşak bitiş
                 const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
                 
                 let dx = this.targetX - this.x;
                 let dy = this.targetY - this.y;
-                let speed = 0.04 + (loadProgress * 0.1);
+                let speed = 0.04 + (loadProgress * 0.12);
                 
-                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
+                // Yaklaştığında yerine otur ve kıpırdama
+                if(Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2 && loadProgress > 0.95) {
                     this.x = this.targetX;
                     this.y = this.targetY;
                 } else {
@@ -298,14 +308,15 @@
             ctx.fillText(mainText, startX, startY);
             const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
             
-            // YOĞUNLUK ARTTIRILDI (Mobilde de daha net olsun)
-            const step = 2; // Her 2 pikselde bir nokta (Çok yoğun)
+            // YOĞUNLUK AYARI: Keskinlik için çok sıkı tarama yapıyoruz
+            // Step = 2 demek her 2 pikselde bir nokta koy demek (Yüksek Kalite)
+            const step = 2; 
 
             for (let y = 0; y < textCoordinates.height; y += step) {
                 for (let x = 0; x < textCoordinates.width; x += step) {
                     if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
-                        // %70 ihtimalle parçacık koy (Hala organik ama sıkı)
-                        if(Math.random() > 0.3) {
+                        // %85 ihtimalle parçacık koy (Çok yoğun)
+                        if(Math.random() > 0.15) {
                              particlesArray.push(new Particle(x, y));
                         }
                     }
@@ -323,15 +334,8 @@
                 particlesArray[i].draw();
             }
 
-            // KESKİNLİK AYARI: Yükleme bitince mat, saf beyaz yazıyı üste bas.
-            if(loadProgress >= 0.98) {
-                const textWidth = ctx.measureText(mainText).width;
-                const startX = (canvas.width - textWidth) / 2;
-                const startY = canvas.height / 2;
-                ctx.fillStyle = '#FFFFFF';
-                // Glow yok, sadece düz yazı
-                ctx.fillText(mainText, startX, startY);
-            }
+            // DİKKAT: Ampul etkisini yaratan sonradan eklenen katman BURADAN SİLİNDİ.
+            // Sadece parçacıkların kendisi görünecek.
             
             if (!document.body.classList.contains('loaded')) {
                 requestAnimationFrame(animateParticles);
@@ -341,6 +345,7 @@
         initParticles();
         animateParticles();
 
+        // Simülasyon
         let simulationInterval = setInterval(() => {
             if(targetProgress < 0.6) targetProgress += 0.01;
         }, 50);
@@ -358,43 +363,43 @@
 
             setTimeout(() => {
                 document.body.classList.add('slogan-visible');
-            }, 1200); 
+            }, 1000); 
 
             setTimeout(() => {
                 document.body.classList.add('loaded');
             }, 3500); 
         });
 
-        // --- VIDEO AUTOPLAY ZORLAYICI (INTERSECTION OBSERVER) ---
-        // Bu kod parçası sayfadaki tüm videoları gözler ve
-        // ekrana girdiği an "Oynat" emri verir.
+
+        // --- VİDEO OYNATMA GARANTİSİ (ZORLA OYNAT) ---
+        // Bu kod, ekrana giren videoyu otomatik olarak oynatmaya zorlar.
         document.addEventListener('DOMContentLoaded', () => {
             const videos = document.querySelectorAll('video');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // Video ekrana girdiyse
                     if (entry.isIntersecting) {
                         const video = entry.target;
-                        // Oynatmaya çalış
+                        // Video ekrana girdi, oynatmayı dene
                         const playPromise = video.play();
                         if (playPromise !== undefined) {
                             playPromise.catch(error => {
-                                // Otomatik oynatma engellenirse sessize alıp tekrar dene
+                                // Otomatik oynatma engellendiyse, sessize alıp tekrar dene (Mecburi)
+                                console.log("Otomatik oynatma engellendi, sessize alınıyor...");
                                 video.muted = true;
                                 video.play();
                             });
                         }
                     }
                 });
-            }, { threshold: 0.1 }); // %10'u görünse yeter
+            }, { threshold: 0.1 }); // Videonun %10'u bile görünse tetikle
 
             videos.forEach(video => {
                 observer.observe(video);
-                // Ekstra Güvenlik: iOS için playsinline olduğundan emin ol
+                // Mobil uyumluluk için kritik etiketler
                 video.setAttribute('playsinline', '');
                 video.setAttribute('webkit-playsinline', '');
-                video.muted = true; // Mobilde ses kapalı olmak zorunda
+                video.muted = true; 
             });
         });
 

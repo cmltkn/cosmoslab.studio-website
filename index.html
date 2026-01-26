@@ -17,30 +17,42 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- LOADER EKRANI (CHAOS TO COSMOS) --- */
+        /* --- TOZ BULUTU LOADER (Organic & Matte) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000; z-index: 99999;
+            background-color: #050505; 
+            z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 1.5s ease-in-out; /* Perde açılış hızı */
+            transition: opacity 1.2s ease-in-out; 
         }
         
         canvas#particle-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            /* Filtre yok, gölge yok. Saf, mat görüntü. */
         }
 
+        /* Alt slogan (BÜYÜTÜLDÜ) */
         #loader-slogan {
-            position: relative; z-index: 2;
-            margin-top: 120px; /* Logo ile slogan arası mesafe */
-            font-size: 0.9rem; letter-spacing: 4px; color: #666;
-            opacity: 0; transform: translateY(20px);
-            transition: all 1s ease-out;
+            position: absolute;
+            /* Ana yazının altına, biraz daha boşluklu */
+            top: calc(50% + 80px); 
+            transform: translateY(-50%);
+            /* Font boyutu arttırıldı */
+            font-size: 1.1rem; 
+            letter-spacing: 8px; /* Harfler arası boşluk sinematik oldu */
+            color: #aaa; /* Çok parlak beyaz değil, gri-beyaz */
+            opacity: 0; 
+            transition: opacity 0.8s ease-out;
             text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
         }
         
-        /* Loader bittiğinde eklenecek sınıf */
+        /* Loader Durum Sınıfları */
         .loaded #loader-container { opacity: 0; pointer-events: none; }
-        .slogan-visible #loader-slogan { opacity: 1; transform: translateY(0); }
+        .slogan-visible #loader-slogan { opacity: 1; }
 
         
         /* --- HEADER & SITE STYLES --- */
@@ -128,8 +140,12 @@
             .rotate-btn { display: flex; }
             .lb-arrow { font-size: 30px; padding: 15px; }
             
-            /* Mobilde Slogan Biraz Daha Yukarı */
-            #loader-slogan { margin-top: 80px; font-size: 0.7rem; }
+            /* Mobilde slogan ayarı */
+            #loader-slogan { 
+                top: calc(50% + 55px); 
+                font-size: 0.85rem; /* Mobilde de okunur olsun */
+                letter-spacing: 4px; 
+            }
         }
     </style>
 </head>
@@ -208,112 +224,107 @@
         document.getElementById('auto-title').innerText = siteContent.automation.title;
         document.getElementById('auto-desc').innerText = siteContent.automation.description;
         
-        // CONTACT (TELEFON EKLENDİ)
         document.getElementById('contact-info').innerHTML = `
             ${siteContent.contact.email}<br>
             ${siteContent.contact.phone}<br>
             ${siteContent.contact.location}
         `;
 
-        // --- PARTICLE TEXT LOADER SCRIPT (Chaos to Cosmos) ---
+        // --- PARTICLE TEXT LOADER SCRIPT (NO GLOW VERSION) ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray = [];
-        let adjustX = 0;
-        let adjustY = 0;
+        let loadProgress = 0.0;
+        let targetProgress = 0.0;
+        let mainText = "COSMOS.LAB STUDIO";
 
-        // Canvas Boyutlandırma
         function setCanvasSize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         setCanvasSize();
 
-        // Mouse Etkileşimi (Hafif bir dağıtma efekti)
-        const mouse = { x: null, y: null, radius: 100 };
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
-        // Yazı Ayarları
-        ctx.fillStyle = 'white';
-        // Font boyutu ekrana göre ayarla (Mobilde taşmasın)
-        const fontSize = Math.min(window.innerWidth / 15, 60); 
-        ctx.font = `bold ${fontSize}px 'Courier New', monospace`;
+        // Font Ayarları
+        const fontSize = Math.min(window.innerWidth / 12, 80); 
+        // 900 weight ile kalın, tok bir yazı
+        const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
+        ctx.font = fontSettings;
         
-        // Parçacık Sınıfı
         class Particle {
-            constructor(x, y) {
-                // Başlangıç konumu (KAOS - Rastgele)
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                // Hedef konumu (KOZMOS - Yazı Koordinatı)
-                this.baseX = x;
-                this.baseY = y;
-                this.size = 2; // Parçacık boyutu
-                this.density = (Math.random() * 30) + 1;
-                // Hız
-                this.vx = 0;
-                this.vy = 0;
+            constructor(targetX, targetY) {
+                this.targetX = targetX;
+                this.targetY = targetY;
+                
+                // BLOB BAŞLANGIÇ
+                const angle = Math.random() * Math.PI * 2; 
+                const radius = Math.random() * (canvas.width * 0.8); 
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                this.x = centerX + Math.cos(angle) * radius;
+                this.y = centerY + Math.sin(angle) * radius;
+                
+                // Parçacık Görünümü
+                this.size = Math.random() * 1.5 + 0.5; // Biraz daha tok parçacıklar
+                this.baseOpacity = Math.random() * 0.6 + 0.4; 
             }
+            
             draw() {
-                ctx.fillStyle = 'white';
+                // Opaklık yüklemeyle artsın
+                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
+                if(loadProgress > 0.95) currentOpacity = 1.0; // Sonda tam opak olsun
+
+                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.rect(this.x, this.y, this.size, this.size);
                 ctx.closePath();
                 ctx.fill();
             }
+            
             update() {
-                // Mouse Etkileşimi (İtme kuvveti)
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx * dx + dy * dy);
-                let forceDirectionX = dx / distance;
-                let forceDirectionY = dy / distance;
-                let maxDistance = mouse.radius;
-                let force = (maxDistance - distance) / maxDistance;
-                let directionX = forceDirectionX * force * this.density;
-                let directionY = forceDirectionY * force * this.density;
-
-                if (distance < mouse.radius) {
-                    this.x -= directionX;
-                    this.y -= directionY;
+                // Ease Out: Sona doğru yavaşlayan doğal hareket
+                const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
+                
+                let dx = this.targetX - this.x;
+                let dy = this.targetY - this.y;
+                
+                // Hız kontrolü
+                let speed = 0.04 + (loadProgress * 0.1);
+                
+                // Yaklaştıysa kilitle (Titremeyi önler)
+                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
+                    this.x = this.targetX;
+                    this.y = this.targetY;
                 } else {
-                    // Yuvaya Dönüş (Cosmos)
-                    if (this.x !== this.baseX) {
-                        let dx = this.x - this.baseX;
-                        this.x -= dx / 20; // Hız (Ne kadar büyükse o kadar yavaş)
-                    }
-                    if (this.y !== this.baseY) {
-                        let dy = this.y - this.baseY;
-                        this.y -= dy / 20;
-                    }
+                    this.x += dx * speed;
+                    this.y += dy * speed;
                 }
             }
         }
 
         function initParticles() {
             particlesArray = [];
-            // Yazıyı Ortala
-            const text = "COSMOS.LAB STUDIO";
-            const textWidth = ctx.measureText(text).width;
+            
+            // Yazıyı canvas'a çizip tarama işlemi
+            const textWidth = ctx.measureText(mainText).width;
             const startX = (canvas.width - textWidth) / 2;
             const startY = canvas.height / 2;
 
-            ctx.fillText(text, startX, startY);
-            // Piksel verisini al
+            ctx.fillStyle = 'white';
+            ctx.fillText(mainText, startX, startY);
             const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
             
-            // Taramayı hızlandırmak için her piksele bakma (modülasyon)
-            // Mobilde daha az parçacık, desktopta daha çok
-            const density = window.innerWidth < 768 ? 6 : 4; 
+            // Yoğunluk ayarı (Desktopta 2, Mobilde 3)
+            // Daha az boşluk = Daha net yazı
+            const step = window.innerWidth < 768 ? 3 : 2; 
 
-            for (let y = 0; y < textCoordinates.height; y += density) {
-                for (let x = 0; x < textCoordinates.width; x += density) {
-                    // Alpha kanalı (görünürlük) 128'den büyükse (yazı varsa)
+            for (let y = 0; y < textCoordinates.height; y += step) {
+                for (let x = 0; x < textCoordinates.width; x += step) {
                     if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
-                        particlesArray.push(new Particle(x, y));
+                        // %80 ihtimalle parçacık koy (Biraz daha dolu olsun)
+                        if(Math.random() > 0.2) {
+                             particlesArray.push(new Particle(x, y));
+                        }
                     }
                 }
             }
@@ -321,10 +332,17 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (loadProgress < targetProgress) loadProgress += 0.005;
+
             for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].draw();
                 particlesArray[i].update();
+                particlesArray[i].draw();
             }
+
+            // DİKKAT: "Sharpness Fix" (Yapay beyaz katman) KALDIRILDI.
+            // Sadece parçacıkların kendi hali görünecek.
+            
             if (!document.body.classList.contains('loaded')) {
                 requestAnimationFrame(animateParticles);
             }
@@ -333,45 +351,31 @@
         initParticles();
         animateParticles();
 
-        // RESİZE HANDLING
+        // Simülasyon
+        let simulationInterval = setInterval(() => {
+            if(targetProgress < 0.6) targetProgress += 0.01;
+        }, 50);
+
         window.addEventListener('resize', () => {
             setCanvasSize();
-            // Yazı boyutunu güncelle
-            const newFontSize = Math.min(window.innerWidth / 15, 60); 
-            ctx.font = `bold ${newFontSize}px 'Courier New', monospace`;
+            const newFontSize = Math.min(window.innerWidth / 12, 80); 
+            ctx.font = `900 ${newFontSize}px 'Courier New', monospace`;
             initParticles();
         });
 
-        // --- SAYFA YÜKLENME KONTROLÜ ---
         window.addEventListener('load', () => {
-            // Slogan Animasyonu: Yazı oluştuktan biraz sonra gelsin (2sn)
+            clearInterval(simulationInterval);
+            targetProgress = 1.0; 
+
+            // Slogan Animasyonu: Yazı oturduktan sonra
             setTimeout(() => {
                 document.body.classList.add('slogan-visible');
-            }, 1000);
+            }, 1200); 
 
-            // Perdeyi Kaldır: Slogan da okunduktan sonra (3.5sn toplam)
+            // Perdeyi Kaldır
             setTimeout(() => {
-                // Videoların hazır olduğundan emin ol (Hileli yöntem)
-                const videos = document.querySelectorAll('video');
-                let loaded = 0;
-                
-                // Eğer video yoksa direkt aç
-                if(videos.length === 0) {
-                     document.body.classList.add('loaded');
-                     return;
-                }
-
-                // Videoların "yeterince" yüklendiğini kontrol et
-                videos.forEach(vid => {
-                    if (vid.readyState >= 3) { // HAVE_FUTURE_DATA
-                        loaded++;
-                    }
-                });
-
-                // Videolar hazırsa veya süre çok uzadıysa aç
                 document.body.classList.add('loaded');
-                
-            }, 3500); // Kullanıcı en az 3.5sn bu cool introyu izlesin
+            }, 3500); 
         });
 
 
@@ -388,7 +392,6 @@
                 let globalIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
                 const firstMedia = item.images[0];
-                
                 let mediaHtml = isVideo(firstMedia) ? 
                     `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>` : 
                     `<img src="${firstMedia}" class="slide-media">`;
@@ -411,15 +414,12 @@
             if(items.length < 2) return; 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
-            
             if(firstClone.querySelector('video')) firstClone.querySelector('video').play().catch(()=>{});
             if(lastClone.querySelector('video')) lastClone.querySelector('video').play().catch(()=>{});
-
             wrapper.appendChild(firstClone); 
             wrapper.insertBefore(lastClone, items[0]); 
             const itemWidth = items[0].offsetWidth + 20; 
             wrapper.scrollLeft = itemWidth;
-
             wrapper.addEventListener('scroll', () => {
                 const scrollLeft = wrapper.scrollLeft;
                 const scrollWidth = wrapper.scrollWidth;
@@ -445,168 +445,75 @@
         const lbCounter = document.getElementById('lb-counter');
         const lbUi = document.getElementById('lb-ui');
         const rotateBtn = document.getElementById('rotate-btn');
-
         let state = { scale: 1, x: 0, y: 0, rotate: false };
 
         function openLightbox(index) {
-            currentIndex = index;
-            renderLightboxContent();
-            lb.style.display = 'block'; 
-            document.body.style.overflow = 'hidden'; 
-            resetState();
-            document.addEventListener('keydown', handleKey);
+            currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey);
         }
-
         function closeLightbox() {
-            lb.style.display = 'none';
-            document.body.style.overflow = ''; 
-            lbStage.innerHTML = "";
-            document.removeEventListener('keydown', handleKey);
+            lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey);
         }
-
         function changeSlide(step) {
-            currentIndex += step;
-            if (currentIndex >= allImages.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = allImages.length - 1;
-            renderLightboxContent();
-            state.scale = 1; state.x = 0; state.y = 0;
-            applyTransform();
+            currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1;
+            renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform();
         }
-
         function renderLightboxContent() {
-            const currentUrl = allImages[currentIndex];
-            let contentHTML = "";
-            if (isVideo(currentUrl)) {
-                contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`;
-            } else {
-                contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; 
-            }
-            lbStage.innerHTML = contentHTML;
-            lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
+            const currentUrl = allImages[currentIndex]; let contentHTML = "";
+            if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } 
+            else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; }
+            lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
             const media = lbStage.querySelector('.lb-main-media');
-            if(media) {
-                media.onload = applyTransform;
-                if(isVideo(currentUrl)) applyTransform();
-            }
+            if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); }
         }
-
         function resetState() { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-
         function toggleRotationMode() {
             state.rotate = !state.rotate;
             if (state.rotate) { rotateBtn.classList.add('active'); lbUi.classList.add('rotate-mode'); } 
             else { rotateBtn.classList.remove('active'); lbUi.classList.remove('rotate-mode'); }
-            state.scale = 1; state.x = 0; state.y = 0;
-            applyTransform();
+            state.scale = 1; state.x = 0; state.y = 0; applyTransform();
         }
-
         function applyTransform() {
-            const media = lbStage.querySelector('.lb-main-media');
-            if(!media) return;
+            const media = lbStage.querySelector('.lb-main-media'); if(!media) return;
             let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
-            if (state.rotate) {
-                transform += ` rotate(90deg)`;
-                media.style.width = "100vh"; media.style.height = "100vw"; media.style.maxWidth = "none"; media.style.maxHeight = "none";
-            } else {
-                media.style.width = ""; media.style.height = ""; media.style.maxWidth = "100%"; media.style.maxHeight = "100%";
-            }
+            if (state.rotate) { transform += ` rotate(90deg)`; media.style.width = "100vh"; media.style.height = "100vw"; media.style.maxWidth = "none"; media.style.maxHeight = "none"; } 
+            else { media.style.width = ""; media.style.height = ""; media.style.maxWidth = "100%"; media.style.maxHeight = "100%"; }
             media.style.transform = transform;
         }
-
         function clampPosition() {
-            const media = lbStage.querySelector('.lb-main-media');
-            if (!media) return;
-            let currentW = media.offsetWidth * state.scale;
-            let currentH = media.offsetHeight * state.scale;
+            const media = lbStage.querySelector('.lb-main-media'); if (!media) return;
+            let currentW = media.offsetWidth * state.scale; let currentH = media.offsetHeight * state.scale;
             if (state.rotate) { let temp = currentW; currentW = currentH; currentH = temp; }
-            const screenW = window.innerWidth;
-            const screenH = window.innerHeight;
-            const maxX = Math.max(0, (currentW - screenW) / 2);
-            const maxY = Math.max(0, (currentH - screenH) / 2);
-            state.x = Math.max(-maxX, Math.min(state.x, maxX));
-            state.y = Math.max(-maxY, Math.min(state.y, maxY));
+            const screenW = window.innerWidth; const screenH = window.innerHeight;
+            const maxX = Math.max(0, (currentW - screenW) / 2); const maxY = Math.max(0, (currentH - screenH) / 2);
+            state.x = Math.max(-maxX, Math.min(state.x, maxX)); state.y = Math.max(-maxY, Math.min(state.y, maxY));
         }
 
         let startX = 0, startY = 0, lastX = 0, lastY = 0, pinchStartDist = 0, pinchStartScale = 1, isDragging = false, isPinching = false;
-
         lbStage.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) {
-                if(isVideo(allImages[currentIndex])) return;
-                isPinching = true;
-                pinchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-                pinchStartScale = state.scale;
-            } else if (e.touches.length === 1) {
-                isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; lastX = state.x; lastY = state.y;
-            }
+            if (e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; isPinching = true; pinchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchStartScale = state.scale; } 
+            else if (e.touches.length === 1) { isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; lastX = state.x; lastY = state.y; }
         }, {passive: false});
-
         lbStage.addEventListener('touchmove', (e) => {
             if(e.cancelable) e.preventDefault(); 
-            if (isPinching && e.touches.length === 2) {
-                if(isVideo(allImages[currentIndex])) return;
-                const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-                state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4));
-                clampPosition(); applyTransform();
-            } else if (isDragging && e.touches.length === 1 && state.scale > 1) {
-                const dx = e.touches[0].clientX - startX; const dy = e.touches[0].clientY - startY;
-                state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform();
-            }
+            if (isPinching && e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4)); clampPosition(); applyTransform(); } 
+            else if (isDragging && e.touches.length === 1 && state.scale > 1) { const dx = e.touches[0].clientX - startX; const dy = e.touches[0].clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); }
         }, {passive: false});
-
         lbStage.addEventListener('touchend', (e) => {
-            isDragging = false; isPinching = false;
-            if (state.scale < 1) { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-            if (state.scale <= 1.05 && e.changedTouches.length === 1) {
-                const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY;
-                const diffX = endX - startX; const diffY = endY - startY; const threshold = 40; 
-                if (state.rotate) {
-                    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
-                        if (diffY < 0) changeSlide(1); else changeSlide(-1);
-                    }
-                } else {
-                    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
-                        if (diffX < 0) changeSlide(1); else changeSlide(-1);
-                    }
-                }
-            }
+            isDragging = false; isPinching = false; if (state.scale < 1) { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
+            if (state.scale <= 1.05 && e.changedTouches.length === 1) { const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY; const diffX = endX - startX; const diffY = endY - startY; const threshold = 40; if (state.rotate) { if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) { if (diffY < 0) changeSlide(1); else changeSlide(-1); } } else { if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) { if (diffX < 0) changeSlide(1); else changeSlide(-1); } } }
         });
-
         let lastTap = 0;
         const handleDoubleTap = (e) => {
-            if(isVideo(allImages[currentIndex])) return;
-            if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return;
+            if(isVideo(allImages[currentIndex])) return; if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return;
             const currentTime = new Date().getTime(); const tapLength = currentTime - lastTap;
-            if (tapLength < 300 && tapLength > 0) {
-                e.preventDefault();
-                if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; }
-                applyTransform();
-            }
-            lastTap = currentTime;
+            if (tapLength < 300 && tapLength > 0) { e.preventDefault(); if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); } lastTap = currentTime;
         };
         lbStage.addEventListener('touchend', handleDoubleTap);
-        
-        lbStage.addEventListener('mousedown', (e) => {
-             if(isVideo(allImages[currentIndex]) || state.scale === 1) return;
-             isDragging = true; startX = e.clientX; startY = e.clientY; lastX = state.x; lastY = state.y; e.preventDefault();
-        });
-        window.addEventListener('mousemove', (e) => {
-             if(!isDragging) return;
-             const dx = e.clientX - startX; const dy = e.clientY - startY;
-             state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform();
-        });
+        lbStage.addEventListener('mousedown', (e) => { if(isVideo(allImages[currentIndex]) || state.scale === 1) return; isDragging = true; startX = e.clientX; startY = e.clientY; lastX = state.x; lastY = state.y; e.preventDefault(); });
+        window.addEventListener('mousemove', (e) => { if(!isDragging) return; const dx = e.clientX - startX; const dy = e.clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); });
         window.addEventListener('mouseup', () => { isDragging = false; });
-        
-        lbStage.addEventListener('dblclick', (e) => {
-             if(isVideo(allImages[currentIndex])) return;
-             if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; }
-             applyTransform();
-        });
-
-        function handleKey(e) {
-            if(e.key === 'ArrowRight') changeSlide(1);
-            if(e.key === 'ArrowLeft') changeSlide(-1);
-            if(e.key === 'Escape') closeLightbox();
-        }
+        lbStage.addEventListener('dblclick', (e) => { if(isVideo(allImages[currentIndex])) return; if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); });
+        function handleKey(e) { if(e.key === 'ArrowRight') changeSlide(1); if(e.key === 'ArrowLeft') changeSlide(-1); if(e.key === 'Escape') closeLightbox(); }
 
     </script>
 </body>

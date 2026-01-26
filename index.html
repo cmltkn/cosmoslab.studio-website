@@ -17,7 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- LOADER CONTAINER --- */
+        /* --- LOADER CONTAINER (Hybrid Scenario) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
@@ -30,7 +30,7 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* Alt slogan (BÜYÜK VE NET) */
+        /* Alt slogan */
         #loader-slogan {
             position: absolute;
             top: calc(50% + 80px); 
@@ -200,6 +200,27 @@
 
     <script src="content.js"></script>
     <script>
+        // --- GLOBAL VIDEO OBSERVER (POLİS) ---
+        // Bu observer, oluşturulan HER videoyu (klonlar dahil) izler.
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    // Zorla Oynat
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            video.muted = true;
+                            video.play();
+                        });
+                    }
+                } else {
+                    // Ekrandan çıkınca durdur (Performans)
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.1 }); // %10 görünmesi yeterli
+
         // --- DATA LOADER ---
         document.getElementById('logo').innerText = siteContent.header.title;
         const nav = document.getElementById('menu');
@@ -241,19 +262,15 @@
             constructor(targetX, targetY) {
                 this.targetX = targetX;
                 this.targetY = targetY;
-                
                 const angle = Math.random() * Math.PI * 2; 
                 const radius = Math.random() * (canvas.width * 0.8); 
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
-                
                 this.x = centerX + Math.cos(angle) * radius;
                 this.y = centerY + Math.sin(angle) * radius;
-                
                 this.size = Math.random() * 1.5 + 0.5; 
                 this.baseOpacity = Math.random() * 0.6 + 0.4; 
             }
-            
             draw() {
                 let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
                 if(loadProgress > 0.95) currentOpacity = 1.0;
@@ -263,13 +280,11 @@
                 ctx.closePath();
                 ctx.fill();
             }
-            
             update() {
                 const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
                 let dx = this.targetX - this.x;
                 let dy = this.targetY - this.y;
                 let speed = 0.04 + (loadProgress * 0.1);
-                
                 if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
                     this.x = this.targetX;
                     this.y = this.targetY;
@@ -285,13 +300,10 @@
             const textWidth = ctx.measureText(mainText).width;
             const startX = (canvas.width - textWidth) / 2;
             const startY = canvas.height / 2;
-
             ctx.fillStyle = 'white';
             ctx.fillText(mainText, startX, startY);
             const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            const step = 2; // Yüksek yoğunluk
-
+            const step = 2; 
             for (let y = 0; y < textCoordinates.height; y += step) {
                 for (let x = 0; x < textCoordinates.width; x += step) {
                     if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
@@ -305,18 +317,12 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             if (loadProgress < targetProgress) loadProgress += 0.005;
 
-            // --- HİBRİT KATMAN (The Secret Sauce) ---
-            // Arkaya çok hafifçe solid yazıyı çiziyoruz.
-            // Bu, parçacıkların arasındaki boşlukları yavaşça doldurarak
-            // "ışık yakmadan" netlik sağlar.
+            // HIBRİT KATMAN (Gizli Destek)
             if(loadProgress > 0.5) {
-                // Opaklık 0'dan 1'e çok yavaş çıksın (0.5 -> 1.0 arasında)
                 let textOpacity = (loadProgress - 0.5) * 2;
                 if(textOpacity > 1) textOpacity = 1;
-                
                 ctx.save();
                 ctx.globalAlpha = textOpacity;
                 ctx.fillStyle = '#FFFFFF';
@@ -327,7 +333,6 @@
                 ctx.restore();
             }
 
-            // Sonra parçacıkları üstüne çiziyoruz
             for (let i = 0; i < particlesArray.length; i++) {
                 particlesArray[i].update();
                 particlesArray[i].draw();
@@ -355,42 +360,9 @@
         window.addEventListener('load', () => {
             clearInterval(simulationInterval);
             targetProgress = 1.0; 
-
-            setTimeout(() => {
-                document.body.classList.add('slogan-visible');
-            }, 1200); 
-
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, 3500); 
+            setTimeout(() => { document.body.classList.add('slogan-visible'); }, 1200); 
+            setTimeout(() => { document.body.classList.add('loaded'); }, 3500); 
         });
-
-        // --- VIDEO AUTOPLAY ZORLAYICI (Observer) ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const videos = document.querySelectorAll('video');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const video = entry.target;
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(error => {
-                                video.muted = true;
-                                video.play();
-                            });
-                        }
-                    }
-                });
-            }, { threshold: 0.1 }); 
-
-            videos.forEach(video => {
-                observer.observe(video);
-                video.setAttribute('playsinline', '');
-                video.setAttribute('webkit-playsinline', '');
-                video.muted = true; 
-            });
-        });
-
 
         // --- SLIDER & LIGHTBOX LOGIC ---
         let allImages = []; 
@@ -418,6 +390,11 @@
                     </div>`;
             });
             wrapper.innerHTML = originalSlides;
+            
+            // Orijinal videoları hemen takibe al
+            const originalVideos = wrapper.querySelectorAll('video');
+            originalVideos.forEach(v => videoObserver.observe(v));
+
             setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
 
@@ -426,8 +403,20 @@
             if(items.length < 2) return; 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
-            if(firstClone.querySelector('video')) firstClone.querySelector('video').play().catch(()=>{});
-            if(lastClone.querySelector('video')) lastClone.querySelector('video').play().catch(()=>{});
+            
+            // --- KLON VİDEOLARI TESPİT ET VE TAKİBE AL ---
+            if(firstClone.querySelector('video')) {
+                let v = firstClone.querySelector('video');
+                v.muted = true; // Mobilde sessiz şart
+                videoObserver.observe(v); // Polise bildir
+            }
+            if(lastClone.querySelector('video')) {
+                let v = lastClone.querySelector('video');
+                v.muted = true;
+                videoObserver.observe(v); // Polise bildir
+            }
+            // ---------------------------------------------
+
             wrapper.appendChild(firstClone); 
             wrapper.insertBefore(lastClone, items[0]); 
             const itemWidth = items[0].offsetWidth + 20; 

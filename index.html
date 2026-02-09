@@ -17,20 +17,19 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- LOADER CONTAINER (Hybrid Scenario) --- */
+        /* --- LOADER CONTAINER (Optimized) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
             z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 1.2s ease-in-out; 
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         
         canvas#particle-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* Alt slogan */
         #loader-slogan {
             position: absolute;
             top: calc(50% + 80px); 
@@ -39,7 +38,7 @@
             letter-spacing: 8px; 
             color: #aaa; 
             opacity: 0; 
-            transition: opacity 0.8s ease-out;
+            transition: opacity 0.6s ease-out;
             text-transform: uppercase;
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
@@ -50,7 +49,7 @@
         .loaded #loader-container { opacity: 0; pointer-events: none; }
         .slogan-visible #loader-slogan { opacity: 1; }
 
-        /* --- HEADER & SITE STYLES --- */
+        /* --- HEADER & SECTION STYLES --- */
         header { 
             padding: 2rem 3rem; width: 100%; box-sizing: border-box;
             position: sticky; top: 0; background: rgba(14, 14, 14, 0.95); z-index: 100; 
@@ -66,7 +65,7 @@
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- SLIDER --- */
+        /* --- SLIDER & MEDIA --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
@@ -78,63 +77,26 @@
             scroll-snap-align: start; scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
-        
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
-        /* KART TASARIMI */
-        .caption { 
-            width: 100%; background: #121212; padding: 18px 22px; 
-            box-sizing: border-box; border-top: 1px solid #222;
-            display: flex; flex-direction: column; gap: 6px; text-align: left;
-        }
-        .caption div:first-child { 
-            color: #e0e0e0; font-size: 0.95rem; font-weight: 600; 
-            letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
-            white-space: normal; word-wrap: break-word; overflow-wrap: break-word;
-        }
-        .caption span { 
-            font-size: 0.75rem !important; color: #555 !important;
-            font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; 
-        }
-        .slide-item:hover .caption div:first-child { color: #fff; }
-        .slide-item:hover .caption { border-top-color: #444; background: #161616; }
+        .caption { width: 100%; background: #121212; padding: 18px 22px; box-sizing: border-box; border-top: 1px solid #222; display: flex; flex-direction: column; gap: 6px; }
+        .caption div:first-child { color: #e0e0e0; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .caption span { font-size: 0.75rem !important; color: #555 !important; font-family: sans-serif; }
 
-        .slider-btn { 
-            position: absolute; top: 250px; transform: translateY(-50%); 
-            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
-            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
-            font-size: 24px; display: flex; align-items: center; justify-content: center;
-        }
+        .slider-btn { position: absolute; top: 250px; transform: translateY(-50%); background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; width: 50px; height: 50px; cursor: pointer; z-index: 50; display: flex; align-items: center; justify-content: center; font-size: 24px;}
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
         /* --- LIGHTBOX --- */
-        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; overflow: hidden; }
-        .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
-        .lb-main-media { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; user-select: none; -webkit-user-drag: none; will-change: transform; }
-        video.lb-main-media { z-index: 10; pointer-events: none; }
-        .lb-ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
-        .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 50px; cursor: pointer; padding: 20px; pointer-events: auto; text-shadow: 0 0 10px #000; background: rgba(0,0,0,0.2); border-radius: 5px; transition: all 0.3s ease; }
-        .lb-prev-arrow { left: 10px; } .lb-next-arrow { right: 10px; }
-        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; pointer-events: auto; text-shadow: 0 0 10px #000; z-index: 30; }
-        .rotate-btn { display: none; position: absolute; top: 25px; right: 80px; color: #fff; font-size: 30px; cursor: pointer; pointer-events: auto; border: 1px solid #fff; border-radius: 50%; width: 40px; height: 40px; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); z-index: 30; transition: all 0.3s ease; }
-        .rotate-btn.active { background: #fff; color: #000; transform: rotate(90deg); }
-        .lb-counter { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #aaa; font-size: 0.9rem; letter-spacing: 2px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px; }
-        .rotate-mode .lb-prev-arrow { top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
-        .rotate-mode .lb-next-arrow { top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
+        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; }
+        .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .lb-main-media { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; }
 
-        /* MOBİL UYUMLULUK */
         @media (max-width: 768px) { 
-            header { padding: 1.5rem 1rem; width: 100%; flex-direction: column; align-items: flex-start; gap: 15px; }
-            nav { display: flex; flex-wrap: wrap; width: 100%; justify-content: flex-start; gap: 15px 20px; }
-            nav a { margin-left: 0; margin-right: 10px; font-size: 0.8rem; }
-            section { max-width: 90%; } 
-            .info-grid { grid-template-columns: 1fr; gap: 30px; }
-            .slide-item { min-width: 90vw; width: 90vw; margin-right: 15px; } 
+            header { padding: 1.5rem 1rem; }
+            section { max-width: 90%; }
+            .info-grid { grid-template-columns: 1fr; }
+            .slide-item { min-width: 85vw; }
             .slide-media { height: 300px; }
-            .slider-btn { display: none; }
-            .rotate-btn { display: flex; }
-            .lb-arrow { font-size: 30px; padding: 15px; }
-            #loader-slogan { top: calc(50% + 55px); font-size: 0.85rem; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -146,20 +108,14 @@
     </div>
 
     <header>
-        <div class="logo" id="logo"></div>
+        <div class="logo" id="logo">COSMOS.LAB</div>
         <nav id="menu"></nav>
     </header>
 
     <section id="about-section">
         <div class="info-grid">
-            <div>
-                <h2 id="who-title"></h2>
-                <p id="who-text"></p>
-            </div>
-            <div>
-                <h2 id="what-title"></h2>
-                <p id="what-text"></p>
-            </div>
+            <div><h2 id="who-title"></h2><p id="who-text"></p></div>
+            <div><h2 id="what-title"></h2><p id="what-text"></p></div>
         </div>
     </section>
 
@@ -182,67 +138,29 @@
         </div>
     </section>
 
-    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 30px;">
-        <h2>CONTACT</h2>
-        <p id="contact-info"></p>
-    </section>
-
-    <div class="lightbox" id="lightbox">
-        <div class="lb-stage" id="lb-stage"></div>
-        <div class="lb-ui-layer" id="lb-ui">
-            <span class="close-lb" onclick="closeLightbox()">&times;</span>
-            <div class="rotate-btn" id="rotate-btn" onclick="toggleRotationMode()">&#8635;</div>
-            <div class="lb-arrow lb-prev-arrow" onclick="changeSlide(-1)">&#10094;</div>
-            <div class="lb-arrow lb-next-arrow" onclick="changeSlide(1)">&#10095;</div>
-            <div class="lb-counter" id="lb-counter"></div>
-        </div>
-    </div>
-
     <script src="content.js"></script>
     <script>
-        // --- GLOBAL VIDEO OBSERVER (POLİS) ---
-        // Bu observer, oluşturulan HER videoyu (klonlar dahil) izler.
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
-                    // Zorla Oynat
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            video.muted = true;
-                            video.play();
-                        });
-                    }
-                } else {
-                    // Ekrandan çıkınca durdur (Performans)
-                    entry.target.pause();
-                }
-            });
-        }, { threshold: 0.1 }); // %10 görünmesi yeterli
+        // --- LOADER LOGIC (THE HEART) ---
+        let loadFinished = false;
+        const FORCED_LIMIT = 4000; // Maksimum 4 saniye bekleme (site iskeleti için)
 
-        // --- DATA LOADER ---
-        document.getElementById('logo').innerText = siteContent.header.title;
-        const nav = document.getElementById('menu');
-        siteContent.header.menu.forEach(item => {
-            nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
-        });
-        document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
-        document.getElementById('who-text').innerText = siteContent.about.whoWeAreText;
-        document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
-        document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
-        document.getElementById('auto-title').innerText = siteContent.automation.title;
-        document.getElementById('auto-desc').innerText = siteContent.automation.description;
-        
-        document.getElementById('contact-info').innerHTML = `
-            ${siteContent.contact.email}<br>
-            ${siteContent.contact.phone}<br>
-            ${siteContent.contact.location}
-        `;
+        function finishLoading() {
+            if (loadFinished) return;
+            loadFinished = true;
+            targetProgress = 1.0;
+            
+            // Animasyon adımları
+            setTimeout(() => { document.body.classList.add('slogan-visible'); }, 600); 
+            setTimeout(() => { document.body.classList.add('loaded'); }, 1500); // Toplam max 5.5 - 6 saniye
+        }
 
-        // --- PARTICLE TEXT LOADER (SCENARIO 3: HYBRID LAYER) ---
+        // Ya her şey yüklenince ya da 4 saniye dolunca bitir
+        window.addEventListener('load', finishLoading);
+        setTimeout(finishLoading, FORCED_LIMIT);
+
+        // --- PARTICLE ENGINE (Optimized) ---
         const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: false }); // Performans için alpha false
         let particlesArray = [];
         let loadProgress = 0.0;
         let targetProgress = 0.0;
@@ -254,268 +172,108 @@
         }
         setCanvasSize();
 
-        const fontSize = Math.min(window.innerWidth / 12, 80); 
-        const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
-        ctx.font = fontSettings;
-        
         class Particle {
             constructor(targetX, targetY) {
-                this.targetX = targetX;
-                this.targetY = targetY;
-                const angle = Math.random() * Math.PI * 2; 
-                const radius = Math.random() * (canvas.width * 0.8); 
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                this.x = centerX + Math.cos(angle) * radius;
-                this.y = centerY + Math.sin(angle) * radius;
-                this.size = Math.random() * 1.5 + 0.5; 
-                this.baseOpacity = Math.random() * 0.6 + 0.4; 
+                this.targetX = targetX; this.targetY = targetY;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speed = 0.05 + Math.random() * 0.05;
             }
             draw() {
-                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
-                if(loadProgress > 0.95) currentOpacity = 1.0;
-                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
-                ctx.beginPath();
-                ctx.rect(this.x, this.y, this.size, this.size);
-                ctx.closePath();
-                ctx.fill();
+                ctx.fillStyle = `rgba(255, 255, 255, ${0.4 + loadProgress * 0.6})`;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
             }
             update() {
-                const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
                 let dx = this.targetX - this.x;
                 let dy = this.targetY - this.y;
-                let speed = 0.04 + (loadProgress * 0.1);
-                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
-                    this.x = this.targetX;
-                    this.y = this.targetY;
-                } else {
-                    this.x += dx * speed;
-                    this.y += dy * speed;
-                }
+                this.x += dx * this.speed;
+                this.y += dy * this.speed;
             }
         }
 
         function initParticles() {
             particlesArray = [];
+            const fontSize = Math.min(window.innerWidth / 10, 70);
+            ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
             const textWidth = ctx.measureText(mainText).width;
             const startX = (canvas.width - textWidth) / 2;
             const startY = canvas.height / 2;
+            
             ctx.fillStyle = 'white';
             ctx.fillText(mainText, startX, startY);
-            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const step = 2; 
-            for (let y = 0; y < textCoordinates.height; y += step) {
-                for (let x = 0; x < textCoordinates.width; x += step) {
-                    if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
-                        if(Math.random() > 0.3) {
-                             particlesArray.push(new Particle(x, y));
-                        }
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const step = window.innerWidth < 768 ? 5 : 3; // Mobilde daha az partikül
+            for (let y = 0; y < canvas.height; y += step) {
+                for (let x = 0; x < canvas.width; x += step) {
+                    if (data[(y * canvas.width + x) * 4 + 3] > 128) {
+                        particlesArray.push(new Particle(x, y));
                     }
                 }
             }
         }
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (loadProgress < targetProgress) loadProgress += 0.005;
+        function animate() {
+            ctx.fillStyle = '#050505';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            if (loadProgress < targetProgress) loadProgress += 0.015; // Daha hızlı dolum
 
-            // HIBRİT KATMAN (Gizli Destek)
-            if(loadProgress > 0.5) {
-                let textOpacity = (loadProgress - 0.5) * 2;
-                if(textOpacity > 1) textOpacity = 1;
-                ctx.save();
-                ctx.globalAlpha = textOpacity;
-                ctx.fillStyle = '#FFFFFF';
-                const textWidth = ctx.measureText(mainText).width;
-                const startX = (canvas.width - textWidth) / 2;
-                const startY = canvas.height / 2;
-                ctx.fillText(mainText, startX, startY);
-                ctx.restore();
-            }
-
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
+            particlesArray.forEach(p => { p.update(); p.draw(); });
             
             if (!document.body.classList.contains('loaded')) {
-                requestAnimationFrame(animateParticles);
+                requestAnimationFrame(animate);
             }
         }
-
-        initParticles();
-        animateParticles();
 
         let simulationInterval = setInterval(() => {
-            if(targetProgress < 0.6) targetProgress += 0.01;
-        }, 50);
+            if(targetProgress < 0.7) targetProgress += 0.05;
+        }, 100);
 
-        window.addEventListener('resize', () => {
-            setCanvasSize();
-            const newFontSize = Math.min(window.innerWidth / 12, 80); 
-            ctx.font = `900 ${newFontSize}px 'Courier New', monospace`;
-            initParticles();
+        initParticles();
+        animate();
+
+        // --- CONTENT LOADER ---
+        document.getElementById('logo').innerText = siteContent.header.title;
+        const nav = document.getElementById('menu');
+        siteContent.header.menu.forEach(item => {
+            nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
         });
+        document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
+        document.getElementById('who-text').innerText = siteContent.about.whoWeAreText;
+        document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
+        document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
+        document.getElementById('auto-title').innerText = siteContent.automation.title;
+        document.getElementById('auto-desc').innerText = siteContent.automation.description;
 
-        window.addEventListener('load', () => {
-            clearInterval(simulationInterval);
-            targetProgress = 1.0; 
-            setTimeout(() => { document.body.classList.add('slogan-visible'); }, 1200); 
-            setTimeout(() => { document.body.classList.add('loaded'); }, 3500); 
-        });
-
-        // --- SLIDER & LIGHTBOX LOGIC ---
-        let allImages = []; 
-        function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
-        function isMobile() { return window.innerWidth <= 768; }
-
+        // --- SLIDER RENDERER (Lazy Loading Integrated) ---
+        let allImages = [];
         function renderSlider(wrapperId, dataItems) {
             const wrapper = document.getElementById(wrapperId);
-            let originalSlides = "";
             dataItems.forEach((item) => {
-                let globalIndex = allImages.length; 
+                let startIndex = allImages.length;
                 item.images.forEach(img => allImages.push(img));
-                const firstMedia = item.images[0];
-                let mediaHtml = isVideo(firstMedia) ? 
-                    `<video src="${firstMedia}" class="slide-media" autoplay loop muted playsinline></video>` : 
-                    `<img src="${firstMedia}" class="slide-media">`;
-
-                originalSlides += `
-                    <div class="slide-item" onclick="openLightbox(${globalIndex})">
-                        ${mediaHtml}
-                        <div class="caption">
-                            <div>${item.title}</div>
-                            <span>[${item.images.length} items]</span>
-                        </div>
+                const first = item.images[0];
+                const isVid = first.endsWith('.mp4');
+                
+                wrapper.innerHTML += `
+                    <div class="slide-item" onclick="openLightbox(${startIndex})">
+                        ${isVid ? `<video src="${first}" class="slide-media" autoplay loop muted playsinline preload="metadata"></video>` 
+                               : `<img src="${first}" class="slide-media" loading="lazy">`}
+                        <div class="caption"><div>${item.title}</div><span>[${item.images.length} items]</span></div>
                     </div>`;
             });
-            wrapper.innerHTML = originalSlides;
-            
-            // Orijinal videoları hemen takibe al
-            const originalVideos = wrapper.querySelectorAll('video');
-            originalVideos.forEach(v => videoObserver.observe(v));
-
-            setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
-
-        function setupInfiniteLoop(wrapper) {
-            const items = Array.from(wrapper.children);
-            if(items.length < 2) return; 
-            const firstClone = items[0].cloneNode(true);
-            const lastClone = items[items.length - 1].cloneNode(true);
-            
-            // --- KLON VİDEOLARI TESPİT ET VE TAKİBE AL ---
-            if(firstClone.querySelector('video')) {
-                let v = firstClone.querySelector('video');
-                v.muted = true; // Mobilde sessiz şart
-                videoObserver.observe(v); // Polise bildir
-            }
-            if(lastClone.querySelector('video')) {
-                let v = lastClone.querySelector('video');
-                v.muted = true;
-                videoObserver.observe(v); // Polise bildir
-            }
-            // ---------------------------------------------
-
-            wrapper.appendChild(firstClone); 
-            wrapper.insertBefore(lastClone, items[0]); 
-            const itemWidth = items[0].offsetWidth + 20; 
-            wrapper.scrollLeft = itemWidth;
-            wrapper.addEventListener('scroll', () => {
-                const scrollLeft = wrapper.scrollLeft;
-                const scrollWidth = wrapper.scrollWidth;
-                const clientWidth = wrapper.clientWidth;
-                if (scrollLeft >= scrollWidth - clientWidth - 5) wrapper.scrollLeft = itemWidth; 
-                if (scrollLeft <= 0) wrapper.scrollLeft = scrollWidth - (2 * clientWidth) + 10; 
-            });
-        }
-
-        function manualScroll(wrapperId, direction) {
-            const wrapper = document.getElementById(wrapperId);
-            const itemWidth = wrapper.querySelector('.slide-item').offsetWidth + 20;
-            wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
-        }
-
         renderSlider('project-slider', siteContent.projects);
         renderSlider('auto-slider', siteContent.automation.items);
 
-        // --- PRO LIGHTBOX LOGIC ---
-        let currentIndex = 0;
-        const lb = document.getElementById('lightbox');
-        const lbStage = document.getElementById('lb-stage');
-        const lbCounter = document.getElementById('lb-counter');
-        const lbUi = document.getElementById('lb-ui');
-        const rotateBtn = document.getElementById('rotate-btn');
-        let state = { scale: 1, x: 0, y: 0, rotate: false };
-
-        function openLightbox(index) {
-            currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey);
+        function manualScroll(id, dir) {
+            const el = document.getElementById(id);
+            const amt = el.querySelector('.slide-item').offsetWidth + 20;
+            el.scrollBy({ left: dir * amt, behavior: 'smooth' });
         }
-        function closeLightbox() {
-            lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey);
-        }
-        function changeSlide(step) {
-            currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1;
-            renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform();
-        }
-        function renderLightboxContent() {
-            const currentUrl = allImages[currentIndex]; let contentHTML = "";
-            if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } 
-            else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; }
-            lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
-            const media = lbStage.querySelector('.lb-main-media');
-            if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); }
-        }
-        function resetState() { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-        function toggleRotationMode() {
-            state.rotate = !state.rotate;
-            if (state.rotate) { rotateBtn.classList.add('active'); lbUi.classList.add('rotate-mode'); } 
-            else { rotateBtn.classList.remove('active'); lbUi.classList.remove('rotate-mode'); }
-            state.scale = 1; state.x = 0; state.y = 0; applyTransform();
-        }
-        function applyTransform() {
-            const media = lbStage.querySelector('.lb-main-media'); if(!media) return;
-            let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
-            if (state.rotate) { transform += ` rotate(90deg)`; media.style.width = "100vh"; media.style.height = "100vw"; media.style.maxWidth = "none"; media.style.maxHeight = "none"; } 
-            else { media.style.width = ""; media.style.height = ""; media.style.maxWidth = "100%"; media.style.maxHeight = "100%"; }
-            media.style.transform = transform;
-        }
-        function clampPosition() {
-            const media = lbStage.querySelector('.lb-main-media'); if (!media) return;
-            let currentW = media.offsetWidth * state.scale; let currentH = media.offsetHeight * state.scale;
-            if (state.rotate) { let temp = currentW; currentW = currentH; currentH = temp; }
-            const screenW = window.innerWidth; const screenH = window.innerHeight;
-            const maxX = Math.max(0, (currentW - screenW) / 2); const maxY = Math.max(0, (currentH - screenH) / 2);
-            state.x = Math.max(-maxX, Math.min(state.x, maxX)); state.y = Math.max(-maxY, Math.min(state.y, maxY));
-        }
-
-        let startX = 0, startY = 0, lastX = 0, lastY = 0, pinchStartDist = 0, pinchStartScale = 1, isDragging = false, isPinching = false;
-        lbStage.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; isPinching = true; pinchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchStartScale = state.scale; } 
-            else if (e.touches.length === 1) { isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; lastX = state.x; lastY = state.y; }
-        }, {passive: false});
-        lbStage.addEventListener('touchmove', (e) => {
-            if(e.cancelable) e.preventDefault(); 
-            if (isPinching && e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4)); clampPosition(); applyTransform(); } 
-            else if (isDragging && e.touches.length === 1 && state.scale > 1) { const dx = e.touches[0].clientX - startX; const dy = e.touches[0].clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); }
-        }, {passive: false});
-        lbStage.addEventListener('touchend', (e) => {
-            isDragging = false; isPinching = false; if (state.scale < 1) { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-            if (state.scale <= 1.05 && e.changedTouches.length === 1) { const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY; const diffX = endX - startX; const diffY = endY - startY; const threshold = 40; if (state.rotate) { if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) { if (diffY < 0) changeSlide(1); else changeSlide(-1); } } else { if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) { if (diffX < 0) changeSlide(1); else changeSlide(-1); } } }
-        });
-        let lastTap = 0;
-        const handleDoubleTap = (e) => {
-            if(isVideo(allImages[currentIndex])) return; if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return;
-            const currentTime = new Date().getTime(); const tapLength = currentTime - lastTap;
-            if (tapLength < 300 && tapLength > 0) { e.preventDefault(); if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); } lastTap = currentTime;
-        };
-        lbStage.addEventListener('touchend', handleDoubleTap);
-        lbStage.addEventListener('mousedown', (e) => { if(isVideo(allImages[currentIndex]) || state.scale === 1) return; isDragging = true; startX = e.clientX; startY = e.clientY; lastX = state.x; lastY = state.y; e.preventDefault(); });
-        window.addEventListener('mousemove', (e) => { if(!isDragging) return; const dx = e.clientX - startX; const dy = e.clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        lbStage.addEventListener('dblclick', (e) => { if(isVideo(allImages[currentIndex])) return; if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); });
-        function handleKey(e) { if(e.key === 'ArrowRight') changeSlide(1); if(e.key === 'ArrowLeft') changeSlide(-1); if(e.key === 'Escape') closeLightbox(); }
-
     </script>
 </body>
 </html>

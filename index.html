@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>COSMOS.LAB STUDIO</title>
+    <title>Cosmos.Lab Studio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
         /* --- TEMEL AYARLAR --- */
@@ -242,7 +242,7 @@
 
         // --- PARTICLE TEXT LOADER (SCENARIO 3: HYBRID LAYER) ---
         const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
         let particlesArray = [];
         let loadProgress = 0.0;
         let targetProgress = 0.0;
@@ -344,26 +344,45 @@
             }
         }
 
-        function initParticles() {
-            particlesArray = [];
-            const textWidth = ctx.measureText(mainText).width;
-            const startX = (canvas.width - textWidth) / 2;
-            const startY = canvas.height / 2;
-            ctx.fillStyle = 'white';
-            ctx.fillText(mainText, startX, startY);
-            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const step = 2; 
-            for (let y = 0; y < textCoordinates.height; y += step) {
-                for (let x = 0; x < textCoordinates.width; x += step) {
-                    if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
-                        if(Math.random() > 0.3) {
-                             particlesArray.push(new Particle(x, y));
-                        }
-                    }
+function initParticles() {
+    particlesArray = [];
+    const textWidth = ctx.measureText(mainText).width;
+    
+    // Yazıyı tam ortaya hizala
+    const startX = (canvas.width - textWidth) / 2;
+    const startY = canvas.height / 2;
+
+    ctx.fillStyle = 'white';
+    ctx.fillText(mainText, startX, startY);
+
+    // OPTİMİZASYON: Tüm ekranı değil, sadece yazının olduğu dikdörtgeni tara
+    // Font yüksekliğini tahminen alıyoruz (fontSize global değişkeninden)
+    const scanHeight = fontSize * 2; 
+    const scanY = startY - fontSize; // Yazının biraz üzerinden başla
+    
+    // Sadece gerekli alanı belleğe al
+    const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
+    
+    // Adım sayısını (step) ekran yoğunluğuna göre biraz artırabilirsin, 
+    // şu an 2. Eğer hala kasıyorsa 3 veya 4 yap.
+    const step = 2; 
+
+    for (let y = 0; y < textCoordinates.height; y += step) {
+        for (let x = 0; x < textCoordinates.width; x += step) {
+            // Alpha kanalını kontrol et (RGBA'da 4. eleman)
+            // Piksel yoğunluğunu sadece yazı alanında kontrol ediyoruz
+            const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
+            
+            if (alpha > 128) {
+                if(Math.random() > 0.3) {
+                    // Koordinatları global konuma geri çevir
+                    // x + startX ve y + scanY
+                    particlesArray.push(new Particle(x + startX, y + scanY));
                 }
             }
         }
-
+    }
+}
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (loadProgress < targetProgress) loadProgress += 0.005;

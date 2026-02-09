@@ -6,7 +6,7 @@
     <title>COSMOS.LAB STUDIO</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
-        /* --- TEMEL AYARLAR --- */
+        /* --- TEMEL AYARLAR (Orijinal) --- */
         body { 
             background-color: #0e0e0e; 
             color: #f0f0f0; 
@@ -17,19 +17,20 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- LOADER CONTAINER (Optimized) --- */
+        /* --- LOADER CONTAINER (Hybrid Scenario) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
             z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: opacity 1.2s ease-in-out; 
         }
         
         canvas#particle-canvas {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
+        /* Alt slogan */
         #loader-slogan {
             position: absolute;
             top: calc(50% + 80px); 
@@ -38,7 +39,7 @@
             letter-spacing: 8px; 
             color: #aaa; 
             opacity: 0; 
-            transition: opacity 0.6s ease-out;
+            transition: opacity 0.8s ease-out;
             text-transform: uppercase;
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
@@ -49,7 +50,7 @@
         .loaded #loader-container { opacity: 0; pointer-events: none; }
         .slogan-visible #loader-slogan { opacity: 1; }
 
-        /* --- HEADER & SECTION STYLES --- */
+        /* --- HEADER & SITE STYLES (Orijinal) --- */
         header { 
             padding: 2rem 3rem; width: 100%; box-sizing: border-box;
             position: sticky; top: 0; background: rgba(14, 14, 14, 0.95); z-index: 100; 
@@ -65,7 +66,7 @@
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- SLIDER & MEDIA --- */
+        /* --- SLIDER --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
@@ -77,25 +78,45 @@
             scroll-snap-align: start; scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
+        
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
-        .caption { width: 100%; background: #121212; padding: 18px 22px; box-sizing: border-box; border-top: 1px solid #222; display: flex; flex-direction: column; gap: 6px; }
-        .caption div:first-child { color: #e0e0e0; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-        .caption span { font-size: 0.75rem !important; color: #555 !important; font-family: sans-serif; }
+        /* KART TASARIMI */
+        .caption { 
+            width: 100%; background: #121212; padding: 18px 22px; 
+            box-sizing: border-box; border-top: 1px solid #222;
+            display: flex; flex-direction: column; gap: 6px; text-align: left;
+        }
+        .caption div:first-child { 
+            color: #e0e0e0; font-size: 0.95rem; font-weight: 600; 
+            letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
+        }
+        .caption span { 
+            font-size: 0.75rem !important; color: #555 !important;
+            font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; 
+        }
 
-        .slider-btn { position: absolute; top: 250px; transform: translateY(-50%); background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; width: 50px; height: 50px; cursor: pointer; z-index: 50; display: flex; align-items: center; justify-content: center; font-size: 24px;}
+        .slider-btn { 
+            position: absolute; top: 250px; transform: translateY(-50%); 
+            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
+            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
+            font-size: 24px; display: flex; align-items: center; justify-content: center;
+        }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- LIGHTBOX --- */
-        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; }
-        .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        /* --- LIGHTBOX (Orijinal) --- */
+        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; overflow: hidden; }
+        .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
         .lb-main-media { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; }
 
+        /* MOBİL UYUMLULUK */
         @media (max-width: 768px) { 
-            header { padding: 1.5rem 1rem; }
-            section { max-width: 90%; }
-            .info-grid { grid-template-columns: 1fr; }
-            .slide-item { min-width: 85vw; }
+            header { padding: 1.5rem 1rem; flex-direction: column; align-items: flex-start; gap: 15px; }
+            nav { display: flex; flex-wrap: wrap; width: 100%; justify-content: flex-start; gap: 15px 20px; }
+            nav a { margin-left: 0; font-size: 0.8rem; }
+            section { max-width: 90%; } 
+            .info-grid { grid-template-columns: 1fr; gap: 30px; }
+            .slide-item { min-width: 90vw; width: 90vw; } 
             .slide-media { height: 300px; }
         }
     </style>
@@ -108,14 +129,20 @@
     </div>
 
     <header>
-        <div class="logo" id="logo">COSMOS.LAB</div>
+        <div class="logo" id="logo"></div>
         <nav id="menu"></nav>
     </header>
 
     <section id="about-section">
         <div class="info-grid">
-            <div><h2 id="who-title"></h2><p id="who-text"></p></div>
-            <div><h2 id="what-title"></h2><p id="what-text"></p></div>
+            <div>
+                <h2 id="who-title"></h2>
+                <p id="who-text"></p>
+            </div>
+            <div>
+                <h2 id="what-title"></h2>
+                <p id="what-text"></p>
+            </div>
         </div>
     </section>
 
@@ -138,29 +165,43 @@
         </div>
     </section>
 
+    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 30px;">
+        <h2>CONTACT</h2>
+        <p id="contact-info"></p>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lb-stage" id="lb-stage"></div>
+        <div class="lb-ui-layer" id="lb-ui">
+            <span class="close-lb" onclick="closeLightbox()" style="position: absolute; top: 20px; right: 20px; color: #fff; font-size: 40px; cursor: pointer; z-index: 30;">&times;</span>
+            <div class="lb-arrow lb-prev-arrow" onclick="changeSlide(-1)" style="left: 10px; position: absolute; top: 50%; color: #fff; font-size: 50px; cursor: pointer; pointer-events: auto;">&#10094;</div>
+            <div class="lb-arrow lb-next-arrow" onclick="changeSlide(1)" style="right: 10px; position: absolute; top: 50%; color: #fff; font-size: 50px; cursor: pointer; pointer-events: auto;">&#10095;</div>
+            <div class="lb-counter" id="lb-counter" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #aaa;"></div>
+        </div>
+    </div>
+
     <script src="content.js"></script>
     <script>
-        // --- LOADER LOGIC (THE HEART) ---
+        // --- LOADER ZAMANLAYICI (YENİ EK) ---
         let loadFinished = false;
-        const FORCED_LIMIT = 4000; // Maksimum 4 saniye bekleme (site iskeleti için)
+        const FORCED_LIMIT = 4000; // Videolar inmese de 4 saniye sonra süreci başlat
 
-        function finishLoading() {
+        function startExitSequence() {
             if (loadFinished) return;
             loadFinished = true;
-            targetProgress = 1.0;
+            targetProgress = 1.0; // Partikülleri topla
             
-            // Animasyon adımları
-            setTimeout(() => { document.body.classList.add('slogan-visible'); }, 600); 
-            setTimeout(() => { document.body.classList.add('loaded'); }, 1500); // Toplam max 5.5 - 6 saniye
+            // Orijinal estetik geçiş süreleri
+            setTimeout(() => { document.body.classList.add('slogan-visible'); }, 800); 
+            setTimeout(() => { document.body.classList.add('loaded'); }, 2500); 
         }
 
-        // Ya her şey yüklenince ya da 4 saniye dolunca bitir
-        window.addEventListener('load', finishLoading);
-        setTimeout(finishLoading, FORCED_LIMIT);
+        window.addEventListener('load', startExitSequence);
+        setTimeout(startExitSequence, FORCED_LIMIT);
 
-        // --- PARTICLE ENGINE (Optimized) ---
+        // --- PARTICLE TEXT LOADER (ORİJİNAL MANTIK) ---
         const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d', { alpha: false }); // Performans için alpha false
+        const ctx = canvas.getContext('2d');
         let particlesArray = [];
         let loadProgress = 0.0;
         let targetProgress = 0.0;
@@ -172,83 +213,102 @@
         }
         setCanvasSize();
 
+        const fontSize = Math.min(window.innerWidth / 12, 80); 
+        ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
+        
         class Particle {
             constructor(targetX, targetY) {
-                this.targetX = targetX; this.targetY = targetY;
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speed = 0.05 + Math.random() * 0.05;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                const angle = Math.random() * Math.PI * 2; 
+                const radius = Math.random() * (canvas.width * 0.8); 
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                this.x = centerX + Math.cos(angle) * radius;
+                this.y = centerY + Math.sin(angle) * radius;
+                this.size = Math.random() * 1.5 + 0.5; 
+                this.baseOpacity = Math.random() * 0.6 + 0.4; 
             }
             draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${0.4 + loadProgress * 0.6})`;
-                ctx.fillRect(this.x, this.y, this.size, this.size);
+                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
+                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
+                ctx.beginPath();
+                ctx.rect(this.x, this.y, this.size, this.size);
+                ctx.fill();
             }
             update() {
                 let dx = this.targetX - this.x;
                 let dy = this.targetY - this.y;
-                this.x += dx * this.speed;
-                this.y += dy * this.speed;
+                let speed = 0.04 + (loadProgress * 0.1);
+                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
+                    this.x = this.targetX; this.y = this.targetY;
+                } else {
+                    this.x += dx * speed;
+                    this.y += dy * speed;
+                }
             }
         }
 
         function initParticles() {
             particlesArray = [];
-            const fontSize = Math.min(window.innerWidth / 10, 70);
-            ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
             const textWidth = ctx.measureText(mainText).width;
             const startX = (canvas.width - textWidth) / 2;
             const startY = canvas.height / 2;
-            
             ctx.fillStyle = 'white';
             ctx.fillText(mainText, startX, startY);
-            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const step = window.innerWidth < 768 ? 5 : 3; // Mobilde daha az partikül
-            for (let y = 0; y < canvas.height; y += step) {
-                for (let x = 0; x < canvas.width; x += step) {
-                    if (data[(y * canvas.width + x) * 4 + 3] > 128) {
+            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            
+            const step = window.innerWidth < 768 ? 4 : 2; // Performans ayarı
+            for (let y = 0; y < textCoordinates.height; y += step) {
+                for (let x = 0; x < textCoordinates.width; x += step) {
+                    if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
                         particlesArray.push(new Particle(x, y));
                     }
                 }
             }
         }
 
-        function animate() {
-            ctx.fillStyle = '#050505';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            if (loadProgress < targetProgress) loadProgress += 0.015; // Daha hızlı dolum
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (loadProgress < targetProgress) loadProgress += 0.008;
 
-            particlesArray.forEach(p => { p.update(); p.draw(); });
-            
-            if (!document.body.classList.contains('loaded')) {
-                requestAnimationFrame(animate);
+            if(loadProgress > 0.5) {
+                let textOpacity = (loadProgress - 0.5) * 2;
+                ctx.save();
+                ctx.globalAlpha = Math.min(textOpacity, 1);
+                ctx.fillStyle = '#FFFFFF';
+                const textWidth = ctx.measureText(mainText).width;
+                ctx.fillText(mainText, (canvas.width - textWidth) / 2, canvas.height / 2);
+                ctx.restore();
             }
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            if (!document.body.classList.contains('loaded')) requestAnimationFrame(animateParticles);
         }
 
+        initParticles();
+        animateParticles();
+
         let simulationInterval = setInterval(() => {
-            if(targetProgress < 0.7) targetProgress += 0.05;
+            if(targetProgress < 0.7) targetProgress += 0.02;
         }, 100);
 
-        initParticles();
-        animate();
-
-        // --- CONTENT LOADER ---
+        // --- DATA LOADER (ORİJİNAL) ---
         document.getElementById('logo').innerText = siteContent.header.title;
         const nav = document.getElementById('menu');
-        siteContent.header.menu.forEach(item => {
-            nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
-        });
+        siteContent.header.menu.forEach(item => { nav.innerHTML += `<a href="${item.link}">${item.text}</a>`; });
         document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
         document.getElementById('who-text').innerText = siteContent.about.whoWeAreText;
         document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
         document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
         document.getElementById('auto-title').innerText = siteContent.automation.title;
         document.getElementById('auto-desc').innerText = siteContent.automation.description;
+        document.getElementById('contact-info').innerHTML = `${siteContent.contact.email}<br>${siteContent.contact.phone}<br>${siteContent.contact.location}`;
 
-        // --- SLIDER RENDERER (Lazy Loading Integrated) ---
+        // --- SLIDER LOGIC ---
         let allImages = [];
         function renderSlider(wrapperId, dataItems) {
             const wrapper = document.getElementById(wrapperId);
@@ -257,11 +317,10 @@
                 item.images.forEach(img => allImages.push(img));
                 const first = item.images[0];
                 const isVid = first.endsWith('.mp4');
-                
                 wrapper.innerHTML += `
                     <div class="slide-item" onclick="openLightbox(${startIndex})">
                         ${isVid ? `<video src="${first}" class="slide-media" autoplay loop muted playsinline preload="metadata"></video>` 
-                               : `<img src="${first}" class="slide-media" loading="lazy">`}
+                               : `<img src="${first}" class="slide-media">`}
                         <div class="caption"><div>${item.title}</div><span>[${item.images.length} items]</span></div>
                     </div>`;
             });
@@ -269,10 +328,30 @@
         renderSlider('project-slider', siteContent.projects);
         renderSlider('auto-slider', siteContent.automation.items);
 
-        function manualScroll(id, dir) {
-            const el = document.getElementById(id);
-            const amt = el.querySelector('.slide-item').offsetWidth + 20;
-            el.scrollBy({ left: dir * amt, behavior: 'smooth' });
+        function manualScroll(wrapperId, direction) {
+            const wrapper = document.getElementById(wrapperId);
+            const itemWidth = wrapper.querySelector('.slide-item').offsetWidth + 20;
+            wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+        }
+
+        // --- LIGHTBOX LOGIC ---
+        let currentIndex = 0;
+        const lb = document.getElementById('lightbox');
+        const lbStage = document.getElementById('lb-stage');
+        const lbCounter = document.getElementById('lb-counter');
+
+        function openLightbox(index) {
+            currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; }
+        function changeSlide(step) {
+            currentIndex = (currentIndex + step + allImages.length) % allImages.length;
+            renderLightboxContent();
+        }
+        function renderLightboxContent() {
+            const url = allImages[currentIndex];
+            lbStage.innerHTML = url.endsWith('.mp4') ? `<video src="${url}" class="lb-main-media" autoplay loop muted playsinline></video>` : `<img src="${url}" class="lb-main-media">`;
+            lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
         }
     </script>
 </body>

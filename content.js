@@ -3,15 +3,15 @@ const siteContent = {
         "title": "COSMOS.LAB STUDIO",
         "menu": [
             {
-                "text": "WHO WE ARE",
+                "text": "VISION",
                 "link": "#about-section"
             },
             {
-                "text": "PROJECTS",
+                "text": "PORTFOLIO",
                 "link": "#projects-section"
             },
             {
-                "text": "AUTOMATION",
+                "text": "TECHNOLOGY",
                 "link": "#automation-section"
             },
             {
@@ -21,10 +21,10 @@ const siteContent = {
         ]
     },
     "about": {
-        "whoWeAreTitle": "WHO WE ARE",
-        "whoWeAreText": "We are a multidisciplinary design studio redefining architectural boundaries. By merging computational design with traditional craftsmanship, we create spaces that are not just built, but calculated, optimized, and alive.",
-        "whatWeDoTitle": "WHAT WE DO",
-        "whatWeDoText": "We specialize in Digital Workflows, Project Automation, and Generative Design. From Python scripts automating Revit tasks to complex grasshopper definitions for facade optimization, we bridge the gap between code and concrete."
+        "whoWeAreTitle": "BIM SOLUTION PARTNER",
+        "whoWeAreText": "We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
+        "whatWeDoTitle": "COMPUTATIONAL DELIVERY",
+        "whatWeDoText": "We replace manual drafting with Digital Workflows and Algorithmic Auditing. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. Whether it's a high-rise facade or a hospital's MEP coordination, we use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
     },
     "projects": [
         {
@@ -71,8 +71,8 @@ const siteContent = {
         }
     ],
     "automation": {
-        "title": "DIGITAL WORKFLOWS & PROJECT AUTOMATION",
-        "description": "Custom scripts, Grasshopper definitions, and Revit API solutions.",
+        "title": "ALGORITHMIC PRECISION & R&D",
+        "description": "We don't just use software; we build tools. Our custom scripts and R&D solutions eliminate manual errors and optimize project timelines.",
         "items": [
             {
                 "images": [
@@ -109,6 +109,6 @@ const siteContent = {
     "contact": {
         "email": "hello@cosmoslab.studio",
         "phone": "+90 546 662 49 68",
-        "location": "Ankara, Turkey"
+        "location": "Global Service / Based in Ankara"
     }
 };

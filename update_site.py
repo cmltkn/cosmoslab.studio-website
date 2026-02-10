@@ -19,13 +19,11 @@ STATIC_DATA = {
         ]
     },
    "about": {
-        "whoWeAreTitle": "WHO WE ARE",  # Ana Başlık sabit kaldı
-        # Metnin en başına kalın harflerle veya büyük harflerle vurguyu ekliyoruz:
-        "whoWeAreText": "BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.<br><br> We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
+        "whoWeAreTitle": "WHO WE ARE",
+        "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
         
-        "whatWeDoTitle": "WHAT WE DO", # Ana Başlık sabit kaldı
-        # Yine metnin girişinde teknik vurguyu yapıyoruz:
-        "whatWeDoText": "COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.<br><br> We replace manual drafting with Digital Workflows and Algorithmic Auditing. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. Whether it's a high-rise facade or a hospital's MEP coordination, we use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
+        "whatWeDoTitle": "WHAT WE DO",
+        "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
     },
     "automation_info": {
         "title": "ALGORITHMIC PRECISION & R&D", # Teknoloji bölümünün başlığı

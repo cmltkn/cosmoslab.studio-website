@@ -69,7 +69,12 @@
     line-height: 1.6; 
     margin-bottom: 1.5rem; 
 }
-        
+	        /* Paragraf içindeki kalın (bold) yerleri hedefle */
+	p b, p strong {
+	    color: #cccccc;      /* Rengi BEMBEYAZ yap */
+	    font-weight: 900;    /* En yüksek kalınlığa zorla */
+	    letter-spacing: 1px; /* Harfleri çok hafif aç, başlık gibi dursun */
+}
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
         /* --- SLIDER --- */

@@ -21,10 +21,10 @@ const siteContent = {
         ]
     },
     "about": {
-        "whoWeAreTitle": "BIM SOLUTION PARTNER",
-        "whoWeAreText": "We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
-        "whatWeDoTitle": "COMPUTATIONAL DELIVERY",
-        "whatWeDoText": "We replace manual drafting with Digital Workflows and Algorithmic Auditing. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. Whether it's a high-rise facade or a hospital's MEP coordination, we use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
+        "whoWeAreTitle": "WHO WE ARE",
+        "whoWeAreText": "BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP. We are not just architects; we are the technical backbone of complex construction projects. Acting as your strategic partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400).",
+        "whatWeDoTitle": "WHAT WE DO",
+        "whatWeDoText": "COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING. We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization using Python and Dynamo scripts to ensure speed, precision, and scalability."
     },
     "projects": [
         {

@@ -18,13 +18,14 @@ STATIC_DATA = {
             {"text": "CONTACT", "link": "#contact-section"}
         ]
     },
-    "about": {
-        # Aşağıdakiler sayfadaki büyük başlıklar:
-        "whoWeAreTitle": "BIM SOLUTION PARTNER", 
-        "whoWeAreText": "We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
+   "about": {
+        "whoWeAreTitle": "WHO WE ARE",  # Ana Başlık sabit kaldı
+        # Metnin en başına kalın harflerle veya büyük harflerle vurguyu ekliyoruz:
+        "whoWeAreText": "BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP. We are not just architects; we are the technical backbone of complex construction projects. Acting as your strategic partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400).",
         
-        "whatWeDoTitle": "COMPUTATIONAL DELIVERY",
-        "whatWeDoText": "We replace manual drafting with Digital Workflows and Algorithmic Auditing. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. Whether it's a high-rise facade or a hospital's MEP coordination, we use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
+        "whatWeDoTitle": "WHAT WE DO", # Ana Başlık sabit kaldı
+        # Yine metnin girişinde teknik vurguyu yapıyoruz:
+        "whatWeDoText": "COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING. We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization using Python and Dynamo scripts to ensure speed, precision, and scalability."
     },
     "automation_info": {
         "title": "ALGORITHMIC PRECISION & R&D", # Teknoloji bölümünün başlığı

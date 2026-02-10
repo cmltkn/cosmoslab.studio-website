@@ -228,8 +228,8 @@
             nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
         });
         document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
-        document.getElementById('who-text').innerText = siteContent.about.whoWeAreText;
-        document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
+        document.getElementById('who-text').innerHTML = siteContent.about.whoWeAreText;
+        document.getElementById('what-title').innerHTML = siteContent.about.whatWeDoTitle;
         document.getElementById('what-text').innerText = siteContent.about.whatWeDoText;
         document.getElementById('auto-title').innerText = siteContent.automation.title;
         document.getElementById('auto-desc').innerText = siteContent.automation.description;

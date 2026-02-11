@@ -22,6 +22,9 @@ STATIC_DATA = {
         "whoWeAreTitle": "WHO WE ARE",
         "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
         
+        # YENİ EKLENEN SATIR:
+        "teamDescription": "Led by two managing partners, Cosmos Lab operates with a scalable, agile team structure tailored to project demands.",
+        
         "whatWeDoTitle": "WHAT WE DO",
         "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
     },
@@ -87,12 +90,15 @@ def scan_category(category_name):
     return items
 
 def main():
-    print("--- Cosmos Lab Site Güncelleyici v5 (Final Fix) ---")
-    print(f"Çalışma Konumu: {ROOT_DIR}")
-    
+    # ... (üst satırlar aynı) ...
     print("Projeler taranıyor...")
     projects = scan_category("projects")
     
+    # --- YENİ EKLENEN KISIM (BURAYI YAPIŞTIR) ---
+    print("Ekip (Team) taranıyor...")
+    team_members = scan_category("team")
+    # ---------------------------------------------
+
     print("Otomasyonlar taranıyor...")
     automation_items = scan_category("automation")
 
@@ -100,6 +106,7 @@ def main():
         "header": STATIC_DATA["header"],
         "about": STATIC_DATA["about"],
         "projects": projects,
+        "team": team_members,  # <--- BURAYI EKLEMEYİ SAKIN UNUTMA!
         "automation": {
             "title": STATIC_DATA["automation_info"]["title"],
             "description": STATIC_DATA["automation_info"]["description"],

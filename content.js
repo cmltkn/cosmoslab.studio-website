@@ -23,6 +23,7 @@ const siteContent = {
     "about": {
         "whoWeAreTitle": "WHO WE ARE",
         "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
+        "teamDescription": "Led by two managing partners, Cosmos Lab operates with a scalable, agile team structure tailored to project demands.",
         "whatWeDoTitle": "WHAT WE DO",
         "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
     },
@@ -68,6 +69,20 @@ const siteContent = {
                 "assets/projects/06_Industrial_Projects/TECHNICAL DEPTH.png"
             ],
             "title": "INDUSTRIAL PROJECTS"
+        }
+    ],
+    "team": [
+        {
+            "images": [
+                "assets/team/01_Cemal_Tekin/01_Cemal_Tekin.png"
+            ],
+            "title": "CEMAL TEKIN"
+        },
+        {
+            "images": [
+                "assets/team/02_Sinan_Taşkesti/01_Cemal_Tekin.png"
+            ],
+            "title": "SINAN TAŞKESTI"
         }
     ],
     "automation": {

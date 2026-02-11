@@ -62,20 +62,46 @@
 
         section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
+        
         p { 
-    color: #bfbfbf;       /* İstediğin Metalik Gri Tonu */
-    font-weight: 600;     /* Yazı kalınlığını artırdık (Normalde 400'dür) */
-    max-width: 800px; 
-    line-height: 1.6; 
-    margin-bottom: 1.5rem; 
-}
-	        /* Paragraf içindeki kalın (bold) yerleri hedefle */
-	p b, p strong {
-	    color: #cccccc;      /* Rengi BEMBEYAZ yap */
-	    font-weight: 900;    /* En yüksek kalınlığa zorla */
-	    letter-spacing: 1px; /* Harfleri çok hafif aç, başlık gibi dursun */
-}
+            color: #bfbfbf;       
+            font-weight: 600;     
+            max-width: 800px; 
+            line-height: 1.6; 
+            margin-bottom: 1.5rem; 
+        }
+        /* Paragraf içindeki kalın (bold) yerleri hedefle */
+        p b, p strong {
+            color: #ffffff;      
+            font-weight: 900;    
+            letter-spacing: 1px; 
+        }
+        
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
+
+        /* --- TEAM SECTION STYLES (Buraya Taşıdık) --- */
+        .team-desc {
+            font-size: 0.85rem; color: #cccccc; font-style: italic;
+            margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
+            padding-left: 15px; max-width: 90%;
+        }
+        .team-grid {
+            display: flex; gap: 20px; flex-wrap: wrap;
+        }
+        .partner-card {
+            border: 1px solid #333; padding: 15px 20px; cursor: pointer;
+            transition: all 0.3s ease; background: #0a0a0a; min-width: 150px;
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .partner-card:hover {
+            border-color: #fff; background: #111; transform: translateY(-2px);
+        }
+        .partner-name {
+            color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;
+        }
+        .partner-role {
+            color: #cccccc; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
 
         /* --- SLIDER --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
@@ -166,7 +192,11 @@
             <div>
                 <h2 id="who-title"></h2>
                 <p id="who-text"></p>
+                
+                <div class="team-desc" id="team-desc-text"></div>
+                <div class="team-grid" id="team-container"></div>
             </div>
+
             <div>
                 <h2 id="what-title"></h2>
                 <p id="what-text"></p>
@@ -261,17 +291,6 @@
 
 
         // --- LOADER EXIT STRATEGY (OPTIMIZED v2: CONTROLLED HOLD) ---
-        // İsteklerin:
-        // - Videolara dokunma (mutlaka yüklensin + loop + autoplay kalsın)
-        // - Açılış "belirsiz" beklemesin (window.load'a bağımlı kalmasın)
-        // - Ama çok hızlı da kapanmasın: partiküller toparlansın, yazı belirginleşsin, slogan bir süre kalsın
-        //
-        // Mantık:
-        // 1) DOMContentLoaded -> çıkışı 'arm' eder (progress'i 1.0'a çeker)
-        // 2) Partiküller neredeyse oturunca (progress ~1) ve minimum süre dolunca kapanışa geçer
-        // 3) Slogan progress'e bağlı olarak belirginleşir ve bir süre ekranda kalır
-        // 4) MAX süre dolarsa her koşulda kapanır
-
         const LOADER_MIN_MS = 2600;        // En az bu kadar dursun (gözle görülsün)
         const LOADER_MAX_MS = 8000;        // En fazla bu kadar dursun (takılmayı bitir)
         const SLOGAN_AT_PROGRESS = 0.86;   // Yazı belirginleşirken sloganı aç
@@ -298,11 +317,8 @@
             }, HOLD_AFTER_SLOGAN_MS);
         }
 
-        // DOM hazır olur olmaz çıkışı arm et (kapanış buna bağlı değil ama akış başlar)
         document.addEventListener('DOMContentLoaded', armExit);
-        // Load gelirse sadece hızlandır (artık buna bağımlı değiliz)
         window.addEventListener('load', () => { targetProgress = 1.0; });
-        // En kötü senaryo: MAX süre dolunca zorla çık
         setTimeout(() => {
             armExit();
             startExitSequence(true);
@@ -355,50 +371,39 @@
             }
         }
 
-function initParticles() {
-    particlesArray = [];
-    const textWidth = ctx.measureText(mainText).width;
-    
-    // Yazıyı tam ortaya hizala
-    const startX = (canvas.width - textWidth) / 2;
-    const startY = canvas.height / 2;
-
-    ctx.fillStyle = 'white';
-    ctx.fillText(mainText, startX, startY);
-
-    // OPTİMİZASYON: Tüm ekranı değil, sadece yazının olduğu dikdörtgeni tara
-    // Font yüksekliğini tahminen alıyoruz (fontSize global değişkeninden)
-    const scanHeight = fontSize * 2; 
-    const scanY = startY - fontSize; // Yazının biraz üzerinden başla
-    
-    // Sadece gerekli alanı belleğe al
-    const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
-    
-    // Adım sayısını (step) ekran yoğunluğuna göre biraz artırabilirsin, 
-    // şu an 2. Eğer hala kasıyorsa 3 veya 4 yap.
-    const step = 2; 
-
-    for (let y = 0; y < textCoordinates.height; y += step) {
-        for (let x = 0; x < textCoordinates.width; x += step) {
-            // Alpha kanalını kontrol et (RGBA'da 4. eleman)
-            // Piksel yoğunluğunu sadece yazı alanında kontrol ediyoruz
-            const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
+        function initParticles() {
+            particlesArray = [];
+            const textWidth = ctx.measureText(mainText).width;
             
-            if (alpha > 128) {
-                if(Math.random() > 0.3) {
-                    // Koordinatları global konuma geri çevir
-                    // x + startX ve y + scanY
-                    particlesArray.push(new Particle(x + startX, y + scanY));
+            const startX = (canvas.width - textWidth) / 2;
+            const startY = canvas.height / 2;
+
+            ctx.fillStyle = 'white';
+            ctx.fillText(mainText, startX, startY);
+
+            const scanHeight = fontSize * 2; 
+            const scanY = startY - fontSize; 
+            
+            const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
+            
+            const step = 2; 
+
+            for (let y = 0; y < textCoordinates.height; y += step) {
+                for (let x = 0; x < textCoordinates.width; x += step) {
+                    const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
+                    
+                    if (alpha > 128) {
+                        if(Math.random() > 0.3) {
+                            particlesArray.push(new Particle(x + startX, y + scanY));
+                        }
+                    }
                 }
             }
         }
-    }
-}
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (loadProgress < targetProgress) loadProgress += 0.005;
 
-            // Progress'e bağlı slogan + kontrollü çıkış
             if (!exitStarted) {
                 const elapsed = performance.now() - loaderStart;
 
@@ -411,7 +416,6 @@ function initParticles() {
                 }
             }
 
-            // HIBRİT KATMAN (Gizli Destek)
             if(loadProgress > 0.5) {
                 let textOpacity = (loadProgress - 0.5) * 2;
                 if(textOpacity > 1) textOpacity = 1;
@@ -449,8 +453,6 @@ function initParticles() {
             initParticles();
         });
 
-
-
         // --- SLIDER & LIGHTBOX LOGIC ---
         let allImages = []; 
         function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
@@ -478,12 +480,42 @@ function initParticles() {
             });
             wrapper.innerHTML = originalSlides;
             
-            // Orijinal videoları hemen takibe al
             const originalVideos = wrapper.querySelectorAll('video');
             originalVideos.forEach(v => videoObserver.observe(v));
 
             setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
+
+        // --- TEAM RENDER LOGIC (BU ARTIK TEMİZ VE ÇALIŞIR) ---
+        if (siteContent.about.teamDescription) {
+             document.getElementById('team-desc-text').innerText = siteContent.about.teamDescription;
+        }
+
+        function renderTeam(containerId, teamData) {
+            const container = document.getElementById(containerId);
+            if (!teamData || teamData.length === 0) {
+                container.style.display = 'none';
+                document.getElementById('team-desc-text').style.display = 'none';
+                return;
+            }
+
+            let html = "";
+            teamData.forEach(member => {
+                let globalIndex = allImages.length;
+                if(member.images.length > 0) {
+                    member.images.forEach(img => allImages.push(img));
+                }
+
+                html += `
+                <div class="partner-card" onclick="openLightbox(${globalIndex})">
+                    <div class="partner-name">${member.title}</div>
+                    <div class="partner-role">MANAGING PARTNER</div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        renderTeam('team-container', siteContent.team);
 
         function setupInfiniteLoop(wrapper) {
             const items = Array.from(wrapper.children);
@@ -491,18 +523,16 @@ function initParticles() {
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
             
-            // --- KLON VİDEOLARI TESPİT ET VE TAKİBE AL ---
             if(firstClone.querySelector('video')) {
                 let v = firstClone.querySelector('video');
-                v.muted = true; // Mobilde sessiz şart
-                videoObserver.observe(v); // Polise bildir
+                v.muted = true;
+                videoObserver.observe(v); 
             }
             if(lastClone.querySelector('video')) {
                 let v = lastClone.querySelector('video');
                 v.muted = true;
-                videoObserver.observe(v); // Polise bildir
+                videoObserver.observe(v);
             }
-            // ---------------------------------------------
 
             wrapper.appendChild(firstClone); 
             wrapper.insertBefore(lastClone, items[0]); 

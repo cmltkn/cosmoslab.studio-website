@@ -88,20 +88,64 @@
         .team-grid {
             display: flex; gap: 20px; flex-wrap: wrap;
         }
+        /* --- TEAM SECTION STYLES (GÜNCEL) --- */
+        .team-desc {
+            font-size: 0.85rem; color: #d0d0d0; font-style: italic;
+            margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
+            padding-left: 15px; max-width: 90%;
+        }
+        .team-grid {
+            display: flex; gap: 20px; flex-wrap: wrap;
+        }
+        
+        /* Kartın Ana Yapısı */
+        /* Kartın Ana Yapısı */
         .partner-card {
             border: 1px solid #333; padding: 15px 20px; cursor: pointer;
             transition: all 0.3s ease; background: #0a0a0a; min-width: 150px;
             display: flex; flex-direction: column; gap: 5px;
+            
+            /* SİLDİKLERİMİZ: min-height ve justify-content komutlarını kaldırdık */
+            /* Böylece kart uzamaz, içeriği sarar. */
         }
+        
         .partner-card:hover {
             border-color: #fff; background: #111; transform: translateY(-2px);
         }
+        
         .partner-name {
             color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;
         }
+        
         .partner-role {
-            color: #cccccc; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+            color: #aaaaaa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
         }
+
+        /* --- ACTION BAR (Alt Çizgili Kısım) --- */
+        .card-action {
+            /* Buradaki margin-top ile çizginin ne kadar altta olacağını ayarlayabilirsin */
+            margin-top: 10px; 
+            padding-top: 10px;
+            border-top: 1px dashed #333; 
+            font-size: 0.7rem;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .card-action {
+            color: #fff;
+            border-top-color: #666;
+        }
+
+        .action-arrow { transition: transform 0.3s ease; }
+        .partner-card:hover .action-arrow { transform: translateX(5px); }
+
+        /* Ok işareti animasyonu */
+        .action-arrow { transition: transform 0.3s ease; }
+        .partner-card:hover .action-arrow { transform: translateX(5px); }
 
         /* --- SLIDER --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
@@ -506,10 +550,16 @@
                     member.images.forEach(img => allImages.push(img));
                 }
 
-                html += `
+               html += `
                 <div class="partner-card" onclick="openLightbox(${globalIndex})">
-                    <div class="partner-name">${member.title}</div>
-                    <div class="partner-role">MANAGING PARTNER</div>
+                    <div>
+                        <div class="partner-name">${member.title}</div>
+                        <div class="partner-role">MANAGING PARTNER</div>
+                    </div>
+                    <div class="card-action">
+                        <span>VIEW PROFILE</span>
+                        <span class="action-arrow">&#10142;</span>
+                    </div>
                 </div>`;
             });
             container.innerHTML = html;

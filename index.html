@@ -17,7 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-	/* LANG SWITCHER */
+        /* --- LANG SWITCHER --- */
         .lang-switch {
             position: absolute; top: 35px; right: 40px; 
             font-size: 0.8rem; font-weight: bold; cursor: pointer;
@@ -31,7 +31,7 @@
            .lang-switch { top: 20px; right: 20px; }
         }
 
-        /* --- LOADER CONTAINER (Hybrid Scenario) --- */
+        /* --- LOADER CONTAINER --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
@@ -44,21 +44,12 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* Alt slogan */
         #loader-slogan {
-            position: absolute;
-            top: calc(50% + 80px); 
-            transform: translateY(-50%);
-            font-size: 1.1rem; 
-            letter-spacing: 8px; 
-            color: #cccccc; 
-            opacity: 0; 
-            transition: opacity 0.8s ease-out;
-            text-transform: uppercase;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            width: 100%;
-            font-weight: bold;
+            position: absolute; top: calc(50% + 80px); transform: translateY(-50%);
+            font-size: 1.1rem; letter-spacing: 8px; color: #cccccc; opacity: 0; 
+            transition: opacity 0.8s ease-out; text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace; text-align: center;
+            width: 100%; font-weight: bold;
         }
         
         .loaded #loader-container { opacity: 0; pointer-events: none; }
@@ -77,78 +68,33 @@
         section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
         
-        p { 
-            color: #bfbfbf;       
-            font-weight: 600;     
-            max-width: 800px; 
-            line-height: 1.6; 
-            margin-bottom: 1.5rem; 
-        }
-        /* Paragraf içindeki kalın (bold) yerleri hedefle */
-        p b, p strong {
-            color: #ffffff;      
-            font-weight: 900;    
-            letter-spacing: 1px; 
-        }
+        p { color: #bfbfbf; font-weight: 600; max-width: 800px; line-height: 1.6; margin-bottom: 1.5rem; }
+        p b, p strong { color: #ffffff; font-weight: 900; letter-spacing: 1px; }
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- TEAM SECTION STYLES (GÜNCEL) --- */
+        /* --- TEAM SECTION STYLES --- */
         .team-desc {
             font-size: 0.85rem; color: #d0d0d0; font-style: italic;
             margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
             padding-left: 15px; max-width: 90%;
         }
-        .team-grid {
-            display: flex; gap: 20px; flex-wrap: wrap;
-        }
+        .team-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         
-        /* Kartın Ana Yapısı */
-        /* Kartın Ana Yapısı */
         .partner-card {
             border: 1px solid #333; padding: 15px 20px; cursor: pointer;
             transition: all 0.3s ease; background: #0a0a0a; min-width: 150px;
             display: flex; flex-direction: column; gap: 5px;
-            
-            /* SİLDİKLERİMİZ: min-height ve justify-content komutlarını kaldırdık */
-            /* Böylece kart uzamaz, içeriği sarar. */
         }
-        
-        .partner-card:hover {
-            border-color: #fff; background: #111; transform: translateY(-2px);
-        }
-        
-        .partner-name {
-            color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px;
-        }
-        
-        .partner-role {
-            color: #aaaaaa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        .partner-card:hover { border-color: #fff; background: #111; transform: translateY(-2px); }
+        .partner-name { color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; }
+        .partner-role { color: #aaaaaa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- ACTION BAR (Alt Çizgili Kısım) --- */
         .card-action {
-            /* Buradaki margin-top ile çizginin ne kadar altta olacağını ayarlayabilirsin */
-            margin-top: 10px; 
-            padding-top: 10px;
-            border-top: 1px dashed #333; 
-            font-size: 0.7rem;
-            color: #555;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
+            margin-top: 10px; padding-top: 10px; border-top: 1px dashed #333; 
+            font-size: 0.7rem; color: #555; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;
         }
-
-        .partner-card:hover .card-action {
-            color: #fff;
-            border-top-color: #666;
-        }
-
-        .action-arrow { transition: transform 0.3s ease; }
-        .partner-card:hover .action-arrow { transform: translateX(5px); }
-
-        /* Ok işareti animasyonu */
+        .partner-card:hover .card-action { color: #fff; border-top-color: #666; }
         .action-arrow { transition: transform 0.3s ease; }
         .partner-card:hover .action-arrow { transform: translateX(5px); }
 
@@ -156,40 +102,27 @@
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
-        
         .slide-item { 
-            min-width: 700px; display: flex; flex-direction: column;
-            position: relative; cursor: pointer; border: 1px solid #333; background: #000;
-            transition: border-color 0.3s; flex-shrink: 0; 
-            scroll-snap-align: start; scroll-snap-stop: always;
+            min-width: 700px; display: flex; flex-direction: column; position: relative; cursor: pointer; border: 1px solid #333; background: #000;
+            transition: border-color 0.3s; flex-shrink: 0; scroll-snap-align: start; scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
-        
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
-        /* KART TASARIMI */
         .caption { 
-            width: 100%; background: #121212; padding: 18px 22px; 
-            box-sizing: border-box; border-top: 1px solid #222;
+            width: 100%; background: #121212; padding: 18px 22px; box-sizing: border-box; border-top: 1px solid #222;
             display: flex; flex-direction: column; gap: 6px; text-align: left;
         }
         .caption div:first-child { 
-            color: #cccccc; font-size: 0.95rem; font-weight: 600; 
-            letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
-            white-space: normal; word-wrap: break-word; overflow-wrap: break-word;
+            color: #cccccc; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
         }
-        .caption span { 
-            font-size: 0.75rem !important; color: #555 !important;
-            font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; 
-        }
+        .caption span { font-size: 0.75rem !important; color: #555 !important; font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; }
         .slide-item:hover .caption div:first-child { color: #fff; }
         .slide-item:hover .caption { border-top-color: #444; background: #161616; }
 
         .slider-btn { 
-            position: absolute; top: 250px; transform: translateY(-50%); 
-            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
-            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
-            font-size: 24px; display: flex; align-items: center; justify-content: center;
+            position: absolute; top: 250px; transform: translateY(-50%); background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
+            width: 50px; height: 50px; cursor: pointer; z-index: 50; font-size: 24px; display: flex; align-items: center; justify-content: center;
         }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
@@ -208,7 +141,6 @@
         .rotate-mode .lb-prev-arrow { top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
         .rotate-mode .lb-next-arrow { top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
 
-        /* MOBİL UYUMLULUK */
         @media (max-width: 768px) { 
             header { padding: 1.5rem 1rem; width: 100%; flex-direction: column; align-items: flex-start; gap: 15px; }
             nav { display: flex; flex-wrap: wrap; width: 100%; justify-content: flex-start; gap: 15px 20px; }
@@ -233,8 +165,7 @@
 
     <header>
         <div class="logo" id="logo">COSMOS.LAB</div>
-        <nav id="menu">
-            </nav>
+        <nav id="menu"></nav>
         
         <div class="lang-switch">
             <span onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</span>
@@ -295,270 +226,123 @@
         </div>
     </div>
 
-    <script src="content.js"></script>
     <script>
-        // --- GLOBAL VIDEO OBSERVER (POLİS) ---
-        // Bu observer, oluşturulan HER videoyu (klonlar dahil) izler.
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
-                    // Zorla Oynat
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            video.muted = true;
-                            video.play();
-                        });
-                    }
-                } else {
-                    // Ekrandan çıkınca durdur (Performans)
-                    entry.target.pause();
-                }
-            });
-        }, { threshold: 0.1 }); // %10 görünmesi yeterli
+        document.write('<script src="content.js?v=' + new Date().getTime() + '"><\/script>');
+    </script>
 
-        // --- MULTI-LANGUAGE LOGIC ---
-        let currentLang = localStorage.getItem('siteLang') || 'en'; // Son seçilen dili hatırla
+    <script>
+        // --- MULTI-LANGUAGE LOGIC (GÜVENLİ MOD) ---
+        let currentLang = 'en';
+        
+        // Hata Korumalı LocalStorage
+        try {
+            currentLang = localStorage.getItem('siteLang') || 'en';
+        } catch (e) {
+            console.warn("LocalStorage erişilemedi, varsayılan dil kullanılıyor.");
+        }
 
         function setLanguage(lang) {
-            if(!siteContent[lang]) return; // O dil yoksa yapma
+            // Veri yoksa veya zaten o dildeysek işlem yapma (Hata koruması eklendi)
+            if(typeof siteContent === 'undefined' || !siteContent[lang]) {
+                console.error("HATA: " + lang + " dili için veri bulunamadı.");
+                return;
+            }
+            if(lang === currentLang && document.body.classList.contains('loaded')) return;
+            
             currentLang = lang;
-            localStorage.setItem('siteLang', lang); // Kaydet
-            renderPage(); // Sayfayı yenilemeden içeriği bas
+            try {
+                localStorage.setItem('siteLang', lang); 
+            } catch(e) {}
+            
+            renderPage(); 
         }
 
         function renderPage() {
-            const data = siteContent[currentLang]; // İlgili dilin verisini çek
+            // Hata Koruması: Veri dosyası yüklenmediyse siteyi kilitleme, log bas
+            if (typeof siteContent === 'undefined') {
+                console.error("KRİTİK HATA: content.js yüklenemedi!");
+                return;
+            }
             
-            // 1. Dil Butonlarını Güncelle
+            const data = siteContent[currentLang]; 
+            if (!data) return;
+
+            // 1. UI Güncellemeleri
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + currentLang);
             if(activeBtn) activeBtn.classList.add('active');
 
-            // 2. Header & Menü
-            document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB";
-            const nav = document.getElementById('menu');
-            nav.innerHTML = "";
-            data.header.menu.forEach(item => {
-                nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
-            });
-
-            // 3. About Kısmı
-            document.getElementById('who-title').innerText = data.about.whoWeAreTitle;
-            document.getElementById('who-text').innerHTML = data.about.whoWeAreText;
-            document.getElementById('what-title').innerText = data.about.whatWeDoTitle;
-            document.getElementById('what-text').innerHTML = data.about.whatWeDoText;
-            
-            // Team Açıklaması
-            if(data.about.teamDescription) {
-                 document.getElementById('team-desc-text').innerText = data.about.teamDescription;
-                 document.getElementById('team-desc-text').style.display = 'block';
-            }
-
-            // 4. Automation & Contact
-            document.getElementById('auto-title').innerText = data.automation.title;
-            document.getElementById('auto-desc').innerText = data.automation.description;
-            
-            document.getElementById('contact-info').innerHTML = `
-                ${data.contact.email}<br>
-                ${data.contact.phone}<br>
-                ${data.contact.location}
-            `;
-            
-            // Section Başlıkları (Manuel güncelleme gerekebilir veya JSON'a eklenebilir)
-            document.querySelector('#projects-section h2').innerText = data.ui.selectedProjects || "SELECTED PROJECTS";
-
-            // 5. Sliderları Yeniden Render Et
-            renderSlider('project-slider', data.projects);
-            renderSlider('auto-slider', data.automation.items);
-            renderTeam('team-container', data.team, data.ui);
-        }
-        
-        // İlk Açılış
-        renderPage();
-
-        // --- PARTICLE TEXT LOADER (SCENARIO 3: HYBRID LAYER) ---
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        let particlesArray = [];
-        let loadProgress = 0.0;
-        let targetProgress = 0.0;
-        let mainText = "COSMOS.LAB STUDIO";
-
-
-        // --- LOADER EXIT STRATEGY (OPTIMIZED v2: CONTROLLED HOLD) ---
-        const LOADER_MIN_MS = 2600;        // En az bu kadar dursun (gözle görülsün)
-        const LOADER_MAX_MS = 8000;        // En fazla bu kadar dursun (takılmayı bitir)
-        const SLOGAN_AT_PROGRESS = 0.86;   // Yazı belirginleşirken sloganı aç
-        const EXIT_AT_PROGRESS = 0.985;    // Partiküller oturunca kapanışa izin ver
-        const HOLD_AFTER_SLOGAN_MS = 1400; // Slogan ekranda kalsın
-
-        const loaderStart = performance.now();
-        let exitArmed = false;
-        let exitStarted = false;
-
-        function armExit() {
-            if (exitArmed) return;
-            exitArmed = true;
-            clearInterval(simulationInterval);
-            targetProgress = 1.0;
-        }
-
-        function startExitSequence(force) {
-            if (exitStarted) return;
-            exitStarted = true;
-            document.body.classList.add('slogan-visible');
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-            }, HOLD_AFTER_SLOGAN_MS);
-        }
-
-        document.addEventListener('DOMContentLoaded', armExit);
-        window.addEventListener('load', () => { targetProgress = 1.0; });
-        setTimeout(() => {
-            armExit();
-            startExitSequence(true);
-        }, LOADER_MAX_MS);
-
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        setCanvasSize();
-
-        const fontSize = Math.min(window.innerWidth / 12, 80); 
-        const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
-        ctx.font = fontSettings;
-        
-        class Particle {
-            constructor(targetX, targetY) {
-                this.targetX = targetX;
-                this.targetY = targetY;
-                const angle = Math.random() * Math.PI * 2; 
-                const radius = Math.random() * (canvas.width * 0.8); 
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                this.x = centerX + Math.cos(angle) * radius;
-                this.y = centerY + Math.sin(angle) * radius;
-                this.size = Math.random() * 1.5 + 0.5; 
-                this.baseOpacity = Math.random() * 0.6 + 0.4; 
-            }
-            draw() {
-                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
-                if(loadProgress > 0.95) currentOpacity = 1.0;
-                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
-                ctx.beginPath();
-                ctx.rect(this.x, this.y, this.size, this.size);
-                ctx.closePath();
-                ctx.fill();
-            }
-            update() {
-                const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
-                let dx = this.targetX - this.x;
-                let dy = this.targetY - this.y;
-                let speed = 0.04 + (loadProgress * 0.1);
-                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) {
-                    this.x = this.targetX;
-                    this.y = this.targetY;
-                } else {
-                    this.x += dx * speed;
-                    this.y += dy * speed;
-                }
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            const textWidth = ctx.measureText(mainText).width;
-            
-            const startX = (canvas.width - textWidth) / 2;
-            const startY = canvas.height / 2;
-
-            ctx.fillStyle = 'white';
-            ctx.fillText(mainText, startX, startY);
-
-            const scanHeight = fontSize * 2; 
-            const scanY = startY - fontSize; 
-            
-            const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
-            
-            const step = 2; 
-
-            for (let y = 0; y < textCoordinates.height; y += step) {
-                for (let x = 0; x < textCoordinates.width; x += step) {
-                    const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
-                    
-                    if (alpha > 128) {
-                        if(Math.random() > 0.3) {
-                            particlesArray.push(new Particle(x + startX, y + scanY));
-                        }
-                    }
-                }
-            }
-        }
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (loadProgress < targetProgress) loadProgress += 0.005;
-
-            if (!exitStarted) {
-                const elapsed = performance.now() - loaderStart;
-
-                if (loadProgress >= SLOGAN_AT_PROGRESS) {
-                    document.body.classList.add('slogan-visible');
-                }
-
-                if (exitArmed && elapsed >= LOADER_MIN_MS && loadProgress >= EXIT_AT_PROGRESS) {
-                    startExitSequence(false);
+            if(data.header) {
+                document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB";
+                const nav = document.getElementById('menu');
+                nav.innerHTML = "";
+                if(data.header.menu) {
+                    data.header.menu.forEach(item => {
+                        nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
+                    });
                 }
             }
 
-            if(loadProgress > 0.5) {
-                let textOpacity = (loadProgress - 0.5) * 2;
-                if(textOpacity > 1) textOpacity = 1;
-                ctx.save();
-                ctx.globalAlpha = textOpacity;
-                ctx.fillStyle = '#FFFFFF';
-                const textWidth = ctx.measureText(mainText).width;
-                const startX = (canvas.width - textWidth) / 2;
-                const startY = canvas.height / 2;
-                ctx.fillText(mainText, startX, startY);
-                ctx.restore();
+            if(data.about) {
+                document.getElementById('who-title').innerText = data.about.whoWeAreTitle || "";
+                document.getElementById('who-text').innerHTML = data.about.whoWeAreText || "";
+                document.getElementById('what-title').innerText = data.about.whatWeDoTitle || "";
+                document.getElementById('what-text').innerHTML = data.about.whatWeDoText || "";
+                
+                if(data.about.teamDescription) {
+                     const tDesc = document.getElementById('team-desc-text');
+                     tDesc.innerText = data.about.teamDescription;
+                     tDesc.style.display = 'block';
+                }
             }
 
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
+            if(data.automation) {
+                document.getElementById('auto-title').innerText = data.automation.title || "";
+                document.getElementById('auto-desc').innerText = data.automation.description || "";
             }
             
-            if (!document.body.classList.contains('loaded')) {
-                requestAnimationFrame(animateParticles);
+            if(data.contact) {
+                document.getElementById('contact-info').innerHTML = `
+                    ${data.contact.email}<br>
+                    ${data.contact.phone}<br>
+                    ${data.contact.location}
+                `;
             }
+            
+            const projHeader = document.querySelector('#projects-section h2');
+            if(data.ui && data.ui.selectedProjects) projHeader.innerText = data.ui.selectedProjects;
+
+            // 2. Dinamik İçerikler
+            renderSlider('project-slider', data.projects || []);
+            renderSlider('auto-slider', data.automation ? data.automation.items : []);
+            renderTeam('team-container', data.team || [], data.ui);
         }
 
-        initParticles();
-        animateParticles();
-
-        let simulationInterval = setInterval(() => {
-            if(targetProgress < 0.6) targetProgress += 0.01;
-        }, 50);
-
-        window.addEventListener('resize', () => {
-            setCanvasSize();
-            const newFontSize = Math.min(window.innerWidth / 12, 80); 
-            ctx.font = `900 ${newFontSize}px 'Courier New', monospace`;
-            initParticles();
-        });
-
-        // --- SLIDER & LIGHTBOX LOGIC ---
+        // --- RENDER FUNCTIONS ---
         let allImages = []; 
-        function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
-        function isMobile() { return window.innerWidth <= 768; }
+        function isVideo(url) { return url && (url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm')); }
+        
+        // Video Observer
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) { playPromise.catch(error => { video.muted = true; video.play(); }); }
+                } else { entry.target.pause(); }
+            });
+        }, { threshold: 0.1 });
 
         function renderSlider(wrapperId, dataItems) {
             const wrapper = document.getElementById(wrapperId);
+            if(!wrapper) return;
+            wrapper.innerHTML = ""; 
+            if(!dataItems) return;
+            
             let originalSlides = "";
             dataItems.forEach((item) => {
+                if(!item.images || item.images.length === 0) return;
+                
                 let globalIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
                 const firstMedia = item.images[0];
@@ -576,16 +360,9 @@
                     </div>`;
             });
             wrapper.innerHTML = originalSlides;
-            
             const originalVideos = wrapper.querySelectorAll('video');
             originalVideos.forEach(v => videoObserver.observe(v));
-
-            setTimeout(() => setupInfiniteLoop(wrapper), 100);
-        }
-
-        // --- TEAM RENDER LOGIC (BU ARTIK TEMİZ VE ÇALIŞIR) ---
-        if (siteContent.about.teamDescription) {
-             document.getElementById('team-desc-text').innerText = siteContent.about.teamDescription;
+            if(dataItems.length > 0) setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
 
         function renderTeam(containerId, teamData, uiLabels) {
@@ -595,17 +372,15 @@
                 document.getElementById('team-desc-text').style.display = 'none';
                 return;
             }
+            container.style.display = 'flex';
 
-            // Eğer uiLabels gelmezse (hata önleyici) varsayılan İngilizce olsun
             const roleText = uiLabels ? uiLabels.managingPartner : "MANAGING PARTNER";
             const viewText = uiLabels ? uiLabels.viewProfile : "VIEW PROFILE";
 
             let html = "";
             teamData.forEach(member => {
                 let globalIndex = allImages.length;
-                if(member.images.length > 0) {
-                    member.images.forEach(img => allImages.push(img));
-                }
+                if(member.images && member.images.length > 0) { member.images.forEach(img => allImages.push(img)); }
 
                html += `
                 <div class="partner-card" onclick="openLightbox(${globalIndex})">
@@ -622,77 +397,158 @@
             container.innerHTML = html;
         }
 
-
         function setupInfiniteLoop(wrapper) {
             const items = Array.from(wrapper.children);
             if(items.length < 2) return; 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
-            
-            if(firstClone.querySelector('video')) {
-                let v = firstClone.querySelector('video');
-                v.muted = true;
-                videoObserver.observe(v); 
-            }
-            if(lastClone.querySelector('video')) {
-                let v = lastClone.querySelector('video');
-                v.muted = true;
-                videoObserver.observe(v);
-            }
-
-            wrapper.appendChild(firstClone); 
-            wrapper.insertBefore(lastClone, items[0]); 
-            const itemWidth = items[0].offsetWidth + 20; 
-            wrapper.scrollLeft = itemWidth;
+            if(firstClone.querySelector('video')) { let v = firstClone.querySelector('video'); v.muted = true; videoObserver.observe(v); }
+            if(lastClone.querySelector('video')) { let v = lastClone.querySelector('video'); v.muted = true; videoObserver.observe(v); }
+            wrapper.appendChild(firstClone); wrapper.insertBefore(lastClone, items[0]); 
+            const itemWidth = items[0].offsetWidth + 20; wrapper.scrollLeft = itemWidth;
             wrapper.addEventListener('scroll', () => {
-                const scrollLeft = wrapper.scrollLeft;
-                const scrollWidth = wrapper.scrollWidth;
-                const clientWidth = wrapper.clientWidth;
+                const scrollLeft = wrapper.scrollLeft; const scrollWidth = wrapper.scrollWidth; const clientWidth = wrapper.clientWidth;
                 if (scrollLeft >= scrollWidth - clientWidth - 5) wrapper.scrollLeft = itemWidth; 
                 if (scrollLeft <= 0) wrapper.scrollLeft = scrollWidth - (2 * clientWidth) + 10; 
             });
         }
-
         function manualScroll(wrapperId, direction) {
             const wrapper = document.getElementById(wrapperId);
             const itemWidth = wrapper.querySelector('.slide-item').offsetWidth + 20;
             wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
         }
 
-        // --- PRO LIGHTBOX LOGIC ---
+        // --- LOADER & PARTICLES ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        let particlesArray = [];
+        let loadProgress = 0.0;
+        let targetProgress = 0.0;
+        let mainText = "COSMOS.LAB STUDIO";
+
+        const LOADER_MIN_MS = 2600; const LOADER_MAX_MS = 8000;
+        const SLOGAN_AT_PROGRESS = 0.86; const EXIT_AT_PROGRESS = 0.985; const HOLD_AFTER_SLOGAN_MS = 1400;
+        const loaderStart = performance.now();
+        let exitArmed = false; let exitStarted = false;
+
+        function armExit() {
+            if (exitArmed) return;
+            exitArmed = true; clearInterval(simulationInterval); targetProgress = 1.0;
+        }
+        function startExitSequence(force) {
+            if (exitStarted) return;
+            exitStarted = true;
+            document.body.classList.add('slogan-visible');
+            
+            // Render sayfasını burada güvenli bir şekilde çağırıyoruz
+            try {
+                renderPage();
+            } catch(e) {
+                console.error("Render hatası:", e);
+            }
+            
+            setTimeout(() => { document.body.classList.add('loaded'); }, HOLD_AFTER_SLOGAN_MS);
+        }
+
+        document.addEventListener('DOMContentLoaded', armExit);
+        window.addEventListener('load', () => { targetProgress = 1.0; });
+        
+        // ACİL ÇIKIŞ: Eğer 4 saniye içinde bir şey olmazsa siteyi zorla aç
+        setTimeout(() => {
+            if(!exitStarted) {
+                console.log("Acil çıkış tetiklendi");
+                armExit();
+                startExitSequence(true);
+            }
+        }, 4000);
+
+        function setCanvasSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        setCanvasSize();
+        const fontSize = Math.min(window.innerWidth / 12, 80); 
+        ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
+        
+        class Particle {
+            constructor(targetX, targetY) {
+                this.targetX = targetX; this.targetY = targetY;
+                const angle = Math.random() * Math.PI * 2; const radius = Math.random() * (canvas.width * 0.8); 
+                const centerX = canvas.width / 2; const centerY = canvas.height / 2;
+                this.x = centerX + Math.cos(angle) * radius; this.y = centerY + Math.sin(angle) * radius;
+                this.size = Math.random() * 1.5 + 0.5; this.baseOpacity = Math.random() * 0.6 + 0.4; 
+            }
+            draw() {
+                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
+                if(loadProgress > 0.95) currentOpacity = 1.0;
+                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
+                ctx.beginPath(); ctx.rect(this.x, this.y, this.size, this.size); ctx.closePath(); ctx.fill();
+            }
+            update() {
+                const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
+                let dx = this.targetX - this.x; let dy = this.targetY - this.y;
+                let speed = 0.04 + (loadProgress * 0.1);
+                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) { this.x = this.targetX; this.y = this.targetY; } 
+                else { this.x += dx * speed; this.y += dy * speed; }
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            const textWidth = ctx.measureText(mainText).width;
+            const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2;
+            ctx.fillStyle = 'white'; ctx.fillText(mainText, startX, startY);
+            const scanHeight = fontSize * 2; const scanY = startY - fontSize; 
+            const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
+            const step = 2; 
+            for (let y = 0; y < textCoordinates.height; y += step) {
+                for (let x = 0; x < textCoordinates.width; x += step) {
+                    const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
+                    if (alpha > 128) { if(Math.random() > 0.3) { particlesArray.push(new Particle(x + startX, y + scanY)); } }
+                }
+            }
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (loadProgress < targetProgress) loadProgress += 0.005;
+            if (!exitStarted) {
+                const elapsed = performance.now() - loaderStart;
+                if (loadProgress >= SLOGAN_AT_PROGRESS) { document.body.classList.add('slogan-visible'); }
+                if (exitArmed && elapsed >= LOADER_MIN_MS && loadProgress >= EXIT_AT_PROGRESS) { startExitSequence(false); }
+            }
+            if(loadProgress > 0.5) {
+                let textOpacity = (loadProgress - 0.5) * 2; if(textOpacity > 1) textOpacity = 1;
+                ctx.save(); ctx.globalAlpha = textOpacity; ctx.fillStyle = '#FFFFFF';
+                const textWidth = ctx.measureText(mainText).width;
+                const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2;
+                ctx.fillText(mainText, startX, startY); ctx.restore();
+            }
+            for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); particlesArray[i].draw(); }
+            if (!document.body.classList.contains('loaded')) { requestAnimationFrame(animateParticles); }
+        }
+        initParticles(); animateParticles();
+        let simulationInterval = setInterval(() => { if(targetProgress < 0.6) targetProgress += 0.01; }, 50);
+        window.addEventListener('resize', () => {
+            setCanvasSize(); const newFontSize = Math.min(window.innerWidth / 12, 80); 
+            ctx.font = `900 ${newFontSize}px 'Courier New', monospace`; initParticles();
+        });
+
+        // --- LIGHTBOX ---
         let currentIndex = 0;
-        const lb = document.getElementById('lightbox');
-        const lbStage = document.getElementById('lb-stage');
-        const lbCounter = document.getElementById('lb-counter');
-        const lbUi = document.getElementById('lb-ui');
+        const lb = document.getElementById('lightbox'); const lbStage = document.getElementById('lb-stage');
+        const lbCounter = document.getElementById('lb-counter'); const lbUi = document.getElementById('lb-ui');
         const rotateBtn = document.getElementById('rotate-btn');
         let state = { scale: 1, x: 0, y: 0, rotate: false };
 
-        function openLightbox(index) {
-            currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey);
-        }
-        function closeLightbox() {
-            lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey);
-        }
-        function changeSlide(step) {
-            currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1;
-            renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform();
-        }
+        function openLightbox(index) { currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey); }
+        function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey); }
+        function changeSlide(step) { currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1; renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
         function renderLightboxContent() {
             const currentUrl = allImages[currentIndex]; let contentHTML = "";
             if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } 
             else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; }
             lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
-            const media = lbStage.querySelector('.lb-main-media');
-            if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); }
+            const media = lbStage.querySelector('.lb-main-media'); if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); }
         }
         function resetState() { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-        function toggleRotationMode() {
-            state.rotate = !state.rotate;
-            if (state.rotate) { rotateBtn.classList.add('active'); lbUi.classList.add('rotate-mode'); } 
-            else { rotateBtn.classList.remove('active'); lbUi.classList.remove('rotate-mode'); }
-            state.scale = 1; state.x = 0; state.y = 0; applyTransform();
-        }
+        function toggleRotationMode() { state.rotate = !state.rotate; if (state.rotate) { rotateBtn.classList.add('active'); lbUi.classList.add('rotate-mode'); } else { rotateBtn.classList.remove('active'); lbUi.classList.remove('rotate-mode'); } state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
         function applyTransform() {
             const media = lbStage.querySelector('.lb-main-media'); if(!media) return;
             let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;

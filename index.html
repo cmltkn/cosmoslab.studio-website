@@ -178,19 +178,36 @@
         .rotate-mode .lb-prev-arrow { top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
         .rotate-mode .lb-next-arrow { top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
 
-        @media (max-width: 768px) { 
-            header { padding: 1.5rem 1rem; width: 100%; flex-direction: column; align-items: flex-start; gap: 15px; }
-            .header-right { width: 100%; justify-content: space-between; }
-            nav { display: flex; flex-wrap: wrap; width: 100%; justify-content: flex-start; gap: 15px 20px; }
-            nav a { margin-left: 0; margin-right: 10px; font-size: 0.8rem; }
-            section { max-width: 90%; } 
-            .info-grid { grid-template-columns: 1fr; gap: 30px; }
-            .slide-item { min-width: 90vw; width: 90vw; margin-right: 15px; } 
-            .slide-media { height: 300px; }
-            .slider-btn { display: none; }
-            .rotate-btn { display: flex; }
-            .lb-arrow { font-size: 30px; padding: 15px; }
-            #loader-slogan { top: calc(50% + 55px); font-size: 0.85rem; letter-spacing: 4px; }
+        @media (max-width: 900px) {
+            /* Header dikey yerleşime geçiyor */
+            header { 
+                padding: 1.5rem 1rem; 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 20px; /* Menü ile üst kısım arasına biraz boşluk */
+                position: sticky; /* Sabit kalması için (zaten var ama garanti olsun) */
+            }
+
+            /* --- KRİTİK HAMLE: Dil Seçiciyi Sağ Üst Köşeye Çivile --- */
+            .lang-switch {
+                position: absolute; /* Normal akıştan çıkar */
+                top: 2rem;          /* Üstten boşluk (Logonun hizasına gelmesi için) */
+                right: 1rem;        /* Sağdan boşluk */
+                border-left: none;  /* Solundaki çizgiyi kaldır */
+                padding-left: 0;
+            }
+
+            /* Menü Alanı */
+            .header-right { 
+                width: 100%; 
+                justify-content: flex-start; /* Sola yasla */
+                margin-top: 5px; /* Dil butonu aradan çıkınca menüyü biraz yukarı alabiliriz */
+            }
+            
+            nav { 
+                gap: 15px 20px; /* Satır ve sütun boşlukları */
+                flex-wrap: wrap; 
+            }
         }
     </style>
 </head>

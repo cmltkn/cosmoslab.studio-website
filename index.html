@@ -225,6 +225,63 @@
             /* Team Grid Mobilde de Yan Yana Kalsın (İstersen burayı da 1fr yapabilirsin) */
             .team-grid { gap: 15px; } 
         }
+
+	/* --- ARAPÇA (RTL) ÖZEL AYARLARI --- */
+        /* Bu ayarlar sadece html etiketinde dir="rtl" varsa çalışır */
+        
+        html[dir="rtl"] body {
+            font-family: 'Tahoma', 'Courier New', sans-serif; /* Arapça uyumlu font */
+        }
+
+        /* 1. Başlıkların Çizgisini Sağa Al */
+        html[dir="rtl"] h2 {
+            border-left: none;       /* Soldaki çizgiyi kaldır */
+            border-right: 4px solid #fff; /* Sağa çizgi ekle */
+            padding-left: 0;
+            padding-right: 20px;     /* Boşluğu sağa ver */
+        }
+
+        /* 2. Partner ve Ekip Açıklamaları Çizgisi */
+        html[dir="rtl"] .team-desc {
+            border-left: none;
+            border-right: 3px solid #333;
+            padding-left: 0;
+            padding-right: 15px;
+        }
+
+        /* 3. Dil Seçici Çizgisi */
+        html[dir="rtl"] .lang-switch {
+            border-left: none;
+            border-right: 1px solid #444;
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        /* 4. Slider Kart Yazıları */
+        html[dir="rtl"] .caption {
+            text-align: right; /* Yazıyı sağa yasla */
+        }
+
+        /* 5. Ok İşaretlerini Çevir (Partner Kartı) */
+        html[dir="rtl"] .action-arrow {
+            transform: rotate(180deg); /* Oku ters çevir */
+        }
+        html[dir="rtl"] .partner-card:hover .action-arrow {
+            transform: translateX(-5px) rotate(180deg); /* Sola doğru hareket etsin */
+        }
+        
+        /* 6. Mobil Menü Hizalaması */
+        @media (max-width: 900px) {
+            html[dir="rtl"] header {
+                align-items: flex-end; /* Mobilde sağa yasla */
+            }
+            html[dir="rtl"] .lang-switch {
+                right: auto;
+                left: 1rem; /* Dil kutusunu sola al */
+                border-right: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -240,8 +297,12 @@
             <nav id="menu"></nav>
             <div class="lang-switch">
                 <span onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</span>
-                <span style="color:#333">/</span>
+                <span style="color:#555">/</span>
                 <span onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</span>
+                <span style="color:#555">/</span>
+                <span onclick="setLanguage('ru')" class="lang-btn" id="btn-ru">RU</span>
+                <span style="color:#555">/</span>
+                <span onclick="setLanguage('ar')" class="lang-btn" id="btn-ar">AR</span>
             </div>
         </div>
     </header>
@@ -304,8 +365,21 @@
 
         function setLanguage(lang) {
             if(typeof siteContent === 'undefined' || !siteContent[lang]) return;
+            
             currentLang = lang;
             try { localStorage.setItem('siteLang', lang); } catch(e) {}
+
+            // --- YENİ EKLENEN KISIM: RTL/LTR KONTROLÜ ---
+            const htmlTag = document.documentElement;
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+                htmlTag.setAttribute('lang', 'ar');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                htmlTag.setAttribute('lang', lang);
+            }
+            // ---------------------------------------------
+            
             renderPage();
         }
 

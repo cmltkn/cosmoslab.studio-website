@@ -1,31 +1,31 @@
 {
-    "header": {
-        "menu": [
-            {"text": "VISION", "link": "#about-section"},
-            {"text": "PORTFOLIO", "link": "#projects-section"},
-            {"text": "TECHNOLOGY", "link": "#automation-section"},
-            {"text": "CONTACT", "link": "#contact-section"}
-        ]
-    },
-    "about": {
-        "whoWeAreTitle": "WHO WE ARE",
-        "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
-        "teamDescription": "Led by two managing partners, Cosmos Lab operates with a scalable, agile team structure tailored to project demands.",
-        "whatWeDoTitle": "WHAT WE DO",
-        "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
-    },
-    "automation_info": {
-        "title": "ALGORITHMIC PRECISION & R&D",
-        "description": "We don't just use software; we build tools. Our custom scripts and R&D solutions eliminate manual errors and optimize project timelines."
-    },
-    "contact": {
-        "email": "hello@cosmoslab.studio",
-        "phone": "+90 546 662 49 68",
-        "location": "Global Service / Based in Ankara, Türkiye"
-    },
-    "ui": {
-        "viewProfile": "VIEW PROFILE",
-        "managingPartner": "MANAGING PARTNER",
-        "selectedProjects": "SELECTED PROJECTS"
-    }
+  "header": {
+    "menu": [
+      { "text": "VISION", "link": "#about-section" },
+      { "text": "PORTFOLIO", "link": "#projects-section" },
+      { "text": "TECHNOLOGY", "link": "#automation-section" },
+      { "text": "CONTACT", "link": "#contact-section" }
+    ]
+  },
+  "about": {
+    "whoWeAreTitle": "WHO WE ARE",
+    "whoWeAreText": "<div style='text-align: justify;'><b>BIM SOLUTIONS PARTNER & TECHNICAL LEAD.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;Cosmos.Lab Studio is a next-generation BIM partner redefining traditional architectural production through algorithmic processes. We bridge the gap between architectural intent and engineering reality. <br>&nbsp;&nbsp;&nbsp;&nbsp;For us, an architectural project is not just lines; it is a massive database that must be managed. By combining Computational Design with ISO 19650 standards, we produce clash-free, fabrication-ready (LOD 400) models, basing data accuracy on algorithmic control rather than just human effort.</div>",
+    "teamDescription": "<div style='text-align: justify;'>Led by two managing partners, Cosmos.Lab operates with an agile team structure scalable to project needs.</div>",
+    "whatWeDoTitle": "WHAT WE DO",
+    "whatWeDoText": "<div style='text-align: justify;'><b>ARCHITECTURAL SOLUTION & DIGITAL CONSTRUCTION PARTNERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We delegate repetitive manual tasks to autonomous systems. In large-scale and complex projects where traditional methods fall short; we consolidate design, documentation, interdisciplinary coordination, and BIM processes under a single roof. <br>&nbsp;&nbsp;&nbsp;&nbsp;Thanks to our custom-developed automation systems, we operate as a design office that transfers design decisions to the construction site flawlessly, without risking the project's budget and schedule targets.</div>"
+  },
+  "automation_info": {
+    "title": "TECHNOLOGICAL CAPACITY",
+    "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;We manage your projects with the latest digital infrastructure. When necessary, we create seamless, real-time collaboration environments for global teams through Revit Server deployments.<br>&nbsp;&nbsp;&nbsp;&nbsp;We process data, not just geometry: Through custom-built scripts, we transform 2D drawings into intelligent 3D BIM models; extracting quantity take-offs (QTO), material schedules, and room data lists with 100% accuracy, free from human error. We minimize project delivery times by managing thousands of sheets of documentation through automation.</div>"
+  },
+  "contact": {
+    "email": "hello@cosmoslab.studio",
+    "phone": "+90 546 662 49 68",
+    "location": "Global Service / Based in Ankara, Turkiye"
+  },
+  "ui": {
+    "viewProfile": "VIEW PROFILE",
+    "managingPartner": "MANAGING PARTNER",
+    "selectedProjects": "SELECTED PROJECTS"
+  }
 }

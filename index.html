@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmos.Lab Studio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
-        /* --- TEMEL AYARLAR --- */
+        /* --- 1. TEMEL AYARLAR (ESKİ DOSYADAN BİREBİR) --- */
         body { 
             background-color: #0e0e0e; 
             color: #f0f0f0; 
@@ -17,21 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- LANG SWITCHER --- */
-        .lang-switch {
-            position: absolute; top: 35px; right: 40px; 
-            font-size: 0.8rem; font-weight: bold; cursor: pointer;
-            z-index: 101;
-        }
-        .lang-btn { color: #555; transition: 0.3s; padding: 5px; }
-        .lang-btn:hover { color: #fff; }
-        .lang-btn.active { color: #fff; text-decoration: underline; }
-        
-        @media (max-width: 768px) {
-           .lang-switch { top: 20px; right: 20px; }
-        }
-
-        /* --- LOADER CONTAINER --- */
+        /* --- 2. LOADER STYLES (ESKİ DOSYADAN BİREBİR) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; 
@@ -45,88 +31,139 @@
         }
 
         #loader-slogan {
-            position: absolute; top: calc(50% + 80px); transform: translateY(-50%);
-            font-size: 1.1rem; letter-spacing: 8px; color: #cccccc; opacity: 0; 
-            transition: opacity 0.8s ease-out; text-transform: uppercase;
-            font-family: 'Courier New', Courier, monospace; text-align: center;
-            width: 100%; font-weight: bold;
+            position: absolute;
+            top: calc(50% + 80px); 
+            transform: translateY(-50%);
+            font-size: 1.1rem; 
+            letter-spacing: 8px; 
+            color: #cccccc; 
+            opacity: 0; 
+            transition: opacity 0.8s ease-out;
+            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
         }
         
         .loaded #loader-container { opacity: 0; pointer-events: none; }
         .slogan-visible #loader-slogan { opacity: 1; }
 
-        /* --- HEADER & SITE STYLES --- */
+        /* --- 3. HEADER & SITE STYLES (ESKİ GENİŞLİKLER) --- */
         header { 
-            padding: 2rem 3rem; width: 100%; box-sizing: border-box;
-            position: sticky; top: 0; background: rgba(14, 14, 14, 0.95); z-index: 100; 
-            display: flex; justify-content: space-between; border-bottom: 1px solid #333; 
+            padding: 2rem 3rem; /* Eski 3rem ayarı */
+            width: 100%; 
+            box-sizing: border-box;
+            position: sticky; top: 0; 
+            background: rgba(14, 14, 14, 0.95); 
+            z-index: 100; 
+            display: flex; justify-content: space-between; 
+            border-bottom: 1px solid #333; 
+            align-items: center;
         }
         .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: -2px; }
-        nav a { color: #888; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        
+        .header-right { display: flex; align-items: center; gap: 30px; }
+        
+        nav { display: flex; gap: 20px; }
+        nav a { color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: #fff; }
 
-        section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
+        /* DİL BUTONLARI (Yeni Eklenen Tek Şey) */
+        .lang-switch {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 0.8rem; font-weight: bold;
+            border-left: 1px solid #444; padding-left: 20px;
+        }
+        .lang-btn { color: #555; cursor: pointer; transition: 0.3s; padding: 2px; }
+        .lang-btn:hover { color: #fff; }
+        .lang-btn.active { color: #fff; text-decoration: underline; }
+
+        section { 
+            padding: 2rem 0; 
+            max-width: 70%; /* Eski %70 ayarı */
+            margin: 0 auto; 
+            scroll-margin-top: 100px; 
+        }
+        
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
         
-        p { color: #bfbfbf; font-weight: 600; max-width: 800px; line-height: 1.6; margin-bottom: 1.5rem; }
+        p { 
+            color: #bfbfbf; font-weight: 600; max-width: 100%; 
+            line-height: 1.6; margin-bottom: 1.5rem; 
+        }
         p b, p strong { color: #ffffff; font-weight: 900; letter-spacing: 1px; }
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- TEAM SECTION STYLES --- */
+        /* --- TEAM SECTION (MOBİL DÜZENİ İÇİN GRID) --- */
         .team-desc {
-            font-size: 0.85rem; color: #d0d0d0; font-style: italic;
+            font-size: 0.85rem; color: #888; font-style: italic;
             margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
             padding-left: 15px; max-width: 90%;
         }
-        .team-grid { display: flex; gap: 20px; flex-wrap: wrap; }
-        
+        .team-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; /* Yan yana olması için */
+        }
         .partner-card {
             border: 1px solid #333; padding: 15px 20px; cursor: pointer;
-            transition: all 0.3s ease; background: #0a0a0a; min-width: 150px;
-            display: flex; flex-direction: column; gap: 5px;
+            transition: all 0.3s ease; background: #0a0a0a; 
+            display: flex; flex-direction: column; gap: 5px; justify-content: space-between;
         }
         .partner-card:hover { border-color: #fff; background: #111; transform: translateY(-2px); }
         .partner-name { color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; }
-        .partner-role { color: #aaaaaa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
-
+        .partner-role { color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        
         .card-action {
-            margin-top: 10px; padding-top: 10px; border-top: 1px dashed #333; 
-            font-size: 0.7rem; color: #555; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;
+            margin-top: 15px; padding-top: 10px; border-top: 1px dashed #333; 
+            font-size: 0.7rem; color: #555; display: flex; justify-content: space-between; 
+            align-items: center; transition: all 0.3s ease;
         }
         .partner-card:hover .card-action { color: #fff; border-top-color: #666; }
         .action-arrow { transition: transform 0.3s ease; }
         .partner-card:hover .action-arrow { transform: translateX(5px); }
 
-        /* --- SLIDER --- */
+        /* --- SLIDER (ESKİ DOSYADAN BİREBİR) --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
+        
         .slide-item { 
-            min-width: 700px; display: flex; flex-direction: column; position: relative; cursor: pointer; border: 1px solid #333; background: #000;
-            transition: border-color 0.3s; flex-shrink: 0; scroll-snap-align: start; scroll-snap-stop: always;
+            min-width: 700px; display: flex; flex-direction: column;
+            position: relative; cursor: pointer; border: 1px solid #333; background: #000;
+            transition: border-color 0.3s; flex-shrink: 0; 
+            scroll-snap-align: start; scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
+        
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
         
         .caption { 
-            width: 100%; background: #121212; padding: 18px 22px; box-sizing: border-box; border-top: 1px solid #222;
+            width: 100%; background: #121212; padding: 18px 22px; 
+            box-sizing: border-box; border-top: 1px solid #222;
             display: flex; flex-direction: column; gap: 6px; text-align: left;
         }
         .caption div:first-child { 
-            color: #cccccc; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
+            color: #cccccc; font-size: 0.95rem; font-weight: 600; 
+            letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
+            white-space: normal; word-wrap: break-word; overflow-wrap: break-word;
         }
-        .caption span { font-size: 0.75rem !important; color: #555 !important; font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; }
+        .caption span { 
+            font-size: 0.75rem !important; color: #555 !important;
+            font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; 
+        }
         .slide-item:hover .caption div:first-child { color: #fff; }
         .slide-item:hover .caption { border-top-color: #444; background: #161616; }
 
         .slider-btn { 
-            position: absolute; top: 250px; transform: translateY(-50%); background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
-            width: 50px; height: 50px; cursor: pointer; z-index: 50; font-size: 24px; display: flex; align-items: center; justify-content: center;
+            position: absolute; top: 250px; transform: translateY(-50%); 
+            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
+            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
+            font-size: 24px; display: flex; align-items: center; justify-content: center;
         }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- LIGHTBOX --- */
+        /* --- LIGHTBOX (ESKİ PRO VERSION) --- */
         .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; overflow: hidden; }
         .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
         .lb-main-media { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; user-select: none; -webkit-user-drag: none; will-change: transform; }
@@ -143,6 +180,7 @@
 
         @media (max-width: 768px) { 
             header { padding: 1.5rem 1rem; width: 100%; flex-direction: column; align-items: flex-start; gap: 15px; }
+            .header-right { width: 100%; justify-content: space-between; }
             nav { display: flex; flex-wrap: wrap; width: 100%; justify-content: flex-start; gap: 15px 20px; }
             nav a { margin-left: 0; margin-right: 10px; font-size: 0.8rem; }
             section { max-width: 90%; } 
@@ -164,13 +202,14 @@
     </div>
 
     <header>
-        <div class="logo" id="logo">COSMOS.LAB</div>
-        <nav id="menu"></nav>
-        
-        <div class="lang-switch">
-            <span onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</span>
-            <span style="color:#333">/</span>
-            <span onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</span>
+        <div class="logo" id="logo">COSMOS.LAB STUDIO</div>
+        <div class="header-right">
+            <nav id="menu"></nav>
+            <div class="lang-switch">
+                <span onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</span>
+                <span style="color:#333">/</span>
+                <span onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</span>
+            </div>
         </div>
     </header>
 
@@ -179,11 +218,9 @@
             <div>
                 <h2 id="who-title"></h2>
                 <p id="who-text"></p>
-                
                 <div class="team-desc" id="team-desc-text"></div>
                 <div class="team-grid" id="team-container"></div>
             </div>
-
             <div>
                 <h2 id="what-title"></h2>
                 <p id="what-text"></p>
@@ -192,7 +229,7 @@
     </section>
 
     <section id="projects-section">
-        <h2>SELECTED PROJECTS</h2>
+        <h2 id="projects-title">SELECTED PROJECTS</h2>
         <div class="slider-container">
             <button class="slider-btn prev-btn" onclick="manualScroll('project-slider', -1)">&#10094;</button>
             <div class="slider-wrapper" id="project-slider"></div>
@@ -226,54 +263,31 @@
         </div>
     </div>
 
+    <script src="content.js"></script>
     <script>
-        document.write('<script src="content.js?v=' + new Date().getTime() + '"><\/script>');
-    </script>
-
-    <script>
-        // --- MULTI-LANGUAGE LOGIC (GÜVENLİ MOD) ---
+        // --- 1. DİL ve İÇERİK YÖNETİMİ ---
         let currentLang = 'en';
-        
-        // Hata Korumalı LocalStorage
-        try {
-            currentLang = localStorage.getItem('siteLang') || 'en';
-        } catch (e) {
-            console.warn("LocalStorage erişilemedi, varsayılan dil kullanılıyor.");
-        }
+        try { currentLang = localStorage.getItem('siteLang') || 'en'; } catch(e) {}
 
         function setLanguage(lang) {
-            // Veri yoksa veya zaten o dildeysek işlem yapma (Hata koruması eklendi)
-            if(typeof siteContent === 'undefined' || !siteContent[lang]) {
-                console.error("HATA: " + lang + " dili için veri bulunamadı.");
-                return;
-            }
-            if(lang === currentLang && document.body.classList.contains('loaded')) return;
-            
+            if(typeof siteContent === 'undefined' || !siteContent[lang]) return;
             currentLang = lang;
-            try {
-                localStorage.setItem('siteLang', lang); 
-            } catch(e) {}
-            
-            renderPage(); 
+            try { localStorage.setItem('siteLang', lang); } catch(e) {}
+            renderPage();
         }
 
         function renderPage() {
-            // Hata Koruması: Veri dosyası yüklenmediyse siteyi kilitleme, log bas
-            if (typeof siteContent === 'undefined') {
-                console.error("KRİTİK HATA: content.js yüklenemedi!");
-                return;
-            }
-            
-            const data = siteContent[currentLang]; 
+            if (typeof siteContent === 'undefined') return;
+            const data = siteContent[currentLang];
             if (!data) return;
 
-            // 1. UI Güncellemeleri
+            // UI Güncellemeleri
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + currentLang);
             if(activeBtn) activeBtn.classList.add('active');
 
             if(data.header) {
-                document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB";
+                document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB STUDIO";
                 const nav = document.getElementById('menu');
                 nav.innerHTML = "";
                 if(data.header.menu) {
@@ -298,7 +312,7 @@
 
             if(data.automation) {
                 document.getElementById('auto-title').innerText = data.automation.title || "";
-                document.getElementById('auto-desc').innerText = data.automation.description || "";
+                document.getElementById('auto-desc').innerHTML = data.automation.description || "";
             }
             
             if(data.contact) {
@@ -309,26 +323,27 @@
                 `;
             }
             
-            const projHeader = document.querySelector('#projects-section h2');
-            if(data.ui && data.ui.selectedProjects) projHeader.innerText = data.ui.selectedProjects;
+            if(data.ui && data.ui.selectedProjects) {
+                document.getElementById('projects-title').innerText = data.ui.selectedProjects;
+            }
 
-            // 2. Dinamik İçerikler
             renderSlider('project-slider', data.projects || []);
             renderSlider('auto-slider', data.automation ? data.automation.items : []);
             renderTeam('team-container', data.team || [], data.ui);
         }
 
-        // --- RENDER FUNCTIONS ---
+        // --- 2. RENDER YARDIMCILARI (Eski Tasarım Korundu) ---
         let allImages = []; 
-        function isVideo(url) { return url && (url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm')); }
+        function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
         
-        // Video Observer
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const video = entry.target;
                     const playPromise = video.play();
-                    if (playPromise !== undefined) { playPromise.catch(error => { video.muted = true; video.play(); }); }
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => { video.muted = true; video.play(); });
+                    }
                 } else { entry.target.pause(); }
             });
         }, { threshold: 0.1 });
@@ -337,12 +352,9 @@
             const wrapper = document.getElementById(wrapperId);
             if(!wrapper) return;
             wrapper.innerHTML = ""; 
-            if(!dataItems) return;
             
             let originalSlides = "";
             dataItems.forEach((item) => {
-                if(!item.images || item.images.length === 0) return;
-                
                 let globalIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
                 const firstMedia = item.images[0];
@@ -362,17 +374,16 @@
             wrapper.innerHTML = originalSlides;
             const originalVideos = wrapper.querySelectorAll('video');
             originalVideos.forEach(v => videoObserver.observe(v));
-            if(dataItems.length > 0) setTimeout(() => setupInfiniteLoop(wrapper), 100);
+            setTimeout(() => setupInfiniteLoop(wrapper), 100);
         }
 
         function renderTeam(containerId, teamData, uiLabels) {
             const container = document.getElementById(containerId);
             if (!teamData || teamData.length === 0) {
                 container.style.display = 'none';
-                document.getElementById('team-desc-text').style.display = 'none';
                 return;
             }
-            container.style.display = 'flex';
+            container.style.display = 'grid'; // Yan yana olması için Grid
 
             const roleText = uiLabels ? uiLabels.managingPartner : "MANAGING PARTNER";
             const viewText = uiLabels ? uiLabels.viewProfile : "VIEW PROFILE";
@@ -380,7 +391,7 @@
             let html = "";
             teamData.forEach(member => {
                 let globalIndex = allImages.length;
-                if(member.images && member.images.length > 0) { member.images.forEach(img => allImages.push(img)); }
+                if(member.images.length > 0) { member.images.forEach(img => allImages.push(img)); }
 
                html += `
                 <div class="partner-card" onclick="openLightbox(${globalIndex})">
@@ -402,29 +413,34 @@
             if(items.length < 2) return; 
             const firstClone = items[0].cloneNode(true);
             const lastClone = items[items.length - 1].cloneNode(true);
+            
             if(firstClone.querySelector('video')) { let v = firstClone.querySelector('video'); v.muted = true; videoObserver.observe(v); }
             if(lastClone.querySelector('video')) { let v = lastClone.querySelector('video'); v.muted = true; videoObserver.observe(v); }
-            wrapper.appendChild(firstClone); wrapper.insertBefore(lastClone, items[0]); 
-            const itemWidth = items[0].offsetWidth + 20; wrapper.scrollLeft = itemWidth;
+
+            wrapper.appendChild(firstClone); 
+            wrapper.insertBefore(lastClone, items[0]); 
+            const itemWidth = items[0].offsetWidth + 20; 
+            wrapper.scrollLeft = itemWidth;
             wrapper.addEventListener('scroll', () => {
                 const scrollLeft = wrapper.scrollLeft; const scrollWidth = wrapper.scrollWidth; const clientWidth = wrapper.clientWidth;
                 if (scrollLeft >= scrollWidth - clientWidth - 5) wrapper.scrollLeft = itemWidth; 
                 if (scrollLeft <= 0) wrapper.scrollLeft = scrollWidth - (2 * clientWidth) + 10; 
             });
         }
+
         function manualScroll(wrapperId, direction) {
             const wrapper = document.getElementById(wrapperId);
             const itemWidth = wrapper.querySelector('.slide-item').offsetWidth + 20;
             wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
         }
 
-        // --- LOADER & PARTICLES ---
+        // --- 3. ESKİ PARTICLE LOADER (BİREBİR KOPYALANDI) ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
         let particlesArray = [];
         let loadProgress = 0.0;
         let targetProgress = 0.0;
-        let mainText = "COSMOS.LAB STUDIO";
+        let mainText = "COSMOS.LAB STUDIO"; // İsim düzeltildi
 
         const LOADER_MIN_MS = 2600; const LOADER_MAX_MS = 8000;
         const SLOGAN_AT_PROGRESS = 0.86; const EXIT_AT_PROGRESS = 0.985; const HOLD_AFTER_SLOGAN_MS = 1400;
@@ -439,33 +455,18 @@
             if (exitStarted) return;
             exitStarted = true;
             document.body.classList.add('slogan-visible');
-            
-            // Render sayfasını burada güvenli bir şekilde çağırıyoruz
-            try {
-                renderPage();
-            } catch(e) {
-                console.error("Render hatası:", e);
-            }
-            
             setTimeout(() => { document.body.classList.add('loaded'); }, HOLD_AFTER_SLOGAN_MS);
         }
 
         document.addEventListener('DOMContentLoaded', armExit);
         window.addEventListener('load', () => { targetProgress = 1.0; });
-        
-        // ACİL ÇIKIŞ: Eğer 4 saniye içinde bir şey olmazsa siteyi zorla aç
-        setTimeout(() => {
-            if(!exitStarted) {
-                console.log("Acil çıkış tetiklendi");
-                armExit();
-                startExitSequence(true);
-            }
-        }, 4000);
+        setTimeout(() => { armExit(); startExitSequence(true); }, LOADER_MAX_MS);
 
         function setCanvasSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         setCanvasSize();
         const fontSize = Math.min(window.innerWidth / 12, 80); 
-        ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
+        const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
+        ctx.font = fontSettings;
         
         class Particle {
             constructor(targetX, targetY) {
@@ -482,7 +483,6 @@
                 ctx.beginPath(); ctx.rect(this.x, this.y, this.size, this.size); ctx.closePath(); ctx.fill();
             }
             update() {
-                const easedProgress = 1 - Math.pow(1 - loadProgress, 3);
                 let dx = this.targetX - this.x; let dy = this.targetY - this.y;
                 let speed = 0.04 + (loadProgress * 0.1);
                 if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) { this.x = this.targetX; this.y = this.targetY; } 
@@ -530,10 +530,12 @@
             ctx.font = `900 ${newFontSize}px 'Courier New', monospace`; initParticles();
         });
 
-        // --- LIGHTBOX ---
+        // --- 4. ESKİ PRO LIGHTBOX (BİREBİR KOPYALANDI) ---
         let currentIndex = 0;
-        const lb = document.getElementById('lightbox'); const lbStage = document.getElementById('lb-stage');
-        const lbCounter = document.getElementById('lb-counter'); const lbUi = document.getElementById('lb-ui');
+        const lb = document.getElementById('lightbox');
+        const lbStage = document.getElementById('lb-stage');
+        const lbCounter = document.getElementById('lb-counter');
+        const lbUi = document.getElementById('lb-ui');
         const rotateBtn = document.getElementById('rotate-btn');
         let state = { scale: 1, x: 0, y: 0, rotate: false };
 
@@ -591,6 +593,9 @@
         window.addEventListener('mouseup', () => { isDragging = false; });
         lbStage.addEventListener('dblclick', (e) => { if(isVideo(allImages[currentIndex])) return; if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); });
         function handleKey(e) { if(e.key === 'ArrowRight') changeSlide(1); if(e.key === 'ArrowLeft') changeSlide(-1); if(e.key === 'Escape') closeLightbox(); }
+
+        // SAYFA YÜKLENDİĞİNDE
+        renderPage();
 
     </script>
 </body>

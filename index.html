@@ -89,7 +89,7 @@
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
         
         p { 
-            color: #bfbfbf; font-weight: 600; max-width: 800px; 
+            color: #bfbfbf; font-weight: 600; max-width: 100%; 
             line-height: 1.6; margin-bottom: 1.5rem; 
         }
         p b, p strong { color: #ffffff; font-weight: 900; letter-spacing: 1px; }
@@ -178,36 +178,52 @@
         .rotate-mode .lb-prev-arrow { top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
         .rotate-mode .lb-next-arrow { top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
 
+        /* --- MOBİL UYUMLULUK (DÜZELTİLDİ) --- */
         @media (max-width: 900px) {
-            /* Header dikey yerleşime geçiyor */
+            
+            /* 1. Header ve Dil Kutusu Ayarı (İstediğin Gibi) */
             header { 
                 padding: 1.5rem 1rem; 
                 flex-direction: column; 
                 align-items: flex-start; 
-                gap: 20px; /* Menü ile üst kısım arasına biraz boşluk */
-                position: sticky; /* Sabit kalması için (zaten var ama garanti olsun) */
+                gap: 20px; 
+                position: sticky; 
             }
 
-            /* --- KRİTİK HAMLE: Dil Seçiciyi Sağ Üst Köşeye Çivile --- */
             .lang-switch {
-                position: absolute; /* Normal akıştan çıkar */
-                top: 2rem;          /* Üstten boşluk (Logonun hizasına gelmesi için) */
-                right: 1rem;        /* Sağdan boşluk */
-                border-left: none;  /* Solundaki çizgiyi kaldır */
+                position: absolute; /* Dil kutusunu sağ üste çivile */
+                top: 2rem;          
+                right: 1rem;        
+                border-left: none;  
                 padding-left: 0;
             }
 
-            /* Menü Alanı */
             .header-right { 
                 width: 100%; 
-                justify-content: flex-start; /* Sola yasla */
-                margin-top: 5px; /* Dil butonu aradan çıkınca menüyü biraz yukarı alabiliriz */
+                justify-content: flex-start; 
+                margin-top: 5px; 
             }
             
-            nav { 
-                gap: 15px 20px; /* Satır ve sütun boşlukları */
-                flex-wrap: wrap; 
+            nav { gap: 15px 20px; flex-wrap: wrap; }
+
+            /* 2. ANA DÜZELTME: Who We Are Kısmı Alt Alta (Eski Hali) */
+            .info-grid { 
+                grid-template-columns: 1fr; /* Tek kolon olsun (Alt alta) */
+                gap: 40px; 
             }
+
+            /* 3. Diğer Mobil Ayarlar */
+            section { max-width: 90%; } 
+            
+            .slide-item { min-width: 90vw; width: 90vw; margin-right: 15px; } 
+            .slide-media { height: 300px; }
+            
+            .slider-btn { display: none; }
+            .rotate-btn { display: flex; }
+            .lb-arrow { font-size: 30px; padding: 15px; }
+            
+            /* Team Grid Mobilde de Yan Yana Kalsın (İstersen burayı da 1fr yapabilirsin) */
+            .team-grid { gap: 15px; } 
         }
     </style>
 </head>

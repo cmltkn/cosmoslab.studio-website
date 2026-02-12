@@ -80,7 +80,7 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/team/02_Sinan_Taşkesti/01_Cemal_Tekin.png"
+                    "assets/team/02_Sinan_Taşkesti/02_Sinan_Taşkesti.png"
                 ],
                 "title": "SINAN TAŞKESTI"
             }
@@ -213,7 +213,7 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/team/02_Sinan_Taşkesti/01_Cemal_Tekin.png"
+                    "assets/team/02_Sinan_Taşkesti/02_Sinan_Taşkesti.png"
                 ],
                 "title": "SINAN TAŞKESTI"
             }

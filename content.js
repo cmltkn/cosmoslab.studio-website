@@ -155,10 +155,10 @@ const siteContent = {
         },
         "about": {
             "whoWeAreTitle": "BİZ KİMİZ",
-            "whoWeAreText": "<b>BIM ÇÖZÜM ORTAĞI & TEKNİK LİDERLİK.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp; Cosmos.Lab, geleneksel mimari üretimi algoritmik süreçlerle yeniden tanımlayan yeni nesil bir BIM çözüm ortağıdır. Mimari niyet ile mühendislik gerçekliği arasındaki boşluğu kapatıyoruz. <br><br>&nbsp;&nbsp;&nbsp;&nbsp;Bizim için mimari proje sadece çizgiden ibaret değildir; yönetilmesi gereken devasa bir veri tabanıdır. Hesaplamalı Tasarım yaklaşımını ISO 19650 standartlarıyla birleştirerek, çakışmalardan arındırılmış ve imalata hazır (LOD 400) modeller üretip; veri doğruluğunu yalnızca insan emeğine değil, algoritmik kontrole dayandırıyoruz.",
+            "whoWeAreText": "<b>BIM ÇÖZÜM ORTAĞI & TEKNİK LİDERLİK.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp; Cosmos.Lab Studio, geleneksel mimari üretimi algoritmik süreçlerle yeniden tanımlayan yeni nesil bir BIM çözüm ortağıdır. Mimari niyet ile mühendislik gerçekliği arasındaki boşluğu kapatıyoruz. <br>&nbsp;&nbsp;&nbsp;&nbsp;Bizim için mimari proje sadece çizgiden ibaret değildir; yönetilmesi gereken devasa bir veri tabanıdır. Hesaplamalı Tasarım yaklaşımını ISO 19650 standartlarıyla birleştirerek, çakışmalardan arındırılmış ve imalata hazır (LOD 400) modeller üretip; veri doğruluğunu yalnızca insan emeğine değil, algoritmik kontrole dayandırıyoruz.",
             "teamDescription": "Cosmos.Lab, iki yönetici ortak liderliğinde; proje ihtiyaçlarına göre ölçeklenebilen, çevik bir ekip yapısıyla çalışır.",
             "whatWeDoTitle": "NE YAPIYORUZ",
-            "whatWeDoText": "<b>MİMARİ ÇÖZÜM & DİJİTAL İNŞA ORTAKLIĞI.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp; Tekrara dayalı manuel işleri otonom sistemlere devrediyoruz. Geleneksel yöntemlerin yetersiz kaldığı büyük ölçekli ve karmaşık projelerde; tasarım, dokümantasyon, disiplinler arası koordinasyon ve BIM süreçlerini tek bir çatı altında topluyoruz. <br><br>Kendi geliştirdiğimiz otomasyon sistemleri sayesinde, projenin bütçe ve takvim hedeflerini riske atmadan; tasarım kararlarını şantiyeye eksiksiz aktaran tasarım ofisi olarak çalışıyoruz."
+            "whatWeDoText": "<b>MİMARİ ÇÖZÜM & DİJİTAL İNŞA ORTAKLIĞI.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp; Tekrara dayalı manuel işleri otonom sistemlere devrediyoruz. Geleneksel yöntemlerin yetersiz kaldığı büyük ölçekli ve karmaşık projelerde; tasarım, dokümantasyon, disiplinler arası koordinasyon ve BIM süreçlerini tek bir çatı altında topluyoruz. <br>&nbsp;&nbsp;&nbsp;&nbsp;Kendi geliştirdiğimiz otomasyon sistemleri sayesinde, projenin bütçe ve takvim hedeflerini riske atmadan; tasarım kararlarını şantiyeye eksiksiz aktaran tasarım ofisi olarak çalışıyoruz."
         },
         "projects": [
             {
@@ -220,7 +220,7 @@ const siteContent = {
         ],
         "automation": {
             "title": "TEKNOLOJİK KAPASİTE",
-            "description": " Projelerinizi en güncel dijital altyapı ile yönetiyoruz. Gerektiğinde Revit Server kurulumlarıyla global ekiplerle eş zamanlı, kesintisiz çalışma ortamları yaratıyoruz.<br><br>Sadece çizmiyor, veriyi işliyoruz: Projeye özel ürettiğimiz scriptler sayesinde, 2D çizimlerinizi akıllı 3D BIM modellerine dönüştürüyor; metraj, malzeme ve mahal listelerini %100 doğrulukla, insan hatasından arındırılmış şekilde çekiyoruz. Binlerce paftalık dokümantasyon süreçlerini otomasyonla yöneterek, proje teslim sürelerini minimize ediyoruz.",
+            "description": " Projelerinizi en güncel dijital altyapı ile yönetiyoruz. Gerektiğinde Revit Server kurulumlarıyla global ekiplerle eş zamanlı, kesintisiz çalışma ortamları yaratıyoruz.<br>&nbsp;&nbsp;&nbsp;&nbsp;Sadece çizmiyor, veriyi işliyoruz: Projeye özel ürettiğimiz scriptler sayesinde, 2D çizimlerinizi akıllı 3D BIM modellerine dönüştürüyor; metraj, malzeme ve mahal listelerini %100 doğrulukla, insan hatasından arındırılmış şekilde çekiyoruz. Binlerce paftalık dokümantasyon süreçlerini otomasyonla yöneterek, proje teslim sürelerini minimize ediyoruz.",
             "items": [
                 {
                     "images": [

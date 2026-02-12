@@ -1,88 +1,107 @@
 import os
 import json
-import re  # Regex kütüphanesini ekledik
+import re
 
 # --- AYARLAR ---
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.join(ROOT_DIR, "assets")
+LANG_DIR = os.path.join(ROOT_DIR, "languages")
 OUTPUT_FILE = os.path.join(ROOT_DIR, "content.js")
 
-# --- SABİT İÇERİKLER ---
-STATIC_DATA = {
-    "header": {
-        "title": "COSMOS.LAB STUDIO",
-        "menu": [
-            {"text": "VISION", "link": "#about-section"},      # Menüde VISION yazacak
-            {"text": "PORTFOLIO", "link": "#projects-section"}, # Menüde PORTFOLIO yazacak
-            {"text": "TECHNOLOGY", "link": "#automation-section"}, # Menüde TECHNOLOGY yazacak
-            {"text": "CONTACT", "link": "#contact-section"}
-        ]
-    },
-   "about": {
-        "whoWeAreTitle": "WHO WE ARE",
-        "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
-        
-        # YENİ EKLENEN SATIR:
-        "teamDescription": "Led by two managing partners, Cosmos Lab operates with a scalable, agile team structure tailored to project demands.",
-        
-        "whatWeDoTitle": "WHAT WE DO",
-        "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
-    },
-    "automation_info": {
-        "title": "ALGORITHMIC PRECISION & R&D", # Teknoloji bölümünün başlığı
-        "description": "We don't just use software; we build tools. Our custom scripts and R&D solutions eliminate manual errors and optimize project timelines."
-    },
-    "contact": {
-        "email": "hello@cosmoslab.studio",
-        "phone": "+90 546 662 49 68",
-        "location": "Global Service / Based in Ankara, Türkiye"
-    }
-}
+def load_language_files():
+    """languages klasöründeki tüm .json dosyalarını okur."""
+    lang_data = {}
+    if not os.path.exists(LANG_DIR):
+        print("HATA: 'languages' klasörü bulunamadı!")
+        return {}
+    
+    for f in os.listdir(LANG_DIR):
+        if f.endswith(".json"):
+            lang_code = f.split(".")[0] # 'en.json' -> 'en'
+            with open(os.path.join(LANG_DIR, f), "r", encoding="utf-8") as file:
+                try:
+                    lang_data[lang_code] = json.load(file)
+                    print(f"Dil yüklendi: {lang_code}")
+                except json.JSONDecodeError as e:
+                    print(f"HATA: {f} dosyası bozuk JSON formatında! {e}")
+    return lang_data
 
-def get_files_from_folder(folder_path):
-    """Resim ve Video dosyalarını bulur."""
+def get_files_for_language(folder_path, lang_code):
+    """
+    Belirli bir dil için doğru dosyaları seçer.
+    Mantık:
+    1. Önce dosya_adı_{lang_code}.png var mı diye bakar (örn: cv_tr.png).
+    2. Yoksa, varsayılan (suffixsiz) dosyayı alır (örn: cv.png).
+    3. Diğer dillerin dosyalarını (örn: cv_ru.png) görmezden gelir.
+    """
     valid_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".mp4", ".webm"}
-    files_list = []
+    selected_files = []
     
     if not os.path.exists(folder_path):
         return []
 
-    files = sorted(os.listdir(folder_path))
+    all_files = sorted(os.listdir(folder_path))
     
-    for f in files:
-        ext = os.path.splitext(f)[1].lower()
-        if ext in valid_extensions:
-            abs_file_path = os.path.join(folder_path, f)
-            rel_path = os.path.relpath(abs_file_path, ROOT_DIR)
-            web_path = rel_path.replace("\\", "/") 
-            files_list.append(web_path)
-    return files_list
+    # Dosyaları grupla: { "cv": {"base": "cv.png", "tr": "cv_tr.png", "en": "cv_en.png"} }
+    file_groups = {}
 
-def scan_category(category_name):
+    for f in all_files:
+        ext = os.path.splitext(f)[1].lower()
+        if ext not in valid_extensions:
+            continue
+            
+        name_no_ext = os.path.splitext(f)[0]
+        
+        # Dil suffix'i var mı kontrol et (örn: image_tr)
+        parts = name_no_ext.rsplit('_', 1)
+        suffix = parts[1] if len(parts) > 1 and len(parts[1]) == 2 else None
+        base_name = parts[0] if suffix else name_no_ext
+        
+        if base_name not in file_groups:
+            file_groups[base_name] = {}
+        
+        if suffix:
+            file_groups[base_name][suffix] = f
+        else:
+            file_groups[base_name]["base"] = f
+
+    # Şimdi bu dil için en uygun dosyayı seç
+    for base_name, variants in file_groups.items():
+        chosen_file = None
+        
+        # 1. Öncelik: Tam dil eşleşmesi (örn: cv_tr.png)
+        if lang_code in variants:
+            chosen_file = variants[lang_code]
+        # 2. Öncelik: Varsayılan dosya (örn: cv.png)
+        elif "base" in variants:
+            chosen_file = variants["base"]
+        # 3. Öncelik: Eğer 'en' varsa ve biz base bulamadıysak fallback yap (opsiyonel)
+        elif "en" in variants:
+            chosen_file = variants["en"]
+            
+        if chosen_file:
+            abs_path = os.path.join(folder_path, chosen_file)
+            rel_path = os.path.relpath(abs_path, ROOT_DIR)
+            selected_files.append(rel_path.replace("\\", "/"))
+            
+    return sorted(selected_files)
+
+def scan_category(category_name, lang_code):
     base_path = os.path.join(ASSETS_DIR, category_name)
     items = []
 
     if not os.path.exists(base_path):
-        print(f"UYARI: '{category_name}' klasörü bulunamadı.")
         return []
 
     folders = sorted([d for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))])
 
     for folder in folders:
         full_path = os.path.join(base_path, folder)
-        media_files = get_files_from_folder(full_path)
+        # BURADA DİLE GÖRE FİLTRELEME YAPIYORUZ
+        media_files = get_files_for_language(full_path, lang_code)
         
         if media_files:
-            # --- GELİŞMİŞ TEMİZLİK (REGEX) ---
-            # 1. Adım: Klasör isminin başındaki sayıları ve tireleri (örn: "01_", "02_") sil.
-            clean_title = re.sub(r'^[\d_]+', '', folder)
-            
-            # 2. Adım: Geriye kalan kelimelerin arasındaki alt tireleri (_) boşluğa çevir.
-            clean_title = clean_title.replace("_", " ")
-            
-            # 3. Adım: Hepsini büyük harf yap.
-            clean_title = clean_title.upper()
-            
+            clean_title = re.sub(r'^[\d_]+', '', folder).replace("_", " ").upper()
             items.append({
                 "images": media_files,
                 "title": clean_title
@@ -90,37 +109,47 @@ def scan_category(category_name):
     return items
 
 def main():
-    # ... (üst satırlar aynı) ...
-    print("Projeler taranıyor...")
-    projects = scan_category("projects")
+    print("--- Cosmos Lab Multi-Language Builder ---")
     
-    # --- YENİ EKLENEN KISIM (BURAYI YAPIŞTIR) ---
-    print("Ekip (Team) taranıyor...")
-    team_members = scan_category("team")
-    # ---------------------------------------------
+    # 1. Metin dosyalarını yükle (en.json, tr.json...)
+    all_texts = load_language_files()
+    
+    if not all_texts:
+        print("Kritik Hata: Hiçbir dil dosyası bulunamadı!")
+        return
 
-    print("Otomasyonlar taranıyor...")
-    automation_items = scan_category("automation")
+    final_content = {}
 
-    site_content = {
-        "header": STATIC_DATA["header"],
-        "about": STATIC_DATA["about"],
-        "projects": projects,
-        "team": team_members,  # <--- BURAYI EKLEMEYİ SAKIN UNUTMA!
-        "automation": {
-            "title": STATIC_DATA["automation_info"]["title"],
-            "description": STATIC_DATA["automation_info"]["description"],
-            "items": automation_items
-        },
-        "contact": STATIC_DATA["contact"]
-    }
+    # 2. Her dil için site içeriğini oluştur
+    for lang_code, text_data in all_texts.items():
+        print(f"[{lang_code.upper()}] İçerik oluşturuluyor...")
+        
+        projects = scan_category("projects", lang_code)
+        team = scan_category("team", lang_code)
+        automation = scan_category("automation", lang_code)
+        
+        # Metin verisiyle Asset verisini birleştir
+        final_content[lang_code] = {
+            "header": text_data.get("header", {}),
+            "about": text_data.get("about", {}),
+            "projects": projects,
+            "team": team,
+            "automation": {
+                "title": text_data.get("automation_info", {}).get("title", ""),
+                "description": text_data.get("automation_info", {}).get("description", ""),
+                "items": automation
+            },
+            "contact": text_data.get("contact", {}),
+            "ui": text_data.get("ui", {}) # UI metinleri (butonlar vs)
+        }
 
-    js_content = f"const siteContent = {json.dumps(site_content, indent=4, ensure_ascii=False)};"
+    # 3. content.js dosyasına yaz
+    js_content = f"const siteContent = {json.dumps(final_content, indent=4, ensure_ascii=False)};"
     
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(js_content)
     
-    print(f"BAŞARILI: content.js güncellendi. Tüm alt tireler temizlendi.")
+    print(f"BAŞARILI: content.js güncellendi. {len(final_content)} dil eklendi.")
 
 if __name__ == "__main__":
     main()

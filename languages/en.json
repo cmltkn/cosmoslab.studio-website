@@ -1,0 +1,31 @@
+{
+    "header": {
+        "menu": [
+            {"text": "VISION", "link": "#about-section"},
+            {"text": "PORTFOLIO", "link": "#projects-section"},
+            {"text": "TECHNOLOGY", "link": "#automation-section"},
+            {"text": "CONTACT", "link": "#contact-section"}
+        ]
+    },
+    "about": {
+        "whoWeAreTitle": "WHO WE ARE",
+        "whoWeAreText": "<b>BIM SOLUTION PARTNER & TECHNICAL LEADERSHIP.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We are not just architects; we are the technical backbone of complex construction projects. Acting as a BIM Solution Partner, we bridge the gap between architectural intent and engineering reality. By integrating Computational Design with ISO 19650 standards, we deliver conflict-free, fabrication-ready models (LOD 400) where data accuracy is guaranteed by algorithms, not just human effort.",
+        "teamDescription": "Led by two managing partners, Cosmos Lab operates with a scalable, agile team structure tailored to project demands.",
+        "whatWeDoTitle": "WHAT WE DO",
+        "whatWeDoText": "<b>COMPUTATIONAL DELIVERY & ALGORITHMIC AUDITING.</b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;We replace manual drafting with Digital Workflows. Our expertise covers Advanced BIM Coordination (Clash Detection), Automated Documentation via Revit API, and Complex Geometry Rationalization. We use Python and Dynamo scripts to ensure speed, precision, and scalability beyond traditional limits."
+    },
+    "automation_info": {
+        "title": "ALGORITHMIC PRECISION & R&D",
+        "description": "We don't just use software; we build tools. Our custom scripts and R&D solutions eliminate manual errors and optimize project timelines."
+    },
+    "contact": {
+        "email": "hello@cosmoslab.studio",
+        "phone": "+90 546 662 49 68",
+        "location": "Global Service / Based in Ankara, Türkiye"
+    },
+    "ui": {
+        "viewProfile": "VIEW PROFILE",
+        "managingPartner": "MANAGING PARTNER",
+        "selectedProjects": "SELECTED PROJECTS"
+    }
+}

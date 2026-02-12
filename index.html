@@ -17,6 +17,20 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+	/* LANG SWITCHER */
+        .lang-switch {
+            position: absolute; top: 35px; right: 40px; 
+            font-size: 0.8rem; font-weight: bold; cursor: pointer;
+            z-index: 101;
+        }
+        .lang-btn { color: #555; transition: 0.3s; padding: 5px; }
+        .lang-btn:hover { color: #fff; }
+        .lang-btn.active { color: #fff; text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+           .lang-switch { top: 20px; right: 20px; }
+        }
+
         /* --- LOADER CONTAINER (Hybrid Scenario) --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -79,15 +93,6 @@
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; }
 
-        /* --- TEAM SECTION STYLES (Buraya Taşıdık) --- */
-        .team-desc {
-            font-size: 0.85rem; color: #cccccc; font-style: italic;
-            margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
-            padding-left: 15px; max-width: 90%;
-        }
-        .team-grid {
-            display: flex; gap: 20px; flex-wrap: wrap;
-        }
         /* --- TEAM SECTION STYLES (GÜNCEL) --- */
         .team-desc {
             font-size: 0.85rem; color: #d0d0d0; font-style: italic;
@@ -227,8 +232,15 @@
     </div>
 
     <header>
-        <div class="logo" id="logo"></div>
-        <nav id="menu"></nav>
+        <div class="logo" id="logo">COSMOS.LAB</div>
+        <nav id="menu">
+            </nav>
+        
+        <div class="lang-switch">
+            <span onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</span>
+            <span style="color:#333">/</span>
+            <span onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</span>
+        </div>
     </header>
 
     <section id="about-section">
@@ -306,24 +318,65 @@
             });
         }, { threshold: 0.1 }); // %10 görünmesi yeterli
 
-        // --- DATA LOADER ---
-        document.getElementById('logo').innerText = siteContent.header.title;
-        const nav = document.getElementById('menu');
-        siteContent.header.menu.forEach(item => {
-            nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
-        });
-        document.getElementById('who-title').innerText = siteContent.about.whoWeAreTitle;
-        document.getElementById('who-text').innerHTML = siteContent.about.whoWeAreText;
-        document.getElementById('what-title').innerText = siteContent.about.whatWeDoTitle;
-        document.getElementById('what-text').innerHTML = siteContent.about.whatWeDoText;
-        document.getElementById('auto-title').innerText = siteContent.automation.title;
-        document.getElementById('auto-desc').innerText = siteContent.automation.description;
+        // --- MULTI-LANGUAGE LOGIC ---
+        let currentLang = localStorage.getItem('siteLang') || 'en'; // Son seçilen dili hatırla
+
+        function setLanguage(lang) {
+            if(!siteContent[lang]) return; // O dil yoksa yapma
+            currentLang = lang;
+            localStorage.setItem('siteLang', lang); // Kaydet
+            renderPage(); // Sayfayı yenilemeden içeriği bas
+        }
+
+        function renderPage() {
+            const data = siteContent[currentLang]; // İlgili dilin verisini çek
+            
+            // 1. Dil Butonlarını Güncelle
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + currentLang);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // 2. Header & Menü
+            document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB";
+            const nav = document.getElementById('menu');
+            nav.innerHTML = "";
+            data.header.menu.forEach(item => {
+                nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
+            });
+
+            // 3. About Kısmı
+            document.getElementById('who-title').innerText = data.about.whoWeAreTitle;
+            document.getElementById('who-text').innerHTML = data.about.whoWeAreText;
+            document.getElementById('what-title').innerText = data.about.whatWeDoTitle;
+            document.getElementById('what-text').innerHTML = data.about.whatWeDoText;
+            
+            // Team Açıklaması
+            if(data.about.teamDescription) {
+                 document.getElementById('team-desc-text').innerText = data.about.teamDescription;
+                 document.getElementById('team-desc-text').style.display = 'block';
+            }
+
+            // 4. Automation & Contact
+            document.getElementById('auto-title').innerText = data.automation.title;
+            document.getElementById('auto-desc').innerText = data.automation.description;
+            
+            document.getElementById('contact-info').innerHTML = `
+                ${data.contact.email}<br>
+                ${data.contact.phone}<br>
+                ${data.contact.location}
+            `;
+            
+            // Section Başlıkları (Manuel güncelleme gerekebilir veya JSON'a eklenebilir)
+            document.querySelector('#projects-section h2').innerText = data.ui.selectedProjects || "SELECTED PROJECTS";
+
+            // 5. Sliderları Yeniden Render Et
+            renderSlider('project-slider', data.projects);
+            renderSlider('auto-slider', data.automation.items);
+            renderTeam('team-container', data.team, data.ui);
+        }
         
-        document.getElementById('contact-info').innerHTML = `
-            ${siteContent.contact.email}<br>
-            ${siteContent.contact.phone}<br>
-            ${siteContent.contact.location}
-        `;
+        // İlk Açılış
+        renderPage();
 
         // --- PARTICLE TEXT LOADER (SCENARIO 3: HYBRID LAYER) ---
         const canvas = document.getElementById('particle-canvas');
@@ -535,13 +588,17 @@
              document.getElementById('team-desc-text').innerText = siteContent.about.teamDescription;
         }
 
-        function renderTeam(containerId, teamData) {
+        function renderTeam(containerId, teamData, uiLabels) {
             const container = document.getElementById(containerId);
             if (!teamData || teamData.length === 0) {
                 container.style.display = 'none';
                 document.getElementById('team-desc-text').style.display = 'none';
                 return;
             }
+
+            // Eğer uiLabels gelmezse (hata önleyici) varsayılan İngilizce olsun
+            const roleText = uiLabels ? uiLabels.managingPartner : "MANAGING PARTNER";
+            const viewText = uiLabels ? uiLabels.viewProfile : "VIEW PROFILE";
 
             let html = "";
             teamData.forEach(member => {
@@ -554,10 +611,10 @@
                 <div class="partner-card" onclick="openLightbox(${globalIndex})">
                     <div>
                         <div class="partner-name">${member.title}</div>
-                        <div class="partner-role">MANAGING PARTNER</div>
+                        <div class="partner-role">${roleText}</div>
                     </div>
                     <div class="card-action">
-                        <span>VIEW PROFILE</span>
+                        <span>${viewText}</span>
                         <span class="action-arrow">&#10142;</span>
                     </div>
                 </div>`;
@@ -565,7 +622,6 @@
             container.innerHTML = html;
         }
 
-        renderTeam('team-container', siteContent.team);
 
         function setupInfiniteLoop(wrapper) {
             const items = Array.from(wrapper.children);
@@ -602,9 +658,6 @@
             const itemWidth = wrapper.querySelector('.slide-item').offsetWidth + 20;
             wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
         }
-
-        renderSlider('project-slider', siteContent.projects);
-        renderSlider('auto-slider', siteContent.automation.items);
 
         // --- PRO LIGHTBOX LOGIC ---
         let currentIndex = 0;

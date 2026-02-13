@@ -91,7 +91,7 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4"
                     ],
                     "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
@@ -224,7 +224,7 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4"
                     ],
                     "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
@@ -357,7 +357,7 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4"
                     ],
                     "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
@@ -490,7 +490,7 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4"
                     ],
                     "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },

@@ -19,6 +19,7 @@
     "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;Projelerinizi en güncel dijital altyapı ile yönetiyoruz. Gerektiğinde Revit Server kurulumlarıyla global ekiplerle eş zamanlı, kesintisiz çalışma ortamları yaratıyoruz.<br>&nbsp;&nbsp;&nbsp;&nbsp;Sadece çizmiyor, veriyi işliyoruz: Projeye özel ürettiğimiz scriptler sayesinde, 2D çizimlerinizi akıllı 3D BIM modellerine dönüştürüyor; metraj, malzeme ve mahal listelerini %100 doğrulukla, insan hatasından arındırılmış şekilde çekiyoruz. Binlerce paftalık dokümantasyon süreçlerini otomasyonla yöneterek, proje teslim sürelerini minimize ediyoruz.</div>"
   },
   "contact": {
+    "sectionTitle": "İLETİŞİM",
     "email": "hello@cosmoslab.studio",
     "phone": "+90 546 662 49 68",
     "location": "Global Hizmet / Ankara, Türkiye merkezli"

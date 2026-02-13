@@ -122,8 +122,9 @@ const siteContent = {
             ]
         },
         "contact": {
+            "sectionTitle": "اتصل بنا",
             "email": "hello@cosmoslab.studio",
-            "phone": "+90 546 662 49 68",
+            "phone": "<span dir='ltr'>+90 546 662 49 68</span>",
             "location": "خدمة عالمية / المقر الرئيسي: أنقرة، تركيا"
         },
         "ui": {
@@ -255,9 +256,10 @@ const siteContent = {
             ]
         },
         "contact": {
+            "sectionTitle": "CONTACT",
             "email": "hello@cosmoslab.studio",
             "phone": "+90 546 662 49 68",
-            "location": "Global Service / Based in Ankara, Turkiye"
+            "location": "Global Service / Based in Ankara, Türkiye"
         },
         "ui": {
             "viewProfile": "VIEW PROFILE",
@@ -388,9 +390,10 @@ const siteContent = {
             ]
         },
         "contact": {
+            "sectionTitle": "КОНТАКТЫ",
             "email": "hello@cosmoslab.studio",
             "phone": "+90 546 662 49 68",
-            "location": "Глобальный сервис / Базируемся в Анкаре, Турция"
+            "location": "Глобальный сервис / Базируется в Анкаре, Турция"
         },
         "ui": {
             "viewProfile": "ПОСМОТРЕТЬ ПРОФИЛЬ",
@@ -521,6 +524,7 @@ const siteContent = {
             ]
         },
         "contact": {
+            "sectionTitle": "İLETİŞİM",
             "email": "hello@cosmoslab.studio",
             "phone": "+90 546 662 49 68",
             "location": "Global Hizmet / Ankara, Türkiye merkezli"

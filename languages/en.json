@@ -19,9 +19,10 @@
     "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;We manage your projects with the latest digital infrastructure. When necessary, we create seamless, real-time collaboration environments for global teams through Revit Server deployments.<br>&nbsp;&nbsp;&nbsp;&nbsp;We process data, not just geometry: Through custom-built scripts, we transform 2D drawings into intelligent 3D BIM models; extracting quantity take-offs (QTO), material schedules, and room data lists with 100% accuracy, free from human error. We minimize project delivery times by managing thousands of sheets of documentation through automation.</div>"
   },
   "contact": {
+    "sectionTitle": "CONTACT",
     "email": "hello@cosmoslab.studio",
     "phone": "+90 546 662 49 68",
-    "location": "Global Service / Based in Ankara, Turkiye"
+    "location": "Global Service / Based in Ankara, Türkiye"
   },
   "ui": {
     "viewProfile": "VIEW PROFILE",

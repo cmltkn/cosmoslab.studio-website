@@ -357,19 +357,36 @@
         </div>
     </div>
 
-    <script src="content.js"></script>
+   <script src="content.js"></script>
+
     <script>
-        // --- 1. DİL ve İÇERİK YÖNETİMİ ---
-        let currentLang = 'en';
-        try { currentLang = localStorage.getItem('siteLang') || 'en'; } catch(e) {}
+        // --- 1. DİL YÖNETİMİ (URL + LOCALSTORAGE) ---
+        
+        // Önce URL'de '?lang=xx' var mı diye bak
+        const urlParams = new URLSearchParams(window.location.search);
+        const langFromUrl = urlParams.get('lang');
+
+        // Öncelik Sırası: 1. URL Parametresi -> 2. Tarayıcı Hafızası -> 3. Varsayılan (en)
+        let currentLang = langFromUrl || localStorage.getItem('siteLang') || 'en';
+
+        // Eğer URL'den gelen dil bizde yoksa (örn: ?lang=xyz), varsayılanı 'en' yap
+        if (typeof siteContent !== 'undefined' && !siteContent[currentLang]) {
+            currentLang = 'en';
+        }
 
         function setLanguage(lang) {
             if(typeof siteContent === 'undefined' || !siteContent[lang]) return;
             
             currentLang = lang;
+            
+            // 1. Tarayıcıya kaydet
             try { localStorage.setItem('siteLang', lang); } catch(e) {}
 
-            // --- YENİ EKLENEN KISIM: RTL/LTR KONTROLÜ ---
+            // 2. Adres çubuğunu güncelle (Sayfa yenilenmeden)
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?lang=' + lang;
+            window.history.pushState({path: newUrl}, '', newUrl);
+
+            // 3. Arapça (RTL) Kontrolü
             const htmlTag = document.documentElement;
             if (lang === 'ar') {
                 htmlTag.setAttribute('dir', 'rtl');
@@ -378,8 +395,7 @@
                 htmlTag.setAttribute('dir', 'ltr');
                 htmlTag.setAttribute('lang', lang);
             }
-            // ---------------------------------------------
-            
+
             renderPage();
         }
 
@@ -388,11 +404,22 @@
             const data = siteContent[currentLang];
             if (!data) return;
 
-            // UI Güncellemeleri
+            // RTL/LTR Ayarını İlk Açılışta da Yap
+            const htmlTag = document.documentElement;
+            if (currentLang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+                htmlTag.setAttribute('lang', 'ar');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                htmlTag.setAttribute('lang', currentLang);
+            }
+
+            // Dil Butonlarını Güncelle
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + currentLang);
             if(activeBtn) activeBtn.classList.add('active');
 
+            // HEADER
             if(data.header) {
                 document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB STUDIO";
                 const nav = document.getElementById('menu');
@@ -404,6 +431,7 @@
                 }
             }
 
+            // ABOUT
             if(data.about) {
                 document.getElementById('who-title').innerText = data.about.whoWeAreTitle || "";
                 document.getElementById('who-text').innerHTML = data.about.whoWeAreText || "";
@@ -412,16 +440,18 @@
                 
                 if(data.about.teamDescription) {
                      const tDesc = document.getElementById('team-desc-text');
-                     tDesc.innerText = data.about.teamDescription;
+                     tDesc.innerHTML = data.about.teamDescription;
                      tDesc.style.display = 'block';
                 }
             }
 
+            // AUTOMATION
             if(data.automation) {
                 document.getElementById('auto-title').innerText = data.automation.title || "";
                 document.getElementById('auto-desc').innerHTML = data.automation.description || "";
             }
             
+            // CONTACT
             if(data.contact) {
                 document.getElementById('contact-info').innerHTML = `
                     ${data.contact.email}<br>
@@ -430,27 +460,27 @@
                 `;
             }
             
+            // PROJECT HEADER
             if(data.ui && data.ui.selectedProjects) {
                 document.getElementById('projects-title').innerText = data.ui.selectedProjects;
             }
 
+            // RENDER LISTS
             renderSlider('project-slider', data.projects || []);
             renderSlider('auto-slider', data.automation ? data.automation.items : []);
             renderTeam('team-container', data.team || [], data.ui);
         }
 
-        // --- 2. RENDER YARDIMCILARI (Eski Tasarım Korundu) ---
+        // --- 2. RENDER YARDIMCILARI ---
         let allImages = []; 
-        function isVideo(url) { return url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm'); }
+        function isVideo(url) { return url && (url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm')); }
         
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const video = entry.target;
                     const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => { video.muted = true; video.play(); });
-                    }
+                    if (playPromise !== undefined) { playPromise.catch(error => { video.muted = true; video.play(); }); }
                 } else { entry.target.pause(); }
             });
         }, { threshold: 0.1 });
@@ -462,6 +492,7 @@
             
             let originalSlides = "";
             dataItems.forEach((item) => {
+                if(!item.images || item.images.length === 0) return;
                 let globalIndex = allImages.length; 
                 item.images.forEach(img => allImages.push(img));
                 const firstMedia = item.images[0];
@@ -490,7 +521,7 @@
                 container.style.display = 'none';
                 return;
             }
-            container.style.display = 'grid'; // Yan yana olması için Grid
+            container.style.display = 'grid'; 
 
             const roleText = uiLabels ? uiLabels.managingPartner : "MANAGING PARTNER";
             const viewText = uiLabels ? uiLabels.viewProfile : "VIEW PROFILE";
@@ -541,13 +572,13 @@
             wrapper.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
         }
 
-        // --- 3. ESKİ PARTICLE LOADER (BİREBİR KOPYALANDI) ---
+        // --- 3. LOADER & PARTICLES ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
         let particlesArray = [];
         let loadProgress = 0.0;
         let targetProgress = 0.0;
-        let mainText = "COSMOS.LAB STUDIO"; // İsim düzeltildi
+        let mainText = "COSMOS.LAB STUDIO";
 
         const LOADER_MIN_MS = 2600; const LOADER_MAX_MS = 8000;
         const SLOGAN_AT_PROGRESS = 0.86; const EXIT_AT_PROGRESS = 0.985; const HOLD_AFTER_SLOGAN_MS = 1400;
@@ -637,7 +668,7 @@
             ctx.font = `900 ${newFontSize}px 'Courier New', monospace`; initParticles();
         });
 
-        // --- 4. ESKİ PRO LIGHTBOX (BİREBİR KOPYALANDI) ---
+        // --- 4. LIGHTBOX ---
         let currentIndex = 0;
         const lb = document.getElementById('lightbox');
         const lbStage = document.getElementById('lb-stage');

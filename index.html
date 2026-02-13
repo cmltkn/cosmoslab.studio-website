@@ -17,13 +17,16 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- 2. LOADER STYLES (ESKİ DOSYADAN BİREBİR) --- */
+        /* --- 6. LOADER --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #050505; 
-            z-index: 99999;
+            background-color: #050505; z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 1.2s ease-in-out; 
+            transition: opacity 1.2s ease-in-out;
+            
+            /* --- YENİ EKLENEN KİLİT --- */
+            direction: ltr !important; /* Site Arapça olsa bile burası Soldan-Sağa kalsın */
+            text-align: center;
         }
         
         canvas#particle-canvas {
@@ -286,7 +289,7 @@
 </head>
 <body>
 
-    <div id="loader-container">
+    <div id="loader-container" dir="ltr">
         <canvas id="particle-canvas"></canvas>
         <div id="loader-slogan">FROM CHAOS TO COSMOS</div>
     </div>
@@ -341,9 +344,8 @@
         </div>
     </section>
 
-    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 30px;">
-        <h2>CONTACT</h2>
-        <p id="contact-info"></p>
+    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 50px;">
+        <h2 id="contact-title">CONTACT</h2> <p id="contact-info"></p>
     </section>
 
     <div class="lightbox" id="lightbox">
@@ -453,6 +455,12 @@
             
             // CONTACT
             if(data.contact) {
+                // Başlığı değiştir
+                if(data.contact.sectionTitle) {
+                    document.getElementById('contact-title').innerText = data.contact.sectionTitle;
+                }
+                
+                // Bilgileri yaz (Telefon numarası artık HTML içeriyor, sorun yok)
                 document.getElementById('contact-info').innerHTML = `
                     ${data.contact.email}<br>
                     ${data.contact.phone}<br>

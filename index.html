@@ -369,7 +369,7 @@
         const langFromUrl = urlParams.get('lang');
 
         // Öncelik Sırası: 1. URL Parametresi -> 2. Tarayıcı Hafızası -> 3. Varsayılan (en)
-        let currentLang = langFromUrl || localStorage.getItem('siteLang') || 'en';
+        let currentLang = langFromUrl || 'en';
 
         // Eğer URL'den gelen dil bizde yoksa (örn: ?lang=xyz), varsayılanı 'en' yap
         if (typeof siteContent !== 'undefined' && !siteContent[currentLang]) {

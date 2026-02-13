@@ -91,21 +91,21 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                    ],
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
+                },
+                {
+                    "images": [
+                        "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
                     ],
                     "title": "ELIMINATE HUMAN ERROR & RISK"
                 },
                 {
                     "images": [
-                        "assets/automation/02_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
+                        "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
                     ],
                     "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES"
-                },
-                {
-                    "images": [
-                        "assets/automation/03_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
-                    ],
-                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
                 {
                     "images": [
@@ -224,21 +224,21 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                    ],
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
+                },
+                {
+                    "images": [
+                        "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
                     ],
                     "title": "ELIMINATE HUMAN ERROR & RISK"
                 },
                 {
                     "images": [
-                        "assets/automation/02_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
+                        "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
                     ],
                     "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES"
-                },
-                {
-                    "images": [
-                        "assets/automation/03_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
-                    ],
-                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
                 {
                     "images": [
@@ -357,21 +357,21 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                    ],
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
+                },
+                {
+                    "images": [
+                        "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
                     ],
                     "title": "ELIMINATE HUMAN ERROR & RISK"
                 },
                 {
                     "images": [
-                        "assets/automation/02_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
+                        "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
                     ],
                     "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES"
-                },
-                {
-                    "images": [
-                        "assets/automation/03_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
-                    ],
-                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
                 {
                     "images": [
@@ -490,21 +490,21 @@ const siteContent = {
             "items": [
                 {
                     "images": [
-                        "assets/automation/01_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
+                        "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
+                    ],
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
+                },
+                {
+                    "images": [
+                        "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4"
                     ],
                     "title": "ELIMINATE HUMAN ERROR & RISK"
                 },
                 {
                     "images": [
-                        "assets/automation/02_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
+                        "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4"
                     ],
                     "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES"
-                },
-                {
-                    "images": [
-                        "assets/automation/03_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models.mp4"
-                    ],
-                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS"
                 },
                 {
                     "images": [

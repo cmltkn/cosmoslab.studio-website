@@ -58,10 +58,10 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
-                    "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
+                    "assets/projects/05_High-rise_Tower/PROJECT OVERVIEW.png",
+                    "assets/projects/05_High-rise_Tower/TECHNICAL DEPTH.png"
                 ],
-                "title": "OBRUCHEVA TOWERS"
+                "title": "HIGH-RISE TOWER"
             },
             {
                 "images": [
@@ -192,10 +192,10 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
-                    "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
+                    "assets/projects/05_High-rise_Tower/PROJECT OVERVIEW.png",
+                    "assets/projects/05_High-rise_Tower/TECHNICAL DEPTH.png"
                 ],
-                "title": "OBRUCHEVA TOWERS"
+                "title": "HIGH-RISE TOWER"
             },
             {
                 "images": [
@@ -326,10 +326,10 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
-                    "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
+                    "assets/projects/05_High-rise_Tower/PROJECT OVERVIEW.png",
+                    "assets/projects/05_High-rise_Tower/TECHNICAL DEPTH.png"
                 ],
-                "title": "OBRUCHEVA TOWERS"
+                "title": "HIGH-RISE TOWER"
             },
             {
                 "images": [
@@ -460,10 +460,10 @@ const siteContent = {
             },
             {
                 "images": [
-                    "assets/projects/05_Obrucheva_Towers/PROJECT OVERVIEW.png",
-                    "assets/projects/05_Obrucheva_Towers/TECHNICAL DEPTH.png"
+                    "assets/projects/05_High-rise_Tower/PROJECT OVERVIEW.png",
+                    "assets/projects/05_High-rise_Tower/TECHNICAL DEPTH.png"
                 ],
-                "title": "OBRUCHEVA TOWERS"
+                "title": "HIGH-RISE TOWER"
             },
             {
                 "images": [

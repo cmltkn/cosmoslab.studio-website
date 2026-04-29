@@ -1,24 +1,13 @@
 BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
-PROJE ÖZETİ
 
 Tipoloji: Konut (Yüksek Katlı Yapı)
-
 Konum: Moskova, Rusya
-
 Ölçek: 150.000 m²
-
 Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
-
 BIM Seviyesi: LOD 350
-
 Durum: İnşaat Aşamasında
-
-KAPSAM VE ROL
-
 Rol: Mimari BIM Lideri (Architectural BIM Lead)
-
 Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-
 Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
 
 ZORLUKLAR VE HEDEFLER (THE CHALLENGE)

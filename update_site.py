@@ -1,6 +1,5 @@
 import os
 import json
-import re
 
 # --- AYARLAR ---
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,13 +26,7 @@ def load_language_files():
     return lang_data
 
 def get_files_for_language(folder_path, lang_code):
-    """
-    Belirli bir dil için doğru dosyaları seçer.
-    Mantık:
-    1. Önce dosya_adı_{lang_code}.png var mı diye bakar (örn: cv_tr.png).
-    2. Yoksa, varsayılan (suffixsiz) dosyayı alır (örn: cv.png).
-    3. Diğer dillerin dosyalarını (örn: cv_ru.png) görmezden gelir.
-    """
+    """Belirli bir dil için doğru dosyaları seçer."""
     valid_extensions = {".jpg", ".jpeg", ".png", ".gif", ".webp", ".mp4", ".webm"}
     selected_files = []
     
@@ -41,8 +34,6 @@ def get_files_for_language(folder_path, lang_code):
         return []
 
     all_files = sorted(os.listdir(folder_path))
-    
-    # Dosyaları grupla: { "cv": {"base": "cv.png", "tr": "cv_tr.png", "en": "cv_en.png"} }
     file_groups = {}
 
     for f in all_files:
@@ -51,8 +42,6 @@ def get_files_for_language(folder_path, lang_code):
             continue
             
         name_no_ext = os.path.splitext(f)[0]
-        
-        # Dil suffix'i var mı kontrol et (örn: image_tr)
         parts = name_no_ext.rsplit('_', 1)
         suffix = parts[1] if len(parts) > 1 and len(parts[1]) == 2 else None
         base_name = parts[0] if suffix else name_no_ext
@@ -65,17 +54,12 @@ def get_files_for_language(folder_path, lang_code):
         else:
             file_groups[base_name]["base"] = f
 
-    # Şimdi bu dil için en uygun dosyayı seç
     for base_name, variants in file_groups.items():
         chosen_file = None
-        
-        # 1. Öncelik: Tam dil eşleşmesi (örn: cv_tr.png)
         if lang_code in variants:
             chosen_file = variants[lang_code]
-        # 2. Öncelik: Varsayılan dosya (örn: cv.png)
         elif "base" in variants:
             chosen_file = variants["base"]
-        # 3. Öncelik: Eğer 'en' varsa ve biz base bulamadıysak fallback yap (opsiyonel)
         elif "en" in variants:
             chosen_file = variants["en"]
             
@@ -91,27 +75,45 @@ def scan_category(category_name, lang_code):
     items = []
 
     if not os.path.exists(base_path):
+        print(f"UYARI: '{category_name}' klasörü bulunamadı.")
         return []
 
     folders = sorted([d for d in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, d))])
 
     for folder in folders:
         full_path = os.path.join(base_path, folder)
-        # BURADA DİLE GÖRE FİLTRELEME YAPIYORUZ
         media_files = get_files_for_language(full_path, lang_code)
         
+        text_tr = ""
+        txt_path_tr = os.path.join(full_path, "info_tr.txt")
+        if os.path.exists(txt_path_tr):
+            with open(txt_path_tr, "r", encoding="utf-8") as tf:
+                text_tr = tf.read()
+
+        text_en = ""
+        txt_path_en = os.path.join(full_path, "info_en.txt")
+        if os.path.exists(txt_path_en):
+            with open(txt_path_en, "r", encoding="utf-8") as tf:
+                text_en = tf.read()
+        
         if media_files:
-            clean_title = re.sub(r'^[\d_]+', '', folder).replace("_", " ").upper()
+            clean_title = folder.split("_", 1)[-1] if "_" in folder else folder
+            clean_title = clean_title.upper()
+            
+            thumbnail = media_files[0]
+            case_images = media_files[1:] if len(media_files) > 1 else []
+            
             items.append({
-                "images": media_files,
-                "title": clean_title
+                "title": clean_title,
+                "thumbnail": thumbnail,
+                "case_images": case_images,
+                "description_tr": text_tr,
+                "description_en": text_en
             })
     return items
 
 def main():
     print("--- Cosmos Lab Multi-Language Builder ---")
-    
-    # 1. Metin dosyalarını yükle (en.json, tr.json...)
     all_texts = load_language_files()
     
     if not all_texts:
@@ -120,7 +122,6 @@ def main():
 
     final_content = {}
 
-    # 2. Her dil için site içeriğini oluştur
     for lang_code, text_data in all_texts.items():
         print(f"[{lang_code.upper()}] İçerik oluşturuluyor...")
         
@@ -128,7 +129,6 @@ def main():
         team = scan_category("team", lang_code)
         automation = scan_category("automation", lang_code)
         
-        # Metin verisiyle Asset verisini birleştir
         final_content[lang_code] = {
             "header": text_data.get("header", {}),
             "about": text_data.get("about", {}),
@@ -140,10 +140,9 @@ def main():
                 "items": automation
             },
             "contact": text_data.get("contact", {}),
-            "ui": text_data.get("ui", {}) # UI metinleri (butonlar vs)
+            "ui": text_data.get("ui", {})
         }
 
-    # 3. content.js dosyasına yaz
     js_content = f"const siteContent = {json.dumps(final_content, indent=4, ensure_ascii=False)};"
     
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

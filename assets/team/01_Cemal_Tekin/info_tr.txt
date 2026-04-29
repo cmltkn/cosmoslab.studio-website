@@ -1,0 +1,2 @@
+Özgeçmiş
+  Karmaşık mimari süreçlerin algoritmik yönetiminde uzmanlaşarak, tasarım niyeti ile mühendislik hassasiyeti arasındaki köprüyü kuruyorum. Yüksek katlı kuleler, sağlık yapıları ve endüstriyel tesisler gibi uluslararası projelerdeki kapsamlı deneyimimle; iş akışlarını otomatize etmek, veri bütünlüğünü sağlamak ve imalata hazır (LOD 400) modeller üretmek için Python, Revit API ve Rhino.Inside teknolojilerini kullanıyorum. Cosmos.Lab Kurucu Ortağı olarak, manuel üretim süreçlerinden veri odaklı hesaplamalı teslimat süreçlerine geçişe liderlik ediyorum.

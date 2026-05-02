@@ -315,7 +315,16 @@ const siteContent = {
             "sectionTitle": "CONTACT",
             "email": "hello@cosmoslab.studio",
             "phone": "+90 546 662 49 68",
-            "location": "Global Service / Based in Ankara, Türkiye"
+            "location": "Ankara, Türkiye",
+            "work": "Remote & Cloud-based Collaboration",
+            "labelMail": "MAIL",
+            "labelTel": "TEL",
+            "labelLoc": "LOCATION",
+            "labelWork": "WORK",
+            "formName": "Name",
+            "formEmail": "Email",
+            "formMessage": "Message",
+            "formSend": "SEND"
         },
         "ui": {
             "viewProfile": "VIEW PROFILE",

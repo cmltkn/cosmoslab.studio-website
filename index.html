@@ -1,214 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5F9CJGDQ4N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F9CJGDQ4N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5F9CJGDQ4N');
+    </script>
 
-  gtag('config', 'G-5F9CJGDQ4N');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmos.Lab Studio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    
     <style>
-	/* --- AKORDİYON (SMOOTH GEÇİŞ VE KESKİN HATLAR) --- */
-        .accordion-container {
-            display: flex;
-            width: 100%;
-            height: 65vh;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .accordion-panel {
-            flex: 1;
-            border-radius: 0; /* Keskin köşeler */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            cursor: pointer;
-            transition: flex 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-            overflow: hidden;
-            border: 1px solid #333;
-        }
-
-        .accordion-panel.active {
-            flex: 10;
-            border-color: #fff;
-            cursor: default;
-        }
-
-        .panel-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* Kapalıyken diğer kartlar hafif karanlık kalsın ki odak açık olanda olsun */
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: flex-end;
-            padding: 30px;
-            box-sizing: border-box;
-            transition: background 0.6s ease;
-        }
-
-        .accordion-panel.active .panel-overlay {
-            /* Açıldığında üst ve orta tamamen aydınlansın, sadece yazının arkası okunabilirlik için koyu kalsın */
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 40%);
-        }
-
-        /* YAZI GEÇİŞİ: Writing-mode yerine Transform kullanarak pürüzsüz yaptık */
-        .panel-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #fff;
-            margin: 0;
-            white-space: nowrap;
-            transform-origin: left bottom;
-            transform: rotate(-90deg) translateX(0); /* Kapalıyken dikey */
-            transition: transform 0.6s ease, font-size 0.6s ease;
-            position: absolute;
-            bottom: 30px;
-            left: 50px;
-            /* Açık renkli renderlarda beyaz başlığın kaybolmaması için gölge eklendi */
-            text-shadow: 2px 2px 12px rgba(0,0,0,0.9);
-        }
-
-        .accordion-panel.active .panel-title {
-            transform: rotate(0deg) translateX(0); /* Açıldığında yatay */
-            font-size: 2.5rem;
-            position: relative;
-            left: 0;
-            bottom: 0;
-        }
-
-        /* --- CASE STUDY (WORD TARZI METNİ KAYDIRMA) --- */
-        #case-study-container {
-            margin-top: 60px;
-            padding-top: 60px;
-            border-top: 1px solid #333;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .case-study-header {
-            margin-bottom: 30px;
-        }
-
-        .case-study-header strong {
-            display: block;
-            font-size: 2.2rem;
-            color: #fff;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-
-        /* Tüm içeriği saran ana gövde */
-        .case-study-body {
-            display: flow-root; /* Float taşmalarını engeller */
-            color: #ccc;
-        }
-
-        /* Görselleri Sola Yasla ve Yazıyı Etrafından Akıt */
-        .case-study-floating-images {
-            float: left; /* Görseli sola çiviler, yazıyı sağdan akıtır */
-            width: 45%; /* Sayfanın %45'ini kaplasın */
-            margin-right: 40px; /* Sağındaki yazıyla boşluk */
-            margin-bottom: 20px; /* Altından devam edecek yazıyla boşluk */
-        }
-
-        .case-study-floating-images img {
-            width: 100%;
-            border: 1px solid #222;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .case-study-body p {
-            line-height: 1.8;
-            font-size: 1.05rem;
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        /* Mobilde yan yana değil, alt alta dursunlar */
-        @media (max-width: 900px) {
-            .case-study-floating-images {
-                float: none;
-                width: 100%;
-                margin-right: 0;
-            }
-        }
-        /* --- 1. TEMEL AYARLAR (ESKİ DOSYADAN BİREBİR) --- */
+        /* --- 1. TEMEL AYARLAR --- */
         body { 
-            background-color: #0e0e0e; 
-            color: #f0f0f0; 
+            background-color: #0e0e0e; color: #f0f0f0; 
             font-family: 'Courier New', Courier, monospace; 
-            margin: 0; 
-            overflow-x: hidden; 
-            touch-action: auto; 
+            margin: 0; overflow-x: hidden; touch-action: auto; 
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- 6. LOADER --- */
+        /* --- 2. LOADER --- */
         #loader-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: #050505; z-index: 99999;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 1.2s ease-in-out;
-            
-            /* --- YENİ EKLENEN KİLİT --- */
-            direction: ltr !important; /* Site Arapça olsa bile burası Soldan-Sağa kalsın */
-            text-align: center;
+            direction: ltr !important; text-align: center;
         }
-        
-        canvas#particle-canvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-
+        canvas#particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         #loader-slogan {
-            position: absolute;
-            top: calc(50% + 80px); 
-            transform: translateY(-50%);
-            font-size: 1.1rem; 
-            letter-spacing: 8px; 
-            color: #cccccc; 
-            opacity: 0; 
-            transition: opacity 0.8s ease-out;
-            text-transform: uppercase;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            width: 100%;
-            font-weight: bold;
+            position: absolute; top: calc(50% + 80px); transform: translateY(-50%);
+            font-size: 1.1rem; letter-spacing: 8px; color: #cccccc; 
+            opacity: 0; transition: opacity 0.8s ease-out;
+            text-transform: uppercase; font-family: 'Courier New', Courier, monospace;
+            text-align: center; width: 100%; font-weight: bold;
         }
-        
         .loaded #loader-container { opacity: 0; pointer-events: none; }
         .slogan-visible #loader-slogan { opacity: 1; }
 
-        /* --- 3. HEADER & SITE STYLES (ESKİ GENİŞLİKLER) --- */
+        /* --- 3. HEADER & SITE STYLES --- */
         header { 
-            padding: 2rem 3rem; /* Eski 3rem ayarı */
-            width: 100%; 
-            box-sizing: border-box;
-            position: sticky; top: 0; 
-            background: rgba(14, 14, 14, 0.95); 
-            z-index: 100; 
-            display: flex; justify-content: space-between; 
-            border-bottom: 1px solid #333; 
-            align-items: center;
+            padding: 2rem 3rem; width: 100%; box-sizing: border-box;
+            position: sticky; top: 0; background: rgba(14, 14, 14, 0.95); 
+            z-index: 100; display: flex; justify-content: space-between; 
+            border-bottom: 1px solid #333; align-items: center;
         }
         .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: -2px; }
-        
         .header-right { display: flex; align-items: center; gap: 30px; }
-        
         nav { display: flex; gap: 20px; }
         nav a { color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: #fff; }
 
-        /* DİL BUTONLARI (Yeni Eklenen Tek Şey) */
         .lang-switch {
             display: flex; align-items: center; gap: 5px;
             font-size: 0.8rem; font-weight: bold;
@@ -218,65 +64,34 @@
         .lang-btn:hover { color: #fff; }
         .lang-btn.active { color: #fff; text-decoration: underline; }
 
-        section { 
-            padding: 2rem 0; 
-            max-width: 70%; /* Eski %70 ayarı */
-            margin: 0 auto; 
-            scroll-margin-top: 100px; 
-        }
-        
+        section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
         h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
-        
-        p { 
-            color: #bfbfbf; font-weight: 600; max-width: 100%; 
-            line-height: 1.6; margin-bottom: 1.5rem; 
-        }
+        p { color: #bfbfbf; font-weight: 600; max-width: 100%; line-height: 1.6; margin-bottom: 1.5rem; }
         p b, p strong { color: #ffffff; font-weight: 900; letter-spacing: 1px; }
-        
-        /* --- YENİ ABOUT YERLEŞİMİ (MASAÜSTÜ) --- */
+
+        /* --- 4. ABOUT SECTION (GRİD) --- */
         .about-layout { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 50px; 
-            margin-bottom: 30px; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; 
         }
-
-        /* 1. Sol Sütun: Biz Kimiz */
         #who-block { grid-column: 1; grid-row: 1; }
-        
-        /* 2. Sağ Sütun: Ne Yapıyoruz (İki satır yüksekliğinde uzanır) */
         #what-block { grid-column: 2; grid-row: 1 / span 2; }
-
-        /* 3. Takım Kartları: SADECE SOL SÜTUNDA, Biz Kimiz'in tam altında durur */
         #team-block { grid-column: 1; grid-row: 2; }
-        
-        /* 4. Açılan CV Alanı: İki sütunun da altından TAM SAYFA genişliğinde akar */
         #team-profile-container { grid-column: 1 / span 2; grid-row: 3; width: 100%; }
 
-        /* --- TEAM SECTION (ORİJİNAL KESKİN DÜZEN + AŞAĞI AÇILIR CV) --- */
+        /* --- 5. TEAM KARTLARI --- */
         .team-desc {
             font-size: 0.85rem; color: #888; font-style: italic;
             margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
             padding-left: 15px; max-width: 90%; line-height: 1.6;
         }
-        
-        .team-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; 
-        }
-        
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .partner-card {
             border: 1px solid #333; padding: 20px; cursor: pointer;
             transition: all 0.3s ease; background-color: #0a0a0a; 
             display: flex; flex-direction: column; gap: 5px; justify-content: space-between;
-            position: relative; overflow: hidden;
-            min-height: 120px;
+            position: relative; overflow: hidden; min-height: 120px;
         }
-        
-        .partner-card:hover, .partner-card.active { 
-            border-color: #fff; 
-            transform: translateY(-2px); 
-        }
-
+        .partner-card:hover, .partner-card.active { border-color: #fff; transform: translateY(-2px); }
         .partner-name { color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: 1px; position: relative; z-index: 2; }
         .partner-role { color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 2; }
         
@@ -285,69 +100,73 @@
             font-size: 0.75rem; color: #555; display: flex; justify-content: space-between; 
             align-items: center; transition: all 0.3s ease; position: relative; z-index: 2;
         }
-        
-        .partner-card:hover .card-action, .partner-card.active .card-action { 
-            color: #fff; border-top-color: #666; 
-        }
-        
+        .partner-card:hover .card-action, .partner-card.active .card-action { color: #fff; border-top-color: #666; }
         .action-arrow { transition: transform 0.3s ease; }
         .partner-card:hover .action-arrow, .partner-card.active .action-arrow { transform: translateX(5px); }
 
-        /* --- TAKIM PROFİLİ TAM SAYFA AÇILIM ALANI --- */
-        #team-profile-container {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid #333;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
+        /* --- 6. AKORDİYON (PROJELER) --- */
+        .accordion-container { display: flex; width: 100%; height: 65vh; gap: 10px; margin-top: 20px; }
+        .accordion-panel {
+            flex: 1; border-radius: 0; background-size: cover; background-position: center;
+            position: relative; cursor: pointer; transition: flex 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden; border: 1px solid #333;
+        }
+        .accordion-panel.active { flex: 10; border-color: #fff; cursor: default; }
+        
+        .panel-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); display: flex; align-items: flex-end;
+            padding: 30px; box-sizing: border-box; transition: background 0.6s ease;
+        }
+        .accordion-panel.active .panel-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 40%); }
+        
+        .panel-title {
+            font-size: 1.4rem; font-weight: bold; color: #fff; margin: 0; white-space: nowrap;
+            transform-origin: left bottom; transform: rotate(-90deg) translateX(0); 
+            transition: transform 0.6s ease, font-size 0.6s ease;
+            position: absolute; bottom: 30px; left: 50px; text-shadow: 2px 2px 12px rgba(0,0,0,0.9);
+        }
+        .accordion-panel.active .panel-title {
+            transform: rotate(0deg) translateX(0); font-size: 2.5rem; position: relative; left: 0; bottom: 0;
         }
 
-        @media (max-width: 900px) {
-            .team-grid { grid-template-columns: 1fr; gap: 15px; } 
+        /* --- 7. CASE STUDY (TAM SAYFA AÇILIM) --- */
+        #case-study-container, #team-profile-container {
+            margin-top: 60px; padding-top: 60px; border-top: 1px solid #333;
+            display: none; opacity: 0; transition: opacity 0.8s ease;
         }
+        .case-study-header { margin-bottom: 30px; }
+        .case-study-header strong { display: block; font-size: 2.2rem; color: #fff; margin-top: 10px; text-transform: uppercase; }
+        .case-study-body { display: flow-root; color: #ccc; }
+        
+        .case-study-floating-images { float: left; width: 45%; margin-right: 40px; margin-bottom: 20px; }
+        .case-study-floating-images img { width: 100%; border: 1px solid #222; margin-bottom: 20px; display: block; }
+        
+        /* TAKIM İÇİN GÖRSEL SINIRLAYICI (Max-width kilit) */
+        #team-profile-container .case-study-floating-images { width: 20%; max-width: 220px; margin-right: 30px; }
 
-        /* --- SLIDER (ESKİ DOSYADAN BİREBİR) --- */
+        .case-study-body p { line-height: 1.8; font-size: 1.05rem; margin-top: 0; margin-bottom: 30px; }
+
+        /* --- 8. SLIDER (OTOMASYON) --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; }
         .slider-wrapper { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
-        
         .slide-item { 
-            min-width: 700px; display: flex; flex-direction: column;
-            position: relative; cursor: pointer; border: 1px solid #333; background: #000;
-            transition: border-color 0.3s; flex-shrink: 0; 
+            min-width: 700px; display: flex; flex-direction: column; position: relative; cursor: pointer; 
+            border: 1px solid #333; background: #000; transition: border-color 0.3s; flex-shrink: 0; 
             scroll-snap-align: start; scroll-snap-stop: always;
         }
         .slide-item:hover { border-color: #fff; }
-        
         .slide-media { width: 100%; height: 500px; object-fit: contain; display: block; background-color: #000; pointer-events: none; }
-        
-        .caption { 
-            width: 100%; background: #121212; padding: 18px 22px; 
-            box-sizing: border-box; border-top: 1px solid #222;
-            display: flex; flex-direction: column; gap: 6px; text-align: left;
-        }
-        .caption div:first-child { 
-            color: #cccccc; font-size: 0.95rem; font-weight: 600; 
-            letter-spacing: 1px; line-height: 1.4; text-transform: uppercase;
-            white-space: normal; word-wrap: break-word; overflow-wrap: break-word;
-        }
-        .caption span { 
-            font-size: 0.75rem !important; color: #555 !important;
-            font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; 
-        }
+        .caption { width: 100%; background: #121212; padding: 18px 22px; box-sizing: border-box; border-top: 1px solid #222; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+        .caption div:first-child { color: #cccccc; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; line-height: 1.4; text-transform: uppercase; white-space: normal; word-wrap: break-word; overflow-wrap: break-word; }
+        .caption span { font-size: 0.75rem !important; color: #555 !important; font-weight: normal; letter-spacing: 0.5px; font-family: sans-serif; }
         .slide-item:hover .caption div:first-child { color: #fff; }
         .slide-item:hover .caption { border-top-color: #444; background: #161616; }
-
-        .slider-btn { 
-            position: absolute; top: 250px; transform: translateY(-50%); 
-            background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; 
-            width: 50px; height: 50px; cursor: pointer; z-index: 50; 
-            font-size: 24px; display: flex; align-items: center; justify-content: center;
-        }
+        .slider-btn { position: absolute; top: 250px; transform: translateY(-50%); background: rgba(0,0,0,0.9); color: #fff; border: 1px solid #555; width: 50px; height: 50px; cursor: pointer; z-index: 50; font-size: 24px; display: flex; align-items: center; justify-content: center; }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
 
-        /* --- LIGHTBOX (ESKİ PRO VERSION) --- */
+        /* --- 9. LIGHTBOX --- */
         .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; overflow: hidden; }
         .lb-stage { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
         .lb-main-media { max-width: 100%; max-height: 100%; object-fit: contain; transform-origin: center center; user-select: none; -webkit-user-drag: none; will-change: transform; }
@@ -362,149 +181,62 @@
         .rotate-mode .lb-prev-arrow { top: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
         .rotate-mode .lb-next-arrow { top: auto; bottom: 10px; left: 50%; transform: translateX(-50%) rotate(90deg); }
 
-        /* --- MOBİL UYUMLULUK (DÜZELTİLDİ) --- */
+        /* --- 10. İLETİŞİM (CONTACT) --- */
+        #contact-section { border-top: 1px solid #333; margin-top: 60px; padding-top: 40px; }
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 30px; }
+        .contact-email { display: inline-block; font-size: 2.2rem; color: #fff; font-weight: bold; text-decoration: none; margin-bottom: 25px; transition: color 0.3s; word-break: break-all; }
+        .contact-email:hover { color: #aaa; }
+        .contact-details { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; }
+        .contact-social a { color: #666; text-decoration: none; font-size: 0.85rem; margin-right: 20px; border-bottom: 1px solid transparent; transition: all 0.3s; }
+        .contact-social a:hover { color: #fff; border-bottom-color: #fff; }
+        .minimal-form { display: flex; flex-direction: column; gap: 12px; height: 100%; justify-content: flex-start; }
+        .minimal-form input, .minimal-form textarea { background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; padding: 8px 0; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; transition: border-color 0.3s; }
+        .minimal-form input:focus, .minimal-form textarea:focus { outline: none; border-bottom-color: #fff; }
+        .minimal-form textarea { resize: none; height: 50px; } 
+        .minimal-form button { background: transparent; color: #fff; border: 1px dashed #333; padding: 12px; cursor: pointer; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; font-weight: bold; text-align: left; transition: all 0.3s; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .minimal-form button:hover { border-color: #fff; background: #111; }
+        .footer-bottom { margin-top: 80px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #222; font-size: 0.75rem; color: #555; text-align: center; }
+
+        /* --- 11. ARAPÇA (RTL) ÖZEL AYARLARI --- */
+        html[dir="rtl"] body { font-family: 'Tahoma', 'Courier New', sans-serif; }
+        html[dir="rtl"] h2 { border-left: none; border-right: 4px solid #fff; padding-left: 0; padding-right: 20px; }
+        html[dir="rtl"] .team-desc { border-left: none; border-right: 3px solid #333; padding-left: 0; padding-right: 15px; }
+        html[dir="rtl"] .lang-switch { border-left: none; border-right: 1px solid #444; padding-left: 0; padding-right: 20px; }
+        html[dir="rtl"] .caption { text-align: right; }
+        html[dir="rtl"] .action-arrow { transform: rotate(180deg); }
+        html[dir="rtl"] .partner-card:hover .action-arrow { transform: translateX(-5px) rotate(180deg); }
+
+        /* --- 12. MOBİL MEDYA SORGUSU --- */
         @media (max-width: 900px) {
-            
-            /* 1. Header ve Dil Kutusu Ayarı (İstediğin Gibi) */
-            header { 
-                padding: 1.5rem 1rem; 
-                flex-direction: column; 
-                align-items: flex-start; 
-                gap: 20px; 
-                position: sticky; 
-            }
-
-            .lang-switch {
-                position: absolute; /* Dil kutusunu sağ üste çivile */
-                top: 2rem;          
-                right: 1rem;        
-                border-left: none;  
-                padding-left: 0;
-            }
-
-            .header-right { 
-                width: 100%; 
-                justify-content: flex-start; 
-                margin-top: 5px; 
-            }
-            
-            nav { gap: 15px 20px; flex-wrap: wrap; }
-
-           /* Mobilde Sandviç Sıralaması (Biz Kimiz -> Takım -> Ne Yapıyoruz) */
-            .about-layout { 
-                display: flex; 
-                flex-direction: column; 
-                gap: 40px; 
-            }
-            #who-block { order: 1; }
-            #team-block { order: 2; }
-            #what-block { order: 3; }
-        
-        /* Takım kartları ve açılan profil artık her iki sütunu da kapsayacak */
-        #team-block { grid-column: 1 / span 2; }
-        #team-profile-container { grid-column: 1 / span 2; width: 100%; }
-
-        /* --- MOBİL UYUMLULUK (DÜZELTİLDİ) --- */
-        @media (max-width: 900px) {
-            
-            /* Header Ayarları */
             header { padding: 1.5rem 1rem; flex-direction: column; align-items: flex-start; gap: 20px; position: sticky; }
             .lang-switch { position: absolute; top: 2rem; right: 1rem; border-left: none; padding-left: 0; }
             .header-right { width: 100%; justify-content: flex-start; margin-top: 5px; }
             nav { gap: 15px 20px; flex-wrap: wrap; }
-
-            /* Mobilde İstediğin Sıralama (Biz Kimiz -> Kartlar -> Açılan CV -> Ne Yapıyoruz) */
-            .about-layout { 
-                display: flex; 
-                flex-direction: column; 
-                gap: 40px; 
-            }
+            
+            .about-layout { display: flex; flex-direction: column; gap: 40px; }
             #who-block { order: 1; }
             #team-block { order: 2; }
             #team-profile-container { order: 3; }
             #what-block { order: 4; }
 
-            /* Diğer Mobil Ayarlar */
             section { max-width: 90%; } 
+            .team-grid { grid-template-columns: 1fr; gap: 15px; } 
+
+            .case-study-floating-images { float: none; width: 100%; margin-right: 0; }
+            #team-profile-container .case-study-floating-images { width: 45%; max-width: 180px; margin-right: 20px; float: left; }
+            
             .slide-item { min-width: 90vw; width: 90vw; margin-right: 15px; } 
             .slide-media { height: 300px; }
             .slider-btn { display: none; }
             .rotate-btn { display: flex; }
             .lb-arrow { font-size: 30px; padding: 15px; }
-            .team-grid { grid-template-columns: 1fr; gap: 15px; } 
-        }
 
-	/* --- ARAPÇA (RTL) ÖZEL AYARLARI --- */
-        /* Bu ayarlar sadece html etiketinde dir="rtl" varsa çalışır */
-        
-        html[dir="rtl"] body {
-            font-family: 'Tahoma', 'Courier New', sans-serif; /* Arapça uyumlu font */
-        }
+            .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+            .contact-email { font-size: 1.5rem; }
 
-        /* 1. Başlıkların Çizgisini Sağa Al */
-        html[dir="rtl"] h2 {
-            border-left: none;       /* Soldaki çizgiyi kaldır */
-            border-right: 4px solid #fff; /* Sağa çizgi ekle */
-            padding-left: 0;
-            padding-right: 20px;     /* Boşluğu sağa ver */
+            html[dir="rtl"] header { align-items: flex-end; }
+            html[dir="rtl"] .lang-switch { right: auto; left: 1rem; border-right: none; }
         }
-
-        /* 2. Partner ve Ekip Açıklamaları Çizgisi */
-        html[dir="rtl"] .team-desc {
-            border-left: none;
-            border-right: 3px solid #333;
-            padding-left: 0;
-            padding-right: 15px;
-        }
-
-        /* 3. Dil Seçici Çizgisi */
-        html[dir="rtl"] .lang-switch {
-            border-left: none;
-            border-right: 1px solid #444;
-            padding-left: 0;
-            padding-right: 20px;
-        }
-
-        /* 4. Slider Kart Yazıları */
-        html[dir="rtl"] .caption {
-            text-align: right; /* Yazıyı sağa yasla */
-        }
-
-        /* 5. Ok İşaretlerini Çevir (Partner Kartı) */
-        html[dir="rtl"] .action-arrow {
-            transform: rotate(180deg); /* Oku ters çevir */
-        }
-        html[dir="rtl"] .partner-card:hover .action-arrow {
-            transform: translateX(-5px) rotate(180deg); /* Sola doğru hareket etsin */
-        }
-        
-        /* 6. Mobil Menü Hizalaması */
-        @media (max-width: 900px) {
-            html[dir="rtl"] header {
-                align-items: flex-end; /* Mobilde sağa yasla */
-            }
-            html[dir="rtl"] .lang-switch {
-                right: auto;
-                left: 1rem; /* Dil kutusunu sola al */
-                border-right: none;
-            }
-        }
-
-        /* --- SADECE TAKIM PROFİL GÖRSELİNİ KESİN OLARAK KÜÇÜLTME --- */
-        #team-profile-container .case-study-floating-images {
-            width: 20%; 
-            max-width: 220px; /* İŞTE GÖRSELİ KESİN OLARAK KÜÇÜLTEN KİLİT KOD BU */
-            margin-right: 30px; 
-        }
-
-        @media (max-width: 900px) {
-            #team-profile-container .case-study-floating-images {
-                width: 45%; 
-                max-width: 180px; /* Mobilde de ekranı kaplamasın, kibar dursun */
-                margin-right: 20px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -536,12 +268,10 @@
                 <h2 id="who-title"></h2>
                 <p id="who-text"></p>
             </div>
-            
             <div id="team-block">
                 <div class="team-desc" id="team-desc-text"></div>
                 <div class="team-grid" id="team-container"></div>
             </div>
-
             <div id="what-block">
                 <h2 id="what-title"></h2>
                 <p id="what-text"></p>
@@ -551,11 +281,7 @@
 
     <section id="projects-section">
         <h2 id="projects-title">SELECTED PROJECTS</h2>
-        <div class="slider-container">
-            <button class="slider-btn prev-btn" onclick="manualScroll('project-slider', -1)">&#10094;</button>
-            <div class="slider-wrapper" id="project-slider"></div>
-            <button class="slider-btn next-btn" onclick="manualScroll('project-slider', 1)">&#10095;</button>
-        </div>
+        <div id="project-slider"></div>
     </section>
 
     <section id="automation-section">
@@ -568,8 +294,29 @@
         </div>
     </section>
 
-    <section id="contact-section" style="border-top: 1px solid #333; margin-top: 50px;">
-        <h2 id="contact-title">CONTACT</h2> <p id="contact-info"></p>
+    <section id="contact-section">
+        <h2 id="contact-title"></h2>
+        <div class="contact-layout">
+            <div class="contact-info-block">
+                <a href="#" class="contact-email" id="contact-email"></a>
+                <div class="contact-details" id="contact-details"></div>
+                <div class="contact-social">
+                    <a href="https://www.linkedin.com" target="_blank">LINKEDIN</a>
+                    <a href="https://www.instagram.com" target="_blank">INSTAGRAM</a>
+                </div>
+            </div>
+            <div class="contact-form-block">
+                <form action="https://formspree.io/f/xwvypgpa" method="POST" class="minimal-form">
+                    <input type="text" name="name" placeholder="Name / İsim" required>
+                    <input type="email" name="email" placeholder="Email / E-posta" required>
+                    <textarea name="message" placeholder="Message / Mesajınız" required></textarea>
+                    <button type="submit">SEND / GÖNDER &#10142;</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Cosmos.Lab Studio. All rights reserved.
+        </div>
     </section>
 
     <div class="lightbox" id="lightbox">
@@ -583,45 +330,23 @@
         </div>
     </div>
 
-   <script src="content.js"></script>
-
+    <script src="content.js"></script>
     <script>
-        // --- 1. DİL YÖNETİMİ (URL + LOCALSTORAGE) ---
-        
-        // Önce URL'de '?lang=xx' var mı diye bak
+        // --- 1. DİL YÖNETİMİ ---
         const urlParams = new URLSearchParams(window.location.search);
         const langFromUrl = urlParams.get('lang');
-
-        // Öncelik Sırası: 1. URL Parametresi -> 2. Tarayıcı Hafızası -> 3. Varsayılan (en)
         let currentLang = langFromUrl || 'en';
-
-        // Eğer URL'den gelen dil bizde yoksa (örn: ?lang=xyz), varsayılanı 'en' yap
-        if (typeof siteContent !== 'undefined' && !siteContent[currentLang]) {
-            currentLang = 'en';
-        }
+        if (typeof siteContent !== 'undefined' && !siteContent[currentLang]) { currentLang = 'en'; }
 
         function setLanguage(lang) {
             if(typeof siteContent === 'undefined' || !siteContent[lang]) return;
-            
             currentLang = lang;
-            
-            // 1. Tarayıcıya kaydet
             try { localStorage.setItem('siteLang', lang); } catch(e) {}
-
-            // 2. Adres çubuğunu güncelle (Sayfa yenilenmeden)
             const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?lang=' + lang;
             window.history.pushState({path: newUrl}, '', newUrl);
-
-            // 3. Arapça (RTL) Kontrolü
             const htmlTag = document.documentElement;
-            if (lang === 'ar') {
-                htmlTag.setAttribute('dir', 'rtl');
-                htmlTag.setAttribute('lang', 'ar');
-            } else {
-                htmlTag.setAttribute('dir', 'ltr');
-                htmlTag.setAttribute('lang', lang);
-            }
-
+            if (lang === 'ar') { htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); } 
+            else { htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', lang); }
             renderPage();
         }
 
@@ -630,34 +355,23 @@
             const data = siteContent[currentLang];
             if (!data) return;
 
-            // RTL/LTR Ayarını İlk Açılışta da Yap
             const htmlTag = document.documentElement;
-            if (currentLang === 'ar') {
-                htmlTag.setAttribute('dir', 'rtl');
-                htmlTag.setAttribute('lang', 'ar');
-            } else {
-                htmlTag.setAttribute('dir', 'ltr');
-                htmlTag.setAttribute('lang', currentLang);
-            }
+            if (currentLang === 'ar') { htmlTag.setAttribute('dir', 'rtl'); htmlTag.setAttribute('lang', 'ar'); } 
+            else { htmlTag.setAttribute('dir', 'ltr'); htmlTag.setAttribute('lang', currentLang); }
 
-            // Dil Butonlarını Güncelle
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + currentLang);
             if(activeBtn) activeBtn.classList.add('active');
 
-            // HEADER
             if(data.header) {
                 document.getElementById('logo').innerText = data.header.title || "COSMOS.LAB STUDIO";
                 const nav = document.getElementById('menu');
                 nav.innerHTML = "";
                 if(data.header.menu) {
-                    data.header.menu.forEach(item => {
-                        nav.innerHTML += `<a href="${item.link}">${item.text}</a>`;
-                    });
+                    data.header.menu.forEach(item => { nav.innerHTML += `<a href="${item.link}">${item.text}</a>`; });
                 }
             }
 
-            // ABOUT
             if(data.about) {
                 document.getElementById('who-title').innerText = data.about.whoWeAreTitle || "";
                 document.getElementById('who-text').innerHTML = data.about.whoWeAreText || "";
@@ -671,33 +385,24 @@
                 }
             }
 
-            // AUTOMATION
             if(data.automation) {
                 document.getElementById('auto-title').innerText = data.automation.title || "";
                 document.getElementById('auto-desc').innerHTML = data.automation.description || "";
             }
             
-            // CONTACT
             if(data.contact) {
-                // Başlığı değiştir
-                if(data.contact.sectionTitle) {
-                    document.getElementById('contact-title').innerText = data.contact.sectionTitle;
-                }
-                
-                // Bilgileri yaz (Telefon numarası artık HTML içeriyor, sorun yok)
-                document.getElementById('contact-info').innerHTML = `
-                    ${data.contact.email}<br>
-                    ${data.contact.phone}<br>
-                    ${data.contact.location}
-                `;
+                const titleEl = document.getElementById('contact-title');
+                if(titleEl && data.contact.sectionTitle) { titleEl.innerText = data.contact.sectionTitle; }
+                const emailEl = document.getElementById('contact-email');
+                if(emailEl) { emailEl.innerText = data.contact.email; emailEl.href = "mailto:" + data.contact.email; }
+                const detailsEl = document.getElementById('contact-details');
+                if(detailsEl) { detailsEl.innerHTML = `${data.contact.phone}<br>${data.contact.location}`; }
             }
             
-            // PROJECT HEADER
             if(data.ui && data.ui.selectedProjects) {
                 document.getElementById('projects-title').innerText = data.ui.selectedProjects;
             }
 
-            // RENDER LISTS
             renderAccordion('project-slider', data.projects || []);
             renderSlider('auto-slider', data.automation ? data.automation.items : []);
             renderTeam('team-container', data.team || [], data.ui);
@@ -706,7 +411,6 @@
         // --- 2. RENDER YARDIMCILARI ---
         let allImages = []; 
         function isVideo(url) { return url && (url.toLowerCase().endsWith('.mp4') || url.toLowerCase().endsWith('.webm')); }
-        
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -717,25 +421,21 @@
             });
         }, { threshold: 0.1 });
 
-        // --- PROJELER İÇİN YENİ AKORDİYON VE CASE STUDY FONKSİYONU ---
-       // --- AKORDİYON VE CASE STUDY FONKSİYONLARI ---
+        // --- AKORDİYON (PROJELER) ---
         function renderAccordion(wrapperId, dataItems) {
             const container = document.getElementById(wrapperId);
             if(!container) return;
             container.innerHTML = '';
             container.className = 'accordion-container';
 
-            // İŞTE EKSİK OLAN KISIM: Case Study kutusu yoksa oluştur ve HTML'e ekle!
             let caseContainer = document.getElementById('case-study-container');
             if(!caseContainer) {
                 caseContainer = document.createElement('div');
                 caseContainer.id = 'case-study-container';
-                // Kutuyu akordiyon alanının hemen altına monte ediyoruz
                 container.parentElement.insertAdjacentElement('afterend', caseContainer);
             }
 
             dataItems.forEach((item, index) => {
-                // Başta hepsi kapalı (active class'ı yok)
                 container.innerHTML += `
                     <div class="accordion-panel" style="background-image: url('${item.thumbnail}')" onclick="toggleAccordion(this, ${index})">
                         <div class="panel-overlay">
@@ -748,40 +448,21 @@
 
         function toggleAccordion(clickedPanel, index) {
             const target = document.getElementById('case-study-container');
-
-            // --- AYNI GÖRSELE TEKRAR BASILDIĞINDA KAPATMA MANTIĞI ---
             if (clickedPanel.classList.contains('active')) {
-                // 1. Kartı kapat
                 clickedPanel.classList.remove('active');
-                
-                // 2. Case study alanını gizle
                 if (target) {
                     target.style.opacity = '0';
-                    // Animasyon bitince alanı tamamen kaldır
-                    setTimeout(() => {
-                        target.style.display = 'none';
-                    }, 500);
+                    setTimeout(() => { target.style.display = 'none'; }, 500);
                 }
-                return; // Fonksiyonu burada bitir, daha fazla işlem yapma
+                return; 
             }
-
-            // --- BAŞKA BİR KARTA BASILDIĞINDA AÇMA MANTIĞI ---
-            // Önce diğer tüm aktif kartları temizle
             document.querySelectorAll('.accordion-panel').forEach(p => p.classList.remove('active'));
-            
-            // Tıklananı aktif yap
             clickedPanel.classList.add('active');
-
-            // Verileri çek ve kutuyu doldur
             const data = siteContent[currentLang].projects;
             showCaseStudy(index, data);
-
-            // Kutuyu göster
             if (target) {
                 target.style.display = 'block';
-                setTimeout(() => {
-                    target.style.opacity = '1';
-                }, 50);
+                setTimeout(() => { target.style.opacity = '1'; }, 50);
             }
         }
 
@@ -791,10 +472,7 @@
             if(!item) return;
 
             let activeText = currentLang === 'tr' ? item.description_tr : item.description_en;
-            let textHtml = (activeText && activeText.trim() !== "") 
-                           ? activeText.replace(/\n/g, '<br>') 
-                           : "Analiz detayları hazırlanıyor... / Case study is being prepared...";
-
+            let textHtml = (activeText && activeText.trim() !== "") ? activeText.replace(/\n/g, '<br>') : "Analiz detayları hazırlanıyor... / Case study is being prepared...";
             let imagesHtml = "";
             if(item.case_images && item.case_images.length > 0) {
                 imagesHtml = item.case_images.map(img => `<img src="${img}" loading="lazy">`).join('');
@@ -803,8 +481,6 @@
             }
 
             let studyLabel = currentLang === 'tr' ? 'PROJE ANALİZİ' : 'TECHNICAL CASE STUDY';
-
-            // DİKKAT: Artık kolonlar yok. Görseller float ile sola yaslanıp yazıyla sarılıyor.
             container.innerHTML = `
                 <div class="case-study-header">
                     ${studyLabel}
@@ -819,52 +495,11 @@
             `;
         }
 
-        // --- OTOMASYONLAR İÇİN ESKİ SLIDER FONKSİYONU (Eksikti, geri eklendi) ---
-        function renderSlider(wrapperId, dataItems) {
-            const wrapper = document.getElementById(wrapperId);
-            if(!wrapper) return;
-            wrapper.innerHTML = "";
-            wrapper.className = 'slider-wrapper';
-
-            dataItems.forEach((item, index) => {
-                let globalIndex = allImages.length;
-                let coverImage = "";
-
-                if (item.images && item.images.length > 0) {
-                    item.images.forEach(img => allImages.push(img));
-                    coverImage = item.images[0];
-                } else if (item.thumbnail) {
-                    allImages.push(item.thumbnail);
-                    if(item.case_images) item.case_images.forEach(img => allImages.push(img));
-                    coverImage = item.thumbnail;
-                }
-
-                let html = `
-                <div class="slide-item" onclick="openLightbox(${globalIndex})">
-                    ${isVideo(coverImage) ? 
-                        `<video src="${coverImage}" class="slide-media" autoplay loop muted playsinline></video>` : 
-                        `<img src="${coverImage}" class="slide-media" loading="lazy">`
-                    }
-                    <div class="caption">
-                        <div>${item.title}</div>
-                        <span>VIEW DETAILS / GÖRÜNTÜLE</span>
-                    </div>
-                </div>`;
-                wrapper.innerHTML += html;
-            });
-            setupInfiniteLoop(wrapper);
-        }
-    
-
-        // --- TAKIM (TEAM) ORİJİNAL KARTLAR + AŞAĞI AÇILAN CV FONKSİYONU ---
+        // --- TAKIM KARTLARI ---
         function renderTeam(containerId, teamData, uiLabels) {
             const container = document.getElementById(containerId);
-            if (!teamData || teamData.length === 0) {
-                container.style.display = 'none';
-                return;
-            }
+            if (!teamData || teamData.length === 0) { container.style.display = 'none'; return; }
             
-            // Konteynırı grid yapısına uygun hale getir
             container.style.display = 'grid'; 
             container.className = 'team-grid';
             container.innerHTML = '';
@@ -873,19 +508,14 @@
             if(!profileContainer) {
                 profileContainer = document.createElement('div');
                 profileContainer.id = 'team-profile-container';
-                // ÖNEMLİ: Kutu team-block'un hemen dışına, grid'in bir parçası olarak eklenmeli
                 document.getElementById('team-block').insertAdjacentElement('afterend', profileContainer);
             }
-            
-            // ... geri kalan kart oluşturma kodların aynı kalabilir ...
 
             const roleText = uiLabels && uiLabels.managingPartner ? uiLabels.managingPartner : "MANAGING PARTNER";
             const viewText = uiLabels && uiLabels.viewProfile ? uiLabels.viewProfile : "VIEW PROFILE";
 
             teamData.forEach((member, index) => {
                 let avatar = member.thumbnail || (member.images && member.images[0]) || "";
-                
-                // Arka planda %90 karartılmış, çok belirsiz ve gizemli bir şekilde profil fotoğrafınız görünecek
                 let bgStyle = avatar ? `background-image: linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.95)), url('${avatar}'); background-size: cover; background-position: center;` : `background: #0a0a0a;`;
 
                 container.innerHTML += `
@@ -905,7 +535,6 @@
 
         function toggleTeamAccordion(clickedCard, index, roleText) {
             const target = document.getElementById('team-profile-container');
-
             if (clickedCard.classList.contains('active')) {
                 clickedCard.classList.remove('active');
                 if (target) {
@@ -936,20 +565,16 @@
             if(!member) return;
 
             let activeText = currentLang === 'tr' ? member.description_tr : member.description_en;
-            let textHtml = (activeText && activeText.trim() !== "") 
-                           ? activeText.replace(/\n/g, '<br>') 
-                           : "Özgeçmiş bilgisi hazırlanıyor... / Resume is being prepared...";
-
+            let textHtml = (activeText && activeText.trim() !== "") ? activeText.replace(/\n/g, '<br>') : "Özgeçmiş bilgisi hazırlanıyor... / Resume is being prepared...";
             let avatar = member.thumbnail || (member.images && member.images[0]) || "";
 
-            // DİKKAT: style="..." ile boyutu doğrudan kutunun kalbine yazdık. (Asla şaşmaz)
             container.innerHTML = `
                 <div class="case-study-header">
                     ${roleText}
                     <strong>${member.title}</strong>
                 </div>
                 <div class="case-study-body">
-                    <div class="case-study-floating-images" style="width: 40%; max-width: 220px; min-width: 150px; margin-right: 30px;">
+                    <div class="case-study-floating-images">
                         <img src="${avatar}" loading="lazy" style="width: 100%; height: auto; border: 1px solid #333; border-radius: 0;">
                     </div>
                     <p>${textHtml}</p>
@@ -957,7 +582,39 @@
             `;
         }
 
-        // --- SİLİNEN SLIDER FONKSİYONLARI (GERİ EKLENDİ, KOD ARTIK ÇÖKMEYECEK) ---
+        // --- SLIDER (OTOMASYON) ---
+        function renderSlider(wrapperId, dataItems) {
+            const wrapper = document.getElementById(wrapperId);
+            if(!wrapper) return;
+            wrapper.innerHTML = "";
+            wrapper.className = 'slider-wrapper';
+
+            dataItems.forEach((item, index) => {
+                let globalIndex = allImages.length;
+                let coverImage = "";
+
+                if (item.images && item.images.length > 0) {
+                    item.images.forEach(img => allImages.push(img));
+                    coverImage = item.images[0];
+                } else if (item.thumbnail) {
+                    allImages.push(item.thumbnail);
+                    if(item.case_images) item.case_images.forEach(img => allImages.push(img));
+                    coverImage = item.thumbnail;
+                }
+
+                let html = `
+                <div class="slide-item" onclick="openLightbox(${globalIndex})">
+                    ${isVideo(coverImage) ? `<video src="${coverImage}" class="slide-media" autoplay loop muted playsinline></video>` : `<img src="${coverImage}" class="slide-media" loading="lazy">`}
+                    <div class="caption">
+                        <div>${item.title}</div>
+                        <span>VIEW DETAILS / GÖRÜNTÜLE</span>
+                    </div>
+                </div>`;
+                wrapper.innerHTML += html;
+            });
+            setupInfiniteLoop(wrapper);
+        }
+
         function setupInfiniteLoop(wrapper) {
             const items = Array.from(wrapper.children);
             if(items.length < 2) return; 
@@ -987,156 +644,58 @@
         // --- 3. LOADER & PARTICLES ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        let particlesArray = [];
-        let loadProgress = 0.0;
-        let targetProgress = 0.0;
-        let mainText = "COSMOS.LAB STUDIO";
-
+        let particlesArray = []; let loadProgress = 0.0; let targetProgress = 0.0; let mainText = "COSMOS.LAB STUDIO";
         const LOADER_MIN_MS = 2600; const LOADER_MAX_MS = 8000;
         const SLOGAN_AT_PROGRESS = 0.86; const EXIT_AT_PROGRESS = 0.985; const HOLD_AFTER_SLOGAN_MS = 1400;
-        const loaderStart = performance.now();
-        let exitArmed = false; let exitStarted = false;
+        const loaderStart = performance.now(); let exitArmed = false; let exitStarted = false;
 
-        function armExit() {
-            if (exitArmed) return;
-            exitArmed = true; clearInterval(simulationInterval); targetProgress = 1.0;
-        }
+        function armExit() { if (exitArmed) return; exitArmed = true; clearInterval(simulationInterval); targetProgress = 1.0; }
         function startExitSequence(force) {
-            if (exitStarted) return;
-            exitStarted = true;
-            document.body.classList.add('slogan-visible');
+            if (exitStarted) return; exitStarted = true; document.body.classList.add('slogan-visible');
             setTimeout(() => { document.body.classList.add('loaded'); }, HOLD_AFTER_SLOGAN_MS);
         }
-
-        document.addEventListener('DOMContentLoaded', armExit);
-        window.addEventListener('load', () => { targetProgress = 1.0; });
-        setTimeout(() => { armExit(); startExitSequence(true); }, LOADER_MAX_MS);
+        document.addEventListener('DOMContentLoaded', armExit); window.addEventListener('load', () => { targetProgress = 1.0; }); setTimeout(() => { armExit(); startExitSequence(true); }, LOADER_MAX_MS);
 
         function setCanvasSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        setCanvasSize();
-        const fontSize = Math.min(window.innerWidth / 12, 80); 
-        const fontSettings = `900 ${fontSize}px 'Courier New', monospace`;
-        ctx.font = fontSettings;
-        
+        setCanvasSize(); const fontSize = Math.min(window.innerWidth / 12, 80); ctx.font = `900 ${fontSize}px 'Courier New', monospace`;
         class Particle {
             constructor(targetX, targetY) {
-                this.targetX = targetX; this.targetY = targetY;
-                const angle = Math.random() * Math.PI * 2; const radius = Math.random() * (canvas.width * 0.8); 
-                const centerX = canvas.width / 2; const centerY = canvas.height / 2;
-                this.x = centerX + Math.cos(angle) * radius; this.y = centerY + Math.sin(angle) * radius;
-                this.size = Math.random() * 1.5 + 0.5; this.baseOpacity = Math.random() * 0.6 + 0.4; 
+                this.targetX = targetX; this.targetY = targetY; const angle = Math.random() * Math.PI * 2; const radius = Math.random() * (canvas.width * 0.8); const centerX = canvas.width / 2; const centerY = canvas.height / 2;
+                this.x = centerX + Math.cos(angle) * radius; this.y = centerY + Math.sin(angle) * radius; this.size = Math.random() * 1.5 + 0.5; this.baseOpacity = Math.random() * 0.6 + 0.4; 
             }
-            draw() {
-                let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity));
-                if(loadProgress > 0.95) currentOpacity = 1.0;
-                ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`;
-                ctx.beginPath(); ctx.rect(this.x, this.y, this.size, this.size); ctx.closePath(); ctx.fill();
-            }
-            update() {
-                let dx = this.targetX - this.x; let dy = this.targetY - this.y;
-                let speed = 0.04 + (loadProgress * 0.1);
-                if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) { this.x = this.targetX; this.y = this.targetY; } 
-                else { this.x += dx * speed; this.y += dy * speed; }
-            }
+            draw() { let currentOpacity = this.baseOpacity + (loadProgress * (1 - this.baseOpacity)); if(loadProgress > 0.95) currentOpacity = 1.0; ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`; ctx.beginPath(); ctx.rect(this.x, this.y, this.size, this.size); ctx.closePath(); ctx.fill(); }
+            update() { let dx = this.targetX - this.x; let dy = this.targetY - this.y; let speed = 0.04 + (loadProgress * 0.1); if(Math.abs(dx) < 0.3 && Math.abs(dy) < 0.3 && loadProgress > 0.9) { this.x = this.targetX; this.y = this.targetY; } else { this.x += dx * speed; this.y += dy * speed; } }
         }
-
         function initParticles() {
-            particlesArray = [];
-            const textWidth = ctx.measureText(mainText).width;
-            const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2;
-            ctx.fillStyle = 'white'; ctx.fillText(mainText, startX, startY);
-            const scanHeight = fontSize * 2; const scanY = startY - fontSize; 
-            const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight);
-            const step = 2; 
-            for (let y = 0; y < textCoordinates.height; y += step) {
-                for (let x = 0; x < textCoordinates.width; x += step) {
-                    const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3];
-                    if (alpha > 128) { if(Math.random() > 0.3) { particlesArray.push(new Particle(x + startX, y + scanY)); } }
-                }
-            }
+            particlesArray = []; const textWidth = ctx.measureText(mainText).width; const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2;
+            ctx.fillStyle = 'white'; ctx.fillText(mainText, startX, startY); const scanHeight = fontSize * 2; const scanY = startY - fontSize; const textCoordinates = ctx.getImageData(startX, scanY, textWidth, scanHeight); const step = 2; 
+            for (let y = 0; y < textCoordinates.height; y += step) { for (let x = 0; x < textCoordinates.width; x += step) { const alpha = textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3]; if (alpha > 128) { if(Math.random() > 0.3) { particlesArray.push(new Particle(x + startX, y + scanY)); } } } }
         }
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (loadProgress < targetProgress) loadProgress += 0.005;
-            if (!exitStarted) {
-                const elapsed = performance.now() - loaderStart;
-                if (loadProgress >= SLOGAN_AT_PROGRESS) { document.body.classList.add('slogan-visible'); }
-                if (exitArmed && elapsed >= LOADER_MIN_MS && loadProgress >= EXIT_AT_PROGRESS) { startExitSequence(false); }
-            }
-            if(loadProgress > 0.5) {
-                let textOpacity = (loadProgress - 0.5) * 2; if(textOpacity > 1) textOpacity = 1;
-                ctx.save(); ctx.globalAlpha = textOpacity; ctx.fillStyle = '#FFFFFF';
-                const textWidth = ctx.measureText(mainText).width;
-                const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2;
-                ctx.fillText(mainText, startX, startY); ctx.restore();
-            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height); if (loadProgress < targetProgress) loadProgress += 0.005;
+            if (!exitStarted) { const elapsed = performance.now() - loaderStart; if (loadProgress >= SLOGAN_AT_PROGRESS) { document.body.classList.add('slogan-visible'); } if (exitArmed && elapsed >= LOADER_MIN_MS && loadProgress >= EXIT_AT_PROGRESS) { startExitSequence(false); } }
+            if(loadProgress > 0.5) { let textOpacity = (loadProgress - 0.5) * 2; if(textOpacity > 1) textOpacity = 1; ctx.save(); ctx.globalAlpha = textOpacity; ctx.fillStyle = '#FFFFFF'; const textWidth = ctx.measureText(mainText).width; const startX = (canvas.width - textWidth) / 2; const startY = canvas.height / 2; ctx.fillText(mainText, startX, startY); ctx.restore(); }
             for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); particlesArray[i].draw(); }
             if (!document.body.classList.contains('loaded')) { requestAnimationFrame(animateParticles); }
         }
-        initParticles(); animateParticles();
-        let simulationInterval = setInterval(() => { if(targetProgress < 0.6) targetProgress += 0.01; }, 50);
-        window.addEventListener('resize', () => {
-            setCanvasSize(); const newFontSize = Math.min(window.innerWidth / 12, 80); 
-            ctx.font = `900 ${newFontSize}px 'Courier New', monospace`; initParticles();
-        });
+        initParticles(); animateParticles(); let simulationInterval = setInterval(() => { if(targetProgress < 0.6) targetProgress += 0.01; }, 50);
+        window.addEventListener('resize', () => { setCanvasSize(); const newFontSize = Math.min(window.innerWidth / 12, 80); ctx.font = `900 ${newFontSize}px 'Courier New', monospace`; initParticles(); });
 
         // --- 4. LIGHTBOX ---
-        let currentIndex = 0;
-        const lb = document.getElementById('lightbox');
-        const lbStage = document.getElementById('lb-stage');
-        const lbCounter = document.getElementById('lb-counter');
-        const lbUi = document.getElementById('lb-ui');
-        const rotateBtn = document.getElementById('rotate-btn');
-        let state = { scale: 1, x: 0, y: 0, rotate: false };
-
+        let currentIndex = 0; const lb = document.getElementById('lightbox'); const lbStage = document.getElementById('lb-stage'); const lbCounter = document.getElementById('lb-counter'); const lbUi = document.getElementById('lb-ui'); const rotateBtn = document.getElementById('rotate-btn'); let state = { scale: 1, x: 0, y: 0, rotate: false };
         function openLightbox(index) { currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey); }
         function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey); }
         function changeSlide(step) { currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1; renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-        function renderLightboxContent() {
-            const currentUrl = allImages[currentIndex]; let contentHTML = "";
-            if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } 
-            else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; }
-            lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`;
-            const media = lbStage.querySelector('.lb-main-media'); if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); }
-        }
+        function renderLightboxContent() { const currentUrl = allImages[currentIndex]; let contentHTML = ""; if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; } lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`; const media = lbStage.querySelector('.lb-main-media'); if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); } }
         function resetState() { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
         function toggleRotationMode() { state.rotate = !state.rotate; if (state.rotate) { rotateBtn.classList.add('active'); lbUi.classList.add('rotate-mode'); } else { rotateBtn.classList.remove('active'); lbUi.classList.remove('rotate-mode'); } state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-        function applyTransform() {
-            const media = lbStage.querySelector('.lb-main-media'); if(!media) return;
-            let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
-            if (state.rotate) { transform += ` rotate(90deg)`; media.style.width = "100vh"; media.style.height = "100vw"; media.style.maxWidth = "none"; media.style.maxHeight = "none"; } 
-            else { media.style.width = ""; media.style.height = ""; media.style.maxWidth = "100%"; media.style.maxHeight = "100%"; }
-            media.style.transform = transform;
-        }
-        function clampPosition() {
-            const media = lbStage.querySelector('.lb-main-media'); if (!media) return;
-            let currentW = media.offsetWidth * state.scale; let currentH = media.offsetHeight * state.scale;
-            if (state.rotate) { let temp = currentW; currentW = currentH; currentH = temp; }
-            const screenW = window.innerWidth; const screenH = window.innerHeight;
-            const maxX = Math.max(0, (currentW - screenW) / 2); const maxY = Math.max(0, (currentH - screenH) / 2);
-            state.x = Math.max(-maxX, Math.min(state.x, maxX)); state.y = Math.max(-maxY, Math.min(state.y, maxY));
-        }
-
+        function applyTransform() { const media = lbStage.querySelector('.lb-main-media'); if(!media) return; let transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`; if (state.rotate) { transform += ` rotate(90deg)`; media.style.width = "100vh"; media.style.height = "100vw"; media.style.maxWidth = "none"; media.style.maxHeight = "none"; } else { media.style.width = ""; media.style.height = ""; media.style.maxWidth = "100%"; media.style.maxHeight = "100%"; } media.style.transform = transform; }
+        function clampPosition() { const media = lbStage.querySelector('.lb-main-media'); if (!media) return; let currentW = media.offsetWidth * state.scale; let currentH = media.offsetHeight * state.scale; if (state.rotate) { let temp = currentW; currentW = currentH; currentH = temp; } const screenW = window.innerWidth; const screenH = window.innerHeight; const maxX = Math.max(0, (currentW - screenW) / 2); const maxY = Math.max(0, (currentH - screenH) / 2); state.x = Math.max(-maxX, Math.min(state.x, maxX)); state.y = Math.max(-maxY, Math.min(state.y, maxY)); }
         let startX = 0, startY = 0, lastX = 0, lastY = 0, pinchStartDist = 0, pinchStartScale = 1, isDragging = false, isPinching = false;
-        lbStage.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; isPinching = true; pinchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchStartScale = state.scale; } 
-            else if (e.touches.length === 1) { isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; lastX = state.x; lastY = state.y; }
-        }, {passive: false});
-        lbStage.addEventListener('touchmove', (e) => {
-            if(e.cancelable) e.preventDefault(); 
-            if (isPinching && e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4)); clampPosition(); applyTransform(); } 
-            else if (isDragging && e.touches.length === 1 && state.scale > 1) { const dx = e.touches[0].clientX - startX; const dy = e.touches[0].clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); }
-        }, {passive: false});
-        lbStage.addEventListener('touchend', (e) => {
-            isDragging = false; isPinching = false; if (state.scale < 1) { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
-            if (state.scale <= 1.05 && e.changedTouches.length === 1) { const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY; const diffX = endX - startX; const diffY = endY - startY; const threshold = 40; if (state.rotate) { if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) { if (diffY < 0) changeSlide(1); else changeSlide(-1); } } else { if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) { if (diffX < 0) changeSlide(1); else changeSlide(-1); } } }
-        });
-        let lastTap = 0;
-        const handleDoubleTap = (e) => {
-            if(isVideo(allImages[currentIndex])) return; if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return;
-            const currentTime = new Date().getTime(); const tapLength = currentTime - lastTap;
-            if (tapLength < 300 && tapLength > 0) { e.preventDefault(); if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); } lastTap = currentTime;
-        };
+        lbStage.addEventListener('touchstart', (e) => { if (e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; isPinching = true; pinchStartDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); pinchStartScale = state.scale; } else if (e.touches.length === 1) { isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; lastX = state.x; lastY = state.y; } }, {passive: false});
+        lbStage.addEventListener('touchmove', (e) => { if(e.cancelable) e.preventDefault(); if (isPinching && e.touches.length === 2) { if(isVideo(allImages[currentIndex])) return; const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); state.scale = Math.max(1, Math.min(pinchStartScale * (dist / pinchStartDist), 4)); clampPosition(); applyTransform(); } else if (isDragging && e.touches.length === 1 && state.scale > 1) { const dx = e.touches[0].clientX - startX; const dy = e.touches[0].clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); } }, {passive: false});
+        lbStage.addEventListener('touchend', (e) => { isDragging = false; isPinching = false; if (state.scale < 1) { state.scale = 1; state.x = 0; state.y = 0; applyTransform(); } if (state.scale <= 1.05 && e.changedTouches.length === 1) { const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY; const diffX = endX - startX; const diffY = endY - startY; const threshold = 40; if (state.rotate) { if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) { if (diffY < 0) changeSlide(1); else changeSlide(-1); } } else { if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) { if (diffX < 0) changeSlide(1); else changeSlide(-1); } } } });
+        let lastTap = 0; const handleDoubleTap = (e) => { if(isVideo(allImages[currentIndex])) return; if (Math.abs(e.changedTouches[0].clientX - startX) > 10) return; const currentTime = new Date().getTime(); const tapLength = currentTime - lastTap; if (tapLength < 300 && tapLength > 0) { e.preventDefault(); if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); } lastTap = currentTime; };
         lbStage.addEventListener('touchend', handleDoubleTap);
         lbStage.addEventListener('mousedown', (e) => { if(isVideo(allImages[currentIndex]) || state.scale === 1) return; isDragging = true; startX = e.clientX; startY = e.clientY; lastX = state.x; lastY = state.y; e.preventDefault(); });
         window.addEventListener('mousemove', (e) => { if(!isDragging) return; const dx = e.clientX - startX; const dy = e.clientY - startY; state.x = lastX + dx; state.y = lastY + dy; clampPosition(); applyTransform(); });
@@ -1144,9 +703,7 @@
         lbStage.addEventListener('dblclick', (e) => { if(isVideo(allImages[currentIndex])) return; if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); });
         function handleKey(e) { if(e.key === 'ArrowRight') changeSlide(1); if(e.key === 'ArrowLeft') changeSlide(-1); if(e.key === 'Escape') closeLightbox(); }
 
-        // SAYFA YÜKLENDİĞİNDE
         renderPage();
-
     </script>
 </body>
 </html>

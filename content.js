@@ -30,7 +30,7 @@ const siteContent = {
         },
         "projects": [
             {
-                "title": "HIGH-RISE_TOWER_01",
+                "title": "HIGH-RISE TOWER 01",
                 "thumbnail": "assets/projects/01_High-rise_Tower_01/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/01_High-rise_Tower_01/TECHNICAL DEPTH.png"
@@ -39,7 +39,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HIGH-RISE_TOWER_02",
+                "title": "HIGH-RISE TOWER 02",
                 "thumbnail": "assets/projects/02_High-rise_Tower_02/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/02_High-rise_Tower_02/TECHNICAL DEPTH.png"
@@ -48,16 +48,16 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "INDUSTRIAL_PROJECT_01",
-                "thumbnail": "assets/projects/03_Industrial_Project_01/PROJECT OVERVIEW.png",
+                "title": "INDUSTRIAL PROJECT",
+                "thumbnail": "assets/projects/03_Industrial_Project/PROJECT OVERVIEW.png",
                 "case_images": [
-                    "assets/projects/03_Industrial_Project_01/TECHNICAL DEPTH.png"
+                    "assets/projects/03_Industrial_Project/TECHNICAL DEPTH.png"
                 ],
                 "description_tr": "<b>BIM Vaka Analizi (Case Study):</b> Yüksek Katlı Konut Kulesi<br><b>Tipoloji:</b> Konut (Yüksek Katlı Yapı)<br><b>Konum:</b> Moskova, Rusya<br><b>Ölçek:</b> 150.000 m²<br><b>Proje Evresi:</b> Stage P\\'den Stage R\\'ye Geçiş (Uygulama Projesi)<br><b>BIM Seviyesi:</b> LOD 350<br><b>Durum:</b> İnşaat Aşamasında<br><b>Rol:</b> Mimari BIM Lideri (Architectural BIM Lead)<br><b>Sözleşme Tipi:</b> Bağımsız Stüdyo Hizmeti<br><b>Temel Teslimatlar:</b> Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>ZORLUKLAR VE HEDEFLER (THE CHALLENGE)</h3>150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.<br><br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)</h3>Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:<br><br>Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R\\'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.<br><br>Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.<br><br><b>Model ve Veri Optimizasyonu:</b> Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family\\'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)</h3>Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "MIXED_USE",
+                "title": "MIXED USE",
                 "thumbnail": "assets/projects/04_Mixed_Use/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/04_Mixed_Use/TECHNICAL DEPTH.png"
@@ -66,7 +66,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HOSPITAL_PROJECT",
+                "title": "HOSPITAL PROJECT",
                 "thumbnail": "assets/projects/05_Hospital_Project/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/05_Hospital_Project/TECHNICAL DEPTH.png"
@@ -75,7 +75,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "AQUATIC_PAVILION",
+                "title": "AQUATIC PAVILION",
                 "thumbnail": "assets/projects/06_Aquatic_Pavilion/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/06_Aquatic_Pavilion/TECHNICAL DEPTH_2.png"
@@ -95,14 +95,14 @@ const siteContent = {
         ],
         "team": [
             {
-                "title": "CEMAL_TEKIN",
+                "title": "CEMAL TEKIN",
                 "thumbnail": "assets/team/01_Cemal_Tekin/Mask group.png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Karmaşık mimari süreçlerin algoritmik yönetiminde uzmanlaşarak, tasarım niyeti ile mühendislik hassasiyeti arasındaki köprüyü kuruyorum. Yüksek katlı kuleler, sağlık yapıları ve endüstriyel tesisler gibi uluslararası projelerdeki kapsamlı deneyimimle; iş akışlarını otomatize etmek, veri bütünlüğünü sağlamak ve imalata hazır (LOD 400) modeller üretmek için Python, Revit API ve Rhino.Inside teknolojilerini kullanıyorum. Cosmos.Lab Kurucu Ortağı olarak, manuel üretim süreçlerinden veri odaklı hesaplamalı teslimat süreçlerine geçişe liderlik ediyorum.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "SINAN_TAŞKESTI",
+                "title": "SINAN TAŞKESTI",
                 "thumbnail": "assets/team/02_Sinan_Taşkesti/Mask group (1).png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Mezuniyet sonrası kariyerine cephe tasarımı ve uygulama projelerinde başlamış; shopdrawing üretimi, detay geliştirme ve uygulama koordinasyonu süreçlerinde görev almıştır. Devam eden süreçte mimari proje ofislerinde yer alarak büyük ölçeklikarma kullanım, savunma sanayii ve enerji tesisleri projelerinde mimari tasarım, 3D koordinasyon ve uygulama dokümantasyonu çalışmalarını yürütmüştür.Endüstriyel yapılarda çelik ve betonarme sistem entegrasyonuna yönelik disiplinler arası uygulamalarda aktif sorumluluk üstlenmiştir. BIM odaklı proje geliştirme yaklaşımı doğrultusunda; modelleme,koordinasyon ve uygulama süreçlerinde ileri düzey dijital araçlar kullanmaktadır. BIM standartlarına uygun, teknik doğruluğu yüksek ve sürdürülebilir mimari çözümler üretmeyi temel profesyonel yaklaşım olarak benimsemektedir.<br><br>",
@@ -114,35 +114,35 @@ const siteContent = {
             "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;ندير مشاريعكم باستخدام أحدث البنى التحتية الرقمية. وعند الحاجة، نقوم بإعداد خوادم Revit Server لخلق بيئات عمل متزامنة وسلسة للتعاون مع الفرق العالمية في الوقت الفعلي.<br>&nbsp;&nbsp;&nbsp;&nbsp;نحن لا نكتفي بالرسم، بل نعالج البيانات: بفضل السكربتات البرمجية المخصصة للمشروع، نحول المخططات ثنائية الأبعاد (2D) إلى نماذج BIM ثلاثية الأبعاد (3D) ذكية؛ ونستخرج جداول الكميات (QTO) وقوائم المواد وبيانات الغرف بدقة 100٪، خالية تماماً من الأخطاء البشرية. نقلل من أوقات تسليم المشروع من خلال إدارة آلاف المخططات وتوثيقها عبر الأتمتة.</div>",
             "items": [
                 {
-                    "title": "TRANSFORM_STATIC_DATA_INTO_SMART_BIM_MODELS",
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS",
                     "thumbnail": "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "ELIMINATE_HUMAN_ERROR_&_RISK",
+                    "title": "ELIMINATE HUMAN ERROR & RISK",
                     "thumbnail": "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "COMPRESS_WEEKS_OF_DETAILING_INTO_MINUTES",
+                    "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES",
                     "thumbnail": "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "MAXIMUM_SPEED_&_STANDARDIZATION_IN_BATCH_DELIVERY",
+                    "title": "MAXIMUM SPEED & STANDARDIZATION IN BATCH DELIVERY",
                     "thumbnail": "assets/automation/04_Maximum_Speed_&_Standardization_In_Batch_Delivery/Automate Sheet Production & Organisation.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "RAPIDLY_ITERATE_&_REVISE_COMPLEX_DESIGNS",
+                    "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
                     "case_images": [],
                     "description_tr": "",
@@ -202,7 +202,7 @@ const siteContent = {
         },
         "projects": [
             {
-                "title": "HIGH-RISE_TOWER_01",
+                "title": "HIGH-RISE TOWER 01",
                 "thumbnail": "assets/projects/01_High-rise_Tower_01/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/01_High-rise_Tower_01/TECHNICAL DEPTH.png"
@@ -211,7 +211,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HIGH-RISE_TOWER_02",
+                "title": "HIGH-RISE TOWER 02",
                 "thumbnail": "assets/projects/02_High-rise_Tower_02/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/02_High-rise_Tower_02/TECHNICAL DEPTH.png"
@@ -220,16 +220,16 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "INDUSTRIAL_PROJECT_01",
-                "thumbnail": "assets/projects/03_Industrial_Project_01/PROJECT OVERVIEW.png",
+                "title": "INDUSTRIAL PROJECT",
+                "thumbnail": "assets/projects/03_Industrial_Project/PROJECT OVERVIEW.png",
                 "case_images": [
-                    "assets/projects/03_Industrial_Project_01/TECHNICAL DEPTH.png"
+                    "assets/projects/03_Industrial_Project/TECHNICAL DEPTH.png"
                 ],
                 "description_tr": "<b>BIM Vaka Analizi (Case Study):</b> Yüksek Katlı Konut Kulesi<br><b>Tipoloji:</b> Konut (Yüksek Katlı Yapı)<br><b>Konum:</b> Moskova, Rusya<br><b>Ölçek:</b> 150.000 m²<br><b>Proje Evresi:</b> Stage P\\'den Stage R\\'ye Geçiş (Uygulama Projesi)<br><b>BIM Seviyesi:</b> LOD 350<br><b>Durum:</b> İnşaat Aşamasında<br><b>Rol:</b> Mimari BIM Lideri (Architectural BIM Lead)<br><b>Sözleşme Tipi:</b> Bağımsız Stüdyo Hizmeti<br><b>Temel Teslimatlar:</b> Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>ZORLUKLAR VE HEDEFLER (THE CHALLENGE)</h3>150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.<br><br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)</h3>Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:<br><br>Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R\\'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.<br><br>Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.<br><br><b>Model ve Veri Optimizasyonu:</b> Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family\\'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)</h3>Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "MIXED_USE",
+                "title": "MIXED USE",
                 "thumbnail": "assets/projects/04_Mixed_Use/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/04_Mixed_Use/TECHNICAL DEPTH.png"
@@ -238,7 +238,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HOSPITAL_PROJECT",
+                "title": "HOSPITAL PROJECT",
                 "thumbnail": "assets/projects/05_Hospital_Project/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/05_Hospital_Project/TECHNICAL DEPTH.png"
@@ -247,7 +247,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "AQUATIC_PAVILION",
+                "title": "AQUATIC PAVILION",
                 "thumbnail": "assets/projects/06_Aquatic_Pavilion/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/06_Aquatic_Pavilion/TECHNICAL DEPTH_2.png"
@@ -267,14 +267,14 @@ const siteContent = {
         ],
         "team": [
             {
-                "title": "CEMAL_TEKIN",
+                "title": "CEMAL TEKIN",
                 "thumbnail": "assets/team/01_Cemal_Tekin/Mask group.png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Karmaşık mimari süreçlerin algoritmik yönetiminde uzmanlaşarak, tasarım niyeti ile mühendislik hassasiyeti arasındaki köprüyü kuruyorum. Yüksek katlı kuleler, sağlık yapıları ve endüstriyel tesisler gibi uluslararası projelerdeki kapsamlı deneyimimle; iş akışlarını otomatize etmek, veri bütünlüğünü sağlamak ve imalata hazır (LOD 400) modeller üretmek için Python, Revit API ve Rhino.Inside teknolojilerini kullanıyorum. Cosmos.Lab Kurucu Ortağı olarak, manuel üretim süreçlerinden veri odaklı hesaplamalı teslimat süreçlerine geçişe liderlik ediyorum.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "SINAN_TAŞKESTI",
+                "title": "SINAN TAŞKESTI",
                 "thumbnail": "assets/team/02_Sinan_Taşkesti/Mask group (1).png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Mezuniyet sonrası kariyerine cephe tasarımı ve uygulama projelerinde başlamış; shopdrawing üretimi, detay geliştirme ve uygulama koordinasyonu süreçlerinde görev almıştır. Devam eden süreçte mimari proje ofislerinde yer alarak büyük ölçeklikarma kullanım, savunma sanayii ve enerji tesisleri projelerinde mimari tasarım, 3D koordinasyon ve uygulama dokümantasyonu çalışmalarını yürütmüştür.Endüstriyel yapılarda çelik ve betonarme sistem entegrasyonuna yönelik disiplinler arası uygulamalarda aktif sorumluluk üstlenmiştir. BIM odaklı proje geliştirme yaklaşımı doğrultusunda; modelleme,koordinasyon ve uygulama süreçlerinde ileri düzey dijital araçlar kullanmaktadır. BIM standartlarına uygun, teknik doğruluğu yüksek ve sürdürülebilir mimari çözümler üretmeyi temel profesyonel yaklaşım olarak benimsemektedir.<br><br>",
@@ -286,35 +286,35 @@ const siteContent = {
             "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;We manage your projects with the latest digital infrastructure. When necessary, we create seamless, real-time collaboration environments for global teams through Revit Server deployments.<br>&nbsp;&nbsp;&nbsp;&nbsp;We process data, not just geometry: Through custom-built scripts, we transform 2D drawings into intelligent 3D BIM models; extracting quantity take-offs (QTO), material schedules, and room data lists with 100% accuracy, free from human error. We minimize project delivery times by managing thousands of sheets of documentation through automation.</div>",
             "items": [
                 {
-                    "title": "TRANSFORM_STATIC_DATA_INTO_SMART_BIM_MODELS",
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS",
                     "thumbnail": "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "ELIMINATE_HUMAN_ERROR_&_RISK",
+                    "title": "ELIMINATE HUMAN ERROR & RISK",
                     "thumbnail": "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "COMPRESS_WEEKS_OF_DETAILING_INTO_MINUTES",
+                    "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES",
                     "thumbnail": "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "MAXIMUM_SPEED_&_STANDARDIZATION_IN_BATCH_DELIVERY",
+                    "title": "MAXIMUM SPEED & STANDARDIZATION IN BATCH DELIVERY",
                     "thumbnail": "assets/automation/04_Maximum_Speed_&_Standardization_In_Batch_Delivery/Automate Sheet Production & Organisation.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "RAPIDLY_ITERATE_&_REVISE_COMPLEX_DESIGNS",
+                    "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
                     "case_images": [],
                     "description_tr": "",
@@ -374,7 +374,7 @@ const siteContent = {
         },
         "projects": [
             {
-                "title": "HIGH-RISE_TOWER_01",
+                "title": "HIGH-RISE TOWER 01",
                 "thumbnail": "assets/projects/01_High-rise_Tower_01/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/01_High-rise_Tower_01/TECHNICAL DEPTH.png"
@@ -383,7 +383,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HIGH-RISE_TOWER_02",
+                "title": "HIGH-RISE TOWER 02",
                 "thumbnail": "assets/projects/02_High-rise_Tower_02/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/02_High-rise_Tower_02/TECHNICAL DEPTH.png"
@@ -392,16 +392,16 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "INDUSTRIAL_PROJECT_01",
-                "thumbnail": "assets/projects/03_Industrial_Project_01/PROJECT OVERVIEW.png",
+                "title": "INDUSTRIAL PROJECT",
+                "thumbnail": "assets/projects/03_Industrial_Project/PROJECT OVERVIEW.png",
                 "case_images": [
-                    "assets/projects/03_Industrial_Project_01/TECHNICAL DEPTH.png"
+                    "assets/projects/03_Industrial_Project/TECHNICAL DEPTH.png"
                 ],
                 "description_tr": "<b>BIM Vaka Analizi (Case Study):</b> Yüksek Katlı Konut Kulesi<br><b>Tipoloji:</b> Konut (Yüksek Katlı Yapı)<br><b>Konum:</b> Moskova, Rusya<br><b>Ölçek:</b> 150.000 m²<br><b>Proje Evresi:</b> Stage P\\'den Stage R\\'ye Geçiş (Uygulama Projesi)<br><b>BIM Seviyesi:</b> LOD 350<br><b>Durum:</b> İnşaat Aşamasında<br><b>Rol:</b> Mimari BIM Lideri (Architectural BIM Lead)<br><b>Sözleşme Tipi:</b> Bağımsız Stüdyo Hizmeti<br><b>Temel Teslimatlar:</b> Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>ZORLUKLAR VE HEDEFLER (THE CHALLENGE)</h3>150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.<br><br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)</h3>Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:<br><br>Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R\\'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.<br><br>Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.<br><br><b>Model ve Veri Optimizasyonu:</b> Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family\\'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)</h3>Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "MIXED_USE",
+                "title": "MIXED USE",
                 "thumbnail": "assets/projects/04_Mixed_Use/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/04_Mixed_Use/TECHNICAL DEPTH.png"
@@ -410,7 +410,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HOSPITAL_PROJECT",
+                "title": "HOSPITAL PROJECT",
                 "thumbnail": "assets/projects/05_Hospital_Project/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/05_Hospital_Project/TECHNICAL DEPTH.png"
@@ -419,7 +419,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "AQUATIC_PAVILION",
+                "title": "AQUATIC PAVILION",
                 "thumbnail": "assets/projects/06_Aquatic_Pavilion/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/06_Aquatic_Pavilion/TECHNICAL DEPTH_2.png"
@@ -439,14 +439,14 @@ const siteContent = {
         ],
         "team": [
             {
-                "title": "CEMAL_TEKIN",
+                "title": "CEMAL TEKIN",
                 "thumbnail": "assets/team/01_Cemal_Tekin/Mask group.png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Karmaşık mimari süreçlerin algoritmik yönetiminde uzmanlaşarak, tasarım niyeti ile mühendislik hassasiyeti arasındaki köprüyü kuruyorum. Yüksek katlı kuleler, sağlık yapıları ve endüstriyel tesisler gibi uluslararası projelerdeki kapsamlı deneyimimle; iş akışlarını otomatize etmek, veri bütünlüğünü sağlamak ve imalata hazır (LOD 400) modeller üretmek için Python, Revit API ve Rhino.Inside teknolojilerini kullanıyorum. Cosmos.Lab Kurucu Ortağı olarak, manuel üretim süreçlerinden veri odaklı hesaplamalı teslimat süreçlerine geçişe liderlik ediyorum.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "SINAN_TAŞKESTI",
+                "title": "SINAN TAŞKESTI",
                 "thumbnail": "assets/team/02_Sinan_Taşkesti/Mask group (1).png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Mezuniyet sonrası kariyerine cephe tasarımı ve uygulama projelerinde başlamış; shopdrawing üretimi, detay geliştirme ve uygulama koordinasyonu süreçlerinde görev almıştır. Devam eden süreçte mimari proje ofislerinde yer alarak büyük ölçeklikarma kullanım, savunma sanayii ve enerji tesisleri projelerinde mimari tasarım, 3D koordinasyon ve uygulama dokümantasyonu çalışmalarını yürütmüştür.Endüstriyel yapılarda çelik ve betonarme sistem entegrasyonuna yönelik disiplinler arası uygulamalarda aktif sorumluluk üstlenmiştir. BIM odaklı proje geliştirme yaklaşımı doğrultusunda; modelleme,koordinasyon ve uygulama süreçlerinde ileri düzey dijital araçlar kullanmaktadır. BIM standartlarına uygun, teknik doğruluğu yüksek ve sürdürülebilir mimari çözümler üretmeyi temel profesyonel yaklaşım olarak benimsemektedir.<br><br>",
@@ -458,35 +458,35 @@ const siteContent = {
             "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;Мы управляем вашими проектами, используя новейшую цифровую инфраструктуру. При необходимости мы разворачиваем Revit Server для создания бесперебойной среды совместной работы с глобальными командами в режиме реального времени.<br>&nbsp;&nbsp;&nbsp;&nbsp;Мы не просто чертим, мы обрабатываем данные: благодаря специально разработанным скриптам мы преобразуем 2D-чертежи в интеллектуальные 3D BIM-модели; формируем ведомости объемов работ, спецификации материалов и экспликации помещений со 100% точностью, исключая человеческий фактор. Мы минимизируем сроки сдачи проекта, автоматизируя выпуск тысяч листов документации.</div>",
             "items": [
                 {
-                    "title": "TRANSFORM_STATIC_DATA_INTO_SMART_BIM_MODELS",
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS",
                     "thumbnail": "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "ELIMINATE_HUMAN_ERROR_&_RISK",
+                    "title": "ELIMINATE HUMAN ERROR & RISK",
                     "thumbnail": "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "COMPRESS_WEEKS_OF_DETAILING_INTO_MINUTES",
+                    "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES",
                     "thumbnail": "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "MAXIMUM_SPEED_&_STANDARDIZATION_IN_BATCH_DELIVERY",
+                    "title": "MAXIMUM SPEED & STANDARDIZATION IN BATCH DELIVERY",
                     "thumbnail": "assets/automation/04_Maximum_Speed_&_Standardization_In_Batch_Delivery/Automate Sheet Production & Organisation.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "RAPIDLY_ITERATE_&_REVISE_COMPLEX_DESIGNS",
+                    "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
                     "case_images": [],
                     "description_tr": "",
@@ -546,7 +546,7 @@ const siteContent = {
         },
         "projects": [
             {
-                "title": "HIGH-RISE_TOWER_01",
+                "title": "HIGH-RISE TOWER 01",
                 "thumbnail": "assets/projects/01_High-rise_Tower_01/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/01_High-rise_Tower_01/TECHNICAL DEPTH.png"
@@ -555,7 +555,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HIGH-RISE_TOWER_02",
+                "title": "HIGH-RISE TOWER 02",
                 "thumbnail": "assets/projects/02_High-rise_Tower_02/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/02_High-rise_Tower_02/TECHNICAL DEPTH.png"
@@ -564,16 +564,16 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "INDUSTRIAL_PROJECT_01",
-                "thumbnail": "assets/projects/03_Industrial_Project_01/PROJECT OVERVIEW.png",
+                "title": "INDUSTRIAL PROJECT",
+                "thumbnail": "assets/projects/03_Industrial_Project/PROJECT OVERVIEW.png",
                 "case_images": [
-                    "assets/projects/03_Industrial_Project_01/TECHNICAL DEPTH.png"
+                    "assets/projects/03_Industrial_Project/TECHNICAL DEPTH.png"
                 ],
                 "description_tr": "<b>BIM Vaka Analizi (Case Study):</b> Yüksek Katlı Konut Kulesi<br><b>Tipoloji:</b> Konut (Yüksek Katlı Yapı)<br><b>Konum:</b> Moskova, Rusya<br><b>Ölçek:</b> 150.000 m²<br><b>Proje Evresi:</b> Stage P\\'den Stage R\\'ye Geçiş (Uygulama Projesi)<br><b>BIM Seviyesi:</b> LOD 350<br><b>Durum:</b> İnşaat Aşamasında<br><b>Rol:</b> Mimari BIM Lideri (Architectural BIM Lead)<br><b>Sözleşme Tipi:</b> Bağımsız Stüdyo Hizmeti<br><b>Temel Teslimatlar:</b> Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>ZORLUKLAR VE HEDEFLER (THE CHALLENGE)</h3>150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.<br><br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)</h3>Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:<br><br>Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R\\'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.<br><br>Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.<br><br><b>Model ve Veri Optimizasyonu:</b> Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family\\'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.<br><br><br><h3 style=\\'color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;\\'>SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)</h3>Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "MIXED_USE",
+                "title": "MIXED USE",
                 "thumbnail": "assets/projects/04_Mixed_Use/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/04_Mixed_Use/TECHNICAL DEPTH.png"
@@ -582,7 +582,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "HOSPITAL_PROJECT",
+                "title": "HOSPITAL PROJECT",
                 "thumbnail": "assets/projects/05_Hospital_Project/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/05_Hospital_Project/TECHNICAL DEPTH.png"
@@ -591,7 +591,7 @@ const siteContent = {
                 "description_en": ""
             },
             {
-                "title": "AQUATIC_PAVILION",
+                "title": "AQUATIC PAVILION",
                 "thumbnail": "assets/projects/06_Aquatic_Pavilion/PROJECT OVERVIEW.png",
                 "case_images": [
                     "assets/projects/06_Aquatic_Pavilion/TECHNICAL DEPTH_2.png"
@@ -611,14 +611,14 @@ const siteContent = {
         ],
         "team": [
             {
-                "title": "CEMAL_TEKIN",
+                "title": "CEMAL TEKIN",
                 "thumbnail": "assets/team/01_Cemal_Tekin/Mask group.png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Karmaşık mimari süreçlerin algoritmik yönetiminde uzmanlaşarak, tasarım niyeti ile mühendislik hassasiyeti arasındaki köprüyü kuruyorum. Yüksek katlı kuleler, sağlık yapıları ve endüstriyel tesisler gibi uluslararası projelerdeki kapsamlı deneyimimle; iş akışlarını otomatize etmek, veri bütünlüğünü sağlamak ve imalata hazır (LOD 400) modeller üretmek için Python, Revit API ve Rhino.Inside teknolojilerini kullanıyorum. Cosmos.Lab Kurucu Ortağı olarak, manuel üretim süreçlerinden veri odaklı hesaplamalı teslimat süreçlerine geçişe liderlik ediyorum.<br><br>",
                 "description_en": ""
             },
             {
-                "title": "SINAN_TAŞKESTI",
+                "title": "SINAN TAŞKESTI",
                 "thumbnail": "assets/team/02_Sinan_Taşkesti/Mask group (1).png",
                 "case_images": [],
                 "description_tr": "Özgeçmiş<br><br>Mezuniyet sonrası kariyerine cephe tasarımı ve uygulama projelerinde başlamış; shopdrawing üretimi, detay geliştirme ve uygulama koordinasyonu süreçlerinde görev almıştır. Devam eden süreçte mimari proje ofislerinde yer alarak büyük ölçeklikarma kullanım, savunma sanayii ve enerji tesisleri projelerinde mimari tasarım, 3D koordinasyon ve uygulama dokümantasyonu çalışmalarını yürütmüştür.Endüstriyel yapılarda çelik ve betonarme sistem entegrasyonuna yönelik disiplinler arası uygulamalarda aktif sorumluluk üstlenmiştir. BIM odaklı proje geliştirme yaklaşımı doğrultusunda; modelleme,koordinasyon ve uygulama süreçlerinde ileri düzey dijital araçlar kullanmaktadır. BIM standartlarına uygun, teknik doğruluğu yüksek ve sürdürülebilir mimari çözümler üretmeyi temel profesyonel yaklaşım olarak benimsemektedir.<br><br>",
@@ -630,35 +630,35 @@ const siteContent = {
             "description": "<div style='text-align: justify;'>&nbsp;&nbsp;&nbsp;&nbsp;Projelerinizi en güncel dijital altyapı ile yönetiyoruz. Gerektiğinde Revit Server kurulumlarıyla global ekiplerle eş zamanlı, kesintisiz çalışma ortamları yaratıyoruz.<br>&nbsp;&nbsp;&nbsp;&nbsp;Sadece çizmiyor, veriyi işliyoruz: Projeye özel ürettiğimiz scriptler sayesinde, 2D çizimlerinizi akıllı 3D BIM modellerine dönüştürüyor; metraj, malzeme ve mahal listelerini %100 doğrulukla, insan hatasından arındırılmış şekilde çekiyoruz. Binlerce paftalık dokümantasyon süreçlerini otomasyonla yöneterek, proje teslim sürelerini minimize ediyoruz.</div>",
             "items": [
                 {
-                    "title": "TRANSFORM_STATIC_DATA_INTO_SMART_BIM_MODELS",
+                    "title": "TRANSFORM STATIC DATA INTO SMART BIM MODELS",
                     "thumbnail": "assets/automation/01_Transform_Static_Data_Into_Smart_Bim_Models/Transform_Static_Data_Into_Smart_Bim_Models_In_minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "ELIMINATE_HUMAN_ERROR_&_RISK",
+                    "title": "ELIMINATE HUMAN ERROR & RISK",
                     "thumbnail": "assets/automation/02_Eliminate_Human_Error_&_Risk/Eliminate_Human_Error_&_Risk.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "COMPRESS_WEEKS_OF_DETAILING_INTO_MINUTES",
+                    "title": "COMPRESS WEEKS OF DETAILING INTO MINUTES",
                     "thumbnail": "assets/automation/03_Compress_Weeks_Of_Detailing_Into_Minutes/Compress_Weeks_Of_Detailing_Into_Minutes.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "MAXIMUM_SPEED_&_STANDARDIZATION_IN_BATCH_DELIVERY",
+                    "title": "MAXIMUM SPEED & STANDARDIZATION IN BATCH DELIVERY",
                     "thumbnail": "assets/automation/04_Maximum_Speed_&_Standardization_In_Batch_Delivery/Automate Sheet Production & Organisation.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
                 },
                 {
-                    "title": "RAPIDLY_ITERATE_&_REVISE_COMPLEX_DESIGNS",
+                    "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
                     "case_images": [],
                     "description_tr": "",

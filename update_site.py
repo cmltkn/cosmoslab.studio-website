@@ -133,7 +133,7 @@ def scan_category(category_name, lang_code):
         
         if media_files:
             clean_title = folder.split("_", 1)[-1] if "_" in folder else folder
-            clean_title = clean_title.upper()
+            clean_title = clean_title.replace("_", " ").upper()
             
             thumbnail = media_files[0]
             case_images = media_files[1:] if len(media_files) > 1 else []

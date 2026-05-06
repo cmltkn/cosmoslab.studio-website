@@ -22,7 +22,16 @@
     "sectionTitle": "İLETİŞİM",
     "email": "hello@cosmoslab.studio",
     "phone": "+90 546 662 49 68",
-    "location": "Global Hizmet / Ankara, Türkiye merkezli"
+    "location": "Ankara, Türkiye",
+    "work": "Uzaktan & Bulut Tabanlı İşbirliği",
+    "labelMail": "E-POSTA",
+    "labelTel": "TEL",
+    "labelLoc": "KONUM",
+    "labelWork": "ÇALIŞMA",
+    "formName": "İsim",
+    "formEmail": "E-posta",
+    "formMessage": "Mesajınız",
+    "formSend": "GÖNDER"
   },
   "ui": {
     "viewProfile": "PROFİLİ GÖRÜNTÜLE",

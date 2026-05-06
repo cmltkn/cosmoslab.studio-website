@@ -70,6 +70,45 @@ def get_files_for_language(folder_path, lang_code):
             
     return sorted(selected_files)
 
+# --- YENİ EKLENEN AKILLI FORMATLAYICI FONKSİYON ---
+def format_case_study(file_path):
+    """TXT dosyasını okuyup profesyonel mimari dergi formatına (HTML) çevirir."""
+    if not os.path.exists(file_path):
+        return ""
+    
+    with open(file_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    formatted_html = ""
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue # Boş satırları atla
+
+        # 1. BAŞLIKLAR (Eğer satır tamamen büyük harfse ve 5 karakterden uzunsa)
+        if line.isupper() and len(line) > 5:
+            formatted_html += f"<br><br><h3 style='color:#fff; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;'>{line}</h3>"
+        
+        # 2. KÜNYE BİLGİLERİ (İki nokta üst üste var ve ilk kısım kısa bir kelimeyse)
+        elif ":" in line and len(line.split(":")[0]) < 30:
+            key, value = line.split(":", 1)
+            formatted_html += f"<b>{key}:</b>{value}<br>"
+        
+        # 3. MADDELER (Tire veya yıldız ile başlayanlar)
+        elif line.startswith(("-", "•", "*")):
+            formatted_html += f"<br><b>•</b> {line[1:].strip()}<br>"
+            
+        # 4. NORMAL PARAGRAF
+        else:
+            formatted_html += f"{line}<br><br>"
+            
+    # En baştaki gereksiz boşluğu (ilk satır boşluklarını) temizle
+    if formatted_html.startswith("<br><br>"):
+        formatted_html = formatted_html[8:]
+        
+    # JavaScript'in bozulmaması için tırnak işaretlerini kaçış karakteriyle koru
+    return formatted_html.replace("'", "\\'")
+
 def scan_category(category_name, lang_code):
     base_path = os.path.join(ASSETS_DIR, category_name)
     items = []
@@ -84,17 +123,13 @@ def scan_category(category_name, lang_code):
         full_path = os.path.join(base_path, folder)
         media_files = get_files_for_language(full_path, lang_code)
         
-        text_tr = ""
+        # --- ESKİ DÜZ OKUMA YERİNE, YENİ AKILLI FONKSİYONU ÇAĞIRIYORUZ ---
         txt_path_tr = os.path.join(full_path, "info_tr.txt")
-        if os.path.exists(txt_path_tr):
-            with open(txt_path_tr, "r", encoding="utf-8") as tf:
-                text_tr = tf.read()
+        text_tr = format_case_study(txt_path_tr)
 
-        text_en = ""
         txt_path_en = os.path.join(full_path, "info_en.txt")
-        if os.path.exists(txt_path_en):
-            with open(txt_path_en, "r", encoding="utf-8") as tf:
-                text_en = tf.read()
+        text_en = format_case_study(txt_path_en)
+        # ------------------------------------------------------------------
         
         if media_files:
             clean_title = folder.split("_", 1)[-1] if "_" in folder else folder
@@ -125,13 +160,24 @@ def main():
     for lang_code, text_data in all_texts.items():
         print(f"[{lang_code.upper()}] İçerik oluşturuluyor...")
         
+        # YENİ: whatwedo klasöründeki ilk görseli otomatik bul
+        wwd_path = os.path.join(ASSETS_DIR, "whatwedo")
+        wwd_img = ""
+        if os.path.exists(wwd_path):
+            files = [f for f in os.listdir(wwd_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp'))]
+            if files:
+                wwd_img = f"assets/whatwedo/{files[0]}"
+
         projects = scan_category("projects", lang_code)
         team = scan_category("team", lang_code)
         automation = scan_category("automation", lang_code)
         
         final_content[lang_code] = {
             "header": text_data.get("header", {}),
-            "about": text_data.get("about", {}),
+            "about": {
+                **text_data.get("about", {}),
+                "whatWeDoImage": wwd_img # Otomatik bulunan görsel yolu buraya ekleniyor
+            },
             "projects": projects,
             "team": team,
             "automation": {

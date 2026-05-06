@@ -22,7 +22,16 @@
     "sectionTitle": "КОНТАКТЫ",
     "email": "hello@cosmoslab.studio",
     "phone": "+90 546 662 49 68",
-    "location": "Глобальный сервис / Базируется в Анкаре, Турция"
+    "location": "Анкара, Турция",
+    "work": "Удаленное и облачное сотрудничество",
+    "labelMail": "ПОЧТА",
+    "labelTel": "ТЕЛ",
+    "labelLoc": "ЛОКАЦИЯ",
+    "labelWork": "ФОРМАТ",
+    "formName": "Имя",
+    "formEmail": "Email",
+    "formMessage": "Сообщение",
+    "formSend": "ОТПРАВИТЬ"
   },
   "ui": {
     "viewProfile": "ПОСМОТРЕТЬ ПРОФИЛЬ",

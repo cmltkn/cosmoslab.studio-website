@@ -71,45 +71,84 @@
         .lang-btn:hover { color: #fff; }
         .lang-btn.active { color: #fff; text-decoration: underline; }
 
-        section { padding: 2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
-        h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
+        section { padding: 1.2rem 0; max-width: 70%; margin: 0 auto; scroll-margin-top: 100px; }
+        h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 1rem; border-left: 4px solid #fff; padding-left: 15px; text-transform: uppercase; }
+        #auto-title { margin-top: 50px; } /* SADECE Teknoloji başlığını yukarıdan 50px uzaklaştırır */
         p { color: #bfbfbf; font-weight: 600; max-width: 100%; line-height: 1.6; margin-bottom: 1.5rem; }
         p b, p strong { color: #ffffff; font-weight: 900; letter-spacing: 1px; }
 
         /* --- 4. ABOUT SECTION --- */
         .about-layout { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 30px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            column-gap: 50px; /* Sağ ve sol sütun arasındaki 50px mesafeyi koruduk */
+            row-gap: 5px;     /* ALT ALTA olan kutuların mesafesini neredeyse sıfırladık */
+            margin-bottom: 30px; 
         }
         #who-block { grid-column: 1; grid-row: 1; }
+        #who-block p { margin-bottom: 0; } /* Paragrafın altındaki o görünmez boşluğu sildik attık */
         #what-block { grid-column: 2; grid-row: 1 / span 2; }
         #team-block { grid-column: 1; grid-row: 2; }
         #team-profile-container { grid-column: 1 / span 2; grid-row: 3; width: 100%; }
 
-        /* --- 5. TEAM KARTLARI --- */
+        /* --- 5. TEAM KARTLARI (KOMPAKT VERSİYON) --- */
         .team-desc {
             font-size: 0.85rem; color: #888; font-style: italic;
-            margin-top: 25px; margin-bottom: 25px; border-left: 2px solid #333;
+            margin-top: 15px; /* Burayı 0'dan 15px'e çıkardık, hafifçe aşağı ittik */
+            margin-bottom: 25px; border-left: 2px solid #333;
             padding-left: 15px; max-width: 90%; line-height: 1.6;
         }
-        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .team-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; /* Kartlar arası boşluğu biraz daralttık */
+        }
         .partner-card {
-            border: 1px solid #333; padding: 20px; cursor: pointer;
-            transition: all 0.3s ease; background-color: #0a0a0a; 
-            display: flex; flex-direction: column; gap: 5px; justify-content: space-between;
-            position: relative; overflow: hidden; min-height: 120px;
+            border: 1px solid #333; 
+            padding: 12px; /* İç boşluğu 20px'den 12px'e indirdik (%40 küçülme) */
+            cursor: pointer;
+            transition: all 0.3s ease; 
+            background-color: #0a0a0a; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 3px; 
+            justify-content: space-between;
+            position: relative; 
+            overflow: hidden; 
+            min-height: 70px; /* Yüksekliği 120px'den 70px'e çektik (yaklaşık %50 küçülme) */
         }
         .partner-card:hover, .partner-card.active { border-color: #fff; transform: translateY(-2px); }
-        .partner-name { color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: 1px; position: relative; z-index: 2; }
-        .partner-role { color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 2; }
+        
+        /* Yazı boyutlarını kartla orantılı küçülttük */
+        .partner-name { color: #fff; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; position: relative; z-index: 2; }
+        .partner-role { color: #666; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 2; }
         
         .card-action {
-            margin-top: 20px; padding-top: 15px; border-top: 1px dashed #333; 
-            font-size: 0.75rem; color: #555; display: flex; justify-content: space-between; 
-            align-items: center; transition: all 0.3s ease; position: relative; z-index: 2;
+            margin-top: 8px; 
+            padding-top: 8px; 
+            border-top: 1px dashed #333; 
+            font-size: 0.65rem; 
+            color: #555; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            transition: all 0.3s ease; 
+            position: relative; 
+            z-index: 2;
         }
         .partner-card:hover .card-action, .partner-card.active .card-action { color: #fff; border-top-color: #666; }
-        .action-arrow { transition: transform 0.3s ease; }
+        .action-arrow { transition: transform 0.3s ease; font-size: 0.75rem; }
         .partner-card:hover .action-arrow, .partner-card.active .action-arrow { transform: translateX(5px); }
+
+
+        #what-block p { margin-bottom: 0; } /* Yazının altındaki boşluğu sıfırladık */
+        #what-img { 
+            width: 100%; 
+            display: block; 
+            height: auto; 
+            border: none; 
+            margin-top: 10px; /* Yazıdan hemen sonra başlaması için çok küçük bir pay */
+        }
 
         /* --- 6. OPTİMİZE EDİLMİŞ SONSUZ AKORDİYON --- */
         .accordion-container { 
@@ -266,7 +305,7 @@
             .header-right { width: 100%; justify-content: flex-start; margin-top: 5px; }
             nav { gap: 15px 20px; flex-wrap: wrap; }
             
-            .about-layout { display: flex; flex-direction: column; gap: 40px; }
+            .about-layout { display: flex; flex-direction: column; gap: 10px; }
             #who-block { order: 1; }
             #team-block { order: 2; }
             #team-profile-container { order: 3; }
@@ -332,8 +371,9 @@
                 <div class="team-grid" id="team-container"></div>
             </div>
             <div id="what-block">
-                <h2 id="what-title"></h2>
-                <p id="what-text"></p>
+    <h2 id="what-title"></h2>
+    <p id="what-text"></p>
+    <div id="what-img-container"></div> </div>
             </div>
         </div>
     </section>
@@ -438,6 +478,12 @@
                      const tDesc = document.getElementById('team-desc-text');
                      tDesc.innerHTML = data.about.teamDescription;
                      tDesc.style.display = 'block';
+                }
+
+                // YENİ EKLENEN KISIM: Python'un bulduğu resmi ekrana basar
+                const imgContainer = document.getElementById('what-img-container');
+                if(imgContainer && data.about.whatWeDoImage) {
+                    imgContainer.innerHTML = `<img src="${data.about.whatWeDoImage}" style="width:100%; height:auto; display:block; margin-top:110px;">`;
                 }
             }
 

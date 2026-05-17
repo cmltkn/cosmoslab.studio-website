@@ -147,6 +147,20 @@ const siteContent = {
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
+                },
+                {
+                    "title": "SITE MODELING",
+                    "thumbnail": "assets/automation/06_Site_Modeling/Site Modelling In Minutes.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "IFC ANALYSER",
+                    "thumbnail": "assets/automation/07_IFC_Analyser/IFC Analyser.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
                 }
             ]
         },
@@ -316,6 +330,20 @@ const siteContent = {
                 {
                     "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "SITE MODELING",
+                    "thumbnail": "assets/automation/06_Site_Modeling/Site Modelling In Minutes.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "IFC ANALYSER",
+                    "thumbnail": "assets/automation/07_IFC_Analyser/IFC Analyser.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
@@ -491,6 +519,20 @@ const siteContent = {
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""
+                },
+                {
+                    "title": "SITE MODELING",
+                    "thumbnail": "assets/automation/06_Site_Modeling/Site Modelling In Minutes.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "IFC ANALYSER",
+                    "thumbnail": "assets/automation/07_IFC_Analyser/IFC Analyser.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
                 }
             ]
         },
@@ -660,6 +702,20 @@ const siteContent = {
                 {
                     "title": "RAPIDLY ITERATE & REVISE COMPLEX DESIGNS",
                     "thumbnail": "assets/automation/05_Rapidly_Iterate_&_Revise_Complex_Designs/Rapidly_Iterate_&_Revise_Complex_Designs.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "SITE MODELING",
+                    "thumbnail": "assets/automation/06_Site_Modeling/Site Modelling In Minutes.mp4",
+                    "case_images": [],
+                    "description_tr": "",
+                    "description_en": ""
+                },
+                {
+                    "title": "IFC ANALYSER",
+                    "thumbnail": "assets/automation/07_IFC_Analyser/IFC Analyser.mp4",
                     "case_images": [],
                     "description_tr": "",
                     "description_en": ""

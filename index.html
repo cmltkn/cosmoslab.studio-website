@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5F9CJGDQ4N"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cosmos.Lab Studio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    
+
     <style>
         /* --- 1. TEMEL AYARLAR VE KUSURSUZ MATEMATİK --- */
         :root {
@@ -437,6 +439,9 @@
         function setLanguage(lang) {
             if(typeof siteContent === 'undefined' || !siteContent[lang]) return;
             currentLang = lang;
+            if (typeof gtag === 'function') {
+                gtag('event', 'language_switch', { language: lang });
+            }
             try { localStorage.setItem('siteLang', lang); } catch(e) {}
             const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?lang=' + lang;
             window.history.pushState({path: newUrl}, '', newUrl);
@@ -501,7 +506,7 @@
                 const detailsEl = document.getElementById('contact-details');
                 if(detailsEl) {
                     detailsEl.innerHTML = `
-                        <span>${data.contact.labelMail || 'MAIL'} :</span> <a href="mailto:${data.contact.email}" class="contact-link">${data.contact.email}</a><br>
+                        <span>${data.contact.labelMail || 'MAIL'} :</span> <a href="mailto:${data.contact.email}" class="contact-link" onclick="if(typeof gtag==='function')gtag('event','contact_click',{method:'email',language:currentLang})">${data.contact.email}</a><br>
                         <span>${data.contact.labelTel || 'TEL'} :</span> ${data.contact.phone}<br>
                         <span>${data.contact.labelLoc || 'LOCATION'} :</span> ${data.contact.location}<br>
                         <span>${data.contact.labelWork || 'WORK'} :</span> ${data.contact.work}
@@ -674,6 +679,10 @@
             const container = document.getElementById('case-study-container');
             const item = dataItems[index];
             if(!item) return;
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'project_view', { project_name: item.title, language: currentLang });
+            }
 
             let activeText = currentLang === 'tr' ? item.description_tr : item.description_en;
             let textHtml = (activeText && activeText.trim() !== "") ? activeText.replace(/\n/g, '<br>') : "Analiz detayları hazırlanıyor... / Case study is being prepared...";
@@ -896,7 +905,7 @@
 
         // --- 4. LIGHTBOX ---
         let currentIndex = 0; const lb = document.getElementById('lightbox'); const lbStage = document.getElementById('lb-stage'); const lbCounter = document.getElementById('lb-counter'); const lbUi = document.getElementById('lb-ui'); const rotateBtn = document.getElementById('rotate-btn'); let state = { scale: 1, x: 0, y: 0, rotate: false };
-        function openLightbox(index) { currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey); }
+        function openLightbox(index) { if (typeof gtag === 'function') { gtag('event', 'lightbox_open', { image_src: allImages[index], language: currentLang }); } currentIndex = index; renderLightboxContent(); lb.style.display = 'block'; document.body.style.overflow = 'hidden'; resetState(); document.addEventListener('keydown', handleKey); }
         function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; lbStage.innerHTML = ""; document.removeEventListener('keydown', handleKey); }
         function changeSlide(step) { currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1; renderLightboxContent(); state.scale = 1; state.x = 0; state.y = 0; applyTransform(); }
         function renderLightboxContent() { const currentUrl = allImages[currentIndex]; let contentHTML = ""; if (isVideo(currentUrl)) { contentHTML = `<video src="${currentUrl}" class="lb-main-media" autoplay loop muted playsinline></video>`; } else { contentHTML = `<img src="${currentUrl}" class="lb-main-media" draggable="false">`; } lbStage.innerHTML = contentHTML; lbCounter.innerText = `${currentIndex + 1} / ${allImages.length}`; const media = lbStage.querySelector('.lb-main-media'); if(media) { media.onload = applyTransform; if(isVideo(currentUrl)) applyTransform(); } }

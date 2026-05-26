@@ -1,26 +1,28 @@
-BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
-
-Tipoloji: Konut (Yüksek Katlı Yapı)
-Konum: Moskova, Rusya
+BIM Vaka Çalışması: Büyük Ölçekli Karma Kullanımlı Proje
+Tipoloji: Konut · Karma Kullanımlı
+Konum: Taşkent, Özbekistan
 Ölçek: 150.000 m²
-Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
+Proje Aşaması: Uygulama Projesi (Construction Documentation)
 BIM Seviyesi: LOD 350
-Durum: İnşaat Aşamasında
-Rol: Mimari BIM Lideri (Architectural BIM Lead)
-Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
+Durum: İnşaat Halinde
+Rol: Mimari BIM Lideri
+Katılım: Bağımsız Stüdyo — Cosmos.Lab
+Temel Teslimatlar: Dikey sirkülasyon sistemleri için uygulama projesi dokümantasyonu · Merdivenler, rampalar, yürüyen merdivenler ve asansör şaftları · Uygulama (execution) aşaması için eksiksiz mimari çizim setleri
 
-ZORLUKLAR VE HEDEFLER (THE CHALLENGE)
-150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.
+ZORLUKLAR
 
-BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)
-Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:
+Dikey sirkülasyon sistemleri — merdivenler, rampalar, yürüyen merdivenler ve asansörler — büyük ölçekli karma kullanımlı bir projedeki geometrik olarak en karmaşık ve koordinasyonun en yoğun olduğu elemanlardır. Binanın tüm yüksekliği boyunca devam ederler, her kat seviyesinde yapısal çekirdeklerle (structural cores) kesişirler ve hemen yakınlarında MEP şaftlarını barındırırlar. Bir merdiven çekirdeğindeki (staircore) çözülmemiş tek bir çakışma (conflict), eşzamanlı olarak statik, mekanik ve yangın güvenliği sorunlarına dönüşerek silsile halinde büyüyebilir.
 
-Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.
+150.000 m²'lik bir projede bu sistemleri uygulama projesi (construction documentation) seviyesinde teslim etmek, yüklenicilerin sahada hiçbir yoruma yer bırakmaksızın doğrudan inşa edebileceği hassasiyette çizim setleri üretmek anlamına gelir.
 
-Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.
+METODOLOJİ
 
-Model ve Veri Optimizasyonu: Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.
+Uygulama Projesi Dokümantasyonu (Construction Documentation): Tüm bina yüksekliği boyunca merdivenler, rampalar, yürüyen merdivenler ve asansör şaftları dahil olmak üzere tüm dikey sirkülasyon sistemleri için eksiksiz mimari çizim setlerini ürettim. Her bir sistem, kat seviyesinde yapısal geometri, mimari kabuk ve MEP şaft rotaları arasındaki kesişimlerin çözülmesini gerektiriyordu.
 
-SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)
-Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.
+Geometrik Koordinasyon: Merdiven çekirdeği ve asansör şaftı bölgeleri tüm detaylarıyla modellendi ve dokümante edildi; basamak ve rıht geometrisi, sahanlık konfigürasyonları, şaft duvarı montaj (assembly) detayları, geçiş/boşluk (penetration) konumları ve güvenlik/hareket (clearance) mesafeleri. Paftalar yayınlanmadan (sheet issue) önce her bir eleman, statik ve MEP modelleri ile çapraz kontrole (cross-reference) tabi tutuldu.
+
+Çizim Seti Üretimi: Planlar, kesitler, görünüşler ve montaj/birleşim detayları uygulama standartlarında üretildi; inşaat aşamasında yüklenicinin doğrudan kullanımı için ölçülendirildi, etiketlendi (annotated) ve koordine edildi.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Dikey sirkülasyon, yüklenicilerin sahada ilk ve en hızlı inşa ettiği unsurdur. Bu sistemler için kesin ve tam koordine edilmiş bir dokümantasyon seti teslim etmek, inşaat ekiplerinin ilk günden itibaren net ve belirsizlikten uzak bir referansa sahip olması anlamına geliyordu; böylece inşaatın erken aşamalarındaki saha sorularının ve statik koordinasyon problemlerinin en yaygın kaynağı daha ortaya çıkmadan ortadan kaldırıldı.

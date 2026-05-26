@@ -1,0 +1,28 @@
+BIM Case Study: Large-Scale Mixed-Use Development
+Typology: Residential · Mixed-Use
+Location: Tashkent, Uzbekistan
+Scale: 150,000 m²
+Project Phase: Construction Documentation
+BIM Level: LOD 350
+Status: Under Construction
+Role: Architectural BIM Lead
+Engagement: Independent Studio — Cosmos.Lab
+Key Deliverables: Construction documentation for vertical circulation systems · Stairs, ramps, escalators and elevator shafts · Full architectural drawing sets for execution phase
+
+THE CHALLENGE
+
+Vertical circulation systems — staircases, ramps, escalators and elevators — are the most geometrically complex and coordination-intensive elements in any large-scale mixed-use development. They run the full height of the building, intersect with structural cores at every level, and carry MEP shafts in their immediate proximity. A single unresolved conflict in a staircore can cascade into structural, mechanical and fire safety issues simultaneously.
+
+On a 150,000 m² development, delivering these systems at construction documentation level means producing drawing sets precise enough for contractors to build from directly — with no room for interpretation on site.
+
+METHODOLOGY
+
+- Construction Documentation: I produced the complete architectural drawing sets for all vertical circulation systems across the full building height — staircases, ramps, escalators and elevator shafts. Each system required resolving the intersection between structural geometry, architectural envelope and MEP shaft routing at every floor level.
+
+- Geometric Coordination: The staircore and elevator shaft zones were modelled and documented in full detail — tread and riser geometry, landing configurations, shaft wall assemblies, penetration positions and clearance zones. Every element was cross-referenced against the structural and MEP models before sheet issue.
+
+- Drawing Set Production: Plans, sections, elevations and assembly details were produced to execution standard — dimensioned, annotated and coordinated for direct contractor use during the construction phase.
+
+RESULTS & VALUE ADDED
+
+Vertical circulation is the element contractors build first and build fast. Delivering a precise, fully coordinated documentation set for these systems meant the construction teams had an unambiguous reference from day one — removing the most common source of early-phase site queries and structural coordination problems before they could arise.

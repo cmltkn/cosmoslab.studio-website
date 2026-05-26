@@ -1,0 +1,31 @@
+BIM Case Study: Iconic Mixed-Use Tower
+Typology: Residential · Mixed-Use · High-Rise
+Design Office: Zaha Hadid Architects
+Location: Malta
+Scale: 50,000 m²
+Project Phase: Construction Documentation
+BIM Level: LOD 350
+Status: Built
+Role: Architectural BIM Specialist
+Engagement: Employed as BIM Architect · Mavi Peri Mimarlık
+Key Deliverables: Full architectural documentation package · RCP and MEP coordination · BEP-oriented parametric family library · Wet area detailing
+
+THE CHALLENGE
+
+Mercury Towers is a signature Zaha Hadid project — a free-form high-rise where no two floor plates are identical and every ceiling, wall and structural boundary follows an organic, non-orthogonal geometry. Delivering LOD 350 construction documentation on a building of this complexity demands more than modeling skill. It requires a disciplined BIM infrastructure that can hold geometric consistency, MEP coordination and data integrity simultaneously across a multi-team international environment.
+
+When I joined the project at Mavi Peri Mimarlık, no such infrastructure existed. There were no standardised Revit families, no BEP-aligned naming conventions, no model sharing protocols. Everything had to be built from scratch — while production was already running.
+
+METHODOLOGY
+
+- Full Architectural Documentation: I produced construction drawing sets across all residential floor levels — unit layout plans, wet area layouts and detailing, and reflected ceiling plans (RCP). Working within ZHA's organic geometry meant every drawing required custom coordination rather than standard repetition.
+
+- RCP and MEP Coordination: The most technically demanding element was aligning the reflected ceiling plans with the MEP systems running through irregular, curved structural boundaries. I established a systematic coordination workflow between the architectural and MEP models to resolve conflicts before sheet issue.
+
+- Parametric Family Library: I designed and built the office's complete Revit family library from the ground up — doors, bathroom modules, kitchen components, ceiling systems and structural assemblies — all developed to BEP standards with correct shared parameters for data extraction. This library had no precedent in the office. It became the foundation for Mercury Towers and every subsequent project the office delivered, including the Gozo Indoor Sports and Aquatic Pavilion.
+
+- BIM Standards and Protocols: I implemented ISO 19650-aligned naming conventions, workset structures and model sharing protocols across the multi-disciplinary team. For an international project with collaborators across multiple offices, this was the layer that kept coordination transparent and traceable.
+
+RESULTS & VALUE ADDED
+
+The LOD 350 architectural package was delivered on schedule for a project whose geometry left no room for shortcut. More significantly, the parametric family library and BIM standards established during Mercury Towers eliminated the setup cost for all future projects in the office — Gozo was delivered faster and to a higher standard because the infrastructure already existed. Building the right foundation once has compounding value.

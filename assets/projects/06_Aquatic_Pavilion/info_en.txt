@@ -1,0 +1,33 @@
+BIM Case Study: Sports and Leisure Facility
+Typology: Sports · Recreation · Public
+Design Office: Mavi Peri Mimarlık
+Location: Gozo, Malta
+Scale: 12,500 m²
+Project Phase: Tender Documentation
+BIM Level: LOD 300
+Status: Built
+Role: Architectural BIM Specialist
+Engagement: Employed as BIM Architect · Mavi Peri Mimarlık
+Key Deliverables: Architectural BIM model · Interdisciplinary coordination · Wet area detailing · RCP and MEP coordination · Tender documentation package
+
+THE CHALLENGE
+
+The Gozo Indoor Sports and Aquatic Pavilion combines two technically demanding building programmes under a single large-span curved roof structure — a competition sports hall and a full aquatic facility. Each programme carries its own complex MEP requirements: the sports hall demands precise ceiling coordination for lighting, acoustics and mechanical distribution, while the aquatic zones require rigorous wet area detailing, drainage routing and humidity-resistant assembly specifications.
+
+Delivering tender documentation to the standard required for a public facility in Malta meant producing a fully coordinated architectural package — precise enough for contractors to price accurately and build from directly.
+
+METHODOLOGY
+
+- Architectural BIM Modelling: I built and managed the architectural BIM model across the full building scope — sports hall, aquatic zones, changing facilities, circulation and service areas. The large-span curved roof structure required careful geometric management to maintain coordination accuracy between the architectural envelope and the structural system below it.
+
+- Interdisciplinary Coordination: I coordinated the architectural model with the structural and MEP disciplines throughout the documentation phase — managing shared coordinates, project base points and linked file references to prevent geometric drift and data inconsistencies between teams.
+
+- Wet Area Detailing: The aquatic zones and changing facilities required detailed wet area layouts — drainage points, waterproofing assemblies, surface fall directions and fixture positioning — all modelled and documented to tender standard.
+
+- RCP and MEP Coordination: Reflected ceiling plans were produced in coordination with the MEP systems running above — resolving conflicts between ceiling heights, ductwork distribution, lighting positions and structural clearances across both the sports and aquatic zones.
+
+- Tender Documentation Package: Plans, sections, elevations and detail drawings were compiled into a complete tender package, produced to the standard required for public procurement in Malta.
+
+RESULTS & VALUE ADDED
+
+The BIM infrastructure and parametric family library established during Mercury Towers — developed within the same office — meant Gozo could be delivered faster and to a higher standard. The coordination workflows, naming conventions and family content built for a 50,000 m² ZHA tower transferred directly to this project, eliminating setup time and ensuring consistency across the office's output. The fully coordinated tender package gave the procurement team and contractors a reliable, conflict-free architectural reference from the first issue.

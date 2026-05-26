@@ -1,0 +1,28 @@
+BIM Case Study: International Industrial Facilities
+Typology: Industrial · Energy Infrastructure · Adaptive Reuse
+Location: Seetharampur, India · Kingston, NY, USA
+Scale: 47,400 m² (4GW) · 10,000 m² (IPark 87)
+Project Phase: Construction Documentation
+BIM Level: LOD 300
+Status: Completed
+Role: Architectural BIM Specialist
+Engagement: Employed as Lead Architect · KKRS Architecture
+Key Deliverables: Full architectural drawing sets from legacy sources · Plans, sections and elevations · MEP coordination base model
+
+THE CHALLENGE
+
+Two projects, two countries, two fundamentally different source conditions — both requiring the same output: a complete, contractor-ready architectural documentation set produced entirely within Revit.
+
+At 4GW Cell & Module Facilities in India, the task was delivering full architectural plans, sections and elevations for a series of new industrial warehouse structures in the energy infrastructure sector — buildings designed for precision manufacturing environments where spatial and structural accuracy directly affects operational performance.
+
+At IPark 87 in New York, the challenge was different in nature. The existing building dated from 1984. The only available source material was a set of hand drawings — no digital files, no CAD data, no parametric geometry. Everything had to be reconstructed in Revit from paper, and the resulting model had to be accurate enough to serve as the architectural base for MEP coordination on an active adaptive reuse project.
+
+METHODOLOGY
+
+- 4GW Cell & Module Facilities: I produced the complete architectural drawing package — plans, sections and elevations — for the industrial warehouse structures. Working within the technical constraints of precision manufacturing facilities, every spatial dimension and structural clearance was documented to execution standard for direct contractor use.
+
+- IPark 87 — Legacy Documentation to BIM: I developed a structured workflow for converting 1984 hand drawings into a Revit model. Each drawing was interpreted, verified for dimensional consistency and rebuilt as parametric geometry — walls, floors, openings and structural elements — carrying the correct data parameters for MEP coordination. The resulting model gave the project team a reliable, updatable architectural base where none had previously existed in digital form.
+
+RESULTS & VALUE ADDED
+
+Both projects demonstrate the same core capability: producing accurate, coordinated architectural documentation from whatever source material exists — whether that is a new design brief or a forty-year-old set of hand drawings. The IPark 87 workflow in particular established a repeatable process for bringing legacy building data into a current BIM environment, applicable to any adaptive reuse project where the existing condition must be modelled before new work can begin.

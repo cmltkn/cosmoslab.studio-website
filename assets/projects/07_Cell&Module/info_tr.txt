@@ -1,26 +1,28 @@
-BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
+BIM Vaka Çalışması: Uluslararası Sanayi Tesisleri
+Tipoloji: Sanayi · Enerji Altyapısı · Yeniden İşlevlendirme (Adaptive Reuse)
+Konum: Seetharampur, Hindistan · Kingston, NY, ABD
+Ölçek: 47.400 m² (4GW) · 10.000 m² (IPark 87)
+Proje Aşaması: Uygulama Projesi (Construction Documentation)
+BIM Seviyesi: LOD 300
+Durum: Tamamlandı
+Rol: Mimari BIM Uzmanı
+Katılım: Baş Mimar olarak tam zamanlı — KKRS Mimarlık
+Temel Teslimatlar: Eski (legacy) kaynaklardan eksiksiz mimari çizim setleri · Planlar, kesitler ve görünüşler · MEP koordinasyonu için mimari altlık (base) model
 
-Tipoloji: Konut (Yüksek Katlı Yapı)
-Konum: Moskova, Rusya
-Ölçek: 150.000 m²
-Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
-BIM Seviyesi: LOD 350
-Durum: İnşaat Aşamasında
-Rol: Mimari BIM Lideri (Architectural BIM Lead)
-Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
+ZORLUKLAR
 
-ZORLUKLAR VE HEDEFLER (THE CHALLENGE)
-150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.
+İki proje, iki ülke, tamamen farklı iki kaynak durumu — her ikisi de aynı çıktıyı gerektiriyordu: tamamen Revit ortamında üretilmiş, eksiksiz ve yüklenicinin (contractor) doğrudan kullanabileceği bir mimari dokümantasyon (uygulama projesi) seti.
 
-BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)
-Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:
+Hindistan'daki 4GW Hücre ve Modül Tesislerinde (4GW Cell & Module Facilities) görev, enerji altyapısı sektöründeki bir dizi yeni endüstriyel depo yapısı için eksiksiz mimari planlar, kesitler ve görünüşler teslim etmekti — bunlar mekansal ve yapısal doğruluğun (spatial and structural accuracy) operasyonel performansı doğrudan etkilediği, hassas üretim ortamları (precision manufacturing environments) için tasarlanmış binalardı.
 
-Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.
+New York'taki IPark 87 projesinde ise zorluk tamamen farklı bir doğaya sahipti. Mevcut bina 1984 yılından kalmaydı. Eldeki tek kaynak malzeme bir dizi elle çizilmiş paftaydı (hand drawings) — dijital dosya, CAD verisi veya parametrik geometri yoktu. Her şeyin kağıt üzerinden Revit ortamında yeniden inşa edilmesi (reconstructed) ve ortaya çıkan modelin, aktif bir yeniden işlevlendirme (adaptive reuse) projesinde MEP koordinasyonu için mimari altlık (base) olarak hizmet edebilecek kadar doğru (accurate) olması gerekiyordu.
 
-Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.
+METODOLOJİ
 
-Model ve Veri Optimizasyonu: Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.
+4GW Hücre ve Modül Tesisleri: Endüstriyel depo yapıları için planlar, kesitler ve görünüşleri barındıran eksiksiz mimari çizim paketini ürettim. Hassas üretim tesislerinin teknik kısıtlamaları (technical constraints) dahilinde çalışarak, yüklenicinin sahada doğrudan kullanımı için her mekansal ölçüyü ve yapısal güvenlik mesafesini (clearance) uygulama (execution) standardında dokümante ettim.
 
-SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)
-Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.
+IPark 87 — Eski (Legacy) Dokümantasyondan BIM'e: 1984 yılından kalma el çizimlerini bir Revit modeline dönüştürmek için yapılandırılmış bir iş akışı geliştirdim. Her çizim yorumlandı, boyutsal (dimensional) tutarlılık açısından doğrulandı ve MEP koordinasyonu için doğru veri parametrelerini taşıyacak şekilde —duvarlar, döşemeler, boşluklar ve taşıyıcı elemanlar olarak— parametrik geometri formunda yeniden inşa edildi. Ortaya çıkan model, proje ekibine daha önce dijital formda hiç var olmayan güvenilir ve güncellenebilir (updatable) bir mimari altlık sağladı.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Her iki proje de aynı temel yetkinliği (core capability) ortaya koymaktadır: Eldeki kaynak ne olursa olsun —ister yeni bir tasarım brief'i, ister kırk yıllık bir el çizimleri seti olsun— doğru ve koordine edilmiş mimari dokümantasyon üretebilmek. Özellikle IPark 87 iş akışı, yeni bir çalışmanın başlayabilmesi için mevcut durumun (existing condition) modellenmesi gereken herhangi bir yeniden işlevlendirme (adaptive reuse) projesinde uygulanabilen; eski (legacy) bina verilerini güncel bir BIM ortamına aktarmak için tekrarlanabilir standart bir süreç kurmuştur.

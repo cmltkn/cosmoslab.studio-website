@@ -1,0 +1,28 @@
+BIM Case Study: Large-Scale Healthcare Facility
+Typology: Healthcare
+Location: Diyarbakır, Turkey
+Scale: 263,000 m²
+Project Phase: Construction Documentation
+BIM Level: LOD 300
+Status: Under Construction
+Role: Lead Architect · BIM Specialist
+Engagement: Employed as BIM Architect · KKRS Architecture
+Key Deliverables: Python-automated 2D CAD to 3D BIM conversion · Parametric element generation · Quantity take-offs
+
+THE CHALLENGE
+
+Delivering construction documentation for a 263,000 m² hospital under an aggressive schedule is not a modeling problem — it is a production engineering problem. The existing project data existed entirely in 2D CAD: walls, floors and ceilings defined as lines and hatches across hundreds of drawings, with no parametric intelligence, no schedulable data and no coordination capability.
+
+Converting that volume of 2D data into a coordinated, data-rich 3D BIM model manually — element by element — would have consumed weeks of production time the project simply did not have. A different approach was needed.
+
+METHODOLOGY
+
+- Python Automation: I developed a custom Python script integrated with the Revit API that read the CAD layer logic of the existing 2D drawings and automatically generated parametric 3D elements — walls, floors and ceilings — directly in Revit. The script eliminated manual element-by-element modelling entirely for the building's primary architectural components.
+
+- Geometric Containment: The script used a geometric containment algorithm to detect room boundaries from the CAD geometry and automatically assign the correct interior surface parameters to each space. Every room was tagged, classified and data-complete without manual intervention.
+
+- Quantity Take-Offs: With parametric elements carrying correct shared parameters from the moment of creation, QTO schedules were extracted directly from the model. The result was a zero-error quantity set — no manual counting, no reconciliation against drawings, no risk of discrepancy between model and schedule.
+
+RESULTS & VALUE ADDED
+
+What would have taken weeks of manual modelling was reduced to a fraction of that time. The design team was freed from production bottlenecks and could focus on coordination and design decisions. The QTO output was model-derived and fully auditable — a single source of truth from the first extraction to the final submission. The script itself became a reusable asset, applicable to any future project bringing legacy CAD data into a BIM environment.

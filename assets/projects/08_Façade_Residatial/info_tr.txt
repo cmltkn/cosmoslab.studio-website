@@ -1,0 +1,28 @@
+BIM Vaka Çalışması: Yüksek Katlı Konut Kulesi
+Tipoloji: Konut
+Konum: Moskova, Rusya
+Ölçek: 35.000 m²
+Proje Aşaması: Uygulama Projesi (Construction Documentation) · Saha Koordinasyonu (On-Site Coordination)
+BIM Seviyesi: LOD 400
+Durum: İnşaat Halinde
+Rol: Mimari BIM Lideri
+Katılım: Bağımsız Stüdyo — Cosmos.Lab
+Temel Teslimatlar: LOD 400 cephe detay çizimleri · 2D panelden Revit'e dönüştürme iş akışı · Saha içi (on-site) BIM koordinasyonu
+
+ZORLUKLAR
+
+LOD 400 imalat (fabrication) seviyesidir; BIM modelinin artık bir tasarım veya koordinasyon aracı olmaktan çıkıp doğrudan bir üretim referansına dönüştüğü noktadır. Her bir cephe paneli, bağlantı düğümü (node) ve sabitleme/montaj detayı, yüklenicinin (contractor) daha fazla yoruma ihtiyaç duymadan imal ve monte edebilmesi için gereken standartlarda, geometrik olarak kesin ve veri açısından eksiksiz olmalıdır.
+
+Reka 3 projesinin cephesi için eldeki kaynak malzeme, bir dizi 2D panel çizimiydi. Zorluk iki aşamalıydı: Bu düz, parametrik olmayan veriyi imalat için yeterince doğru (accurate) olan LOD 400 seviyesinde bir Revit modeline dönüştürmek ve ardından bu modeli sahada aktif inşaat süreci boyunca canlı (live) bir koordinasyon referansı olarak yönetmek.
+
+METODOLOJİ
+
+2D Panelden Revit'e Dönüştürme İş Akışı: 2D cephe panel çizimlerini Revit ortamına parametrik geometri olarak aktarmak için yapılandırılmış bir dönüştürme iş akışı geliştirdim. Her bir panelin boyutları, bağlantı noktaları, montaj konumları ve malzeme parametreleri kaynak çizimlerden çekildi ve imalat seviyesinde gereken geometrik ilişkiler ve toleranslar korunarak bireysel parametrik elemanlar olarak yeniden inşa edildi (rebuilt).
+
+LOD 400 Cephe Dokümantasyonu: Revit modelinden; panel yerleşim planları, bağlantı detayları, montaj metraj/tabloları (fixing schedules) ve birleşim dizilerini (assembly sequences) barındıran eksiksiz cephe detay çizim setini ürettim. LOD 400 seviyesinde her çizim doğrudan bir imalat talimatıdır. Belirsizliğe yer yoktur.
+
+Saha İçi (On-Site) BIM Koordinasyonu: Dijital model ile fiziksel inşaat arasında bir köprü görevi görerek, aktif yapım süreci boyunca BIM koordinasyon sürecini yönettim. Sahadan gelen sorular model üzerinden çözüldü, sahada uygulanan durum (installed conditions) ile tasarım amacı (design intent) arasındaki tutarsızlıklar kayıt altına alınıp koordine edildi ve model, inşaat aşaması boyunca as-built (yapıldığı gibi) cephe durumunun doğru bir yansıması olarak güncel tutuldu.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Bu projede kurulan 2D'den LOD 400'e dönüştürme iş akışı, eski (legacy) düz dokümantasyonu imalata hazır (fabrication-ready) bir BIM ortamına aktarmak için tekrarlanabilir standart bir süreç yarattı — bu süreç, cephe veya kaplama sistemlerinin başlangıçta 2D olarak tanımlandığı herhangi bir projede uygulanabilir niteliktedir. Saha içi koordinasyon rolü, dijital model ile fiziksel inşaat arasındaki döngüyü tamamlayarak, cephenin LOD 400 dokümantasyonunun talep ettiği hassasiyette (precision) inşa edilmesini sağladı.

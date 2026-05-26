@@ -1,26 +1,31 @@
-BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
-
-Tipoloji: Konut (Yüksek Katlı Yapı)
-Konum: Moskova, Rusya
-Ölçek: 150.000 m²
-Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
+BIM Vaka Çalışması: İkonik Karma Kullanımlı Kule
+Tipoloji: Konut · Karma Kullanımlı · Yüksek Katlı
+Tasarım Ofisi: Zaha Hadid Architects
+Konum: Malta
+Ölçek: 50.000 m²
+Proje Aşaması: Uygulama Projesi (Construction Documentation)
 BIM Seviyesi: LOD 350
-Durum: İnşaat Aşamasında
-Rol: Mimari BIM Lideri (Architectural BIM Lead)
-Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
+Durum: İnşa Edildi
+Rol: Mimari BIM Uzmanı
+Katılım: BIM Mimarı olarak tam zamanlı — Mavi Peri Mimarlık
+Temel Teslimatlar: Eksiksiz mimari dokümantasyon paketi · Asma tavan (RCP) ve MEP koordinasyonu · BEP standartlarına uygun parametrik aile (family) kütüphanesi · Islak hacim detaylandırması
 
-ZORLUKLAR VE HEDEFLER (THE CHALLENGE)
-150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.
+ZORLUKLAR
 
-BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)
-Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:
+Mercury Towers, imza niteliğinde bir Zaha Hadid projesidir; hiçbir kat planının birbiriyle aynı olmadığı, her tavan, duvar ve yapısal sınırın organik, dik açılı olmayan (non-orthogonal) bir geometriyi izlediği serbest formlu (free-form) yüksek katlı bir yapıdır. Bu karmaşıklıktaki bir yapıda LOD 350 seviyesinde uygulama projesi (construction documentation) teslim etmek, salt modelleme becerisinden çok daha fazlasını gerektirir. Çok ekipli uluslararası bir ortamda geometrik tutarlılığı, MEP koordinasyonunu ve veri bütünlüğünü (data integrity) eşzamanlı olarak sağlayabilecek disiplinli bir BIM altyapısına ihtiyaç duyar.
 
-Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.
+Mavi Peri Mimarlık'ta projeye dahil olduğumda böyle bir altyapı mevcut değildi. Standartlaştırılmış Revit aileleri (families), BEP standartlarına uygun isimlendirme kuralları (naming conventions) veya model paylaşım protokolleri yoktu. Üretim halihazırda devam ederken, her şeyin sıfırdan kurulması gerekiyordu.
 
-Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.
+METODOLOJİ
 
-Model ve Veri Optimizasyonu: Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.
+Eksiksiz Mimari Dokümantasyon Paketi: Tüm konut kat seviyelerinde uygulama projesi setlerini ürettim; ünite yerleşim planları, ıslak hacim yerleşimleri ve detayları ile asma tavan planları (RCP). ZHA'nın organik geometrisi içinde çalışmak, her çizimin standart tekrarlar yerine projeye özgü (custom) bir koordinasyon gerektirmesi anlamına geliyordu.
 
-SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)
-Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.
+Asma Tavan (RCP) ve MEP Koordinasyonu: Teknik açıdan en zorlayıcı unsur, asma tavan planlarını, düzensiz ve kavisli yapısal sınırlardan geçen MEP sistemleriyle hizalamaktı. Paftalar yayınlanmadan önce çakışmaları çözmek adına mimari ve MEP modelleri arasında sistematik bir koordinasyon iş akışı kurdum.
+
+Parametrik Aile (Family) Kütüphanesi: Ofisin eksiksiz Revit aile kütüphanesini sıfırdan tasarlayıp kurdum; kapılar, banyo modülleri, mutfak bileşenleri, tavan sistemleri ve yapısal montajlar. Bunların tümü, sonraki aşamalardaki veri çıkarımı (data extraction) için doğru paylaşımlı parametreleri (shared parameters) barındıracak şekilde BEP standartlarına uygun olarak geliştirildi. Bu kütüphanenin ofiste daha önce bir örneği yoktu. Mercury Towers'ın ve ofisin teslim ettiği Gozo Kapalı Spor ve Su Sporları Pavyonu da dahil olmak üzere sonraki tüm projelerin temelini oluşturdu.
+
+BIM Standartları ve Protokolleri: Çok disiplinli ekip genelinde ISO 19650 uyumlu isimlendirme standartlarını, çalışma seti (workset) yapılarını ve model paylaşım protokollerini uyguladım. Farklı ofislerden paydaşların yer aldığı uluslararası bir proje için bu sistem, koordinasyonu şeffaf ve izlenebilir kılan en temel katmandı.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Hiçbir kestirme yola (shortcut) izin vermeyen bir geometriye sahip bu proje için LOD 350 mimari paket, planlanan takvime tam uygun olarak teslim edildi. Daha da önemlisi, Mercury Towers sürecinde kurulan parametrik aile (family) kütüphanesi ve BIM standartları, ofisteki gelecekteki tüm projeler için kurulum maliyetini (setup cost) ortadan kaldırdı — Gozo projesi çok daha hızlı ve yüksek standartta teslim edildi çünkü altyapı halihazırda mevcuttu. Doğru temeli bir kez kurmak, katlanarak artan bir değer yaratır.

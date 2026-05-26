@@ -1,0 +1,30 @@
+BIM Case Study: High-Rise Residential Tower
+Typology: Residential · High-Rise
+Location: Moscow, Russia
+Scale: 150,000 m²
+Project Phase: Stage-P to Construction Documentation
+BIM Level: LOD 350
+Status: Under Construction
+Role: Architectural BIM Lead
+Engagement: Independent Studio — Cosmos.Lab
+Key Deliverables: Interior documentation package · Penetration coordination · Parametric families · QTO
+
+THE CHALLENGE
+
+The transition from Stage-P to Construction Documentation on a 150,000 m² high-rise is the most critical phase of any project. Structural wall positions shift floor by floor. MEP systems have to pass through walls that aren't fully resolved. Every uncoordinated penetration that reaches site becomes a costly cut-and-patch problem.
+
+The scope required a complete interior documentation package for the building's most complex zones — entrance corridors and staircore areas — where structural, architectural and MEP systems converge at their highest density.
+
+METHODOLOGY
+
+- Interior Documentation Package: I produced the full construction drawing set for entrance corridors and staircore areas — plans, sections, system details and assembly drawings, resolving complex structural intersections across every floor level.
+
+- Penetration Coordination: I coordinated every wall penetration between architectural, structural and MEP models. Penetration positions were resolved and validated in the federated model before any package was issued for construction.
+
+- Parametric Family Development: I developed project-specific parametric Revit families for BEP compliance — ensuring geometric consistency across floor variations and carrying correct data parameters for downstream quantity extraction.
+
+- Quantity Take-Offs: Architectural QTO schedules were extracted directly from the coordinated model. No manual counting, no reconciliation. The model was the single source of truth.
+
+RESULTS & VALUE ADDED
+
+Every penetration conflict was resolved digitally before construction teams reached site. The complete staircore and corridor documentation sets gave contractors a clear, unambiguous guide — enabling the build to proceed on schedule without structural rework. The parametric families and QTO workflows established here became reusable assets for subsequent Cosmos.Lab projects.

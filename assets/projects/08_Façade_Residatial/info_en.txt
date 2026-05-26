@@ -1,0 +1,28 @@
+BIM Case Study: High-Rise Residential Tower
+Typology: Residential
+Location: Moscow, Russia
+Scale: 35,000 m²
+Project Phase: Construction Documentation · On-Site Coordination
+BIM Level: LOD 400
+Status: Under Construction
+Role: Architectural BIM Lead
+Engagement: Independent Studio — Cosmos.Lab
+Key Deliverables: LOD 400 facade detail drawings · 2D panel to Revit conversion workflow · On-site BIM coordination
+
+THE CHALLENGE
+
+LOD 400 is fabrication level — the point at which the BIM model is no longer a design or coordination tool but a direct manufacturing reference. Every facade panel, connection node and fixing detail must be geometrically precise and data-complete to the standard required for a contractor to fabricate and install without further interpretation.
+
+The source material for Reka 3's facade was a set of 2D panel drawings. The challenge was twofold: converting that flat, non-parametric data into a LOD 400 Revit model accurate enough for fabrication, and then maintaining that model as a live coordination reference during active construction on site.
+
+METHODOLOGY
+
+- 2D Panel to Revit Workflow: I developed a structured conversion workflow for bringing the 2D facade panel drawings into Revit as parametric geometry. Each panel's dimensions, connection points, fixing positions and material parameters were extracted from the source drawings and rebuilt as individual parametric elements — maintaining the geometric relationships and tolerances required at fabrication level.
+
+- LOD 400 Facade Documentation: I produced the full facade detail drawing set from the Revit model — panel layout plans, connection details, fixing schedules and assembly sequences. At LOD 400, every drawing is a direct fabrication instruction. Ambiguity is not an option.
+
+- On-Site BIM Coordination: I managed the BIM coordination process during active construction — acting as the link between the digital model and the physical build. Site queries were resolved against the model, discrepancies between installed conditions and design intent were logged and coordinated, and the model was maintained as an accurate reflection of the as-built facade condition throughout the construction phase.
+
+RESULTS & VALUE ADDED
+
+The 2D to LOD 400 conversion workflow established on this project created a repeatable process for bringing legacy flat documentation into a fabrication-ready BIM environment — applicable to any project where facade or cladding systems are initially defined in 2D. The on-site coordination role closed the loop between digital model and physical construction, ensuring the facade was built to the precision the LOD 400 documentation demanded.

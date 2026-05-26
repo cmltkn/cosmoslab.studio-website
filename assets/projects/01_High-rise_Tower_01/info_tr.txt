@@ -1,26 +1,30 @@
-BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
-
-Tipoloji: Konut (Yüksek Katlı Yapı)
+BIM Vaka Çalışması: Yüksek Katlı Konut Kulesi
+Tipoloji: Konut · Yüksek Katlı
 Konum: Moskova, Rusya
 Ölçek: 150.000 m²
-Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
+Proje Aşaması: P-Aşamasından (Stage-P) Uygulama Projesine (Construction Documentation) Geçiş
 BIM Seviyesi: LOD 350
-Durum: İnşaat Aşamasında
-Rol: Mimari BIM Lideri (Architectural BIM Lead)
-Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
+Durum: İnşaat Halinde
+Rol: Mimari BIM Lideri
+Katılım: Bağımsız Stüdyo — Cosmos.Lab
+Temel Teslimatlar: İç mimari dokümantasyon paketi · Şaft ve Boşluk (Penetration) koordinasyonu · Parametrik aileler (families) · Metraj (QTO)
 
-ZORLUKLAR VE HEDEFLER (THE CHALLENGE)
-150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.
+ZORLUKLAR
 
-BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)
-Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:
+150.000 m²'lik yüksek katlı bir yapıda P-Aşamasından Uygulama Projesi aşamasına geçiş, projenin en kritik evresidir. Taşıyıcı duvar konumları kattan kata değişiklik gösterir. MEP (Mekanik, Elektrik, Tesisat) sistemleri, henüz tam olarak çözülmemiş duvarlardan geçmek zorundadır. Sahaya ulaşan koordine edilmemiş her geçiş/boşluk, maliyetli bir kırma ve yama problemine dönüşür.
 
-Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.
+Proje kapsamı; statik, mimari ve MEP sistemlerinin en yüksek yoğunlukta kesiştiği, binanın en karmaşık bölgeleri olan giriş koridorları ve merdiven çekirdek alanları için eksiksiz bir iç mimari dokümantasyon paketini gerektiriyordu.
 
-Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.
+METODOLOJİ
 
-Model ve Veri Optimizasyonu: Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.
+İç Mimari Dokümantasyon Paketi: Tüm kat seviyelerindeki karmaşık yapısal kesişimleri çözerek; giriş koridorları ve merdiven çekirdekleri için planlar, kesitler, sistem detayları ve montaj çizimlerini barındıran eksiksiz bir uygulama projesi seti ürettim.
 
-SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)
-Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.
+Boşluk/Geçiş Koordinasyonu: Mimari, statik ve MEP modelleri arasındaki her bir duvar geçişini koordine ettim. Tesisat ve şaft boşluklarının konumları, projeler sahaya teslim edilmeden önce birleştirilmiş (federated) model üzerinde çözülüp doğrulandı.
+
+Parametrik Aile (Family) Geliştirme: BEP (BIM Uygulama Planı) standartlarına uygun, projeye özgü parametrik Revit aileleri geliştirdim. Bu sayede kat varyasyonları arasında geometrik tutarlılık sağlandı ve sonraki aşamalardaki metraj çıkarımları için doğru veri parametreleri modele entegre edildi.
+
+Metraj Çıkarımları (QTO): Mimari metraj (Quantity Take-Off) tabloları doğrudan koordine edilmiş modelden çekildi. Manuel sayım veya harici mutabakat yapılmadı. Model, "tek doğru kaynak" (single source of truth) olarak işlev gördü.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Tüm boşluk ve geçiş çakışmaları, inşaat ekipleri sahaya inmeden önce dijital ortamda çözüldü. Merdiven çekirdeği ve koridorlara ait eksiksiz dokümantasyon setleri, yüklenicilere net ve belirsizlikten uzak bir rehber sunarak; inşaatın hiçbir yapısal revizyona gerek kalmadan, planlanan takvime uygun şekilde ilerlemesini sağladı. Burada kurulan parametrik aileler ve metraj (QTO) iş akışları, sonraki Cosmos.Lab projeleri için yeniden kullanılabilir standart dijital varlıklara dönüştü.

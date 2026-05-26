@@ -1,26 +1,33 @@
-BIM Vaka Analizi (Case Study): Yüksek Katlı Konut Kulesi
+BIM Vaka Çalışması: Spor ve Eğlence Tesisi
+Tipoloji: Spor · Rekreasyon · Kamusal Yapı
+Tasarım Ofisi: Mavi Peri Mimarlık
+Konum: Gozo, Malta
+Ölçek: 12.500 m²
+Proje Aşaması: İhale Dokümantasyonu (Tender Documentation)
+BIM Seviyesi: LOD 300
+Durum: İnşa Edildi
+Rol: Mimari BIM Uzmanı
+Katılım: Mimari BIM Uzmanı olarak tam zamanlı — Mavi Peri Mimarlık
+Temel Teslimatlar: Mimari BIM modeli · Disiplinlerarası koordinasyon · Islak hacim detaylandırması · Asma tavan (RCP) ve MEP koordinasyonu · İhale dokümantasyon paketi
 
-Tipoloji: Konut (Yüksek Katlı Yapı)
-Konum: Moskova, Rusya
-Ölçek: 150.000 m²
-Proje Evresi: Stage P'den Stage R'ye Geçiş (Uygulama Projesi)
-BIM Seviyesi: LOD 350
-Durum: İnşaat Aşamasında
-Rol: Mimari BIM Lideri (Architectural BIM Lead)
-Sözleşme Tipi: Bağımsız Stüdyo Hizmeti
-Temel Teslimatlar: Giriş koridorları ve merdiven uygulama setlerinin teslimi, MEP ve Statik modeller arası tüm duvar boşluklarının koordinasyonu.
+ZORLUKLAR
 
-ZORLUKLAR VE HEDEFLER (THE CHALLENGE)
-150.000 m² ölçeğindeki yüksek katlı konut kulesinin Rusya standartlarındaki Stage P (Proje) aşamasından Stage R (Uygulama) aşamasına geçişi, yapım sürecinin en kritik adımıydı. Bu evredeki temel zorluk; karmaşık MEP (Mekanik, Elektrik, Tesisat) sistemleri ile taşıyıcı sistem (statik) arasında yaşanabilecek çakışmaların önüne geçmek ve binadaki tüm duvar boşluklarının (penetrations) sahaya inmeden önce LOD 350 seviyesinde, sıfır hata prensibiyle koordine edilmesiydi.
+Gozo Kapalı Spor ve Su Sporları Pavyonu, teknik açıdan zorlu iki farklı yapı programını —yarışma spor salonu ve tam donanımlı bir su sporları tesisi— tek bir büyük açıklıklı kavisli çatı yapısı altında birleştirmektedir. Her program kendi karmaşık MEP gereksinimlerini beraberinde getirmektedir: Spor salonu; aydınlatma, akustik ve mekanik dağıtım için hassas bir tavan koordinasyonu gerektirirken, su sporları bölgeleri ise titiz bir ıslak hacim detaylandırması, drenaj rotaları ve neme dayanıklı montaj (assembly) şartnameleri gerektiriyordu.
 
-BIM METODOLOJİSİ VE SÜREÇ YÖNETİMİ (METHODOLOGY)
-Bağımsız bir stüdyo olarak üstlenilen bu rolde, projenin sorunsuz inşa edilebilmesi için şu temel iş kalemlerine odaklanıldı:
+Malta'daki bir kamu tesisi için talep edilen standartlarda ihale dokümantasyonu teslim etmek; yüklenicilerin maliyetleri doğru bir şekilde fiyatlandırabileceği ve doğrudan inşa edebileceği, tam koordine edilmiş eksiksiz bir mimari paket üretmek anlamına geliyordu.
 
-Disiplinler Arası Boşluk (Builders Work) Koordinasyonu: Stage P dokümantasyonundan Stage R'ye geçiş sürecinde, salt şaft boşluklarıyla sınırlı kalınmayıp, MEP ve statik disiplinleri arasındaki tüm duvar deliklerinin ve tesisat geçişlerinin koordinasyonu sağlandı. Gelen geri bildirimler doğrultusunda mimari model, statik ve MEP modelleriyle tam uyumlu hale getirildi.
+METODOLOJİ
 
-Kritik Uygulama Setlerinin Üretilmesi: Projenin yoğun sirkülasyon alanlarını oluşturan giriş koridorları ve merdiven çekirdekleri için yüksek detaylı uygulama çizim setleri ve sistem detayları hazırlanarak teslim edildi.
+Mimari BIM Modelleme: Spor salonu, su sporları bölgeleri, soyunma odaları, sirkülasyon ve servis alanları dahil olmak üzere tüm binayı kapsayan mimari BIM modelini kurdum ve yönettim. Büyük açıklıklı kavisli çatı yapısı, mimari kabuk ile altındaki yapısal sistem arasındaki koordinasyon hassasiyetini korumak için dikkatli bir geometrik yönetim gerektiriyordu.
 
-Model ve Veri Optimizasyonu: Stage P temel alınarak mimari model güncellendi, projeye özgü gerekli parametrik Revit family'leri oluşturuldu ve model üzerinden hatasız mimari metraj listeleri (QTO) çekildi.
+Disiplinlerarası Koordinasyon: Dokümantasyon aşaması boyunca mimari modeli statik ve MEP disiplinleri ile koordine ettim; ekipler arasında geometrik kaymaları ve veri tutarsızlıklarını önlemek için paylaşılan koordinatları (shared coordinates), proje baz noktalarını (project base points) ve link dosyası referanslarını yönettim.
 
-SONUÇLAR VE KATMA DEĞER (RESULTS & VALUE ADDED)
-Stage R evresine geçişte yürütülen titiz boşluk (penetration) koordinasyonu sayesinde, şantiyede yaşanabilecek maliyetli kırım-döküm işlemleri ve zaman kayıpları dijital ortamda önceden çözümlenmiş oldu. Bunun yanı sıra, eksiksiz bir şekilde teslim edilen detaylı merdiven ve koridor dokümantasyon setleri, uygulayıcı ekipler için net bir kılavuz oluşturarak inşaat sürecinin planlandığı gibi hızla ve güvenle ilerlemesini sağladı.
+Islak Hacim Detaylandırması: Su sporları bölgeleri ve soyunma odaları, detaylı ıslak hacim yerleşimlerini gerektiriyordu — drenaj noktaları, yalıtım montajları (waterproofing assemblies), yüzey eğim yönleri ve armatür konumlandırmaları; bunların tümü ihale standardında modellendi ve dokümante edildi.
+
+Asma Tavan (RCP) ve MEP Koordinasyonu: Asma tavan planlarını (RCP), üzerlerinden geçen MEP sistemleriyle koordinasyon içinde ürettim; spor ve su sporları bölgelerinin genelinde tavan yükseklikleri, kanal dağıtımı, aydınlatma konumları ve yapısal açıklıklar (clearances) arasındaki çakışmaları çözdüm.
+
+İhale Dokümantasyon Paketi: Planlar, kesitler, görünüşler ve detay çizimleri, Malta'daki kamu ihaleleri için gereken standartlarda derlenerek eksiksiz bir ihale paketi haline getirildi.
+
+SONUÇLAR VE SAĞLANAN KATMA DEĞER
+
+Aynı ofis bünyesinde geliştirilen Mercury Towers projesi sırasında kurulan BIM altyapısı ve parametrik aile (family) kütüphanesi, Gozo projesinin daha hızlı ve daha yüksek standartta teslim edilmesini sağladı. 50.000 m²'lik Zaha Hadid kulesi için oluşturulan koordinasyon iş akışları, isimlendirme kuralları ve aile içerikleri doğrudan bu projeye aktarıldı; bu da kurulum süresini ortadan kaldırdı ve ofisin tüm çıktıları arasında tutarlılığı garanti altına aldı. Tam koordine edilmiş ihale paketi, satın alma ekibine ve yüklenicilere ilk yayınlandığı andan itibaren güvenilir, çakışmasız bir mimari referans sundu.

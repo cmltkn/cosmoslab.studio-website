@@ -13,17 +13,17 @@ ZORLUKLAR
 
 Altı binadan oluşan bir savunma ve sanayi kampüsü, standart BIM iş akışlarının başa çıkmak üzere tasarlanmadığı bazı kısıtlamalar sunar. Fonksiyonel bölgeler oldukça hassastır; radar tesisleri, üretim holleri ve güvenli operasyonel alanların her biri spesifik mekansal ve teknik gereksinimler barındırır. Veri disiplini (data discipline) burada isteğe bağlı değil; sözleşmesel ve operasyonel bir zorunluluktur.
 
-İşveren (Client) LOD 200 seviyesinde model talep etmişti. Ancak altı bina genelinde mekanik ve elektrik sistemlerini böylesine hassas program bölgelerinde koordine etmek, LOD 200'ün destekleyemeyeceği bir geometrik ve veri hassasiyeti gerektirir. Sahanın gerçekliğine dayanacak bir koordinasyon doğruluğu elde etmek adına, fazladan eforu üstlenerek modelleri LOD 300 seviyesinde geliştirme kararı aldım.
+İşveren (Client) LOD 200 seviyesinde model talep etmişti. Ancak altı bina genelinde mekanik ve elektrik sistemlerini böylesine hassas program bölgelerinde koordine etmek, LOD 200'ün destekleyemeyeceği bir geometrik ve veri hassasiyeti gerektirir. Sahanın gerçekliğine dayanacak bir koordinasyon doğruluğu elde etmek adına, fazladan efor üstlenilerek modellerin LOD 300 seviyesinde geliştirilmesine karar verilmiştir.
 
 METODOLOJİ
 
-Mimari Altlık Model (Architectural Base Model): İnşaat aşamasında mekanik ve elektrik işleri için koordinasyon altlığı işlevi gören mimari BIM modellerini kurdum ve yönettim. Ağır ekipman yüklerinin ve hassas operasyonel bölgelerin bulunduğu tesislerde, mimari altlığın bütünlüğü, sonraki tüm koordinasyon kararlarının kalitesini doğrudan belirler.
+Mimari Altlık Model (Architectural Base Model): İnşaat aşamasında mekanik ve elektrik işleri için koordinasyon altlığı işlevi gören mimari BIM modelleri kurulmuş ve yönetilmiştir. Ağır ekipman yüklerinin ve hassas operasyonel bölgelerin bulunduğu tesislerde, mimari altlığın bütünlüğü, sonraki tüm koordinasyon kararlarının kalitesini doğrudan belirler.
 
-Çalışma Seti Stratejisi (Workset Strategy): Altı büyük ölçekli bina genelinde çekirdek alanlarını, cephe paketlerini ve MEP bölgelerini ayırarak; mekansal bölgelere (spatial zones) ve yapı sistemlerine göre çalışma seti (workset) mimarisini tasarladım. Bu sayede, tüm kampüsü kapsayan çok kullanıcılı (multi-user) bir ortamda dosya performansı yüksek ve senkronizasyon (sync) süreleri hızlı tutuldu.
+Çalışma Seti Stratejisi (Workset Strategy): Altı büyük ölçekli bina genelinde çekirdek alanlarını, cephe paketlerini ve MEP bölgelerini ayırarak; mekansal bölgelere (spatial zones) ve yapı sistemlerine göre çalışma seti (workset) mimarisi tasarlanmıştır. Bu sayede, tüm kampüsü kapsayan çok kullanıcılı (multi-user) bir ortamda dosya performansı yüksek ve senkronizasyon (sync) süreleri hızlı tutuldu.
 
-İsimlendirme Kuralları ve Eleman Sınıflandırması (Naming Conventions and Asset Classification): Koordinasyon süreci boyunca her bir varlığın/elemanın sınıflandırılabilir, metrajı alınabilir (schedulable) ve izlenebilir olmasını sağlamak amacıyla, binlerce teknik bileşen üzerinde proje geneli isimlendirme kurallarını ve paylaşımlı parametre (shared parameter) şemalarını uyguladım.
+İsimlendirme Kuralları ve Eleman Sınıflandırması (Naming Conventions and Asset Classification): Koordinasyon süreci boyunca her bir varlığın/elemanın sınıflandırılabilir, metrajı alınabilir (schedulable) ve izlenebilir olmasını sağlamak amacıyla, binlerce teknik bileşen üzerinde proje geneli isimlendirme kuralları ve paylaşımlı parametre (shared parameter) şemaları uygulanmıştır.
 
-Çakışma Tespiti (Clash Detection): Tanımlanmış bir çakışma matrisi (clash matrix) kullanarak mimari, statik ve MEP (Mekanik, Elektrik, Tesisat) modelleri arasında yapılandırılmış çakışma tespitleri yürüttüm. Çakışmalar sistem ve grid (aks) konumuna göre gruplandırıldı, çözüm terminleriyle (deadlines) birlikte sorumlu ekiplere atandı ve kapatılana (çözülene) kadar izlendi.
+Çakışma Tespiti (Clash Detection): Tanımlanmış bir çakışma matrisi (clash matrix) kullanarak mimari, statik ve MEP (Mekanik, Elektrik, Tesisat) modelleri arasında yapılandırılmış çakışma tespitleri yürütülmüştür. Çakışmalar sistem ve grid (aks) konumuna göre gruplandırıldı, çözüm terminleriyle (deadlines) birlikte sorumlu ekiplere atandı ve kapatılana (çözülene) kadar izlendi.
 
 SONUÇLAR VE SAĞLANAN KATMA DEĞER
 

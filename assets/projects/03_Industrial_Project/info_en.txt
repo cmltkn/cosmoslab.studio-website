@@ -13,17 +13,17 @@ THE CHALLENGE
 
 A defense and industrial campus of six buildings presents constraints that standard BIM workflows are not designed for. Functional zones are highly sensitive — radar facilities, production halls and secure operational areas each carry specific spatial and technical requirements. Data discipline is not optional; it is a contractual and operational necessity.
 
-The client requested LOD 200. But coordinating mechanical and electrical systems through sensitive program zones across six buildings requires geometric and data precision that LOD 200 cannot support. I made the decision to develop the models to LOD 300 — absorbing the additional effort in exchange for coordination accuracy that would hold up on site.
+The client requested LOD 200. But coordinating mechanical and electrical systems through sensitive program zones across six buildings requires geometric and data precision that LOD 200 cannot support. The decision was made to develop the models to LOD 300 — absorbing the additional effort in exchange for coordination accuracy that would hold up on site.
 
 METHODOLOGY
 
-- Architectural Base Model: I built and managed the architectural BIM models that served as the coordination base for mechanical and electrical works during the construction phase. In facilities with heavy equipment loads and sensitive operational zones, the integrity of the architectural base directly determines the quality of every downstream coordination decision.
+- Architectural Base Model: The architectural BIM models were built and managed to serve as the coordination base for mechanical and electrical works during the construction phase. In facilities with heavy equipment loads and sensitive operational zones, the integrity of the architectural base directly determines the quality of every downstream coordination decision.
 
-- Workset Strategy: I designed the workset architecture by spatial zone and building system across six large-scale buildings — separating core areas, facade packages and MEP zones. This kept file performance high and sync times fast in a multi-user environment across the full campus.
+- Workset Strategy: The workset architecture was designed by spatial zone and building system across six large-scale buildings — separating core areas, facade packages and MEP zones. This kept file performance high and sync times fast in a multi-user environment across the full campus.
 
-- Naming Conventions and Asset Classification: I implemented project-wide naming conventions and shared parameter schemas across thousands of technical components — ensuring every asset was classifiable, schedulable and traceable throughout the coordination process.
+- Naming Conventions and Asset Classification: Project-wide naming conventions and shared parameter schemas were implemented across thousands of technical components — ensuring every asset was classifiable, schedulable and traceable throughout the coordination process.
 
-- Clash Detection: I ran structured clash detection between architectural, structural and MEP models using a defined clash matrix. Conflicts were grouped by system and grid location, assigned to responsible teams with resolution deadlines, and tracked through to closure.
+- Clash Detection: Structured clash detection was run between architectural, structural and MEP models using a defined clash matrix. Conflicts were grouped by system and grid location, assigned to responsible teams with resolution deadlines, and tracked through to closure.
 
 RESULTS & VALUE ADDED
 

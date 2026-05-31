@@ -18,13 +18,13 @@ Malta'daki bir kamu tesisi için talep edilen standartlarda ihale dokümantasyon
 
 METODOLOJİ
 
-Mimari BIM Modelleme: Spor salonu, su sporları bölgeleri, soyunma odaları, sirkülasyon ve servis alanları dahil olmak üzere tüm binayı kapsayan mimari BIM modelini kurdum ve yönettim. Büyük açıklıklı kavisli çatı yapısı, mimari kabuk ile altındaki yapısal sistem arasındaki koordinasyon hassasiyetini korumak için dikkatli bir geometrik yönetim gerektiriyordu.
+Mimari BIM Modelleme: Spor salonu, su sporları bölgeleri, soyunma odaları, sirkülasyon ve servis alanları dahil olmak üzere tüm binayı kapsayan mimari BIM modeli kurulmuş ve yönetilmiştir. Büyük açıklıklı kavisli çatı yapısı, mimari kabuk ile altındaki yapısal sistem arasındaki koordinasyon hassasiyetini korumak için dikkatli bir geometrik yönetim gerektiriyordu.
 
-Disiplinlerarası Koordinasyon: Dokümantasyon aşaması boyunca mimari modeli statik ve MEP disiplinleri ile koordine ettim; ekipler arasında geometrik kaymaları ve veri tutarsızlıklarını önlemek için paylaşılan koordinatları (shared coordinates), proje baz noktalarını (project base points) ve link dosyası referanslarını yönettim.
+Disiplinlerarası Koordinasyon: Dokümantasyon aşaması boyunca mimari model statik ve MEP disiplinleri ile koordine edilmiş; ekipler arasında geometrik kaymaları ve veri tutarsızlıklarını önlemek için paylaşılan koordinatlar (shared coordinates), proje baz noktaları (project base points) ve link dosyası referansları yönetilmiştir.
 
 Islak Hacim Detaylandırması: Su sporları bölgeleri ve soyunma odaları, detaylı ıslak hacim yerleşimlerini gerektiriyordu — drenaj noktaları, yalıtım montajları (waterproofing assemblies), yüzey eğim yönleri ve armatür konumlandırmaları; bunların tümü ihale standardında modellendi ve dokümante edildi.
 
-Asma Tavan (RCP) ve MEP Koordinasyonu: Asma tavan planlarını (RCP), üzerlerinden geçen MEP sistemleriyle koordinasyon içinde ürettim; spor ve su sporları bölgelerinin genelinde tavan yükseklikleri, kanal dağıtımı, aydınlatma konumları ve yapısal açıklıklar (clearances) arasındaki çakışmaları çözdüm.
+Asma Tavan (RCP) ve MEP Koordinasyonu: Asma tavan planları (RCP), üzerlerinden geçen MEP sistemleriyle koordinasyon içinde üretilmiş; spor ve su sporları bölgelerinin genelinde tavan yükseklikleri, kanal dağıtımı, aydınlatma konumları ve yapısal açıklıklar (clearances) arasındaki çakışmalar çözülmüştür.
 
 İhale Dokümantasyon Paketi: Planlar, kesitler, görünüşler ve detay çizimleri, Malta'daki kamu ihaleleri için gereken standartlarda derlenerek eksiksiz bir ihale paketi haline getirildi.
 

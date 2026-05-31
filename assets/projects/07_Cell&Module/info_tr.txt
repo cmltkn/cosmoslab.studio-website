@@ -19,9 +19,9 @@ New York'taki IPark 87 projesinde ise zorluk tamamen farklı bir doğaya sahipti
 
 METODOLOJİ
 
-4GW Hücre ve Modül Tesisleri: Endüstriyel depo yapıları için planlar, kesitler ve görünüşleri barındıran eksiksiz mimari çizim paketini ürettim. Hassas üretim tesislerinin teknik kısıtlamaları (technical constraints) dahilinde çalışarak, yüklenicinin sahada doğrudan kullanımı için her mekansal ölçüyü ve yapısal güvenlik mesafesini (clearance) uygulama (execution) standardında dokümante ettim.
+4GW Hücre ve Modül Tesisleri: Endüstriyel depo yapıları için planlar, kesitler ve görünüşleri barındıran eksiksiz mimari çizim paketi üretilmiştir. Hassas üretim tesislerinin teknik kısıtlamaları (technical constraints) dahilinde çalışarak, yüklenicinin sahada doğrudan kullanımı için her mekansal ölçü ve yapısal güvenlik mesafesi (clearance) uygulama (execution) standardında dokümante edilmiştir.
 
-IPark 87 — Eski (Legacy) Dokümantasyondan BIM'e: 1984 yılından kalma el çizimlerini bir Revit modeline dönüştürmek için yapılandırılmış bir iş akışı geliştirdim. Her çizim yorumlandı, boyutsal (dimensional) tutarlılık açısından doğrulandı ve MEP koordinasyonu için doğru veri parametrelerini taşıyacak şekilde —duvarlar, döşemeler, boşluklar ve taşıyıcı elemanlar olarak— parametrik geometri formunda yeniden inşa edildi. Ortaya çıkan model, proje ekibine daha önce dijital formda hiç var olmayan güvenilir ve güncellenebilir (updatable) bir mimari altlık sağladı.
+IPark 87 — Eski (Legacy) Dokümantasyondan BIM'e: 1984 yılından kalma el çizimlerini bir Revit modeline dönüştürmek için yapılandırılmış bir iş akışı geliştirilmiştir. Her çizim yorumlandı, boyutsal (dimensional) tutarlılık açısından doğrulandı ve MEP koordinasyonu için doğru veri parametrelerini taşıyacak şekilde —duvarlar, döşemeler, boşluklar ve taşıyıcı elemanlar olarak— parametrik geometri formunda yeniden inşa edildi. Ortaya çıkan model, proje ekibine daha önce dijital formda hiç var olmayan güvenilir ve güncellenebilir (updatable) bir mimari altlık sağladı.
 
 SONUÇLAR VE SAĞLANAN KATMA DEĞER
 

@@ -17,11 +17,11 @@ The scope required a complete interior documentation package for the building's 
 
 METHODOLOGY
 
-- Interior Documentation Package: I produced the full construction drawing set for entrance corridors and staircore areas — plans, sections, system details and assembly drawings, resolving complex structural intersections across every floor level.
+- Interior Documentation Package: The full construction drawing set was produced for entrance corridors and staircore areas — plans, sections, system details and assembly drawings, resolving complex structural intersections across every floor level.
 
-- Penetration Coordination: I coordinated every wall penetration between architectural, structural and MEP models. Penetration positions were resolved and validated in the federated model before any package was issued for construction.
+- Penetration Coordination: Every wall penetration was coordinated between architectural, structural and MEP models. Penetration positions were resolved and validated in the federated model before any package was issued for construction.
 
-- Parametric Family Development: I developed project-specific parametric Revit families for BEP compliance — ensuring geometric consistency across floor variations and carrying correct data parameters for downstream quantity extraction.
+- Parametric Family Development: Project-specific parametric Revit families were developed for BEP compliance — ensuring geometric consistency across floor variations and carrying correct data parameters for downstream quantity extraction.
 
 - Quantity Take-Offs: Architectural QTO schedules were extracted directly from the coordinated model. No manual counting, no reconciliation. The model was the single source of truth.
 

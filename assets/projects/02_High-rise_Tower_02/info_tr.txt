@@ -14,17 +14,17 @@ ZORLUKLAR
 
 Mercury Towers, imza niteliğinde bir Zaha Hadid projesidir; hiçbir kat planının birbiriyle aynı olmadığı, her tavan, duvar ve yapısal sınırın organik, dik açılı olmayan (non-orthogonal) bir geometriyi izlediği serbest formlu (free-form) yüksek katlı bir yapıdır. Bu karmaşıklıktaki bir yapıda LOD 350 seviyesinde uygulama projesi (construction documentation) teslim etmek, salt modelleme becerisinden çok daha fazlasını gerektirir. Çok ekipli uluslararası bir ortamda geometrik tutarlılığı, MEP koordinasyonunu ve veri bütünlüğünü (data integrity) eşzamanlı olarak sağlayabilecek disiplinli bir BIM altyapısına ihtiyaç duyar.
 
-Mavi Peri Mimarlık'ta projeye dahil olduğumda böyle bir altyapı mevcut değildi. Standartlaştırılmış Revit aileleri (families), BEP standartlarına uygun isimlendirme kuralları (naming conventions) veya model paylaşım protokolleri yoktu. Üretim halihazırda devam ederken, her şeyin sıfırdan kurulması gerekiyordu.
+Mavi Peri Mimarlık bünyesinde projeye dahil olunduğunda böyle bir altyapı mevcut değildi. Standartlaştırılmış Revit aileleri (families), BEP standartlarına uygun isimlendirme kuralları (naming conventions) veya model paylaşım protokolleri yoktu. Üretim halihazırda devam ederken, her şeyin sıfırdan kurulması gerekiyordu.
 
 METODOLOJİ
 
-Eksiksiz Mimari Dokümantasyon Paketi: Tüm konut kat seviyelerinde uygulama projesi setlerini ürettim; ünite yerleşim planları, ıslak hacim yerleşimleri ve detayları ile asma tavan planları (RCP). ZHA'nın organik geometrisi içinde çalışmak, her çizimin standart tekrarlar yerine projeye özgü (custom) bir koordinasyon gerektirmesi anlamına geliyordu.
+Eksiksiz Mimari Dokümantasyon Paketi: Tüm konut kat seviyelerinde uygulama projesi setleri üretilmiştir; ünite yerleşim planları, ıslak hacim yerleşimleri ve detayları ile asma tavan planları (RCP). ZHA'nın organik geometrisi içinde çalışmak, her çizimin standart tekrarlar yerine projeye özgü (custom) bir koordinasyon gerektirmesi anlamına geliyordu.
 
-Asma Tavan (RCP) ve MEP Koordinasyonu: Teknik açıdan en zorlayıcı unsur, asma tavan planlarını, düzensiz ve kavisli yapısal sınırlardan geçen MEP sistemleriyle hizalamaktı. Paftalar yayınlanmadan önce çakışmaları çözmek adına mimari ve MEP modelleri arasında sistematik bir koordinasyon iş akışı kurdum.
+Asma Tavan (RCP) ve MEP Koordinasyonu: Teknik açıdan en zorlayıcı unsur, asma tavan planlarını, düzensiz ve kavisli yapısal sınırlardan geçen MEP sistemleriyle hizalamaktı. Paftalar yayınlanmadan önce çakışmaları çözmek adına mimari ve MEP modelleri arasında sistematik bir koordinasyon iş akışı kurulmuştur.
 
-Parametrik Aile (Family) Kütüphanesi: Ofisin eksiksiz Revit aile kütüphanesini sıfırdan tasarlayıp kurdum; kapılar, banyo modülleri, mutfak bileşenleri, tavan sistemleri ve yapısal montajlar. Bunların tümü, sonraki aşamalardaki veri çıkarımı (data extraction) için doğru paylaşımlı parametreleri (shared parameters) barındıracak şekilde BEP standartlarına uygun olarak geliştirildi. Bu kütüphanenin ofiste daha önce bir örneği yoktu. Mercury Towers'ın ve ofisin teslim ettiği Gozo Kapalı Spor ve Su Sporları Pavyonu da dahil olmak üzere sonraki tüm projelerin temelini oluşturdu.
+Parametrik Aile (Family) Kütüphanesi: Ofisin eksiksiz Revit aile kütüphanesi sıfırdan tasarlanıp kurulmuştur; kapılar, banyo modülleri, mutfak bileşenleri, tavan sistemleri ve yapısal montajlar. Bunların tümü, sonraki aşamalardaki veri çıkarımı (data extraction) için doğru paylaşımlı parametreleri (shared parameters) barındıracak şekilde BEP standartlarına uygun olarak geliştirildi. Bu kütüphanenin ofiste daha önce bir örneği yoktu. Mercury Towers'ın ve ofisin teslim ettiği Gozo Kapalı Spor ve Su Sporları Pavyonu da dahil olmak üzere sonraki tüm projelerin temelini oluşturdu.
 
-BIM Standartları ve Protokolleri: Çok disiplinli ekip genelinde ISO 19650 uyumlu isimlendirme standartlarını, çalışma seti (workset) yapılarını ve model paylaşım protokollerini uyguladım. Farklı ofislerden paydaşların yer aldığı uluslararası bir proje için bu sistem, koordinasyonu şeffaf ve izlenebilir kılan en temel katmandı.
+BIM Standartları ve Protokolleri: Çok disiplinli ekip genelinde ISO 19650 uyumlu isimlendirme standartları, çalışma seti (workset) yapıları ve model paylaşım protokolleri uygulanmıştır. Farklı ofislerden paydaşların yer aldığı uluslararası bir proje için bu sistem, koordinasyonu şeffaf ve izlenebilir kılan en temel katmandı.
 
 SONUÇLAR VE SAĞLANAN KATMA DEĞER
 

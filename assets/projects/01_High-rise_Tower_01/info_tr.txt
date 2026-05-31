@@ -17,11 +17,11 @@ Proje kapsamı; statik, mimari ve MEP sistemlerinin en yüksek yoğunlukta kesi�
 
 METODOLOJİ
 
-İç Mimari Dokümantasyon Paketi: Tüm kat seviyelerindeki karmaşık yapısal kesişimleri çözerek; giriş koridorları ve merdiven çekirdekleri için planlar, kesitler, sistem detayları ve montaj çizimlerini barındıran eksiksiz bir uygulama projesi seti ürettim.
+İç Mimari Dokümantasyon Paketi: Tüm kat seviyelerindeki karmaşık yapısal kesişimleri çözerek; giriş koridorları ve merdiven çekirdekleri için planlar, kesitler, sistem detayları ve montaj çizimlerini barındıran eksiksiz bir uygulama projesi seti üretilmiştir.
 
-Boşluk/Geçiş Koordinasyonu: Mimari, statik ve MEP modelleri arasındaki her bir duvar geçişini koordine ettim. Tesisat ve şaft boşluklarının konumları, projeler sahaya teslim edilmeden önce birleştirilmiş (federated) model üzerinde çözülüp doğrulandı.
+Boşluk/Geçiş Koordinasyonu: Mimari, statik ve MEP modelleri arasındaki her bir duvar geçişi koordine edilmiştir. Tesisat ve şaft boşluklarının konumları, projeler sahaya teslim edilmeden önce birleştirilmiş (federated) model üzerinde çözülüp doğrulandı.
 
-Parametrik Aile (Family) Geliştirme: BEP (BIM Uygulama Planı) standartlarına uygun, projeye özgü parametrik Revit aileleri geliştirdim. Bu sayede kat varyasyonları arasında geometrik tutarlılık sağlandı ve sonraki aşamalardaki metraj çıkarımları için doğru veri parametreleri modele entegre edildi.
+Parametrik Aile (Family) Geliştirme: BEP (BIM Uygulama Planı) standartlarına uygun, projeye özgü parametrik Revit aileleri geliştirilmiştir. Bu sayede kat varyasyonları arasında geometrik tutarlılık sağlandı ve sonraki aşamalardaki metraj çıkarımları için doğru veri parametreleri modele entegre edildi.
 
 Metraj Çıkarımları (QTO): Mimari metraj (Quantity Take-Off) tabloları doğrudan koordine edilmiş modelden çekildi. Manuel sayım veya harici mutabakat yapılmadı. Model, "tek doğru kaynak" (single source of truth) olarak işlev gördü.
 

@@ -17,7 +17,7 @@ Bu hacimdeki 2D veriyi manuel olarak —eleman eleman— koordine edilmiş, veri
 
 METODOLOJİ
 
-Python Otomasyonu: Mevcut 2D çizimlerin CAD katman (layer) mantığını okuyan ve doğrudan Revit içinde parametrik 3D elemanları —duvarlar, döşemeler ve tavanlar— otomatik olarak üreten, Revit API ile entegre özel bir Python scripti geliştirdim. Bu script, binanın temel mimari bileşenleri için eleman eleman manuel modelleme ihtiyacını tamamen ortadan kaldırdı.
+Python Otomasyonu: Mevcut 2D çizimlerin CAD katman (layer) mantığını okuyan ve doğrudan Revit içinde parametrik 3D elemanları —duvarlar, döşemeler ve tavanlar— otomatik olarak üreten, Revit API ile entegre özel bir Python scripti geliştirilmiştir. Bu script, binanın temel mimari bileşenleri için eleman eleman manuel modelleme ihtiyacını tamamen ortadan kaldırdı.
 
 Geometrik Kapsama (Geometric Containment): Script, CAD geometrisinden mahal (room) sınırlarını tespit etmek ve her bir mekana doğru iç yüzey (interior surface) parametrelerini otomatik olarak atamak için geometrik kapsama algoritması kullandı. Manuel bir müdahale olmaksızın her bir mahal etiketlendi (tagged), sınıflandırıldı ve veri açısından eksiksiz hale getirildi.
 

@@ -17,7 +17,7 @@ Dikey sirkülasyon sistemleri — merdivenler, rampalar, yürüyen merdivenler v
 
 METODOLOJİ
 
-Uygulama Projesi Dokümantasyonu (Construction Documentation): Tüm bina yüksekliği boyunca merdivenler, rampalar, yürüyen merdivenler ve asansör şaftları dahil olmak üzere tüm dikey sirkülasyon sistemleri için eksiksiz mimari çizim setlerini ürettim. Her bir sistem, kat seviyesinde yapısal geometri, mimari kabuk ve MEP şaft rotaları arasındaki kesişimlerin çözülmesini gerektiriyordu.
+Uygulama Projesi Dokümantasyonu (Construction Documentation): Tüm bina yüksekliği boyunca merdivenler, rampalar, yürüyen merdivenler ve asansör şaftları dahil olmak üzere tüm dikey sirkülasyon sistemleri için eksiksiz mimari çizim setleri üretilmiştir. Her bir sistem, kat seviyesinde yapısal geometri, mimari kabuk ve MEP şaft rotaları arasındaki kesişimlerin çözülmesini gerektiriyordu.
 
 Geometrik Koordinasyon: Merdiven çekirdeği ve asansör şaftı bölgeleri tüm detaylarıyla modellendi ve dokümante edildi; basamak ve rıht geometrisi, sahanlık konfigürasyonları, şaft duvarı montaj (assembly) detayları, geçiş/boşluk (penetration) konumları ve güvenlik/hareket (clearance) mesafeleri. Paftalar yayınlanmadan (sheet issue) önce her bir eleman, statik ve MEP modelleri ile çapraz kontrole (cross-reference) tabi tutuldu.
 

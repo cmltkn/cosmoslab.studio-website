@@ -19,9 +19,9 @@ At IPark 87 in New York, the challenge was different in nature. The existing bui
 
 METHODOLOGY
 
-- 4GW Cell & Module Facilities: I produced the complete architectural drawing package — plans, sections and elevations — for the industrial warehouse structures. Working within the technical constraints of precision manufacturing facilities, every spatial dimension and structural clearance was documented to execution standard for direct contractor use.
+- 4GW Cell & Module Facilities: The complete architectural drawing package was produced — plans, sections and elevations — for the industrial warehouse structures. Working within the technical constraints of precision manufacturing facilities, every spatial dimension and structural clearance was documented to execution standard for direct contractor use.
 
-- IPark 87 — Legacy Documentation to BIM: I developed a structured workflow for converting 1984 hand drawings into a Revit model. Each drawing was interpreted, verified for dimensional consistency and rebuilt as parametric geometry — walls, floors, openings and structural elements — carrying the correct data parameters for MEP coordination. The resulting model gave the project team a reliable, updatable architectural base where none had previously existed in digital form.
+- IPark 87 — Legacy Documentation to BIM: A structured workflow was developed for converting 1984 hand drawings into a Revit model. Each drawing was interpreted, verified for dimensional consistency and rebuilt as parametric geometry — walls, floors, openings and structural elements — carrying the correct data parameters for MEP coordination. The resulting model gave the project team a reliable, updatable architectural base where none had previously existed in digital form.
 
 RESULTS & VALUE ADDED
 

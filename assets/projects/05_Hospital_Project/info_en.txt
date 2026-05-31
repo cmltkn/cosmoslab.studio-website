@@ -17,7 +17,7 @@ Converting that volume of 2D data into a coordinated, data-rich 3D BIM model man
 
 METHODOLOGY
 
-- Python Automation: I developed a custom Python script integrated with the Revit API that read the CAD layer logic of the existing 2D drawings and automatically generated parametric 3D elements — walls, floors and ceilings — directly in Revit. The script eliminated manual element-by-element modelling entirely for the building's primary architectural components.
+- Python Automation: A custom Python script was developed and integrated with the Revit API to read the CAD layer logic of the existing 2D drawings and automatically generate parametric 3D elements — walls, floors and ceilings — directly in Revit. The script eliminated manual element-by-element modelling entirely for the building's primary architectural components.
 
 - Geometric Containment: The script used a geometric containment algorithm to detect room boundaries from the CAD geometry and automatically assign the correct interior surface parameters to each space. Every room was tagged, classified and data-complete without manual intervention.
 

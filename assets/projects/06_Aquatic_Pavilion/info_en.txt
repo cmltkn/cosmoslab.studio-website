@@ -18,9 +18,9 @@ Delivering tender documentation to the standard required for a public facility i
 
 METHODOLOGY
 
-- Architectural BIM Modelling: I built and managed the architectural BIM model across the full building scope — sports hall, aquatic zones, changing facilities, circulation and service areas. The large-span curved roof structure required careful geometric management to maintain coordination accuracy between the architectural envelope and the structural system below it.
+- Architectural BIM Modelling: The architectural BIM model was built and managed across the full building scope — sports hall, aquatic zones, changing facilities, circulation and service areas. The large-span curved roof structure required careful geometric management to maintain coordination accuracy between the architectural envelope and the structural system below it.
 
-- Interdisciplinary Coordination: I coordinated the architectural model with the structural and MEP disciplines throughout the documentation phase — managing shared coordinates, project base points and linked file references to prevent geometric drift and data inconsistencies between teams.
+- Interdisciplinary Coordination: The architectural model was coordinated with the structural and MEP disciplines throughout the documentation phase — managing shared coordinates, project base points and linked file references to prevent geometric drift and data inconsistencies between teams.
 
 - Wet Area Detailing: The aquatic zones and changing facilities required detailed wet area layouts — drainage points, waterproofing assemblies, surface fall directions and fixture positioning — all modelled and documented to tender standard.
 

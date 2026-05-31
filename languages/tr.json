@@ -31,7 +31,10 @@
     "formName": "İsim",
     "formEmail": "E-posta",
     "formMessage": "Mesajınız",
-    "formSend": "GÖNDER"
+    "formSend": "GÖNDER",
+    "formSuccess": "Mesajınız başarıyla iletildi.",
+    "formSending": "GÖNDERİLİYOR...",
+    "formError": "Bir hata oluştu, lütfen tekrar deneyin."
   },
   "ui": {
     "viewProfile": "PROFİLİ GÖRÜNTÜLE",

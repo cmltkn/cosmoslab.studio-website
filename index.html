@@ -406,11 +406,12 @@
             </div>
             
             <div class="contact-form-block">
-                <form action="https://formspree.io/f/xwvypgpa" method="POST" class="minimal-form">
+                <form id="contact-form" action="https://formspree.io/f/xwvypgpa" method="POST" class="minimal-form">
                     <input type="text" name="name" id="form-name" required>
                     <input type="email" name="email" id="form-email" required>
                     <textarea name="message" id="form-message" required></textarea>
                     <button type="submit" id="form-send"></button>
+                    <div id="form-status" style="margin-top: 15px; font-size: 0.85rem; display: none;"></div>
                 </form>
             </div>
         </div>
@@ -926,6 +927,62 @@
         window.addEventListener('mouseup', () => { isDragging = false; });
         lbStage.addEventListener('dblclick', (e) => { if(isVideo(allImages[currentIndex])) return; if (state.scale > 1) { state.scale = 1; state.x = 0; state.y = 0; } else { state.scale = 2.5; } applyTransform(); });
         function handleKey(e) { if(e.key === 'ArrowRight') changeSlide(1); if(e.key === 'ArrowLeft') changeSlide(-1); if(e.key === 'Escape') closeLightbox(); }
+
+        // --- 5. AJAX FORM SUBMISSION (Formspree) ---
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        const formSendBtn = document.getElementById('form-send');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                const data = siteContent[currentLang];
+                const sendingText = data.contact.formSending || (currentLang === 'tr' ? 'GÖNDERİLİYOR...' : 'SENDING...');
+                const successText = data.contact.formSuccess || (currentLang === 'tr' ? 'Mesajınız başarıyla iletildi.' : 'Your message has been sent successfully.');
+                const errorText = data.contact.formError || (currentLang === 'tr' ? 'Bir hata oluştu, lütfen tekrar deneyin.' : 'An error occurred, please try again.');
+
+                formSendBtn.disabled = true;
+                const originalBtnHTML = formSendBtn.innerHTML;
+                formSendBtn.innerText = sendingText;
+
+                const formData = new FormData(contactForm);
+
+                fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    formSendBtn.disabled = false;
+                    formSendBtn.innerHTML = originalBtnHTML;
+                    formStatus.style.display = 'block';
+                    if (response.ok) {
+                        formStatus.style.color = '#5cb85c';
+                        formStatus.innerText = successText;
+                        contactForm.reset();
+                        // Hide success message after 5 seconds
+                        setTimeout(() => { formStatus.style.display = 'none'; }, 5000);
+                    } else {
+                        response.json().then(data => {
+                            if (data && Object.hasOwn(data, 'errors')) {
+                                formStatus.innerText = data['errors'].map(error => error['message']).join(", ");
+                            } else {
+                                formStatus.innerText = errorText;
+                            }
+                            formStatus.style.color = '#d9534f';
+                        });
+                    }
+                }).catch(error => {
+                    formSendBtn.disabled = false;
+                    formSendBtn.innerHTML = originalBtnHTML;
+                    formStatus.style.color = '#d9534f';
+                    formStatus.innerText = errorText;
+                    formStatus.style.display = 'block';
+                });
+            });
+        }
 
         renderPage();
     </script>

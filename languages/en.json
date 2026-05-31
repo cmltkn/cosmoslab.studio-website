@@ -31,7 +31,10 @@
     "formName": "Name",
     "formEmail": "Email",
     "formMessage": "Message",
-    "formSend": "SEND"
+    "formSend": "SEND",
+    "formSuccess": "Your message has been sent successfully.",
+    "formSending": "SENDING...",
+    "formError": "An error occurred, please try again."
   },
   "ui": {
     "viewProfile": "VIEW PROFILE",

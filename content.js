@@ -363,7 +363,10 @@ const siteContent = {
             "formName": "Name",
             "formEmail": "Email",
             "formMessage": "Message",
-            "formSend": "SEND"
+            "formSend": "SEND",
+            "formSuccess": "Your message has been sent successfully.",
+            "formSending": "SENDING...",
+            "formError": "An error occurred, please try again."
         },
         "ui": {
             "viewProfile": "VIEW PROFILE",
@@ -735,7 +738,10 @@ const siteContent = {
             "formName": "İsim",
             "formEmail": "E-posta",
             "formMessage": "Mesajınız",
-            "formSend": "GÖNDER"
+            "formSend": "GÖNDER",
+            "formSuccess": "Mesajınız başarıyla iletildi.",
+            "formSending": "GÖNDERİLİYOR...",
+            "formError": "Bir hata oluştu, lütfen tekrar deneyin."
         },
         "ui": {
             "viewProfile": "PROFİLİ GÖRÜNTÜLE",
